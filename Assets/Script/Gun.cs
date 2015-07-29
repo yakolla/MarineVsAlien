@@ -13,7 +13,7 @@ public class Gun : Weapon {
 	{
 		base.LevelUp();
 
-		if (Level % 2 == 1)
+		if (Level % 2 == 0)
 		{
 			m_bulletSpeed += Level/2*2;
 			m_bulletSpeed = Mathf.Min(m_bulletSpeed, m_maxBulletSpeed);

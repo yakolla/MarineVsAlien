@@ -630,24 +630,24 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				},
 				{
 					"refItemId":5, 
-					"count":1
+					"count":100
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":100
 				}
 			],
 			"optionPerLevel":
 			[
 				{
-					"level":300,
+					"level":3,
 					"option":
 					{
 						"type":"MoveSpeed",
@@ -655,7 +655,7 @@
 					}
 				},
 				{
-					"level":600,
+					"level":6,
 					"option":
 					{
 						"type":"DamageReduction",
@@ -663,7 +663,7 @@
 					}
 				},
 				{
-					"level":900,
+					"level":9,
 					"option":
 					{
 						"type":"DamageMultiplier",
