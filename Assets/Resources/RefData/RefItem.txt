@@ -618,7 +618,6 @@
 			"coolTime":0.7,
 			"range":10,
 			"skillId":133,
-			"firingCount":2,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -631,24 +630,24 @@
 			[
 				{
 					"refItemId":1, 
-					"count":400
+					"count":10
 				},
 				{
 					"refItemId":5, 
-					"count":4
+					"count":1
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":4
+					"count":1
 				}
 			],
 			"optionPerLevel":
 			[
 				{
-					"level":3,
+					"level":300,
 					"option":
 					{
 						"type":"MoveSpeed",
@@ -656,7 +655,7 @@
 					}
 				},
 				{
-					"level":6,
+					"level":600,
 					"option":
 					{
 						"type":"DamageReduction",
@@ -664,7 +663,7 @@
 					}
 				},
 				{
-					"level":9,
+					"level":900,
 					"option":
 					{
 						"type":"DamageMultiplier",

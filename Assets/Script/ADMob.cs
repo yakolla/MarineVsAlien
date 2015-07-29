@@ -12,8 +12,8 @@ public class ADMob : MonoBehaviour
 	string adUnitId = "unused";
 	string adBannerId = "unused";
 	#elif UNITY_ANDROID
-	string adUnitId = "ca-app-pub-8449608955539666/4703450838";
-	string adBannerId = "ca-app-pub-8449608955539666/6121308433";
+	string adUnitId = "ca-app-pub-8449608955539666/5398962439";
+	string adBannerId = "ca-app-pub-8449608955539666/3922229230";
 	#elif UNITY_IPHONE
 	string adUnitId = "INSERT_IOS_INTERSTITIAL_AD_UNIT_ID_HERE";
 	string adBannerId = "INSERT_IOS_INTERSTITIAL_AD_UNIT_ID_HERE";

@@ -359,10 +359,6 @@ public class ChampSettingGUI : MonoBehaviour {
 		champ.Init(RefData.Instance.RefChamp, 1);
 
 		m_champ = champ;
-		if (Cheat.PlayWithPet)
-		{
-			new ItemFollowerData(Const.PetRefMobId).Use(m_champ);
-		}
 		
 		Warehouse.Instance.ChampEquipItems.m_weaponRefItemId = m_equipedWeapon.m_itemObject.Item.RefItemID;
 

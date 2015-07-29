@@ -113,7 +113,7 @@ public class ShopIAB : MonoBehaviour
 			OpenIAB.mapSku(pair.Key, OpenIAB_Android.STORE_GOOGLE, pair.Key);
 		}
 
-		var googlePublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApi71KrlP+P+IWL1HtgDigZ5VUd9KdvSasR/Q2ONnVSmtsGrE0abo11IXodJHeDQWfGn2KCHC1qrjUW0lX8dK/2syDFmjnvF4jHXjyAl7NZqQZzlu68XI/nBF9csCJ7eRtPG5VOdmY4LDe3skx3Re0mjDi1wnHmc5gtz8Tisa6krDNq3V0lqW9rLD1aAA/TWtXcfFQOdZVrdrFsBzizJIbz9vqBAYmh8PedBcufYH/ToRUaokdNKgjh9l+2L2zNbYi1MIQC1rUv52MKzCgJv3BUEF6pfd+2iBXSfMcDzElz8VqXRUtRcdexcTYBX29cpiNTfXznW4y+StTd2TLvbiowIDAQAB";
+		var googlePublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyJoNHt3k2PMI0zVAgcQK6QARbGDJQ2KtuD+0JJuVqlaWqi5dv5Gn7zyhaTlwb9w7S65E9ZmnJDgmwhDIROSBDNFqcYxL9dYp8PDj7zhxyVz5fmgTZKMvXp9a2qo84mQ0RTlplhK32GMGCrlzGdh1cYu4Z07da6mEzBjTyGKss/E44QJNVfI982TznB7qXfIgMWp6ZAzLZOsc7CmzKd1qTyKYWu6iZl3BB3bHKRHK6vvHTyxHaf48mjwRAFrkaYESsq5oAm+hKTwR0vrN374mmGG/E5B8ZGI5xBNkmCV9bG2wc6Uqb++uf//T1hM5qcs8LvBlr2iOSGHucWo8mb+o6QIDAQAB";
 
 		var options = new Options();
 		options.checkInventoryTimeoutMs = Options.INVENTORY_CHECK_TIMEOUT_MS * 2;

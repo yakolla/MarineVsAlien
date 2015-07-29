@@ -17,7 +17,7 @@ public class Const {
 		MainMenu,
 	}
 
-	public const int MaxItemLevel = 9;
+	public const int MaxItemLevel = 900;
 	public const int MaxShowDamageNumber = 3;
 	public const int SpecialButtons = 3;
 	public const int Guages = 3;
