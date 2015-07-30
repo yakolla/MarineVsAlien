@@ -24,6 +24,7 @@ public class ItemData {
 		RandomAbility,
 		Skill,
 		Cheat,
+		Stat,
 		Count
 	}
 
@@ -34,6 +35,8 @@ public class ItemData {
 		DamageReduction,
 		MoveSpeed,
 		Weapon,
+		Str,
+		MaxHp,
 		Count
 	}
 
@@ -138,7 +141,14 @@ public class ItemData {
 					obj.EquipPassiveSkillWeapon(weaponData, null);
 				}
 				break;
+			case Option.Str:
+				obj.m_creatureProperty.AlphaPhysicalAttackDamage += (int)op.option.values[0];
+				break;
+			case Option.MaxHp:
+				obj.m_creatureProperty.AlphaMaxHP += (int)op.option.values[0];
+				break;
 			}
+
 		}
 	}
 

@@ -8,13 +8,15 @@ using UnityEngine.UI;
 public class ChampSettingGUI : MonoBehaviour {
 
 
-	GameObject	m_inventoryObj;
 	YGUISystem.GUIImageStatic	m_gold;
 	YGUISystem.GUIImageStatic	m_goldMedal;
 	YGUISystem.GUIImageStatic	m_gem;
 	YGUISystem.GUIButton	m_weapon;
 	YGUISystem.GUILockButton[]	m_accessories = new YGUISystem.GUILockButton[Const.AccessoriesSlots];
 	YGUISystem.GUIButton	m_start;
+
+	GameObject	m_inventoryPanel;
+	GameObject	m_statPanel;
 
 	[SerializeField]
 	Transform		m_spawnChamp;
@@ -120,14 +122,10 @@ public class ChampSettingGUI : MonoBehaviour {
 
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
+				Warehouse.Instance.PushItem(new ItemStatData(2001));
+				Warehouse.Instance.PushItem(new ItemStatData(2002));
 			}
-			else
-			{
-				if (null == Warehouse.Instance.FindItem(Const.AcademyRefItemId))
-				{
-					Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
-				}
-			}
+
 			byte[] data = Warehouse.Instance.Serialize();
 			Warehouse.Instance.Deserialize(data);
 
@@ -152,86 +150,10 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_gem = new YGUISystem.GUIImageStatic(transform.Find("GemImage").gameObject, Warehouse.Instance.Gem.ItemIcon);
 		m_start = new YGUISystem.GUIButton(transform.Find("StartButton").gameObject, ()=>{return m_equipedWeapon != null;});
 
-		RectTransform rectScrollView = transform.Find("InvScrollView").gameObject.GetComponent<RectTransform>();
-		m_inventoryObj = transform.Find("InvScrollView/Contents").gameObject;
-		RectTransform rectInventoryObj = m_inventoryObj.GetComponent<RectTransform>();
-		Vector2 rectContents = new Vector2(	rectInventoryObj.rect.width, 0);
-
-		GameObject prefGUIInventorySlot = Resources.Load<GameObject>("Pref/GUIInventorySlot");
-		RectTransform	rectGUIInventorySlot = prefGUIInventorySlot.GetComponent<RectTransform>();
-
-		int itemIndex = 0;
-		int maxCount = Warehouse.Instance.Items.Count;
-		int equipItemIndex = 0;
-		for(itemIndex = 0; itemIndex < maxCount; ++itemIndex)
-		{
-			ItemObject item = Warehouse.Instance.Items[itemIndex];
-
-			GameObject obj = Instantiate(prefGUIInventorySlot) as GameObject;
-			GUIInventorySlot invSlot = obj.GetComponent<GUIInventorySlot>();
-
-			obj.transform.parent = m_inventoryObj.transform;
-			obj.transform.localScale = prefGUIInventorySlot.transform.localScale;
-			obj.transform.localPosition = new Vector3(0f, rectGUIInventorySlot.rect.height/2*(maxCount-1)-rectGUIInventorySlot.rect.height*itemIndex, 0);
-
-			invSlot.Init(item.ItemIcon, item.Item.Description());
-			invSlot.PriceButton0.EnableChecker = ()=>{return false;};
-			invSlot.PriceButton1.EnableChecker = ()=>{return false;};
-
-			int capturedItemIndex = itemIndex;
+		m_inventoryPanel = settingInventory();
+		m_statPanel = settingStat();
 
 
-			switch(item.Item.RefItem.type)
-			{
-			case ItemData.Type.Weapon:
-			case ItemData.Type.Accessory:
-			case ItemData.Type.Follower:
-			case ItemData.Type.Skill:
-			case ItemData.Type.Cheat:
-				if (item.Item.Lock == true)
-				{
-					if (item.Item.RefItem.unlock != null)
-					{
-						SetButtonRole(ButtonRole.Unlock, invSlot, invSlot.PriceButton0, itemIndex);
-					}
-				}
-				else
-				{
-					SetButtonRole(ButtonRole.Equip, invSlot, invSlot.PriceButton0, itemIndex);
-				}
-
-				if (item.Item.RefItem.levelup != null)
-				{
-					SetButtonRole(ButtonRole.Levelup, invSlot, invSlot.PriceButton1, itemIndex);
-				}
-				break;
-			}
-
-			invSlot.Update();
-
-			if (Warehouse.Instance.ChampEquipItems.m_weaponRefItemId == item.Item.RefItemID)
-			{
-				equipItemIndex = itemIndex;
-				OnClickEquip(invSlot, invSlot.PriceButton0, invSlot.PriceButton0.m_priceButton, itemIndex);
-			}
-			else
-			{
-				for(int x = 0; x < m_equipedAccessories.Length; ++x)
-				{
-					if (Warehouse.Instance.ChampEquipItems.m_accessoryRefItemId[x] == item.Item.RefItemID)
-					{
-						OnClickEquip(invSlot, invSlot.PriceButton0, invSlot.PriceButton0.m_priceButton, itemIndex);
-						break;
-					}
-				}
-			}
-		}
-		rectContents.y = rectGUIInventorySlot.rect.height*itemIndex;
-		rectInventoryObj.sizeDelta = rectContents;
-		//rectInventoryObj.position = new Vector3(rectInventoryObj.position.x, -(rectContents.y/2-rectScrollView.rect.height/2), rectInventoryObj.position.z);
-		rectInventoryObj.localPosition = new Vector3(0, -(rectContents.y/2-rectScrollView.rect.height/2-rectGUIInventorySlot.rect.height*equipItemIndex), 0);
-
-		UpdateAccessorySlots();
 
 		OnClickStart();
 	}
@@ -252,7 +174,8 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 		case ButtonRole.Equip:
 			{
-			priceGemButton.EnableChecker = ()=>{return item.Item.RefItem.type != ItemData.Type.Cheat;};
+			priceGemButton.SetActive(false);
+			priceGemButton.EnableChecker = ()=>{return item.Item.RefItem.type != ItemData.Type.Cheat || item.Item.RefItem.type != ItemData.Type.Stat;};
 
 				priceGemButton.SetPrices(null, null);
 				priceGemButton.AddListener(() => OnClickEquip(invSlot, priceGemButton, priceGemButton.m_priceButton, itemIndex), () => OnClickEquip(invSlot, priceGemButton, priceGemButton.m_gemButton, itemIndex) );
@@ -437,6 +360,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		case ItemData.Type.Accessory:
 		case ItemData.Type.Follower:
 		case ItemData.Type.Skill:
+		case ItemData.Type.Stat:
 		{
 			if (true == inEquipSlot)
 			{
@@ -518,6 +442,10 @@ public class ChampSettingGUI : MonoBehaviour {
 					ItemFollowerData itemFollowerData = selectedItem.Item as ItemFollowerData;
 					itemFollowerData.m_follower.LevelUp();
 				}
+				else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat)
+				{
+					selectedItem.Item.Use(m_champ);
+				}
 
 				if (selectedItem.Item.Level == Const.MaxItemLevel)
 				{
@@ -576,6 +504,176 @@ public class ChampSettingGUI : MonoBehaviour {
 		}
 	}
 
+	GameObject settingInventory()
+	{
+		RectTransform rectScrollView = transform.Find("InvPanel/ScrollView").gameObject.GetComponent<RectTransform>();
+		GameObject contentsObj = transform.Find("InvPanel/ScrollView/Contents").gameObject;
+		RectTransform rectInventoryObj = contentsObj.GetComponent<RectTransform>();
+		Vector2 rectContents = new Vector2(	rectInventoryObj.rect.width, 0);
+		
+		GameObject prefGUIInventorySlot = Resources.Load<GameObject>("Pref/GUIInventorySlot");
+		RectTransform	rectGUIInventorySlot = prefGUIInventorySlot.GetComponent<RectTransform>();
 
+		int itemAddedCount = 0;
+		int itemIndex = 0;
+		int maxCount = Warehouse.Instance.Items.Count-Warehouse.Instance.Count(ItemData.Type.Stat);
+		int equipItemIndex = 0;
+		for(itemIndex = 0; itemIndex < Warehouse.Instance.Items.Count; ++itemIndex)
+		{
+			ItemObject item = Warehouse.Instance.Items[itemIndex];
+
+			if (item.Item.RefItem.type == ItemData.Type.Stat)
+				continue;
+			
+			GameObject obj = Instantiate(prefGUIInventorySlot) as GameObject;
+			GUIInventorySlot invSlot = obj.GetComponent<GUIInventorySlot>();
+			
+			obj.transform.parent = contentsObj.transform;
+			obj.transform.localScale = prefGUIInventorySlot.transform.localScale;
+			obj.transform.localPosition = new Vector3(0f, rectGUIInventorySlot.rect.height/2*(maxCount-1)-rectGUIInventorySlot.rect.height*itemAddedCount, 0);
+			
+			invSlot.Init(item.ItemIcon, item.Item.Description());
+			invSlot.PriceButton0.EnableChecker = ()=>{return false;};
+			invSlot.PriceButton1.EnableChecker = ()=>{return false;};
+			
+			int capturedItemIndex = itemIndex;
+			
+			
+			switch(item.Item.RefItem.type)
+			{
+			case ItemData.Type.Weapon:
+			case ItemData.Type.Accessory:
+			case ItemData.Type.Follower:
+			case ItemData.Type.Skill:
+			case ItemData.Type.Cheat:
+				if (item.Item.Lock == true)
+				{
+					if (item.Item.RefItem.unlock != null)
+					{
+						SetButtonRole(ButtonRole.Unlock, invSlot, invSlot.PriceButton0, itemIndex);
+					}
+				}
+				else
+				{
+					SetButtonRole(ButtonRole.Equip, invSlot, invSlot.PriceButton0, itemIndex);
+				}
+				
+				if (item.Item.RefItem.levelup != null)
+				{
+					SetButtonRole(ButtonRole.Levelup, invSlot, invSlot.PriceButton1, itemIndex);
+				}
+				break;
+			}
+			
+			invSlot.Update();
+			
+			if (Warehouse.Instance.ChampEquipItems.m_weaponRefItemId == item.Item.RefItemID)
+			{
+				equipItemIndex = itemIndex;
+				OnClickEquip(invSlot, invSlot.PriceButton0, invSlot.PriceButton0.m_priceButton, itemIndex);
+			}
+			else
+			{
+				for(int x = 0; x < m_equipedAccessories.Length; ++x)
+				{
+					if (Warehouse.Instance.ChampEquipItems.m_accessoryRefItemId[x] == item.Item.RefItemID)
+					{
+						OnClickEquip(invSlot, invSlot.PriceButton0, invSlot.PriceButton0.m_priceButton, itemIndex);
+						break;
+					}
+				}
+			}
+
+			++itemAddedCount;
+		}
+		rectContents.y = rectGUIInventorySlot.rect.height*itemAddedCount;
+		rectInventoryObj.sizeDelta = rectContents;
+		//rectInventoryObj.position = new Vector3(rectInventoryObj.position.x, -(rectContents.y/2-rectScrollView.rect.height/2), rectInventoryObj.position.z);
+		rectInventoryObj.localPosition = new Vector3(0, -(rectContents.y/2-rectScrollView.rect.height/2-rectGUIInventorySlot.rect.height*equipItemIndex), 0);
+
+		UpdateAccessorySlots();
+
+		return transform.Find("InvPanel").gameObject;
+	}
+
+	GameObject settingStat()
+	{
+		RectTransform rectScrollView = transform.Find("StatPanel/ScrollView").gameObject.GetComponent<RectTransform>();
+		GameObject contentsObj = transform.Find("StatPanel/ScrollView/Contents").gameObject;
+		RectTransform rectInventoryObj = contentsObj.GetComponent<RectTransform>();
+		Vector2 rectContents = new Vector2(	rectInventoryObj.rect.width, 0);
+		
+		GameObject prefGUIInventorySlot = Resources.Load<GameObject>("Pref/GUIInventorySlot");
+		RectTransform	rectGUIInventorySlot = prefGUIInventorySlot.GetComponent<RectTransform>();
+
+		int itemAddedCount = 0;
+		int itemIndex = 0;
+		int maxCount = Warehouse.Instance.Count(ItemData.Type.Stat);
+		int equipItemIndex = 0;
+		for(itemIndex = 0; itemIndex < Warehouse.Instance.Items.Count; ++itemIndex)
+		{
+		
+			ItemObject item = Warehouse.Instance.Items[itemIndex];
+		
+			if (item.Item.RefItem.type != ItemData.Type.Stat)
+				continue;
+
+			GameObject obj = Instantiate(prefGUIInventorySlot) as GameObject;
+			GUIInventorySlot invSlot = obj.GetComponent<GUIInventorySlot>();
+			
+			obj.transform.parent = contentsObj.transform;
+			obj.transform.localScale = prefGUIInventorySlot.transform.localScale;
+			obj.transform.localPosition = new Vector3(0f, rectGUIInventorySlot.rect.height/2*(maxCount-1)-rectGUIInventorySlot.rect.height*itemAddedCount, 0);
+			
+			invSlot.Init(item.ItemIcon, item.Item.Description());
+			invSlot.PriceButton0.EnableChecker = ()=>{return false;};
+			invSlot.PriceButton1.EnableChecker = ()=>{return false;};
+			
+			int capturedItemIndex = itemIndex;
+			
+
+				if (item.Item.Lock == true)
+				{
+					if (item.Item.RefItem.unlock != null)
+					{
+						SetButtonRole(ButtonRole.Unlock, invSlot, invSlot.PriceButton0, itemIndex);
+					}
+				}
+				else
+				{
+					SetButtonRole(ButtonRole.Equip, invSlot, invSlot.PriceButton0, itemIndex);
+				}
+				
+				if (item.Item.RefItem.levelup != null)
+				{
+					SetButtonRole(ButtonRole.Levelup, invSlot, invSlot.PriceButton1, itemIndex);
+				}
+
+			
+			invSlot.Update();
+
+			++itemAddedCount;
+		}
+		rectContents.y = rectGUIInventorySlot.rect.height*itemAddedCount;
+		rectInventoryObj.sizeDelta = rectContents;
+		//rectInventoryObj.position = new Vector3(rectInventoryObj.position.x, -(rectContents.y/2-rectScrollView.rect.height/2), rectInventoryObj.position.z);
+		rectInventoryObj.localPosition = new Vector3(0, -(rectContents.y/2-rectScrollView.rect.height/2-rectGUIInventorySlot.rect.height*equipItemIndex), 0);
+		
+		UpdateAccessorySlots();
+
+		return transform.Find("StatPanel").gameObject;
+	}
+
+	public void OnClickInventory()
+	{
+		m_inventoryPanel.SetActive(true);
+		m_statPanel.SetActive(false);
+	}
+
+	public void OnClickStat()
+	{
+		m_inventoryPanel.SetActive(false);
+		m_statPanel.SetActive(true);
+	}
 }
 

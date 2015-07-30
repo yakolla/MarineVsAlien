@@ -86,7 +86,11 @@ public class Warehouse {
 					ItemCheatData cheatData = JsonConvert.DeserializeObject<ItemCheatData>(reader.ReadLine());
 					obj.m_items.Add(new ItemObject(cheatData));
 					break;
-
+				case ItemData.Type.Stat:
+					ItemStatData statData = JsonConvert.DeserializeObject<ItemStatData>(reader.ReadLine());
+					obj.m_items.Add(new ItemObject(statData));
+					break;
+					
 				default:
 					Debug.Log(type);
 					reader.ReadLine();
@@ -319,6 +323,20 @@ public class Warehouse {
 		}
 
 		return null;
+	}
+
+	public int Count(ItemData.Type type)
+	{
+		int count = 0;
+		foreach(ItemObject obj in m_items)
+		{
+			if (obj.Item.RefItem.type == type)
+			{
+				++count;
+			}
+		}
+
+		return count;
 	}
 
 
