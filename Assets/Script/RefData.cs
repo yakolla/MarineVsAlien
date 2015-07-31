@@ -137,6 +137,7 @@ public class RefItem : RefBaseData
 	public 	RefItemOption[]		options;
 	public 	int					weaponId;
 	public 	bool				defaultLock = false;
+	public  int					maxLevel = Const.MaxItemLevel;
 
 }
 

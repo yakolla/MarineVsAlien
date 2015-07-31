@@ -228,7 +228,7 @@ public class Weapon : MonoBehaviour {
 	protected float coolDownTime()
 	{
 		const float maxCool = 0.5f;
-		float levelRatio = (m_level-1)/(float)Const.MaxItemLevel;
+		float levelRatio = (m_level-1)/(float)RefItem.maxLevel;
 		float coolPerLevel = (1-levelRatio)*1 + levelRatio*maxCool;
 		return m_weaponStat.coolTime*m_creature.m_creatureProperty.AttackCoolTime*coolPerLevel;
 	}

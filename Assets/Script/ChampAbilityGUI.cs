@@ -222,7 +222,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 			Weapon weapon = m_champ.WeaponHolder.MainWeapon.GetSubWeapon();
 			if (weapon != null)
 			{
-				if (weapon.Level >= Const.MaxItemLevel)
+				if (weapon.Level >= weapon.RefItem.maxLevel)
 					return false;
 			}
 			return true;
@@ -326,7 +326,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 				Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(131);
 				if (weapon != null)
 				{
-					if (weapon.Level >= Const.MaxItemLevel)
+					if (weapon.Level >= weapon.RefItem.maxLevel)
 						return false;
 				}
 				return true;
@@ -375,7 +375,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 				Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(134);
 				if (weapon != null)
 				{
-					if (weapon.Level >= Const.MaxItemLevel)
+					if (weapon.Level >= weapon.RefItem.maxLevel)
 						return false;
 				}
 				return true;
@@ -425,7 +425,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 				Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(129);
 				if (weapon != null)
 				{
-					if (weapon.Level >= Const.MaxItemLevel)
+					if (weapon.Level >= weapon.RefItem.maxLevel)
 						return false;
 				}
 				return true;
@@ -475,7 +475,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 				Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(135);
 				if (weapon != null)
 				{
-					if (weapon.Level >= Const.MaxItemLevel)
+					if (weapon.Level >= weapon.RefItem.maxLevel)
 						return false;
 				}
 				return true;

@@ -37,6 +37,7 @@ public class ItemData {
 		Weapon,
 		Str,
 		MaxHp,
+		Critical,
 		Count
 	}
 
@@ -146,6 +147,11 @@ public class ItemData {
 				break;
 			case Option.MaxHp:
 				obj.m_creatureProperty.AlphaMaxHP += (int)op.option.values[0];
+				break;
+			case Option.Critical:
+				obj.m_creatureProperty.AlphaCriticalRatio += op.option.values[0];
+				obj.m_creatureProperty.AlphaCriticalDamage += op.option.values[1];
+
 				break;
 			}
 

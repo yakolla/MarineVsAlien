@@ -2189,24 +2189,43 @@
 		"codeName":"Boots",
 		"type":"Stat",
 		"icon":"Sprites/Boots",
-		"levelup":
+		"maxLevel":90,
+		"defaultLock":true,
+		"unlock":
 		{
 			"conds":
 			[
 				{
 					"refItemId":1, 
-					"count":1500
+					"count":10
 				},
 				{
 					"refItemId":5, 
-					"count":15
+					"count":1
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":15
+					"count":1
+				}
+			]
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
 				}
 			],
 			"optionPerLevel":
@@ -2227,24 +2246,43 @@
 		"codeName":"Boots",
 		"type":"Stat",
 		"icon":"Sprites/Boots",
-		"levelup":
+		"maxLevel":90,
+		"defaultLock":true,
+		"unlock":
 		{
 			"conds":
 			[
 				{
 					"refItemId":1, 
-					"count":1500
+					"count":10
 				},
 				{
 					"refItemId":5, 
-					"count":15
+					"count":1
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":15
+					"count":1
+				}
+			]
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
 				}
 			],
 			"optionPerLevel":
@@ -2254,7 +2292,64 @@
 					"option":
 					{
 						"type":"MaxHp",
-						"values":[50]
+						"values":[10]
+					}
+				}
+			]
+		}
+	},
+	{
+		"id":2003,
+		"codeName":"Boots",
+		"type":"Stat",
+		"icon":"Sprites/Boots",
+		"maxLevel":90,
+		"defaultLock":true,
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				},
+				{
+					"refItemId":5, 
+					"count":1
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
+				}
+			]
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"option":
+					{
+						"type":"Critical",
+						"values":[0.1,1]
 					}
 				}
 			]

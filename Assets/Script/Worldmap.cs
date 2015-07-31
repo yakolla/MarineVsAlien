@@ -143,7 +143,7 @@ public class Worldmap : MonoBehaviour {
 
 		}
 	}
-	/*
+
 	public void OnGUI()
 	{
 		if (GUI.Button(new Rect(0, 0, 300, 100), log))
@@ -172,7 +172,7 @@ public class Worldmap : MonoBehaviour {
 			});
 		}
 	}
-*/
+
 	public void OnClickStart()
 	{
 		if (Application.platform == RuntimePlatform.Android)
