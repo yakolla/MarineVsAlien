@@ -6,8 +6,6 @@ public class ChampStatusGUI : MonoBehaviour {
 
 	Champ	m_champ;
 
-
-
 	int			m_oldMobKills;
 	int			m_oldGold;
 	int			m_oldGoldMedal;
@@ -18,13 +16,14 @@ public class ChampStatusGUI : MonoBehaviour {
 	YGUISystem.GUIButton[]	m_specialButtons = new YGUISystem.GUIButton[Const.SpecialButtons];
 	YGUISystem.GUIChargeButton[]	m_accessoryButtons = new YGUISystem.GUIChargeButton[Const.AccessoriesSlots];
 	YGUISystem.GUIGuage[] m_guages = new YGUISystem.GUIGuage[Const.Guages];
+	YGUISystem.GUILable m_level;
 	ComboGUIShake	m_gold;
 	ComboGUIShake	m_mobKills;
 	ComboGUIShake	m_goldMedal;
 
 	void Start () {
 
-
+		m_level = new YGUISystem.GUILable(transform.Find("Level/Text").gameObject);
 		m_gold = transform.Find("Gold/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 		m_goldMedal = transform.Find("GoldMedal/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 		m_mobKills = transform.Find("Kills/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
@@ -140,6 +139,7 @@ public class ChampStatusGUI : MonoBehaviour {
 		transform.Find("Gold").gameObject.SetActive(active);
 		transform.Find("GoldMedal").gameObject.SetActive(active);
 		transform.Find("Kills").gameObject.SetActive(active);
+		transform.Find("Level").gameObject.SetActive(active);
 	}
 
 	void Update()
@@ -167,11 +167,10 @@ public class ChampStatusGUI : MonoBehaviour {
 				m_accessoryButtons[i].CoolDownTime = m_champ.AccessoryItems[i].Item.RefItem.weaponStat.coolTime;
 			}
 
-
-
-
 			SetActiveGUI(true);
 		}
+
+		m_level.Text.text = m_champ.m_creatureProperty.Level.ToString();
 
 		if (m_oldMobKills != m_champ.MobKills)
 		{

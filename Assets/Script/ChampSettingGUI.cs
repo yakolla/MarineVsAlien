@@ -154,7 +154,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_inventoryPanel = settingInventory();
 		m_statPanel = settingStat();
 
-
+		OnClickStat();
 
 		OnClickStart();
 	}
