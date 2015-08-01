@@ -88,6 +88,8 @@ public class Follower : Creature {
 		case MobAIType.Follow:
 			m_ai = new MobAIFollow();
 			((MobAIFollow)(m_ai)).SetOwner(m_owner);
+			CreatureType = Type.ChampNpc;	
+			gameObject.layer = 0;
 			//StartCoroutine(DecHpEffect());
 			break;
 		}

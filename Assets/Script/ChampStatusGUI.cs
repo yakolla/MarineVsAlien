@@ -13,7 +13,7 @@ public class ChampStatusGUI : MonoBehaviour {
 	GameObject		m_accessoryBoard;
 
 
-	YGUISystem.GUIButton[]	m_specialButtons = new YGUISystem.GUIButton[Const.SpecialButtons];
+	YGUISystem.GUIChargeButton[]	m_specialButtons = new YGUISystem.GUIChargeButton[Const.SpecialButtons];
 	YGUISystem.GUIChargeButton[]	m_accessoryButtons = new YGUISystem.GUIChargeButton[Const.AccessoriesSlots];
 	YGUISystem.GUIGuage[] m_guages = new YGUISystem.GUIGuage[Const.Guages];
 	YGUISystem.GUILable m_level;
@@ -30,7 +30,7 @@ public class ChampStatusGUI : MonoBehaviour {
 
 		m_accessoryBoard = transform.Find("Accessory").gameObject;
 
-		m_specialButtons[0] = new YGUISystem.GUIButton(transform.Find("Special/Button0").gameObject, ()=>{
+		m_specialButtons[0] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button0").gameObject, ()=>{
 			m_specialButtons[0].Lable.Text.text = m_champ.RemainStatPoint.ToString();
 
 			if (Cheat.AutoAssignedAbility && m_champ.RemainStatPoint > 0 && m_champ.LastLevelupTime+10f < Time.time)
@@ -40,13 +40,11 @@ public class ChampStatusGUI : MonoBehaviour {
 
 			return m_champ.RemainStatPoint > 0;
 		});
-		m_specialButtons[1] = new YGUISystem.GUIButton(transform.Find("Special/Button1").gameObject, ()=>{
-			m_specialButtons[1].Lable.Text.text = m_champ.MachoSkillStack.ToString();
-			return m_champ.MachoSkillStack > 0;
+		m_specialButtons[1] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button1").gameObject, ()=>{
+			return true;
 		});
-		m_specialButtons[2] = new YGUISystem.GUIButton(transform.Find("Special/Button2").gameObject, ()=>{
-			m_specialButtons[2].Lable.Text.text = m_champ.NuclearSkillStack.ToString();
-			return m_champ.NuclearSkillStack > 0;
+		m_specialButtons[2] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button2").gameObject, ()=>{
+			return true;
 		});
 
 		for(int i = 0; i < m_accessoryButtons.Length; ++i)
@@ -97,9 +95,24 @@ public class ChampStatusGUI : MonoBehaviour {
 		GameObject.Find("HudGUI/OptionGUI").transform.Find("Panel").gameObject.SetActive(true);
 	}
 
-	public void OnClickComboSkill()
+	public void OnClickMachoSkill()
 	{
+		if (m_specialButtons[1].ChargingPoint == 0)
+			return;
+
 		m_champ.ApplyMachoSkill();
+
+		--m_specialButtons[1].ChargingPoint;
+	}
+
+	public void OnClickNuclearSkill()
+	{
+		if (m_specialButtons[2].ChargingPoint == 0)
+			return;
+		
+		m_champ.WeaponHolder.ActiveWeaponSkillFire(m_champ.WeaponHolder.MainWeapon.WeaponStat.skillId, transform.eulerAngles.y);
+
+		--m_specialButtons[2].ChargingPoint;
 	}
 
 	public void OnClickAccessory(int slot)
@@ -120,15 +133,7 @@ public class ChampStatusGUI : MonoBehaviour {
 
 	}
 
-	public void OnClickDashSkill()
-	{
-		if (m_champ.NuclearSkillStack == 0)
-			return;
 
-		--m_champ.NuclearSkillStack;
-
-		m_champ.WeaponHolder.ActiveWeaponSkillFire(m_champ.WeaponHolder.MainWeapon.WeaponStat.skillId, transform.eulerAngles.y);
-	}
 
 	void SetActiveGUI(bool active)
 	{
@@ -155,6 +160,13 @@ public class ChampStatusGUI : MonoBehaviour {
 
 			m_champ = obj.GetComponent<Champ>();
 			m_oldMobKills = m_champ.MobKills;
+
+			for(int i = 0; i < Const.SpecialButtons; ++i)
+			{
+				m_specialButtons[i].MaxChargingPoint = 1;
+				m_specialButtons[i].ChargingPoint = 1;
+				m_specialButtons[i].CoolDownTime = 10;
+			}
 
 			for(int i = 0; i < Const.AccessoriesSlots; ++i)
 			{

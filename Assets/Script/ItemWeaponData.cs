@@ -26,7 +26,7 @@ public class ItemWeaponData : ItemData{
 	{
 		obj.EquipWeapon(this, null);
 
-		ApplyOptions(obj);
+		ApplyOptions(obj, 0);
 	}
 
 	override public void NoUse(Creature obj)

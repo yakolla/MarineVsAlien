@@ -294,6 +294,14 @@ public class ChampSettingGUI : MonoBehaviour {
 			}
 		}
 
+		foreach(ItemObject itemFollowerObject in Warehouse.Instance.Items[ItemData.Type.Follower])
+		{
+			if (itemFollowerObject.Item.Level > 0)
+			{
+				itemFollowerObject.Item.Equip(m_champ);
+			}
+		}
+
 		for(int x = 0; x < m_equipedAccessories.Length; ++x)
 		{
 			if (m_equipedAccessories[x].m_itemObject != null)
@@ -447,6 +455,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				{
 					ItemFollowerData itemFollowerData = selectedItem.Item as ItemFollowerData;
 					itemFollowerData.m_follower.LevelUp();
+					itemFollowerData.Use(itemFollowerData.m_follower);
 				}
 				else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat)
 				{
@@ -497,7 +506,7 @@ public class ChampSettingGUI : MonoBehaviour {
 
 				if (selectedItem.Item.RefItem.type == ItemData.Type.Follower)
 				{
-					OnClickEquip(invSlot, priceGemButton, button, selectedItem);
+					selectedItem.Item.Equip(m_champ);
 				}
 
 

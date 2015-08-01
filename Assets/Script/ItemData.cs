@@ -88,6 +88,11 @@ public class ItemData {
 			case Option.DamageReduction:
 				desc += op.option.type.ToString() + ":"+ (op.option.values[0]*100) + "%</color>\n";
 				break;
+			case Option.Str:
+			case Option.MaxHp:
+			case Option.Critical:
+				desc = (Level >= op.level ? Const.EnabledStringColor : Const.DisabledStringColor) +op.option.type.ToString() + ":"+  (op.option.values[0]*Level) + "</color>\n";
+				break;
 			default:
 				desc += op.option.type.ToString() + ":"+ op.option.values[0] + "</color>\n";
 				break;
@@ -107,7 +112,7 @@ public class ItemData {
 		return item.RefItem.type == RefItem.type;
 	}
 
-	public void ApplyOptions(Creature obj)
+	public void ApplyOptions(Creature obj, int minLevel)
 	{
 		if (m_refItem.levelup == null || m_refItem.levelup.optionPerLevel == null)
 			return;
@@ -115,6 +120,8 @@ public class ItemData {
 		foreach(RefPriceCondition.RefOptionPerLevel op in m_refItem.levelup.optionPerLevel)
 		{
 			if (op.level > Level)
+				continue;
+			if (op.level < minLevel)
 				continue;
 
 			switch(op.option.type)

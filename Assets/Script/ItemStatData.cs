@@ -13,19 +13,23 @@ public class ItemStatData : ItemData{
 	override public void Equip(Creature obj)
 	{
 		for(int i = 0; i < Level; ++i)
-			ApplyOptions(obj);
+			ApplyOptions(obj, 0);
 	}
 
 	override public void Use(Creature obj)
 	{	
-	
-		ApplyOptions(obj);
+		ApplyOptions(obj, Level);
 	}
 
 
 	override public void NoUse(Creature obj)
 	{
 		NoApplyOptions(obj);
+	}
+
+	override public string Description()
+	{
+		return OptionsDescription();
 	}
 
 }

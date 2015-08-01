@@ -276,11 +276,8 @@ public class Champ : Creature {
 
 	public void ApplyMachoSkill()
 	{
-		if (MachoSkillStack == 0)
-			return;
-
-		if (true == ApplyBuff(null, DamageDesc.BuffType.Macho, 10f, null))
-			--MachoSkillStack;
+		ApplyBuff(null, DamageDesc.BuffType.Macho, 10f, null);
+		
 	}
 
 	override public void Death()

@@ -20,17 +20,14 @@ public class ItemFollowerData : ItemData{
 		m_refMobId = refMobId;
 	}
 
-	override public void Pickup(Creature obj)
+	override public void Equip(Creature obj)
 	{
-		base.Pickup(obj);
-		Use (obj);
+		m_follower = InstanceFollower(obj);
 	}
 
 	override public void Use(Creature obj)
 	{
-
-		m_follower = InstanceFollower(obj);
-
+		ApplyOptions(m_follower, Level);
 	}
 
 	Follower	InstanceFollower(Creature obj)
@@ -42,7 +39,8 @@ public class ItemFollowerData : ItemData{
 		enemyPos.x += Mathf.Cos(angle) * 1f;
 		enemyPos.z += Mathf.Sin(angle) * 1f;
 		GameObject followerObj = Creature.InstanceCreature(Resources.Load<GameObject>("Pref/mon/"+refMob.prefHead), Resources.Load<GameObject>("Pref/mon_skin/" + refMob.prefBody), enemyPos, obj.transform.rotation);
-		
+		followerObj.transform.localScale = new Vector3(refMob.scale, refMob.scale, refMob.scale);
+
 		Follower follower = (Follower)followerObj.GetComponent<Follower>();
 		follower.Init(obj, refMob, Level);
 		
@@ -53,7 +51,7 @@ public class ItemFollowerData : ItemData{
 			follower.EquipWeapon(itemWeaponData, weaponDesc.weaponStat);
 		}
 		
-		ApplyOptions(follower);
+		ApplyOptions(follower, 0);
 
 		return follower;
 	}

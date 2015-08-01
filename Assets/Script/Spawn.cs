@@ -101,11 +101,6 @@ public class Spawn : MonoBehaviour {
 		m_dropShip.GetComponent<Animator>().SetTrigger("Move");
 		StartCoroutine(spawnMobPer());
 
-		if (Cheat.PlayWithPet)
-		{
-			new ItemFollowerData(Const.PetRefMobId).Use(champ);
-		}
-
 #if UNITY_EDITOR
 		if (Const.CHEAT_MODE)
 		{

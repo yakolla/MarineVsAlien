@@ -12,7 +12,7 @@ public class ItemAccessoryData : ItemData{
 
 	override public void Equip(Creature obj)
 	{
-		ApplyOptions(obj);
+		ApplyOptions(obj, 0);
 	}
 
 	override public void NoUse(Creature obj)

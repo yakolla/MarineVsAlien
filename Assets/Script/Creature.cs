@@ -6,9 +6,10 @@ public class Creature : MonoBehaviour {
 
 	public enum Type
 	{
-		Champ,
-		Mob,
-		Npc,
+		Champ = 1,
+		Mob = 2,
+		Npc = 4,
+		ChampNpc = Champ+Npc,
 	}
 
 	public enum CrowdControlType
@@ -198,12 +199,16 @@ public class Creature : MonoBehaviour {
 
 	static public bool IsEnemy(Creature a, Creature b)
 	{
-		if (b.CreatureType == Type.Npc)
-			return false;
-		if (a.CreatureType == Type.Npc)
+		if (a.CreatureType == Type.ChampNpc)
 			return false;
 
-		return a.CreatureType != b.CreatureType;
+		int bType = (int)(b.CreatureType & ~Type.Npc);
+		int aType = (int)(a.CreatureType & ~Type.Npc);
+
+		if (aType == 0 || bType == 0)
+			return false;
+
+		return bType != aType;
 	}
 
 	public void EnableNavmeshUpdatePos(bool enable)
@@ -269,6 +274,7 @@ public class Creature : MonoBehaviour {
 		switch(m_creatureType)
 		{
 		case Type.Champ:
+		case Type.ChampNpc:
 			return Type.Mob;
 		case Type.Mob:
 			return Type.Champ;
