@@ -2163,7 +2163,7 @@
 			[
 				{
 					"refItemId":1, 
-					"count":350
+					"count":100
 				}
 			]
 		}

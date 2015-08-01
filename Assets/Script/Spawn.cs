@@ -38,6 +38,7 @@ public class Spawn : MonoBehaviour {
 	BoxCollider		m_edgeRect;
 
 	YGUISystem.GUILable	m_stageText;
+	YGUISystem.GUILable	m_waveText;
 
 
 	[SerializeField]
@@ -64,6 +65,7 @@ public class Spawn : MonoBehaviour {
 		}
 
 		m_stageText = new YGUISystem.GUILable(GameObject.Find("HudGUI/StatusGUI/Stage").gameObject);
+		m_waveText = new YGUISystem.GUILable(GameObject.Find("HudGUI/StatusGUI/Wave").gameObject);
 		m_areas = transform.GetComponentsInChildren<Transform>();
 
 	}
@@ -93,7 +95,7 @@ public class Spawn : MonoBehaviour {
 		GPlusPlatform.Instance.AnalyticsTrackScreen("StartWave");
 
 		if (m_wave == 0)
-			m_wave = wave*GetCurrentWave().mobSpawns.Length;
+			m_wave = wave;
 		
 		Warehouse.Instance.ResetNewGameStats();
 
@@ -308,7 +310,8 @@ public class Spawn : MonoBehaviour {
 				yield return new WaitForSeconds(mobSpawn.interval);
 
 				Warehouse.Instance.WaveIndex = m_wave;
-				
+				m_waveText.Text.text = "Wave " + (m_wave+1);
+
 				float waveProgress = ProgressStage();
 				Debug.Log("waveProgress:" + waveProgress + "," + m_wave);
 
@@ -321,11 +324,10 @@ public class Spawn : MonoBehaviour {
 				}
 				else
 				{
-					if (m_wave % GetCurrentWave().mobSpawns.Length == 0)
+					if (audio.clip != m_normalBg)
 					{
 						audio.clip = m_normalBg;
 						audio.Play();
-						StartCoroutine(EffectWaveText("Stage " + GetStage(m_wave), 3));
 					}
 				}
 

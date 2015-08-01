@@ -7,57 +7,19 @@ public class GameOverGUI : MonoBehaviour {
 
 	ADMob					m_admob;
 
+	YGUISystem.GUIPriceButton	m_continueButton;
 	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[1];
-	int						m_restartCount = 0;
+	YGUISystem.GUILable	m_restartText;
 	string[]				m_leaderBoards = {Const.LEADERBOARD_KILLED_MOBS};
 
 	void Start () {
 
 
+		m_restartText = new YGUISystem.GUILable(transform.Find("RestartButton/Text").gameObject);
+		m_restartText.Text.text = "Continue at " + (Warehouse.Instance.WaveIndex/2+1) + " wave";
 
 		m_admob = GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>();
-		/*
-		m_guages[0] = new YGUISystem.GUIGuage(transform.Find("Gained Gold/Guage/Guage").gameObject, 
-		                                      ()=>{
-			if (Warehouse.Instance.GameBestStats.GainedGold == 0)
-				return 1f;
-			return (float)Warehouse.Instance.NewGameStats.GainedGold/Warehouse.Instance.GameBestStats.GainedGold;
-		}, 
-		()=>{
-			if (Warehouse.Instance.GameBestStats.GainedGold == 0)
-				return Warehouse.Instance.NewGameStats.GainedGold.ToString() + " / " + Warehouse.Instance.NewGameStats.GainedGold.ToString();
 
-			return Warehouse.Instance.NewGameStats.GainedGold.ToString() + " / " + Warehouse.Instance.GameBestStats.GainedGold.ToString(); 
-		}
-		);
-
-		m_guages[1] = new YGUISystem.GUIGuage(transform.Find("Gained XP/Guage/Guage").gameObject, 
-		                                      ()=>{
-			if (Warehouse.Instance.GameBestStats.GainedXP == 0)
-				return 1f;
-			return (float)Warehouse.Instance.NewGameStats.GainedXP/Warehouse.Instance.GameBestStats.GainedXP;
-		}, 
-		()=>{
-			if (Warehouse.Instance.GameBestStats.GainedXP == 0)
-				return Warehouse.Instance.NewGameStats.GainedXP.ToString() + " / " + Warehouse.Instance.NewGameStats.GainedXP.ToString();
-
-			return Warehouse.Instance.NewGameStats.GainedXP.ToString() + " / " + Warehouse.Instance.GameBestStats.GainedXP.ToString(); 
-		}
-		);
-
-		m_guages[2] = new YGUISystem.GUIGuage(transform.Find("Survival Time/Guage/Guage").gameObject, 
-		                                      ()=>{
-			if (Warehouse.Instance.GameBestStats.SurvivalTime == 0)
-				return 1f;
-			return Warehouse.Instance.NewGameStats.SurvivalTime/Warehouse.Instance.GameBestStats.SurvivalTime;
-		}, 
-		()=>{
-			if (Warehouse.Instance.GameBestStats.SurvivalTime == 0)
-				return Warehouse.Instance.NewGameStats.SurvivalTime.ToString() + " / " + Warehouse.Instance.NewGameStats.SurvivalTime.ToString();
-			return Warehouse.Instance.NewGameStats.SurvivalTime.ToString() + " / " + Warehouse.Instance.GameBestStats.SurvivalTime.ToString(); 
-		}
-		);
-*/
 		m_guages[0] = new YGUISystem.GUIGuage(transform.Find("Killed Mobs/Guage/Guage").gameObject, 
 		                                      ()=>{
 			if (Warehouse.Instance.GameBestStats.KilledMobs == 0)
@@ -71,11 +33,19 @@ public class GameOverGUI : MonoBehaviour {
 		}
 		);
 
-
 		for(int i = 0; i < m_guages.Length; ++i)
 		{
 			m_guages[i].Update();
 		}
+
+
+		m_continueButton = new YGUISystem.GUIPriceButton(transform.Find("ContinueButton").gameObject, Const.StartPosYOfPriceButtonImage, ()=>{
+			return true;
+		});
+
+
+		m_continueButton.NormalWorth = Warehouse.Instance.WaveIndex;
+		m_continueButton.Prices = RefData.Instance.RefItems[Const.RandomAbilityRefItemId].levelup.conds;
 
 		m_admob.ShowInterstitial();
 		m_admob.ShowBanner(true);
@@ -85,6 +55,9 @@ public class GameOverGUI : MonoBehaviour {
 
 	void OnEnable() {
 		TimeEffector.Instance.StopTime();
+
+
+
 		GPlusPlatform.Instance.AnalyticsTrackScreen("GameOverGUI");
 	}
 
@@ -92,12 +65,33 @@ public class GameOverGUI : MonoBehaviour {
 		TimeEffector.Instance.StartTime();
 	}
 
+	void Update()
+	{
+
+		m_continueButton.Update();
+	}
+
 	public void OnClickRestart()
 	{
 		m_admob.ShowBanner(false);
-		++m_restartCount;
-		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Restart"+m_restartCount, 0);
+
+		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Restart", 0);
+
+		Warehouse.Instance.WaveIndex /= 2;
 		Application.LoadLevel("Basic Dungeon");
+	}
+
+	public void OnClickContinue()
+	{
+		if (true == m_continueButton.TryToPay())
+		{
+			m_admob.ShowBanner(false);
+			GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Continue", 0);
+			
+			Application.LoadLevel("Basic Dungeon");
+		}
+
+
 	}
 
 	public void OnClickTitle()

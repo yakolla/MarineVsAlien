@@ -18,7 +18,7 @@ public class ItemStatData : ItemData{
 
 	override public void Use(Creature obj)
 	{	
-		ApplyOptions(obj, Level);
+		ApplyOptions(obj, 0);
 	}
 
 

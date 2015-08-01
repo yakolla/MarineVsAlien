@@ -33,10 +33,6 @@ public class ChampSettingGUI : MonoBehaviour {
 	}
 	EquippedContext		m_equipedWeapon = new EquippedContext();
 	EquippedContext[]	m_equipedAccessories = new EquippedContext[Const.AccessoriesSlots];
-
-
-	int			m_stage = 1;
-
 	Spawn		m_spawn;
 
 	string		log;
@@ -312,9 +308,9 @@ public class ChampSettingGUI : MonoBehaviour {
 			}
 		}	
 		
-		m_spawn.StartWave(m_stage-1, champ);
+		m_spawn.StartWave(Warehouse.Instance.WaveIndex, champ);
 		
-		GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", "Stage:"+m_stage, 0);
+		GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", "Stage:"+Warehouse.Instance.WaveIndex, 0);
 		GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", m_equipedWeapon.m_itemObject.Item.RefItem.codeName+"_Lv:"+m_equipedWeapon.m_itemObject.Item.Level, 0);
 		
 		champObj.SetActive(false);
@@ -508,7 +504,10 @@ public class ChampSettingGUI : MonoBehaviour {
 				{
 					selectedItem.Item.Equip(m_champ);
 				}
-
+				else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat)
+				{
+					selectedItem.Item.Equip(m_champ);
+				}
 
 			}
 			else
