@@ -124,6 +124,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2001));
 				Warehouse.Instance.PushItem(new ItemStatData(2002));
 				Warehouse.Instance.PushItem(new ItemStatData(2003));
+				Warehouse.Instance.PushItem(new ItemStatData(2004));
 			}
 
 			byte[] data = Warehouse.Instance.Serialize();
@@ -537,14 +538,20 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		int itemAddedCount = 0;
 		int itemIndex = 0;
-		int maxCount = Warehouse.Instance.InvenSize-Warehouse.Instance.Items[ItemData.Type.Stat].Count;
+		int maxCount = Warehouse.Instance.InvenSize-Warehouse.Instance.Items[ItemData.Type.Stat].Count
+			-Warehouse.Instance.Items[ItemData.Type.Gem].Count
+				-Warehouse.Instance.Items[ItemData.Type.Gold].Count
+				-Warehouse.Instance.Items[ItemData.Type.GoldMedal].Count;
 		int equipItemIndex = 0;
 
 		foreach(KeyValuePair<ItemData.Type, List<ItemObject>> pair in Warehouse.Instance.Items)
 		{
 			foreach(ItemObject item in pair.Value)
 			{
-				if (item.Item.RefItem.type == ItemData.Type.Stat)
+				if (item.Item.RefItem.type == ItemData.Type.Stat ||
+				    item.Item.RefItem.type == ItemData.Type.Gem ||
+				    item.Item.RefItem.type == ItemData.Type.Gold ||
+				    item.Item.RefItem.type == ItemData.Type.GoldMedal)
 					continue;
 				
 				GameObject obj = Instantiate(prefGUIInventorySlot) as GameObject;

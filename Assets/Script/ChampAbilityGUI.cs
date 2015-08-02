@@ -134,13 +134,13 @@ public class ChampAbilityGUI : MonoBehaviour {
 
 		basicAbili.Add(new Ability(0.3f, "Critical Pack",
 		()=>{
-			m_backup.AlphaCriticalRatio += 0.1f;
+			m_backup.AlphaCriticalChance += 0.1f;
 			m_backup.AlphaCriticalDamage += 0.5f;
 			return "Chance:"+(m_champ.m_creatureProperty.CriticalChance*100) + " -> " + "<color=yellow>" + (m_backup.CriticalChance*100) + "%</color>" + "\n" +
 				"Damage:"+(m_champ.m_creatureProperty.CriticalDamage*100) + " -> " + "<color=yellow>" + (m_backup.CriticalDamage*100) + "%</color>";
 		},
 		()=>{
-			m_champ.m_creatureProperty.AlphaCriticalRatio += 0.1f;
+			m_champ.m_creatureProperty.AlphaCriticalChance += 0.1f;
 			m_champ.m_creatureProperty.AlphaCriticalDamage += 0.5f;
 			--m_champ.RemainStatPoint;
 		},

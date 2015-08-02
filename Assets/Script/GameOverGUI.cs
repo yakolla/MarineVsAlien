@@ -58,28 +58,38 @@ public class GameOverGUI : MonoBehaviour {
 	void OnEnable() {
 		TimeEffector.Instance.StopTime();
 
-
-
 		GPlusPlatform.Instance.AnalyticsTrackScreen("GameOverGUI");
 	}
 
 	void OnDisable() {
 
+		TimeEffector.Instance.StartTime();
+
+	}
+
+	void SaveGame(bool mainTitle)
+	{
+		Const.ShowLoadingGUI("Loading...");
+
 		GPlusPlatform.Instance.ReportScore(Const.LEADERBOARD_KILLED_MOBS, Warehouse.Instance.NewGameStats.KilledMobs, (bool success) => {
 			// handle success or failure
 		});
-
-
-
+		
 		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game) => {
 			if (status == SavedGameRequestStatus.Success) {
 				// handle reading or writing of saved game.
 			} else {
 				// handle error
 			}
+			
+			TimeEffector.Instance.StartTime();
+
+			if (mainTitle == true)
+				Application.LoadLevel("Worldmap");
+			else
+				Application.LoadLevel("Basic Dungeon");
 		});
 
-		TimeEffector.Instance.StartTime();
 	}
 
 	void Update()
@@ -97,7 +107,7 @@ public class GameOverGUI : MonoBehaviour {
 		Warehouse.Instance.KilledMobs /= 2;
 
 
-		Application.LoadLevel("Basic Dungeon");
+		SaveGame(false);
 	}
 
 	public void OnClickContinue()
@@ -107,18 +117,20 @@ public class GameOverGUI : MonoBehaviour {
 			m_admob.ShowBanner(false);
 			GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Continue", 0);
 			
-			Application.LoadLevel("Basic Dungeon");
+			SaveGame(false);
 		}
-
-
 	}
 
 	public void OnClickTitle()
 	{
 		m_admob.ShowBanner(false);
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Title", 0);
-		Const.ShowLoadingGUI("Loading...");
-		Application.LoadLevel("Worldmap");
+
+
+		Warehouse.Instance.WaveIndex /= 2;
+		Warehouse.Instance.KilledMobs /= 2;
+
+		SaveGame(true);
 	}
 
 	public void OnClickLeaderBoard(int slot)

@@ -72,8 +72,6 @@ public class OptionGUI : MonoBehaviour {
 
 	public void OnClickTitle()
 	{
-		TimeEffector.Instance.StartTime();
-
 		Const.ShowLoadingGUI("Loading...");
 
 		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game) => {
@@ -84,6 +82,7 @@ public class OptionGUI : MonoBehaviour {
 			}
 
 			m_admob.ShowBanner(false);
+			TimeEffector.Instance.StartTime();
 			Application.LoadLevel("Worldmap");
 
 			//Const.HideLoadingGUI();

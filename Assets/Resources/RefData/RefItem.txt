@@ -2234,7 +2234,7 @@
 					"level":1,
 					"option":
 					{
-						"type":"Str",
+						"type":"Strength",
 						"values":[1]
 					}
 				}
@@ -2349,7 +2349,64 @@
 					"option":
 					{
 						"type":"Critical",
-						"values":[0.1,1]
+						"values":[0.01,0.1]
+					}
+				}
+			]
+		}
+	},
+	{
+		"id":2004,
+		"codeName":"Boots",
+		"type":"Stat",
+		"icon":"Sprites/Boots",
+		"maxLevel":90,
+		"defaultLock":true,
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				},
+				{
+					"refItemId":5, 
+					"count":1
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
+				}
+			]
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"option":
+					{
+						"type":"GainExtraGold",
+						"values":[0.05]
 					}
 				}
 			]

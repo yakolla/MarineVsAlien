@@ -160,11 +160,14 @@ public class ChampStatusGUI : MonoBehaviour {
 
 			m_champ = obj.GetComponent<Champ>();
 
+			int[] maxChargings = {0, 1, 3};
+			int[] cooldownTimes = {0, 30, 90};
+
 			for(int i = 0; i < Const.SpecialButtons; ++i)
 			{
-				m_specialButtons[i].MaxChargingPoint = 1;
-				m_specialButtons[i].ChargingPoint = 1;
-				m_specialButtons[i].CoolDownTime = 10;
+				m_specialButtons[i].MaxChargingPoint = maxChargings[i];
+				m_specialButtons[i].ChargingPoint = maxChargings[i];
+				m_specialButtons[i].CoolDownTime = cooldownTimes[i];
 			}
 
 			for(int i = 0; i < Const.AccessoriesSlots; ++i)

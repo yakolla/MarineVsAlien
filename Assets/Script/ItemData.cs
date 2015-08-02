@@ -35,9 +35,10 @@ public class ItemData {
 		DamageReduction,
 		MoveSpeed,
 		Weapon,
-		Str,
+		Strength,
 		MaxHp,
 		Critical,
+		GainExtraGold,
 		Count
 	}
 
@@ -88,10 +89,18 @@ public class ItemData {
 			case Option.DamageReduction:
 				desc += op.option.type.ToString() + ":"+ (op.option.values[0]*100) + "%</color>\n";
 				break;
-			case Option.Str:
+			case Option.Strength:
 			case Option.MaxHp:
-			case Option.Critical:
 				desc = (Level >= op.level ? Const.EnabledStringColor : Const.DisabledStringColor) +op.option.type.ToString() + ":"+  (op.option.values[0]*Level) + "</color>\n";
+				break;
+			case Option.GainExtraGold:
+				desc = (Level >= op.level ? Const.EnabledStringColor : Const.DisabledStringColor) +op.option.type.ToString() + ":"+  (op.option.values[0]*Level*100) + "%</color>\n";
+				break;
+			case Option.Critical:
+				desc = (Level >= op.level ? Const.EnabledStringColor : Const.DisabledStringColor) 
+					+ "Critical Chance" + ":"+  Mathf.Min(100, op.option.values[0]*Level*100) + "%\n"
+					+ "Critical Damage" + ":"+  (op.option.values[1]*Level*100) + "%" 
+					+ "</color>\n";
 				break;
 			default:
 				desc += op.option.type.ToString() + ":"+ op.option.values[0] + "</color>\n";
@@ -149,16 +158,19 @@ public class ItemData {
 					obj.EquipPassiveSkillWeapon(weaponData, null);
 				}
 				break;
-			case Option.Str:
+			case Option.Strength:
 				obj.m_creatureProperty.AlphaPhysicalAttackDamage += (int)op.option.values[0];
 				break;
 			case Option.MaxHp:
 				obj.m_creatureProperty.AlphaMaxHP += (int)op.option.values[0];
 				break;
 			case Option.Critical:
-				obj.m_creatureProperty.AlphaCriticalRatio += op.option.values[0];
+				obj.m_creatureProperty.AlphaCriticalChance += op.option.values[0];
 				obj.m_creatureProperty.AlphaCriticalDamage += op.option.values[1];
 
+				break;
+			case Option.GainExtraGold:
+				obj.m_creatureProperty.GainExtraGold += op.option.values[0];
 				break;
 			}
 

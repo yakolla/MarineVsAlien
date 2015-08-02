@@ -22,7 +22,6 @@ public class Worldmap : MonoBehaviour {
 	void Start()
 	{
 		Const.HideLoadingGUI();
-
 	}
 
 	IEnumerator DelayMessage (string function, float delay)

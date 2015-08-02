@@ -269,15 +269,15 @@ public class Champ : Creature {
 	override public int TakeDamage(Creature offender, DamageDesc damageDesc)
 	{
 		int dmg = base.TakeDamage(offender, damageDesc);
-		if (0 < dmg)
-			m_bloodWarningAnimator.SetTrigger("Warning");
+		//if (0 < dmg)
+		//	m_bloodWarningAnimator.SetTrigger("Warning");
 
 		return dmg;
 	}
 
 	public void ApplyMachoSkill()
 	{
-		ApplyBuff(null, DamageDesc.BuffType.Macho, 10f, null);
+		ApplyBuff(null, DamageDesc.BuffType.Macho, 5f, null);
 		
 	}
 
