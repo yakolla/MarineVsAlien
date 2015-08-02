@@ -101,6 +101,9 @@ public class ChampSettingGUI : MonoBehaviour {
 
 			if (Warehouse.Instance.InvenSize == 0)
 			{
+				Warehouse.Instance.PushItem(new ItemGoldData(0));
+				Warehouse.Instance.PushItem(new ItemGoldMedalData(0));
+				Warehouse.Instance.PushItem(new ItemGemData(0));
 
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));
 				/*
@@ -275,7 +278,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		champObj.name = "Champ";		
 
 		Champ champ = champObj.GetComponent<Champ>();
-		champ.Init(RefData.Instance.RefChamp, 1);
+		champ.Init(RefData.Instance.RefChamp, Warehouse.Instance.GameDataContext.m_level.Value);
 
 		m_champ = champ;
 		
@@ -306,10 +309,15 @@ public class ChampSettingGUI : MonoBehaviour {
 				champ.AccessoryItems[x] = m_equipedAccessories[x].m_itemObject;
 				Warehouse.Instance.ChampEquipItems.m_accessoryRefItemId[x] = m_equipedAccessories[x].m_itemObject.Item.RefItemID;
 			}
-		}	
-		
+		}
+
+		m_champ.m_creatureProperty.Exp = Warehouse.Instance.GameDataContext.m_xp.Value;
+		m_champ.m_creatureProperty.HP = Warehouse.Instance.GameDataContext.m_hp.Value;
+
+		m_champ.MobKills = Warehouse.Instance.KilledMobs;
 		m_spawn.StartWave(Warehouse.Instance.WaveIndex, champ);
-		
+
+
 		GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", "Stage:"+Warehouse.Instance.WaveIndex, 0);
 		GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", m_equipedWeapon.m_itemObject.Item.RefItem.codeName+"_Lv:"+m_equipedWeapon.m_itemObject.Item.Level, 0);
 		

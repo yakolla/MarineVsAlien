@@ -1,9 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
-using GooglePlayGames.BasicApi.SavedGame;
+
 
 public class Champ : Creature {
 
@@ -16,7 +14,7 @@ public class Champ : Creature {
 
 	int			m_remainStatPoint = 0;
 
-	int			m_mobKills;
+	SecuredType.XInt			m_mobKills;
 
 	int			m_machoSkillStacks = 0;
 	int			m_nuclearSkillStacks = 0;
@@ -52,7 +50,7 @@ public class Champ : Creature {
 	{
 		base.Init(refMob, level);
 
-		m_mobKills = 0;
+		MobKills = 0;
 		m_machoSkillStacks = 0;
 		m_remainStatPoint = Cheat.HowManyAbilityPointOnStart;
 		m_lastLevelupTime = Time.time;
@@ -174,8 +172,8 @@ public class Champ : Creature {
 
 	public int MobKills
 	{
-		get {return m_mobKills;}
-		set {m_mobKills = value;}
+		get {return m_mobKills.Value;}
+		set {m_mobKills.Value = value;}
 	}
 
 	public Vector3 MoveDir
@@ -212,12 +210,12 @@ public class Champ : Creature {
 
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 	}
-
+	/*
 	void OnGUI()
 	{
 		UpdateChampMovement();
 	}
-
+*/
 	// Update is called once per frame
 	new void Update () {
 		base.Update();
@@ -256,12 +254,15 @@ public class Champ : Creature {
 
 		}
 
+		Warehouse.Instance.GameDataContext.m_level.Value = m_creatureProperty.Level;
+		Warehouse.Instance.GameDataContext.m_hp.Value = m_creatureProperty.HP;
+		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
+
 		TimeEffector.Instance.Update();
 	}
 
 	override public void GiveExp(int exp)
 	{
-		Warehouse.Instance.NewGameStats.GainedXP += exp;
 		m_creatureProperty.giveExp(exp);
 	}
 
@@ -292,21 +293,16 @@ public class Champ : Creature {
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Death", "Wave"+Warehouse.Instance.WaveIndex, 0);
 
 		Warehouse.Instance.NewGameStats.KilledMobs = MobKills;
-		Warehouse.Instance.NewGameStats.SurvivalTime = Warehouse.Instance.PlayTime;
-		Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);		
+		Warehouse.Instance.NewGameStats.WaveIndex = Warehouse.Instance.WaveIndex;
 
-		
-		GPlusPlatform.Instance.ReportScore(Const.LEADERBOARD_KILLED_MOBS, Warehouse.Instance.NewGameStats.KilledMobs, (bool success) => {
-			// handle success or failure
-		});
-		
-		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game) => {
-			if (status == SavedGameRequestStatus.Success) {
-				// handle reading or writing of saved game.
-			} else {
-				// handle error
-			}
-		});
+		Warehouse.Instance.KilledMobs = MobKills;
+		Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
+
+		m_creatureProperty.Level = 1;
+		m_creatureProperty.Exp = 0;
+		Warehouse.Instance.GameDataContext.m_level.Value = m_creatureProperty.Level;
+		Warehouse.Instance.GameDataContext.m_hp.Value = m_creatureProperty.MaxHP;
+		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
 
 		Const.GetSpawn().StartCoroutine(ShowGameOverGUI());
 

@@ -6,193 +6,78 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-
-
-public class Warehouse {
-
-	class WarehouseData
-	{
-		static public MemoryStream Serialize(Warehouse obj)
-		{
-
-			MemoryStream stream = new MemoryStream();
-
-			StreamWriter writer = new StreamWriter(stream);
-			writer.WriteLine(JsonConvert.SerializeObject(obj.m_version));
-			writer.WriteLine(JsonConvert.SerializeObject(obj.InvenSize));
-
-			foreach(KeyValuePair<ItemData.Type, List<ItemObject>> pair in Warehouse.Instance.Items)
-			{
-				foreach(ItemObject itemObj in pair.Value)
-				{
-					writer.WriteLine(JsonConvert.SerializeObject(itemObj.Item.RefItem.type));
-					//Debug.Log(JsonConvert.SerializeObject(itemObj.Item));
-					writer.WriteLine(JsonConvert.SerializeObject(itemObj.Item));
-				}
-			}
-
-
-			writer.WriteLine(JsonConvert.SerializeObject(obj.m_waveIndex));
-			writer.WriteLine(JsonConvert.SerializeObject(obj.m_gold.Item));
-			writer.WriteLine(JsonConvert.SerializeObject(obj.m_goldMedal.Item));
-			writer.WriteLine(JsonConvert.SerializeObject(obj.m_gem.Item));
-
-			writer.WriteLine(JsonConvert.SerializeObject(obj.m_gameBestStats));
-			writer.WriteLine(JsonConvert.SerializeObject(obj.m_options));
-			writer.WriteLine(JsonConvert.SerializeObject(obj.m_equipItems));
-
-			writer.Close();
-
-			return stream;
-		}
-
-		static public void Deserialize(Warehouse obj, byte[] data)
-		{
-			obj.initInven();
-
-			MemoryStream stream = new MemoryStream(data);
-			
-			StreamReader reader = new StreamReader(stream);
-
-			int version = JsonConvert.DeserializeObject<int>(reader.ReadLine());
-			int count = JsonConvert.DeserializeObject<int>(reader.ReadLine());
-
-			for(int i = 0; i < count; ++i)
-			{
-				ItemData.Type type = JsonConvert.DeserializeObject<ItemData.Type>(reader.ReadLine());
-
-				switch(type)
-				{
-				case ItemData.Type.Weapon:
-					ItemWeaponData weaponData = JsonConvert.DeserializeObject<ItemWeaponData>(reader.ReadLine());
-					obj.m_items[type].Add(new ItemObject(weaponData));
-					break;
-				case ItemData.Type.WeaponDNA:
-					ItemWeaponDNAData weaponDNAData = JsonConvert.DeserializeObject<ItemWeaponDNAData>(reader.ReadLine());
-					obj.m_items[type].Add(new ItemObject(weaponDNAData));
-					break;
-				case ItemData.Type.WeaponParts:
-					ItemWeaponPartsData weaponPartsData = JsonConvert.DeserializeObject<ItemWeaponPartsData>(reader.ReadLine());
-					obj.m_items[type].Add(new ItemObject(weaponPartsData));
-					break;
-				case ItemData.Type.Follower:
-					ItemFollowerData followerData = JsonConvert.DeserializeObject<ItemFollowerData>(reader.ReadLine());
-					obj.m_items[type].Add(new ItemObject(followerData));
-					break;
-				case ItemData.Type.Accessory:
-					ItemAccessoryData accessoryData = JsonConvert.DeserializeObject<ItemAccessoryData>(reader.ReadLine());
-					obj.m_items[type].Add(new ItemObject(accessoryData));
-					break;
-				case ItemData.Type.Skill:
-					ItemSkillData skillData = JsonConvert.DeserializeObject<ItemSkillData>(reader.ReadLine());
-					obj.m_items[type].Add(new ItemObject(skillData));
-					break;
-				case ItemData.Type.Cheat:
-					ItemCheatData cheatData = JsonConvert.DeserializeObject<ItemCheatData>(reader.ReadLine());
-					obj.m_items[type].Add(new ItemObject(cheatData));
-					break;
-				case ItemData.Type.Stat:
-					ItemStatData statData = JsonConvert.DeserializeObject<ItemStatData>(reader.ReadLine());
-					obj.m_items[type].Add(new ItemObject(statData));
-					break;
-					
-				default:
-					Debug.Log(type);
-					reader.ReadLine();
-					break;
-				}
-			}
-
-			int waveIndex = JsonConvert.DeserializeObject<int>(reader.ReadLine());
-			obj.m_waveIndex = waveIndex;
-
-			ItemGoldData goldData = JsonConvert.DeserializeObject<ItemGoldData>(reader.ReadLine());
-			obj.m_gold = new ItemObject(goldData);
-
-			ItemGoldMedalData goldMedalData = JsonConvert.DeserializeObject<ItemGoldMedalData>(reader.ReadLine());
-			obj.m_goldMedal = new ItemObject(goldMedalData);
-
-			ItemGemData gemData = JsonConvert.DeserializeObject<ItemGemData>(reader.ReadLine());
-			obj.m_gem = new ItemObject(gemData);
-
-			obj.m_gameBestStats = JsonConvert.DeserializeObject<GameStatistics>(reader.ReadLine());
-			obj.m_options = JsonConvert.DeserializeObject<Options>(reader.ReadLine());
-			obj.m_equipItems = JsonConvert.DeserializeObject<EquipItems>(reader.ReadLine());
-			
-			reader.Close();
-		}
-
-	}
-
-	int					m_version = 1;
-	string				m_fileName;
-	Dictionary<ItemData.Type, List<ItemObject>>	m_items = new Dictionary<ItemData.Type, List<ItemObject>>();
-
-	ItemObject			m_gold = new ItemObject(new ItemGoldData(0));
-	ItemObject			m_goldMedal = new ItemObject(new ItemGoldMedalData(0));
-	ItemObject			m_gem	= new ItemObject(new ItemGemData(0));
-	int					m_waveIndex = 0;
+public class WarehouseData
+{
+	[JsonIgnore]
+	public int					m_version = 1;
+	[JsonIgnore]
+	public Dictionary<ItemData.Type, List<ItemObject>>	m_items = new Dictionary<ItemData.Type, List<ItemObject>>();
+	
+	public SecuredType.XInt	m_waveIndex = 0;
+	public SecuredType.XInt	m_killedMobs = 0;
+	
+	public GameStatistics			m_gameBestStats = new GameStatistics();
+	public Options					m_options = new Options();
+	public EquipItems				m_equipItems = new EquipItems();
+	public GameDataContext			m_gameDataContext = new GameDataContext();
 
 	public class 	GameStatistics
 	{
-		SecuredType.XFloat		m_survivalTime = 0f;
-		SecuredType.XInt		m_gainedGold = 0;
-		SecuredType.XInt		m_gainedXP = 0;
-		SecuredType.XInt		m_killedMobs = 0;
-
+		public SecuredType.XInt		m_waveIndex = 0;
+		public SecuredType.XInt		m_killedMobs = 0;
+		
 		public void SetBestStats(GameStatistics newStats)
 		{
-			if (SurvivalTime < newStats.SurvivalTime)
-				SurvivalTime = newStats.SurvivalTime;
-
-			GainedGold = Mathf.Max(GainedGold, newStats.GainedGold);
-			GainedXP = Mathf.Max(GainedXP, newStats.GainedXP);
 			KilledMobs = Mathf.Max(KilledMobs, newStats.KilledMobs);
-
+			WaveIndex = Mathf.Max(WaveIndex, newStats.WaveIndex);
 		}
-
-		public float SurvivalTime
-		{
-			set{m_survivalTime.Value = value;}
-			get{return m_survivalTime.Value;}
-		}
-
-		public int GainedGold
-		{
-			set{m_gainedGold.Value = value;}
-			get{return m_gainedGold.Value;}
-		}
-
-		public int GainedXP
-		{
-			set{m_gainedXP.Value = value;}
-			get{return m_gainedXP.Value;}
-		}
-
+		
+		[JsonIgnore]
 		public int KilledMobs
 		{
 			set{m_killedMobs.Value = value;}
 			get{return m_killedMobs.Value;}
 		}
+		
+		[JsonIgnore]
+		public int WaveIndex
+		{
+			set{m_waveIndex.Value = value;}
+			get{return m_waveIndex.Value;}
+		}
 	}
-
+	
 	public class Options
 	{
 		public float	m_sfxVolume = 1f;	
 		public float	m_bgmVolume = 1f;
 		public bool		m_autoTarget = true;
 	}
-
+	
 	public class EquipItems
 	{
 		public int		m_weaponRefItemId = Const.ChampGunRefItemId;
 		public int[]	m_accessoryRefItemId = new int[Const.AccessoriesSlots];
 	}
 
-	GameStatistics			m_gameBestStats = new GameStatistics();
-	GameStatistics			m_newGameStats = new GameStatistics();
-	Options					m_options = new Options();
-	EquipItems				m_equipItems = new EquipItems();
+	public class GameDataContext
+	{
+		public SecuredType.XInt	m_hp = 100;
+		public SecuredType.XInt	m_xp = 0;
+		public SecuredType.XInt	m_level = 1;
+	}
+}
+
+public class Warehouse {
+
+	WarehouseData	m_warehouseData = new WarehouseData();
+	public string				m_fileName;
+
+	ItemObject			m_gold;
+	ItemObject			m_goldMedal;
+	ItemObject			m_gem;
+
+	WarehouseData.GameStatistics			m_newGameStats = new WarehouseData.GameStatistics();
 
 	float					m_playTime = 0f;
 	float					m_saveTime = 0f;
@@ -233,40 +118,20 @@ public class Warehouse {
 
 	public Warehouse()
 	{
-		initInven();
-	}
-
-	void initInven()
-	{
-		m_items.Clear();
-		foreach (ItemData.Type type in System.Enum.GetValues(typeof(ItemData.Type)))
-		{
-			if (type == ItemData.Type.Count)
-				continue;
-			
-			m_items.Add(type, new List<ItemObject>());
-		}
+		initInven(m_warehouseData.m_items);
 	}
 
 	public void Reset()
 	{
-		initInven();
-		
-		m_gold = new ItemObject(new ItemGoldData(0));
-		m_goldMedal = new ItemObject(new ItemGoldMedalData(0));
-		m_gem	= new ItemObject(new ItemGemData(0));
+		m_warehouseData = new WarehouseData();
+		initInven(m_warehouseData.m_items);
 
-		m_waveIndex = 0;
-
-		m_gameBestStats = new GameStatistics();
-		m_options = new Options();
-		m_equipItems = new EquipItems();
 	}
 
 	public void ResetNewGameStats()
 	{	
-		m_gameBestStats.SetBestStats(m_newGameStats);
-		m_newGameStats = new GameStatistics();	
+		m_warehouseData.m_gameBestStats.SetBestStats(m_newGameStats);
+		m_newGameStats = new WarehouseData.GameStatistics();	
 		Warehouse.Instance.PlayTime = Time.time;
 		Warehouse.Instance.SaveTime = Time.time;
 	}
@@ -276,21 +141,11 @@ public class Warehouse {
 		ItemObject itemObj = FindItem(item.RefItem.id);
 		if (itemObj == null)
 		{
-			m_items[item.RefItem.type].Add(new ItemObject(item));
+			m_warehouseData.m_items[item.RefItem.type].Add(new ItemObject(item));
 		}
 		else
 		{
-			switch(itemObj.Item.RefItem.type)
-			{
-			case ItemData.Type.Follower:
-			case ItemData.Type.Weapon:
-			case ItemData.Type.Gold:
-			case ItemData.Type.GoldMedal:
-			case ItemData.Type.Gem:
-				return;
-			}
 			itemObj.Item.Count += item.Count;
-			itemObj.Item.Count = Mathf.Min(itemObj.Item.Count, 999);
 		}
 	}
 
@@ -306,12 +161,6 @@ public class Warehouse {
 			itemObj.Item.Count -= count;
 			if (itemObj.Item.Count == 0)
 			{
-				switch(itemObj.Item.RefItem.type)
-				{
-				case ItemData.Type.Gold:
-				case ItemData.Type.Gem:
-					return;
-				}
 				RemoveItem(itemObj);
 			}
 		}
@@ -320,23 +169,12 @@ public class Warehouse {
 
 	public void RemoveItem(ItemObject obj)
 	{
-		m_items[obj.Item.RefItem.type].Remove(obj);
+		m_warehouseData.m_items[obj.Item.RefItem.type].Remove(obj);
 	}
 
 	public ItemObject FindItem(int refItemId)
 	{
-		switch(refItemId)
-		{
-		case 1:
-			return m_gold;
-		case 5:
-			return m_goldMedal;
-		case 8:
-			return m_gem;
-
-		}
-
-		foreach(ItemObject obj in m_items[RefData.Instance.RefItems[refItemId].type])
+		foreach(ItemObject obj in m_warehouseData.m_items[RefData.Instance.RefItems[refItemId].type])
 		{
 			if (obj.Item.RefItem.id == refItemId)
 			{
@@ -347,21 +185,35 @@ public class Warehouse {
 		return null;
 	}
 
-	public byte[] Serialize()
-	{
-		MemoryStream stream = WarehouseData.Serialize(this);
-
-		return stream.ToArray();
-	}
-
-	public void Deserialize(byte[] data)
-	{
-		WarehouseData.Deserialize(this, data);
-	}
-
 	public Dictionary<ItemData.Type, List<ItemObject>> Items
 	{
-		get{return m_items;}
+		get{return m_warehouseData.m_items;}
+	}
+
+	public ItemObject Gold
+	{
+		get { return m_gold; }
+	}
+	
+	public ItemObject GoldMedal
+	{
+		get { return m_goldMedal; }
+	}
+	
+	public ItemObject Gem
+	{
+		get { return m_gem; }
+	}
+
+	public string FileName
+	{
+		get {return m_fileName;}
+		set {m_fileName = value;}
+	}
+
+	public WarehouseData.GameStatistics NewGameStats
+	{
+		get {return m_newGameStats;}
 	}
 
 	public int InvenSize
@@ -372,56 +224,162 @@ public class Warehouse {
 			{
 				size += pair.Value.Count;
 			}
-
+			
 			return size;
 		}
 	}
-
-	public ItemObject Gold
-	{
-		get { return m_gold; }
-	}
-
-	public ItemObject GoldMedal
-	{
-		get { return m_goldMedal; }
-	}
-
-	public ItemObject Gem
-	{
-		get { return m_gem; }
-	}
-
+	
 	public int WaveIndex
 	{
-		get {return m_waveIndex;}
-		set {m_waveIndex = value;}
+		get {return m_warehouseData.m_waveIndex.Value;}
+		set {m_warehouseData.m_waveIndex.Value = value;}
+	}
+	
+	public int KilledMobs
+	{
+		get {return m_warehouseData.m_killedMobs.Value;}
+		set {m_warehouseData.m_killedMobs.Value = value;}
+	}	
+	
+	public WarehouseData.GameStatistics GameBestStats
+	{
+		get {return m_warehouseData.m_gameBestStats;}
+	}
+	
+	public WarehouseData.Options GameOptions
+	{
+		get {return m_warehouseData.m_options;}
+	}
+	
+	public WarehouseData.EquipItems ChampEquipItems
+	{
+		get {return m_warehouseData.m_equipItems;}
 	}
 
-	public string FileName
+	public WarehouseData.GameDataContext GameDataContext
 	{
-		get {return m_fileName;}
-		set {m_fileName = value;}
+		get {return m_warehouseData.m_gameDataContext;}
+	}
+		
+	static protected void initInven(Dictionary<ItemData.Type, List<ItemObject>> items)
+	{
+		items.Clear();
+		foreach (ItemData.Type type in System.Enum.GetValues(typeof(ItemData.Type)))
+		{
+			if (type == ItemData.Type.Count)
+				continue;
+			
+			items.Add(type, new List<ItemObject>());
+		}
 	}
 
-	public GameStatistics GameBestStats
+	public byte[] Serialize()
 	{
-		get {return m_gameBestStats;}
+		
+		MemoryStream stream = new MemoryStream();
+		
+		StreamWriter writer = new StreamWriter(stream);
+
+		writer.WriteLine(JsonConvert.SerializeObject(m_warehouseData.m_version));
+		writer.WriteLine(JsonConvert.SerializeObject(InvenSize));
+		
+		foreach(KeyValuePair<ItemData.Type, List<ItemObject>> pair in m_warehouseData.m_items)
+		{
+			foreach(ItemObject itemObj in pair.Value)
+			{
+				writer.WriteLine(JsonConvert.SerializeObject(itemObj.Item.RefItem.type));
+				//Debug.Log(JsonConvert.SerializeObject(itemObj.Item));
+				writer.WriteLine(JsonConvert.SerializeObject(itemObj.Item));
+			}
+		}
+
+		writer.Write(JsonConvert.SerializeObject(m_warehouseData));
+		
+		writer.Close();
+		
+		return stream.ToArray();
 	}
 
-	public GameStatistics NewGameStats
+	public void Deserialize(byte[] data)
 	{
-		get {return m_newGameStats;}
-	}
 
-	public Options GameOptions
-	{
-		get {return m_options;}
-	}
+		MemoryStream stream = new MemoryStream(data);
+		
+		StreamReader reader = new StreamReader(stream);
+		
+		int version = JsonConvert.DeserializeObject<int>(reader.ReadLine());
+		int count = JsonConvert.DeserializeObject<int>(reader.ReadLine());
 
-	public EquipItems ChampEquipItems
-	{
-		get {return m_equipItems;}
+		Dictionary<ItemData.Type, List<ItemObject>>	items = new Dictionary<ItemData.Type, List<ItemObject>>();
+		initInven(items);
+
+		for(int i = 0; i < count; ++i)
+		{
+			ItemData.Type type = JsonConvert.DeserializeObject<ItemData.Type>(reader.ReadLine());
+			
+			switch(type)
+			{
+			case ItemData.Type.Gold:
+				ItemGoldData goldData = JsonConvert.DeserializeObject<ItemGoldData>(reader.ReadLine());
+				items[type].Add(new ItemObject(goldData));
+				break;
+			case ItemData.Type.GoldMedal:
+				ItemGoldMedalData goldMedalData = JsonConvert.DeserializeObject<ItemGoldMedalData>(reader.ReadLine());
+				items[type].Add(new ItemObject(goldMedalData));
+				break;
+			case ItemData.Type.Gem:
+				ItemGemData gemData = JsonConvert.DeserializeObject<ItemGemData>(reader.ReadLine());
+				items[type].Add(new ItemObject(gemData));
+				break;
+			case ItemData.Type.Weapon:
+				ItemWeaponData weaponData = JsonConvert.DeserializeObject<ItemWeaponData>(reader.ReadLine());
+				items[type].Add(new ItemObject(weaponData));
+				break;
+			case ItemData.Type.WeaponDNA:
+				ItemWeaponDNAData weaponDNAData = JsonConvert.DeserializeObject<ItemWeaponDNAData>(reader.ReadLine());
+				items[type].Add(new ItemObject(weaponDNAData));
+				break;
+			case ItemData.Type.WeaponParts:
+				ItemWeaponPartsData weaponPartsData = JsonConvert.DeserializeObject<ItemWeaponPartsData>(reader.ReadLine());
+				items[type].Add(new ItemObject(weaponPartsData));
+				break;
+			case ItemData.Type.Follower:
+				ItemFollowerData followerData = JsonConvert.DeserializeObject<ItemFollowerData>(reader.ReadLine());
+				items[type].Add(new ItemObject(followerData));
+				break;
+			case ItemData.Type.Accessory:
+				ItemAccessoryData accessoryData = JsonConvert.DeserializeObject<ItemAccessoryData>(reader.ReadLine());
+				items[type].Add(new ItemObject(accessoryData));
+				break;
+			case ItemData.Type.Skill:
+				ItemSkillData skillData = JsonConvert.DeserializeObject<ItemSkillData>(reader.ReadLine());
+				items[type].Add(new ItemObject(skillData));
+				break;
+			case ItemData.Type.Cheat:
+				ItemCheatData cheatData = JsonConvert.DeserializeObject<ItemCheatData>(reader.ReadLine());
+				items[type].Add(new ItemObject(cheatData));
+				break;
+			case ItemData.Type.Stat:
+				ItemStatData statData = JsonConvert.DeserializeObject<ItemStatData>(reader.ReadLine());
+				items[type].Add(new ItemObject(statData));
+				break;
+				
+			default:
+				Debug.Log(type);
+				reader.ReadLine();
+				break;
+			}
+		}
+
+		m_warehouseData = JsonConvert.DeserializeObject<WarehouseData>(reader.ReadToEnd());
+		m_warehouseData.m_version = version;
+		m_warehouseData.m_items = items;
+
+		m_gold = FindItem(1);
+		m_goldMedal = FindItem(5);
+		m_gem	= FindItem(8);
+
+		reader.Close();
 	}
 
 	public int NeedTotalGem

@@ -126,7 +126,7 @@ public class CreatureProperty {
 	public int Level
 	{
 		get { return m_level.Value; }
-		private set {
+		 set {
 			m_level = value;
 			m_hp = MaxHP;
 			m_sp = MaxSP;
@@ -146,6 +146,7 @@ public class CreatureProperty {
 	public int Exp	
 	{
 		get { return m_exp.Value; }
+		set { m_exp.Value = value; }
 	}
 
 	public void		giveExp(int exp)

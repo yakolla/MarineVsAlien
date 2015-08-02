@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using GooglePlayGames.BasicApi.SavedGame;
 
 public class GameOverGUI : MonoBehaviour {
 
@@ -62,12 +64,26 @@ public class GameOverGUI : MonoBehaviour {
 	}
 
 	void OnDisable() {
+
+		GPlusPlatform.Instance.ReportScore(Const.LEADERBOARD_KILLED_MOBS, Warehouse.Instance.NewGameStats.KilledMobs, (bool success) => {
+			// handle success or failure
+		});
+
+
+
+		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game) => {
+			if (status == SavedGameRequestStatus.Success) {
+				// handle reading or writing of saved game.
+			} else {
+				// handle error
+			}
+		});
+
 		TimeEffector.Instance.StartTime();
 	}
 
 	void Update()
 	{
-
 		m_continueButton.Update();
 	}
 
@@ -78,6 +94,9 @@ public class GameOverGUI : MonoBehaviour {
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Restart", 0);
 
 		Warehouse.Instance.WaveIndex /= 2;
+		Warehouse.Instance.KilledMobs /= 2;
+
+
 		Application.LoadLevel("Basic Dungeon");
 	}
 

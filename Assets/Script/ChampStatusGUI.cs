@@ -159,7 +159,6 @@ public class ChampStatusGUI : MonoBehaviour {
 			}
 
 			m_champ = obj.GetComponent<Champ>();
-			m_oldMobKills = m_champ.MobKills;
 
 			for(int i = 0; i < Const.SpecialButtons; ++i)
 			{

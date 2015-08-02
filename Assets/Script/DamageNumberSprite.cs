@@ -26,6 +26,7 @@ public class DamageNumberSprite : MonoBehaviour {
 	float		m_startTime = 0f;
 
 	float		m_posY = 0f;
+	Vector3		m_finishScale = Vector3.one*2f;
 
 	TypogenicText	m_text;
 	// Use this for initialization
@@ -46,9 +47,11 @@ public class DamageNumberSprite : MonoBehaviour {
 		m_text = GetComponent<TypogenicText>();
 		m_text.Text = damage;
 		m_text.ColorTopLeft = color;
+		transform.localScale = Vector3.one/2f;
+
 
 		if (movementType == MovementType.Parabola)
-			m_parabola = new Parabola(gameObject, 5f, 0f, 90*Mathf.Deg2Rad, 1);
+			m_parabola = new Parabola(gameObject, 5f, -5f, 45*Mathf.Deg2Rad, 1);
 	}
 	
 	// Update is called once per frame
@@ -61,6 +64,10 @@ public class DamageNumberSprite : MonoBehaviour {
 			if (false == m_parabola.Update())
 			{
 				DestroyObject();
+			}
+			else
+			{
+				transform.localScale = Vector3.Lerp(transform.localScale, m_finishScale, Time.deltaTime);
 			}
 			break;
 		case MovementType.RisingUp:
