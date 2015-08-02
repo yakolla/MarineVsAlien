@@ -8,15 +8,13 @@ using UnityEngine.UI;
 public class ChampSettingGUI : MonoBehaviour {
 
 
-	YGUISystem.GUIImageStatic	m_gold;
-	YGUISystem.GUIImageStatic	m_goldMedal;
-	YGUISystem.GUIImageStatic	m_gem;
 	YGUISystem.GUIButton	m_weapon;
 	YGUISystem.GUILockButton[]	m_accessories = new YGUISystem.GUILockButton[Const.AccessoriesSlots];
 	YGUISystem.GUIButton	m_start;
 
-	GameObject	m_inventoryPanel;
+	GameObject	m_weaponPanel;
 	GameObject	m_statPanel;
+	GameObject	m_followerPanel;
 
 	[SerializeField]
 	Transform		m_spawnChamp;
@@ -106,13 +104,13 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemGemData(0));
 
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));
-				/*
+
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampLightningLauncherRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampFiregunRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGuidedRocketLauncherRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampRocketLauncherRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampBoomerangLauncherRefItemId));
-*/
+
 				foreach(RefMob follower in RefData.Instance.RefFollowerMobs)
 				{
 					ItemFollowerData followerData = new ItemFollowerData(follower.id);
@@ -146,13 +144,11 @@ public class ChampSettingGUI : MonoBehaviour {
 				m_accessories[i].Lock = false;
 		}
 
-		m_gold = new YGUISystem.GUIImageStatic(transform.Find("GoldImage").gameObject, Warehouse.Instance.Gold.ItemIcon);
-		m_goldMedal = new YGUISystem.GUIImageStatic(transform.Find("GoldMedalImage").gameObject, Warehouse.Instance.GoldMedal.ItemIcon);
-		m_gem = new YGUISystem.GUIImageStatic(transform.Find("GemImage").gameObject, Warehouse.Instance.Gem.ItemIcon);
 		m_start = new YGUISystem.GUIButton(transform.Find("StartButton").gameObject, ()=>{return m_equipedWeapon != null;});
 
-		m_inventoryPanel = settingInventory();
-		m_statPanel = settingStat();
+		m_weaponPanel = settingItemList("WeaponPanel", ItemData.Type.Weapon);
+		m_statPanel = settingItemList("StatPanel", ItemData.Type.Stat);
+		m_followerPanel = settingItemList("FollowerPanel", ItemData.Type.Follower);
 
 		OnClickStat();
 
@@ -185,7 +181,8 @@ public class ChampSettingGUI : MonoBehaviour {
 				else
 					priceGemButton.SetLable("Equip");
 
-				//invSlot.SetListener(() => OnClickEquip(invSlot, priceGemButton, priceGemButton.m_priceButton, itemIndex));
+			if (item.Item.RefItem.type == ItemData.Type.Weapon)
+				invSlot.SetListener(() => OnClickEquip(invSlot, priceGemButton, priceGemButton.m_priceButton, item));
 			}
 			break;
 		case ButtonRole.Unequip:
@@ -202,7 +199,8 @@ public class ChampSettingGUI : MonoBehaviour {
 			else
 				priceGemButton.SetLable("Unequip");
 				
-				//invSlot.SetListener(() => OnClickEquip(invSlot, priceGemButton, priceGemButton.m_priceButton, itemIndex));
+			if (item.Item.RefItem.type == ItemData.Type.Weapon)
+				invSlot.SetListener(() => OnClickEquip(invSlot, priceGemButton, priceGemButton.m_priceButton, item));
 			}
 			break;
 
@@ -240,19 +238,8 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	}
 
-	void OnEnable() {
-		TimeEffector.Instance.StopTime();
-	}
-
-	void OnDisable() {
-		TimeEffector.Instance.StartTime();
-	}
-
 	void Update()
 	{
-		m_gold.Lable.Text.text = Warehouse.Instance.Gold.Item.Count.ToString();
-		m_goldMedal.Lable.Text.text = Warehouse.Instance.GoldMedal.Item.Count.ToString();
-		m_gem.Lable.Text.text = Warehouse.Instance.Gem.Item.Count.ToString();
 		m_start.Update();
 
 
@@ -271,9 +258,6 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	public void OnClickStart()
 	{
-		if (m_equipedWeapon.m_itemObject == null)
-			return;
-
 
 		GameObject champObj = Creature.InstanceCreature(Resources.Load<GameObject>("Pref/Champ"), Resources.Load<GameObject>("Pref/mon_skin/" + RefData.Instance.RefChamp.prefBody), m_spawnChamp.position, m_spawnChamp.localRotation);	
 		champObj.name = "Champ";		
@@ -282,8 +266,6 @@ public class ChampSettingGUI : MonoBehaviour {
 		champ.Init(RefData.Instance.RefChamp, Warehouse.Instance.GameDataContext.m_level.Value);
 
 		m_champ = champ;
-		
-		Warehouse.Instance.ChampEquipItems.m_weaponRefItemId = m_equipedWeapon.m_itemObject.Item.RefItemID;
 
 		m_equipedWeapon.m_itemObject.Item.Equip(champ);
 		foreach(ItemObject itemStatObject in Warehouse.Instance.Items[ItemData.Type.Stat])
@@ -325,7 +307,6 @@ public class ChampSettingGUI : MonoBehaviour {
 		champObj.SetActive(false);
 
 		//gameObject.SetActive(false);
-		TimeEffector.Instance.StartTime();
 
 	}
 
@@ -337,102 +318,29 @@ public class ChampSettingGUI : MonoBehaviour {
 	public void OnClickEquip(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, YGUISystem.GUIPriceButton button, ItemObject selectedItem)
 	{
 
-
 		bool inEquipSlot = m_equipedWeapon.m_itemObject == selectedItem;
-		if (inEquipSlot == false)
+		if (inEquipSlot == true)
 		{
-			for(int e = 0; e < m_equipedAccessories.Length; ++e)
-			{
-				if (m_equipedAccessories[e].m_itemObject == selectedItem)
-				{
-					inEquipSlot = true;
-					break;
-				}
-			}	
+			return;
 		}
-		
+
 		switch(selectedItem.Item.RefItem.type)
 		{
 		case ItemData.Type.Weapon:
 		{
-			if (true == inEquipSlot)
+			if (m_equipedWeapon.m_inventorySlot != null)
 			{
-				m_equipedWeapon.m_itemObject = null;
-				m_equipedWeapon.m_inventorySlot = null;
-				m_weapon.Icon.Image = Resources.Load("Sprites/button") as Texture;
-				invSlot.Check(false);
-				SetButtonRole(ButtonRole.Equip, invSlot, priceGemButton, selectedItem);
+				m_equipedWeapon.m_inventorySlot.Check(false);
 			}
-			else
-			{
-				if (m_equipedWeapon.m_inventorySlot != null)
-				{
-					m_equipedWeapon.m_inventorySlot.Check(false);
-				}
-				m_equipedWeapon.m_itemObject = selectedItem;
-				m_equipedWeapon.m_inventorySlot = invSlot;
-				m_weapon.Icon.Image = selectedItem.ItemIcon;
-				invSlot.Check(true);
-				SetButtonRole(ButtonRole.Unequip, invSlot, priceGemButton, selectedItem);
-			}
+			m_equipedWeapon.m_itemObject = selectedItem;
+			m_equipedWeapon.m_inventorySlot = invSlot;
+			m_weapon.Icon.Image = selectedItem.ItemIcon;
+			Warehouse.Instance.ChampEquipItems.m_weaponRefItemId = selectedItem.Item.RefItemID;
+			invSlot.Check(true);
+			SetButtonRole(ButtonRole.Unequip, invSlot, priceGemButton, selectedItem);
+
 		}break;
-			
-		case ItemData.Type.Accessory:
-		case ItemData.Type.Follower:
-		case ItemData.Type.Skill:
-		case ItemData.Type.Stat:
-		{
-			if (true == inEquipSlot)
-			{
-				
-				for(int x = 0; x < Cheat.HowManyAccessorySlot; ++x)
-				{
-					if (m_equipedAccessories[x].m_itemObject != null)
-					{
-						if (m_equipedAccessories[x].m_itemObject.Item.Compare(selectedItem.Item))
-						{
-							m_equipedAccessories[x].m_itemObject = null;
-							m_equipedAccessories[x].m_inventorySlot = null;
-							m_accessories[x].Icon.Image = Resources.Load("Sprites/button") as Texture;
-							invSlot.Check(false);
-							SetButtonRole(ButtonRole.Equip, invSlot, priceGemButton, selectedItem);
-							break;
-						}
-						
-					}
-				}					
-			}
-			else
-			{
-				bool aleadyExists = false;
-				for(int x = 0; x < Cheat.HowManyAccessorySlot; ++x)
-				{
-					if (m_equipedAccessories[x].m_itemObject == selectedItem)
-					{
-						aleadyExists = true;
-						break;
-					}
-				}	
-				
-				if (aleadyExists == false)
-				{
-					for(int x = 0; x < Cheat.HowManyAccessorySlot; ++x)
-					{
-						if (m_equipedAccessories[x].m_itemObject == null)
-						{
-							m_equipedAccessories[x].m_itemObject = selectedItem;
-							m_equipedAccessories[x].m_inventorySlot = invSlot;
-							m_accessories[x].Icon.Image = selectedItem.ItemIcon;
-							invSlot.Check(true);
-							SetButtonRole(ButtonRole.Unequip, invSlot, priceGemButton, selectedItem);
-							selectedItem.Item.Use(m_champ);
-							break;
-						}
-					}	
-				}
-				
-			}
-		}break;
+
 		}
 	}
 
@@ -568,13 +476,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				int capturedItemIndex = itemIndex;
 				
 				
-				switch(item.Item.RefItem.type)
-				{
-				case ItemData.Type.Weapon:
-				case ItemData.Type.Accessory:
-				case ItemData.Type.Follower:
-				case ItemData.Type.Skill:
-				case ItemData.Type.Cheat:
+
 					if (item.Item.Lock == true)
 					{
 						if (item.Item.RefItem.unlock != null)
@@ -591,8 +493,7 @@ public class ChampSettingGUI : MonoBehaviour {
 					{
 						SetButtonRole(ButtonRole.Levelup, invSlot, invSlot.PriceButton1, item);
 					}
-					break;
-				}
+					
 				
 				invSlot.Update();
 				
@@ -627,24 +528,25 @@ public class ChampSettingGUI : MonoBehaviour {
 		return transform.Find("InvPanel").gameObject;
 	}
 
-	GameObject settingStat()
+
+	GameObject settingItemList(string panel, ItemData.Type itemType)
 	{
-		RectTransform rectScrollView = transform.Find("StatPanel/ScrollView").gameObject.GetComponent<RectTransform>();
-		GameObject contentsObj = transform.Find("StatPanel/ScrollView/Contents").gameObject;
+		RectTransform rectScrollView = transform.Find(panel + "/ScrollView").gameObject.GetComponent<RectTransform>();
+		GameObject contentsObj = transform.Find(panel+ "/ScrollView/Contents").gameObject;
 		RectTransform rectInventoryObj = contentsObj.GetComponent<RectTransform>();
 		Vector2 rectContents = new Vector2(	rectInventoryObj.rect.width, 0);
 		
 		GameObject prefGUIInventorySlot = Resources.Load<GameObject>("Pref/GUIInventorySlot");
 		RectTransform	rectGUIInventorySlot = prefGUIInventorySlot.GetComponent<RectTransform>();
-
+		
 		int itemAddedCount = 0;
 		int itemIndex = 0;
-		int maxCount = Warehouse.Instance.Items[ItemData.Type.Stat].Count;
+		int maxCount = Warehouse.Instance.Items[itemType].Count;
 		int equipItemIndex = 0;
-
-		foreach(ItemObject item in Warehouse.Instance.Items[ItemData.Type.Stat])
+		
+		foreach(ItemObject item in Warehouse.Instance.Items[itemType])
 		{
-
+			
 			GameObject obj = Instantiate(prefGUIInventorySlot) as GameObject;
 			GUIInventorySlot invSlot = obj.GetComponent<GUIInventorySlot>();
 			
@@ -658,27 +560,33 @@ public class ChampSettingGUI : MonoBehaviour {
 			
 			int capturedItemIndex = itemIndex;
 			
-
-				if (item.Item.Lock == true)
+			
+			if (item.Item.Lock == true)
+			{
+				if (item.Item.RefItem.unlock != null)
 				{
-					if (item.Item.RefItem.unlock != null)
-					{
 					SetButtonRole(ButtonRole.Unlock, invSlot, invSlot.PriceButton0, item);
-					}
 				}
-				else
-				{
+			}
+			else
+			{
 				SetButtonRole(ButtonRole.Equip, invSlot, invSlot.PriceButton0, item);
-				}
-				
-				if (item.Item.RefItem.levelup != null)
-				{
+			}
+			
+			if (item.Item.RefItem.levelup != null)
+			{
 				SetButtonRole(ButtonRole.Levelup, invSlot, invSlot.PriceButton1, item);
-				}
-
+			}			
 			
 			invSlot.Update();
 
+			if (Warehouse.Instance.ChampEquipItems.m_weaponRefItemId == item.Item.RefItemID)
+			{
+				equipItemIndex = itemIndex;
+				OnClickEquip(invSlot, invSlot.PriceButton0, invSlot.PriceButton0.m_priceButton, item);
+			}
+
+			
 			++itemAddedCount;
 		}
 		rectContents.y = rectGUIInventorySlot.rect.height*itemAddedCount;
@@ -686,21 +594,28 @@ public class ChampSettingGUI : MonoBehaviour {
 		//rectInventoryObj.position = new Vector3(rectInventoryObj.position.x, -(rectContents.y/2-rectScrollView.rect.height/2), rectInventoryObj.position.z);
 		rectInventoryObj.localPosition = new Vector3(0, -(rectContents.y/2-rectScrollView.rect.height/2-rectGUIInventorySlot.rect.height*equipItemIndex), 0);
 		
-		UpdateAccessorySlots();
-
-		return transform.Find("StatPanel").gameObject;
+		return transform.Find(panel).gameObject;
 	}
 
 	public void OnClickInventory()
 	{
-		m_inventoryPanel.SetActive(true);
+		m_weaponPanel.SetActive(true);
 		m_statPanel.SetActive(false);
+		m_followerPanel.SetActive(false);
 	}
 
 	public void OnClickStat()
 	{
-		m_inventoryPanel.SetActive(false);
+		m_weaponPanel.SetActive(false);
 		m_statPanel.SetActive(true);
+		m_followerPanel.SetActive(false);
+	}
+
+	public void OnClickFollower()
+	{
+		m_weaponPanel.SetActive(false);
+		m_statPanel.SetActive(false);
+		m_followerPanel.SetActive(true);
 	}
 }
 

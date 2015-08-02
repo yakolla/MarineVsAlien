@@ -304,18 +304,15 @@ public class Champ : Creature {
 		Warehouse.Instance.GameDataContext.m_hp.Value = m_creatureProperty.MaxHP;
 		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
 
-		Const.GetSpawn().StartCoroutine(ShowGameOverGUI());
+		ShowGameOverGUI();
 
 		base.Death();
 	}
 
-	IEnumerator	ShowGameOverGUI()
+	void	ShowGameOverGUI()
 	{
-		yield return new WaitForSeconds(2f);
-		
 		GameObject.Find("HudGUI/GameOverGUI").transform.Find("Panel").gameObject.SetActive(true);
 	}
-
 
 	override public bool ApplyBuff(Creature offender, DamageDesc.BuffType type, float time, DamageDesc damageDesc)
 	{

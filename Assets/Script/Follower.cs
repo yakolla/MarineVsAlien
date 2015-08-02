@@ -105,6 +105,7 @@ public class Follower : Creature {
 
 	public void LevelUp()
 	{
+		++m_creatureProperty.Level;
 		WeaponHolder.LevelUp();
 	}
 

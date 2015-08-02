@@ -12,6 +12,7 @@ public class KeyEventMgr : MonoBehaviour {
 	GameObject	m_goMainTitle;
 	GameObject	m_exit;
 	GameObject	m_credits;
+	GameObject	m_gameOver;
 
 
 	void Start()
@@ -22,13 +23,14 @@ public class KeyEventMgr : MonoBehaviour {
 		m_goMainTitle = transform.Find("GoMainTitleGUI/Panel").gameObject;
 		m_exit = transform.Find("ExitGUI/Panel").gameObject;
 		m_credits = transform.Find("OptionGUI/CreditsPanel").gameObject;
+		m_gameOver = transform.Find("GameOverGUI/Panel").gameObject;
 	}
 
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape)) 
 		{ 
-			if (m_shop.activeSelf)
+			if (m_shop.activeSelf || m_gameOver.activeSelf)
 				return;
 
 			if (m_credits.activeSelf)

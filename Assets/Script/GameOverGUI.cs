@@ -12,6 +12,7 @@ public class GameOverGUI : MonoBehaviour {
 	YGUISystem.GUIPriceButton	m_continueButton;
 	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[1];
 	YGUISystem.GUILable	m_restartText;
+	YGUISystem.GUILable	m_continueText;
 	string[]				m_leaderBoards = {Const.LEADERBOARD_KILLED_MOBS};
 
 	void Start () {
@@ -19,6 +20,9 @@ public class GameOverGUI : MonoBehaviour {
 
 		m_restartText = new YGUISystem.GUILable(transform.Find("RestartButton/Text").gameObject);
 		m_restartText.Text.text = "Continue at " + (Warehouse.Instance.WaveIndex/2+1) + " wave";
+
+		m_restartText = new YGUISystem.GUILable(transform.Find("ContinueButton/Text").gameObject);
+		m_restartText.Text.text = "Continue at " + (Warehouse.Instance.WaveIndex+1) + " wave";
 
 		m_admob = GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>();
 
