@@ -608,6 +608,7 @@
 		"name":"Machine Gun",
 		"type":"Weapon",
 		"icon":"Sprites/Gun",
+		"defaultLock":true,
 		"evolutionFiring":
 		{
 			"angle":1,
@@ -671,7 +672,28 @@
 					}
 				}
 			]
-		},
+		},		
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":500
+				},
+				{
+					"refItemId":5, 
+					"count":5
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":5
+				}
+			]
+		}
 		
 	},
 	{

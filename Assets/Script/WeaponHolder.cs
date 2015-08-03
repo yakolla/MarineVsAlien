@@ -21,6 +21,9 @@ public class WeaponHolder : MonoBehaviour {
 
 	void Update()
 	{
+		if (m_weapons.Count == 0)
+			return;
+
 		if (m_weaponChangedTime+m_weaponChangeCoolTime < Time.time)
 		{
 			m_weaponChangedTime = Time.time;

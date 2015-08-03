@@ -267,7 +267,12 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		m_champ = champ;
 
-		m_equipedWeapon.m_itemObject.Item.Equip(champ);
+		if (m_equipedWeapon.m_itemObject != null)
+		{
+			m_equipedWeapon.m_itemObject.Item.Equip(champ);
+			GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", m_equipedWeapon.m_itemObject.Item.RefItem.codeName+"_Lv:"+m_equipedWeapon.m_itemObject.Item.Level, 0);
+		}
+
 		foreach(ItemObject itemStatObject in Warehouse.Instance.Items[ItemData.Type.Stat])
 		{
 			if (itemStatObject.Item.Level > 0)
@@ -302,7 +307,7 @@ public class ChampSettingGUI : MonoBehaviour {
 
 
 		GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", "Stage:"+Warehouse.Instance.WaveIndex, 0);
-		GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", m_equipedWeapon.m_itemObject.Item.RefItem.codeName+"_Lv:"+m_equipedWeapon.m_itemObject.Item.Level, 0);
+
 		
 		champObj.SetActive(false);
 

@@ -56,7 +56,7 @@ public class WarehouseData
 	
 	public class EquipItems
 	{
-		public int		m_weaponRefItemId = Const.ChampGunRefItemId;
+		public int		m_weaponRefItemId = 0;
 		public int[]	m_accessoryRefItemId = new int[Const.AccessoriesSlots];
 	}
 
