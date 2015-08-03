@@ -254,6 +254,32 @@ public class Champ : Creature {
 
 		}
 
+		bool touched = false;
+		Vector3 touchPos = Vector3.zero;
+#if UNITY_EDITOR
+		touched = Input.GetMouseButtonUp(0);
+		if (touched == true)
+			touchPos = Input.mousePosition;
+#else
+		touched = Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began;
+		if (touched == true)
+			touchPos = Input.GetTouch(0).position;
+#endif
+		if (touched == true) 
+		{
+			Ray ray = Camera.main.ScreenPointToRay( touchPos );
+			RaycastHit[] hits;
+			hits = Physics.RaycastAll(ray, Mathf.Infinity, 1<<9);
+			foreach(RaycastHit hit in hits )
+			{
+				Creature target = hit.transform.GetComponent<Creature>();
+				if (IsEnemy(target, this))
+				{
+					target.TakeDamage(this, new DamageDesc(10, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
+				}
+			}
+		}
+
 		Warehouse.Instance.GameDataContext.m_level.Value = m_creatureProperty.Level;
 		Warehouse.Instance.GameDataContext.m_hp.Value = m_creatureProperty.HP;
 		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
