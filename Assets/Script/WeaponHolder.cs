@@ -52,6 +52,11 @@ public class WeaponHolder : MonoBehaviour {
 		m_weapons.Add(weapon);
 	}
 
+	public void UnequipWeapon(Weapon weapon)
+	{
+		m_weapons.Remove(weapon);
+	}
+
 	public void EquipActiveSkillWeapon(Weapon weapon)
 	{
 		m_activeWeapons.Add(weapon.RefItem.id, weapon);
@@ -142,7 +147,12 @@ public class WeaponHolder : MonoBehaviour {
 
 	public Weapon MainWeapon
 	{
-		get {return m_weapons[0];}
+		get {
+			if (m_weapons.Count == 0)
+				return null;
+
+			return m_weapons[0];
+		}
 	}
 
 }

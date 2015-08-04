@@ -101,7 +101,7 @@ public class Creature : MonoBehaviour {
 		m_navAgent.baseOffset = m_refMob.baseCreatureProperty.navMeshBaseOffset;
 	}
 
-	Weapon instanceWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	public Weapon instanceWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
 	{
 		GameObject obj = Instantiate (weaponData.PrefWeapon, Vector3.zero, Quaternion.Euler(0, 0, 0)) as GameObject;
 		Weapon weapon = obj.GetComponent<Weapon>();

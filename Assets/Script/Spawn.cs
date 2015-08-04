@@ -211,8 +211,8 @@ public class Spawn : MonoBehaviour {
 						RefMob refMob = spawnMobDescResult.spawnMobs[ii];
 						Vector3 enemyPos = cp;
 						float angle = Random.Range(0f, 3.14f*2);
-						enemyPos.x += Mathf.Cos(angle) * 5f;
-						enemyPos.z += Mathf.Sin(angle) * 5f;							
+						enemyPos.x += Mathf.Cos(angle) * 4f;
+						enemyPos.z += Mathf.Sin(angle) * 4f;							
 						
 						yield return new WaitForSeconds (0.02f);
 						

@@ -87,6 +87,14 @@ public class ShopIAB : MonoBehaviour
         Init();
     }
 
+	void OnEnable() {
+		TimeEffector.Instance.StopTime();
+	}
+	
+	void OnDisable() {
+		TimeEffector.Instance.StartTime();
+	}
+
 	void Init()
 	{
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Shop", "OpenShop", 0);

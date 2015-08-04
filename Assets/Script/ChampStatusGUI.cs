@@ -110,7 +110,7 @@ public class ChampStatusGUI : MonoBehaviour {
 		if (m_specialButtons[2].ChargingPoint == 0)
 			return;
 		
-		m_champ.WeaponHolder.ActiveWeaponSkillFire(m_champ.WeaponHolder.MainWeapon.WeaponStat.skillId, transform.eulerAngles.y);
+		m_champ.WeaponHolder.ActiveWeaponSkillFire(Const.NuclearRefItemId, transform.eulerAngles.y);
 
 		--m_specialButtons[2].ChargingPoint;
 	}

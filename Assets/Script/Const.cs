@@ -43,6 +43,7 @@ public class Const {
 	public const int NuclearSkillRefItemId = 21;
 	public const int GemRefItemId = 8;
 	public const int EmbersRefItemId = 132;
+	public const int NuclearRefItemId = 133;
 	public const int GoldMedalRefItemId = 5;
 	public const int GunMarineRefItemId = 1001;
 	public const int FireMarineRefItemId = 1002;

@@ -281,6 +281,8 @@ public class ChampSettingGUI : MonoBehaviour {
 			}
 		}
 
+		m_champ.WeaponHolder.EquipActiveSkillWeapon(m_champ.instanceWeapon(new ItemWeaponData(Const.NuclearRefItemId), null));
+
 		foreach(ItemObject itemFollowerObject in Warehouse.Instance.Items[ItemData.Type.Follower])
 		{
 			if (itemFollowerObject.Item.Level > 0)
@@ -343,6 +345,8 @@ public class ChampSettingGUI : MonoBehaviour {
 			Warehouse.Instance.ChampEquipItems.m_weaponRefItemId = selectedItem.Item.RefItemID;
 			invSlot.Check(true);
 			SetButtonRole(ButtonRole.Unequip, invSlot, priceGemButton, selectedItem);
+
+			selectedItem.Item.Equip(m_champ);
 
 		}break;
 
@@ -422,15 +426,21 @@ public class ChampSettingGUI : MonoBehaviour {
 				invSlot.PriceButton1.m_priceButton.NormalWorth = Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup);
 				invSlot.PriceButton1.m_gemButton.NormalWorth = Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup);
 
-				if (selectedItem.Item.RefItem.type == ItemData.Type.Follower)
+				switch(selectedItem.Item.RefItem.type)
 				{
+				case ItemData.Type.Follower:
 					selectedItem.Item.Equip(m_champ);
-				}
-				else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat)
-				{
+					break;
+				case ItemData.Type.Stat:
 					selectedItem.Item.Equip(m_champ);
+					break;
+				case ItemData.Type.Weapon:
+					if (m_equipedWeapon.m_itemObject == null)
+					{
+						OnClickEquip(invSlot, priceGemButton, button, selectedItem);
+					}
+					break;
 				}
-
 			}
 			else
 			{
