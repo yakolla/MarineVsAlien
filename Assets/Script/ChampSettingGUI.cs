@@ -50,47 +50,37 @@ public class ChampSettingGUI : MonoBehaviour {
 		if (m_cheat == true)
 		{
 #if UNITY_EDITOR
-			if (Warehouse.Instance.Items.Count == 0)
+			if (Warehouse.Instance.InvenSize == 0)
 			{
-
+				Warehouse.Instance.PushItem(new ItemGoldData(100000));
+				Warehouse.Instance.PushItem(new ItemGoldMedalData(1000));
+				Warehouse.Instance.PushItem(new ItemGemData(12000));
+				
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));
-
-				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampFiregunRefItemId));
+				
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampLightningLauncherRefItemId));
-				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampRocketLauncherRefItemId));
+				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampFiregunRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGuidedRocketLauncherRefItemId));
+				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampRocketLauncherRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampBoomerangLauncherRefItemId));
-				/*
-				foreach(KeyValuePair<int, RefItem> keyPair in RefData.Instance.RefItems)
-				{
-					if (Warehouse.Instance.FindItem(keyPair.Key) != null)
-						continue;
-					
-					switch(keyPair.Value.type)
-					{
-					case ItemData.Type.Weapon:
-						ItemWeaponData weaponData = new ItemWeaponData(keyPair.Key);
-						Warehouse.Instance.PushItem(weaponData);
-						break;
-					}
-				}
-*/
-
-				Warehouse.Instance.PushItem(new ItemAccessoryData(Const.BootsRefItemId));
-
-				Warehouse.Instance.Gold.Item.Count = 100000;
-				Warehouse.Instance.GoldMedal.Item.Count = 1000;
-				Warehouse.Instance.Gem.Item.Count = 12000;
-
+				
 				foreach(RefMob follower in RefData.Instance.RefFollowerMobs)
 				{
 					ItemFollowerData followerData = new ItemFollowerData(follower.id);
 					Warehouse.Instance.PushItem(followerData);
 				}
-
+				
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
+				Warehouse.Instance.PushItem(new ItemStatData(2001));
+				Warehouse.Instance.PushItem(new ItemStatData(2002));
+				Warehouse.Instance.PushItem(new ItemStatData(2003));
+				Warehouse.Instance.PushItem(new ItemStatData(2004));
+				Warehouse.Instance.PushItem(new ItemStatData(2005));
 			}
+			byte[] data = Warehouse.Instance.Serialize();
+			Warehouse.Instance.Deserialize(data);
+
 #endif
 		}
 		else
@@ -123,12 +113,15 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2002));
 				Warehouse.Instance.PushItem(new ItemStatData(2003));
 				Warehouse.Instance.PushItem(new ItemStatData(2004));
+				Warehouse.Instance.PushItem(new ItemStatData(2005));
 			}
 
 			byte[] data = Warehouse.Instance.Serialize();
 			Warehouse.Instance.Deserialize(data);
 
 		}
+
+
 
 		for(int i = 0; i < m_equipedAccessories.Length; ++i)
 		{
@@ -267,10 +260,12 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		m_champ = champ;
 
-		if (m_equipedWeapon.m_itemObject != null)
+		foreach(ItemObject itemWeaponObject in Warehouse.Instance.Items[ItemData.Type.Weapon])
 		{
-			m_equipedWeapon.m_itemObject.Item.Equip(champ);
-			GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", m_equipedWeapon.m_itemObject.Item.RefItem.codeName+"_Lv:"+m_equipedWeapon.m_itemObject.Item.Level, 0);
+			if (itemWeaponObject.Item.Level > 0)
+			{
+				itemWeaponObject.Item.Equip(champ);
+			}
 		}
 
 		foreach(ItemObject itemStatObject in Warehouse.Instance.Items[ItemData.Type.Stat])
@@ -343,7 +338,7 @@ public class ChampSettingGUI : MonoBehaviour {
 			m_equipedWeapon.m_inventorySlot = invSlot;
 			m_weapon.Icon.Image = selectedItem.ItemIcon;
 			Warehouse.Instance.ChampEquipItems.m_weaponRefItemId = selectedItem.Item.RefItemID;
-			invSlot.Check(true);
+			//invSlot.Check(true);
 			SetButtonRole(ButtonRole.Unequip, invSlot, priceGemButton, selectedItem);
 
 			selectedItem.Item.Equip(m_champ);
@@ -435,10 +430,7 @@ public class ChampSettingGUI : MonoBehaviour {
 					selectedItem.Item.Equip(m_champ);
 					break;
 				case ItemData.Type.Weapon:
-					if (m_equipedWeapon.m_itemObject == null)
-					{
-						OnClickEquip(invSlot, priceGemButton, button, selectedItem);
-					}
+					OnClickEquip(invSlot, priceGemButton, button, selectedItem);
 					break;
 				}
 			}
@@ -594,13 +586,6 @@ public class ChampSettingGUI : MonoBehaviour {
 			}			
 			
 			invSlot.Update();
-
-			if (Warehouse.Instance.ChampEquipItems.m_weaponRefItemId == item.Item.RefItemID)
-			{
-				equipItemIndex = itemIndex;
-				OnClickEquip(invSlot, invSlot.PriceButton0, invSlot.PriceButton0.m_priceButton, item);
-			}
-
 			
 			++itemAddedCount;
 		}

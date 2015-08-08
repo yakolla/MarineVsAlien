@@ -107,6 +107,7 @@ public class RefPriceCondition
 	{
 		public int level;
 		public RefItemOption option;
+		public bool levelPer = false;
 	}
 	public RefPrice[]		conds;
 	public RefPrice[]		else_conds;	

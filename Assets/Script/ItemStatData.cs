@@ -10,21 +10,15 @@ public class ItemStatData : ItemData{
 
 	}
 
-	override public void Equip(Creature obj)
-	{
-		for(int i = 0; i < Level; ++i)
-			ApplyOptions(obj, 0);
-	}
-
 	override public void Use(Creature obj)
 	{	
-		ApplyOptions(obj, 0);
+		ApplyOptions(obj);
 	}
 
 
 	override public void NoUse(Creature obj)
 	{
-		NoApplyOptions(obj);
+
 	}
 
 	override public string Description()

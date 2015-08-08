@@ -11,7 +11,7 @@
 						"refMobIds":{
 							"melee":{
 								"ratio":[0,1],
-								"count":[6,10]
+								"count":[3,10]
 							}
 						},
 						"interval":5,
@@ -21,7 +21,7 @@
 						"refMobIds":{
 							"melee":{
 								"ratio":[0,1],
-								"count":[6,10]
+								"count":[3,10]
 							},
 							"range":{
 								"ratio":[0,1],
@@ -35,7 +35,7 @@
 						"refMobIds":{
 							"melee":{
 								"ratio":[0,1],
-								"count":[8,12]
+								"count":[4,12]
 							}
 						},
 						"interval":5,
@@ -45,7 +45,7 @@
 						"refMobIds":{
 							"melee":{
 								"ratio":[0,1],
-								"count":[8,12]
+								"count":[4,12]
 							},
 							"range":{
 								"ratio":[0,1],
@@ -59,7 +59,7 @@
 						"refMobIds":{
 							"melee":{
 								"ratio":[0,1],
-								"count":[10,15]
+								"count":[4,15]
 							},
 							"range":{
 								"ratio":[0,1],

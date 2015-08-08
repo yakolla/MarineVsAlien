@@ -14,8 +14,4 @@ public class ItemGemData : ItemData{
 		Warehouse.Instance.Gem.Item.Count += Count;
 	}
 
-	override public void Equip(Creature obj){
-
-	}
-
 }

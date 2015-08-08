@@ -38,7 +38,7 @@ public class MobAIPickup : MobAI {
 
 			else
 			{
-				if (1.5f > Vector3.Distance(m_mob.transform.position, m_hitColliders[0].transform.position))
+				if (1f > Vector3.Distance(m_mob.transform.position, m_hitColliders[0].transform.position))
 				{
 					PickupItem(m_hitColliders[0]);
 					m_hitColliders.RemoveAt(0);

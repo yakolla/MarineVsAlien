@@ -37,7 +37,8 @@ public class ItemData {
 		Weapon,
 		Strength,
 		MaxHp,
-		Critical,
+		CriticalChance,
+		CriticalDamage,
 		GainExtraGold,
 		Count
 	}
@@ -79,28 +80,37 @@ public class ItemData {
 		string desc = "\n";
 		foreach(RefPriceCondition.RefOptionPerLevel op in m_refItem.levelup.optionPerLevel)
 		{
-			desc += (Level >= op.level ? Const.EnabledStringColor : Const.DisabledStringColor) + "Lv" + op.level + ":";
+			desc += (Level >= op.level ? Const.EnabledStringColor : Const.DisabledStringColor);
+			string head = null;
+			float optionValue = 0f;
+			if (op.levelPer == false)
+			{
+				head = "Lv" + op.level + ":";
+				optionValue = op.option.values[0];
+			}
+			else
+			{
+				head = op.option.type.ToString() + ":";
+				optionValue = op.option.values[0]*Level;
+			}
+
 			switch(op.option.type)
 			{
 			case Option.Weapon:
-				desc += RefData.Instance.RefItems[(int)op.option.values[0]].name + "</color>\n";
+				desc += head + RefData.Instance.RefItems[(int)optionValue].name + "</color>\n";
 				break;
 			case Option.DamageMultiplier:
 			case Option.DamageReduction:
-				desc += op.option.type.ToString() + ":"+ (op.option.values[0]*100) + "%</color>\n";
+				desc += head + op.option.type.ToString() + ":"+ (optionValue*100) + "%</color>\n";
 				break;
 			case Option.Strength:
 			case Option.MaxHp:
-				desc = (Level >= op.level ? Const.EnabledStringColor : Const.DisabledStringColor) +op.option.type.ToString() + ":"+  (op.option.values[0]*Level) + "</color>\n";
+				desc += head + (optionValue) + "</color>\n";
 				break;
+			case Option.CriticalChance:
+			case Option.CriticalDamage:
 			case Option.GainExtraGold:
-				desc = (Level >= op.level ? Const.EnabledStringColor : Const.DisabledStringColor) +op.option.type.ToString() + ":"+  (op.option.values[0]*Level*100) + "%</color>\n";
-				break;
-			case Option.Critical:
-				desc = (Level >= op.level ? Const.EnabledStringColor : Const.DisabledStringColor) 
-					+ "Critical Chance" + ":"+  Mathf.Min(100, op.option.values[0]*Level*100) + "%\n"
-					+ "Critical Damage" + ":"+  (op.option.values[1]*Level*100) + "%" 
-					+ "</color>\n";
+				desc += head + (optionValue*100) + "%</color>\n";
 				break;
 			default:
 				desc += op.option.type.ToString() + ":"+ op.option.values[0] + "</color>\n";
@@ -112,7 +122,10 @@ public class ItemData {
 	}
 
 	virtual public void Pickup(Creature obj){Warehouse.Instance.PushItem(this);}
-	virtual public void Equip(Creature obj){}
+	virtual public void Equip(Creature obj){
+		for(int i = 0; i < Level; ++i)
+			ApplyOptions(obj);
+	}
 	virtual public void Use(Creature obj){}
 	virtual public bool Usable(Creature obj){return true;}
 	virtual public void NoUse(Creature obj){}
@@ -121,16 +134,16 @@ public class ItemData {
 		return item.RefItem.type == RefItem.type;
 	}
 
-	public void ApplyOptions(Creature obj, int minLevel)
+	public void ApplyOptions(Creature obj)
 	{
 		if (m_refItem.levelup == null || m_refItem.levelup.optionPerLevel == null)
 			return;
 
 		foreach(RefPriceCondition.RefOptionPerLevel op in m_refItem.levelup.optionPerLevel)
 		{
-			if (op.level > Level)
+			if (Level < op.level)
 				continue;
-			if (op.level < minLevel)
+			if (op.levelPer == false && op.level != Level)
 				continue;
 
 			switch(op.option.type)
@@ -164,43 +177,25 @@ public class ItemData {
 			case Option.MaxHp:
 				obj.m_creatureProperty.AlphaMaxHP += (int)op.option.values[0];
 				break;
-			case Option.Critical:
+			case Option.CriticalChance:
 				obj.m_creatureProperty.AlphaCriticalChance += op.option.values[0];
-				obj.m_creatureProperty.AlphaCriticalDamage += op.option.values[1];
-
+				break;
+			case Option.CriticalDamage:
+				obj.m_creatureProperty.AlphaCriticalDamage += op.option.values[0];
 				break;
 			case Option.GainExtraGold:
 				obj.m_creatureProperty.GainExtraGold += op.option.values[0];
+				Creature owner = obj.GetOwner();
+				if (owner != null)
+				{
+					owner.m_creatureProperty.GainExtraGold += op.option.values[0];
+				}
 				break;
 			}
 
 		}
 	}
 
-	public void NoApplyOptions(Creature obj)
-	{
-		if (m_refItem.levelup == null || m_refItem.levelup.optionPerLevel == null)
-			return;
-		
-		foreach(RefPriceCondition.RefOptionPerLevel op in m_refItem.levelup.optionPerLevel)
-		{
-			if (op.level > Level)
-				continue;
-
-			switch(op.option.type)
-			{
-			case Option.DamageMultiplier:
-				obj.m_creatureProperty.DamageRatio -= op.option.values[0];
-				break;
-			case Option.MoveSpeed:
-				obj.m_creatureProperty.AlphaMoveSpeed -= op.option.values[0];
-				break;
-			case Option.DamageReduction:
-				obj.m_creatureProperty.DamageReduction -= op.option.values[0];
-				break;
-			}
-		}
-	}
 
 	public int RefItemID
 	{

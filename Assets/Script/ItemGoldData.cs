@@ -13,8 +13,4 @@ public class ItemGoldData : ItemData{
 
 	}
 
-	override public void Equip(Creature obj){
-
-	}
-
 }

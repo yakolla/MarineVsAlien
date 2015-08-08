@@ -101,6 +101,11 @@ public class Creature : MonoBehaviour {
 		m_navAgent.baseOffset = m_refMob.baseCreatureProperty.navMeshBaseOffset;
 	}
 
+	virtual public Creature GetOwner()
+	{
+		return null;
+	}
+
 	public Weapon instanceWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
 	{
 		GameObject obj = Instantiate (weaponData.PrefWeapon, Vector3.zero, Quaternion.Euler(0, 0, 0)) as GameObject;
@@ -179,9 +184,12 @@ public class Creature : MonoBehaviour {
 
 	public float RotateToTarget(Vector3 pos)
 	{
+		/*
 		Vector3 gunPoint = m_weaponHolder.transform.position;
 		gunPoint.x = transform.position.x;
 		gunPoint.z = transform.position.z;
+		*/
+		Vector3 gunPoint = transform.position;
 		float targetHorAngle = Mathf.Atan2(pos.z-gunPoint.z, pos.x-gunPoint.x) * Mathf.Rad2Deg;
 		transform.eulerAngles = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, -targetHorAngle, 0)), m_creatureProperty.RotationSpeedRatio*Time.deltaTime).eulerAngles;
 

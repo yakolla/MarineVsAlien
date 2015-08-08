@@ -42,6 +42,11 @@ public class Follower : Creature {
 		return false;
 	}
 
+	override public Creature GetOwner()
+	{
+		return m_owner;
+	}
+
 	IEnumerator DecHpEffect()
 	{
 		while(m_creatureProperty.HP > 0)

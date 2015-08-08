@@ -230,7 +230,6 @@
 					"weaponStat":
 					{
 						"coolTime":6,
-						"range":10,
 						"firingCount":1
 					}
 				}
@@ -262,12 +261,11 @@
 					"refItemId":"105",
 					"weaponStat":
 					{
-						"coolTime":5,
-						"range":8
+						"coolTime":5
 					}				
 				}
 			],
-			"mobAI":"Rotation",
+			"mobAI":"Normal",
 			"baseCreatureProperty":
 			{
 				"maxHP":10,
@@ -349,7 +347,6 @@
 					"weaponStat":
 					{
 						"coolTime":4,
-						"range":7,
 						"summonRefMobId":31001
 					}	
 				}
@@ -380,8 +377,7 @@
 					"refItemId":"105",
 					"weaponStat":
 					{
-						"coolTime":5,
-						"range":8
+						"coolTime":5
 					}
 				}
 			],
@@ -413,7 +409,7 @@
 				}
 			],
 			"mobAI":"Normal",
-			"scale":0.5,
+			"scale":0.8,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -438,7 +434,7 @@
 				}
 			],
 			"mobAI":"Normal",
-			"scale":0.5,
+			"scale":0.8,
 			"baseCreatureProperty":
 			{
 				"maxHP":16,
@@ -463,7 +459,7 @@
 				}
 			],
 			"mobAI":"Normal",
-			"scale":0.5,
+			"scale":0.8,
 			"baseCreatureProperty":
 			{
 				"maxHP":17,
@@ -514,7 +510,7 @@
 				}
 			],
 			"mobAI":"Egg",
-			"scale":0.5,
+			"scale":0.8,
 			"baseCreatureProperty":
 			{
 				"maxHP":19,
@@ -550,13 +546,12 @@
 					"weaponStat":
 					{
 						"coolTime":4,
-						"range":7,
 						"summonRefMobId":31001
 					}	
 				}
 			],
-			"mobAI":"Rotation",
-			"scale":0.5,
+			"mobAI":"Normal",
+			"scale":0.8,
 			"baseCreatureProperty":
 			{
 				"maxHP":20,
@@ -643,7 +638,6 @@
 					"weaponStat":
 					{
 						"coolTime":4,
-						"range":8,
 						"summonRefMobId":31006
 					}	
 				}
@@ -778,8 +772,7 @@
 					"refItemId":"119",
 					"weaponStat":
 					{
-						"coolTime":2,
-						"range":5,
+						"coolTime":2,						
 						"firingCount":5
 					}	
 				},
@@ -788,7 +781,6 @@
 					"weaponStat":
 					{
 						"coolTime":1,
-						"range":5,
 						"firingCount":5
 					}	
 				}
@@ -821,7 +813,7 @@
 					"weaponStat":
 					{
 						"coolTime":2,
-						"range":5,
+						
 						"firingCount":3
 					}
 				},
@@ -829,8 +821,8 @@
 					"refItemId":"121",
 					"weaponStat":
 					{
-						"coolTime":1,
-						"range":5
+						"coolTime":1
+						
 					}
 				},
 				{
@@ -838,7 +830,7 @@
 					"weaponStat":
 					{
 						"coolTime":1,
-						"range":5,
+						
 						"firingCount":5
 					}	
 				}
@@ -870,7 +862,7 @@
 					"weaponStat":
 					{
 						"coolTime":1,
-						"range":5,
+						
 						"firingCount":1
 					}
 				},
@@ -879,7 +871,7 @@
 					"weaponStat":
 					{
 						"coolTime":3,
-						"range":5,
+						
 						"firingCount":1
 					}
 				},
@@ -888,15 +880,14 @@
 					"weaponStat":
 					{
 						"coolTime":3,
-						"range":5,
+						
 						"firingCount":1
 					}	
 				},
 				{
 					"refItemId":"126",
 					"weaponStat":
-					{			
-						"range":5,		
+					{	
 						"summonRefMobId":31001
 					}
 				}
@@ -930,7 +921,7 @@
 					"weaponStat":
 					{
 						"coolTime":4,
-						"range":5,
+						
 						"summonRefMobId":31004
 					}
 				},
@@ -938,24 +929,22 @@
 					"refItemId":"115",
 					"weaponStat":
 					{
-						"coolTime":3,
-						"range":5
+						"coolTime":3
+						
 					}	
 				},
 				{
 					"refItemId":"136",
 					"weaponStat":
 					{
-						"coolTime":1,
-						"range":5
+						"coolTime":1
 					}	
 				},
 				{
 					"refItemId":"128",
 					"weaponStat":
 					{
-						"coolTime":6,
-						"range":5
+						"coolTime":6
 					}	
 				}
 			],
@@ -992,8 +981,7 @@
 					"refItemId":"113",
 					"weaponStat":
 					{
-						"coolTime":3,
-						"range":5
+						"coolTime":3
 					}	
 				},
 				{
@@ -1034,8 +1022,7 @@
 					"refItemId":"105",
 					"weaponStat":
 					{
-						"coolTime":0.1,
-						"range":7
+						"coolTime":0.1
 					}
 				}
 			],
@@ -1131,6 +1118,7 @@
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
+				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,				
 				"backwardOnDamage":false
 			}
@@ -1159,6 +1147,7 @@
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
+				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"bulletLength":1.5,
 				"backwardOnDamage":false
@@ -1188,6 +1177,7 @@
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
+				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
 			}
@@ -1216,6 +1206,7 @@
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
+				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
 			}
@@ -1244,6 +1235,7 @@
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
+				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
 			}
@@ -1272,6 +1264,7 @@
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
 				"moveSpeed":0,
+				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
 			}
@@ -1299,6 +1292,7 @@
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
+				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
 			}

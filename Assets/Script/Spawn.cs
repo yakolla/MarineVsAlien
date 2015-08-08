@@ -9,8 +9,6 @@ public class Spawn : MonoBehaviour {
 
 	Champ		m_champ = null;
 
-	[SerializeField]
-	Transform[]		m_areas = null;
 
 	[SerializeField]
 	GameObject		m_prefSpawnEffect = null;
@@ -23,6 +21,8 @@ public class Spawn : MonoBehaviour {
 	
 	[SerializeField]
 	AudioClip	m_bossBg;
+
+	Transform[]	m_goalPoints;
 
 
 	FollowingCamera	m_followingCamera = null;
@@ -66,8 +66,8 @@ public class Spawn : MonoBehaviour {
 
 		m_stageText = new YGUISystem.GUILable(GameObject.Find("HudGUI/StatusGUI/Stage").gameObject);
 		m_waveText = new YGUISystem.GUILable(GameObject.Find("HudGUI/StatusGUI/Wave").gameObject);
-		m_areas = transform.GetComponentsInChildren<Transform>();
 
+		m_goalPoints = transform.Find("GoalPoint").transform.GetComponentsInChildren<Transform>();
 	}
 
 	IEnumerator EffectWaveText(string msg, float alpha)
@@ -116,10 +116,7 @@ public class Spawn : MonoBehaviour {
 		return m_mobsOfCheckOnDeath > 0;
 	}
 
-	Transform	getSpawnArea(bool champAreaExcept)
-	{
-		return m_areas[Random.Range(1,m_areas.Length)];
-	}
+
 
 	class SpawnMobDescResult
 	{
@@ -197,12 +194,9 @@ public class Spawn : MonoBehaviour {
 			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.itemDummy, RefData.Instance.RefItemDummyMobs, false, false);
 			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.miniBoss, RefData.Instance.RefMiniBossMobs, true, false);
 			
-			if (Random.Range(0, 1) == 0)
-			{
-				Transform area = getSpawnArea(true);
+
 				Vector3 cp = m_champ.transform.position;
-				Vector3 scale = area.localScale*0.5f;
-				
+
 				for(int ii = 0;  ii < spawnMobDescResult.spawnMobs.Count; ++ii)
 				{
 					for(int i = 0; i < spawnMobDescResult.spawnMobCount[ii]; ++i)
@@ -210,11 +204,21 @@ public class Spawn : MonoBehaviour {
 						
 						RefMob refMob = spawnMobDescResult.spawnMobs[ii];
 						Vector3 enemyPos = cp;
-						float angle = Random.Range(0f, 3.14f*2);
-						enemyPos.x += Mathf.Cos(angle) * 4f;
-						enemyPos.z += Mathf.Sin(angle) * 4f;							
+						float[] angles = {0f, 3.14f};
+						float angle = angles[Random.Range(0, angles.Length)];
+
+						if (refMob.baseCreatureProperty.moveSpeed > 0f)
+						{
+							enemyPos.x += Mathf.Cos(angle) * 8f;
+							enemyPos.z += Mathf.Sin(angle) * 8f;							
+						}
+						else
+						{
+							enemyPos.x += Mathf.Cos(angle) * 4f;
+							enemyPos.z += Mathf.Sin(angle) * 4f;							
+						}
 						
-						yield return new WaitForSeconds (0.02f);
+						yield return new WaitForSeconds (0.1f);
 						
 						Creature cre = SpawnMob(refMob, SpawnMobLevel(), enemyPos, spawnMobDescResult.spawnMobBoss[ii], spawnMobDescResult.spawnMobMonitored[ii]);
 						cre.gameObject.SetActive(false);
@@ -232,63 +236,7 @@ public class Spawn : MonoBehaviour {
 						
 					}
 				}
-			}
-			else
-			{
-				for(int ii = 0;  ii < spawnMobDescResult.spawnMobs.Count; ++ii)
-				{
-					for(int i = 0; i < spawnMobDescResult.spawnMobCount[ii]; ++i)
-					{
-						Transform area = getSpawnArea(true);
-						Vector3 cp = area.position;
-						Vector3 scale = area.localScale*0.5f;
-						
-						RefMob refMob = spawnMobDescResult.spawnMobs[ii];
-						if (refMob.nearByChampOnSpawn == true)
-						{
-							if (m_champ)
-							{
-								cp = m_champ.transform.position;
-							}
-							
-						}
-						else
-						{
-							cp = area.position;
-						}
-						
-						Vector3 enemyPos = cp;
-						enemyPos.x += Random.Range(-scale.x,scale.x);
-						enemyPos.z += Random.Range(-scale.z,scale.z);
-						
-						RefItemSpawn[] dropItems = null;
-						if (GetCurrentWave().itemSpawn.mapMobItems.ContainsKey(refMob.id))
-						{
-							dropItems = GetCurrentWave().itemSpawn.mapMobItems[refMob.id].refDropItems;
-						}
-						else
-						{
-							dropItems = GetCurrentWave().itemSpawn.defaultItem;
-						}
-						
-						yield return new WaitForSeconds (0.02f);
-						
-						Creature cre = SpawnMob(refMob, SpawnMobLevel(), enemyPos, spawnMobDescResult.spawnMobBoss[ii], spawnMobDescResult.spawnMobMonitored[ii]);
-						cre.gameObject.SetActive(false);
-						
-						switch(spawnMobDescResult.spawnEffectType[ii])
-						{
-						case MobSpawnEffectType.Falling:
-							StartCoroutine(  EffectSpawnMob1(cre.transform.position, cre) );
-							break;
-						default:
-							StartCoroutine(  EffectSpawnMob(cre.transform.position, cre) );
-							break;
-						}					
-						
-					}
-				}
-			}
+
 			
 			
 		}
@@ -339,11 +287,17 @@ public class Spawn : MonoBehaviour {
 					yield return new WaitForSeconds(0.5f);
 				}
 
-
-
 				if (mobSpawn.boss == false)
 				{
 					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomMobSpawns[m_wave%GetCurrentWave().randomMobSpawns.Length], waveProgress));
+				}
+
+				yield return new WaitForSeconds(5f);
+				NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
+				nav.SetDestination(m_goalPoints[(m_wave+1)%m_goalPoints.Length].transform.position);
+				while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)
+				{
+					yield return null;
 				}
 
 				m_wave++;
@@ -393,7 +347,7 @@ public class Spawn : MonoBehaviour {
 	}
 
 
-	IEnumerator EffectSpawnMob(Vector3 pos, Creature creature)
+	public IEnumerator EffectSpawnMob(Vector3 pos, Creature creature)
 	{		
 
 		Vector3 enemyPos = pos;
@@ -408,7 +362,9 @@ public class Spawn : MonoBehaviour {
 		}
 
 		yield return new WaitForSeconds (1f);
-		creature.gameObject.SetActive(true);
+
+		if (creature != null)
+			creature.gameObject.SetActive(true);
 
 
 	}
@@ -533,18 +489,6 @@ public class Spawn : MonoBehaviour {
 					{
 					case ItemData.Type.Gold:
 						item = new ItemGoldData(Random.Range(desc.minValue, desc.maxValue));
-						switch(item.Count/3)
-						{
-						case 0:
-							scale = 0.3f;
-							break;
-						case 1:
-							scale = 0.5f;
-							break;
-						case 2:
-							scale = 0.7f;
-							break;
-						}
 						item.Count += (int)(item.Count*goldAlpha);
 
 						if (m_champ != null)
@@ -553,18 +497,6 @@ public class Spawn : MonoBehaviour {
 						break;
 					case ItemData.Type.HealPosion:
 						item = new ItemHealPosionData(Random.Range(desc.minValue, desc.maxValue));
-						switch(item.Count/300)
-						{
-						case 0:
-							scale = 0.3f;
-							break;
-						case 1:
-							scale = 0.5f;
-							break;
-						case 2:
-							scale = 0.7f;
-							break;
-						}
 						break;
 					case ItemData.Type.Weapon:
 						item = new ItemWeaponData(desc.refItem.id);

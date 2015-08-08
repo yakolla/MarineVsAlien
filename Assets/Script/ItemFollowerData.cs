@@ -23,11 +23,12 @@ public class ItemFollowerData : ItemData{
 	override public void Equip(Creature obj)
 	{
 		m_follower = InstanceFollower(obj);
+		base.Equip(m_follower);
 	}
 
 	override public void Use(Creature obj)
 	{
-		ApplyOptions(m_follower, Level);
+		ApplyOptions(m_follower);
 	}
 
 	Follower	InstanceFollower(Creature obj)
@@ -50,8 +51,6 @@ public class ItemFollowerData : ItemData{
 			itemWeaponData.Level = Level;
 			follower.EquipWeapon(itemWeaponData, weaponDesc.weaponStat);
 		}
-		
-		ApplyOptions(follower, 0);
 
 		return follower;
 	}

@@ -88,13 +88,35 @@ public class LightningBullet : Bullet
 		if (m_beamMode == false)
 		{
 			targets = new Creature[m_maxChaining];
+			Creature creature = null;
 			RaycastHit hit;
 			Vector3 fwd = transform.TransformDirection(Vector3.right);
 			if (Physics.Raycast(transform.position, fwd, out hit, BulletLength(), 1<<9))
+				creature = hit.transform.GetComponent<Creature>();
+
+/*
+			if (m_ownerCreature.Targetting == null)
 			{
-				Creature creature = hit.transform.gameObject.GetComponent<Creature>();
+				Creature[] hitted = Bullet.SearchTarget(transform.position, m_ownerCreature.GetMyEnemyType(), BulletLength());
+				if (hitted != null)
+				{
+					creature = hitted[0];
+				}
+				Debug.Log("Lightning NULL");
+			}
+			else
+			{
+				creature = m_ownerCreature.Targetting;
+				Debug.Log("Lightning Not NULL");
+			}*/
+
+			if (creature != null)
+			{
 				if (creature && Creature.IsEnemy(creature, m_ownerCreature))
 				{				
+					m_ownerCreature.SetTarget(creature);
+					m_ownerCreature.RotateToTarget(creature.transform.position);
+
 					targets[0] = creature;
 					mobHitted = true;
 					hittedTargetCount = 1;
@@ -110,10 +132,13 @@ public class LightningBullet : Bullet
 					}
 					
 					int perParticles = particles.Length/hittedTargetCount;
-					createChanningParticle(transform.position, targets[0].transform.position, 0, perParticles);
-					for(int i = 0; i < hittedTargetCount-1; ++i)
+					Vector3 oldAimpoint = targets[0].transform.Find("Body/Aimpoint").transform.position;
+					createChanningParticle(transform.position, oldAimpoint, 0, perParticles);
+					for(int i = 1; i < hittedTargetCount; ++i)
 					{
-						createChanningParticle(targets[i].transform.position, targets[i+1].transform.position, perParticles*(i+1), perParticles*(i+1)+perParticles);
+						Vector3 aimpoint = targets[i].transform.Find("Body/Aimpoint").transform.position;
+						createChanningParticle(oldAimpoint, aimpoint, perParticles*(i), perParticles*(i)+perParticles);
+						oldAimpoint = aimpoint;
 					}
 					
 					particleEmitter.particles = particles;
@@ -124,7 +149,7 @@ public class LightningBullet : Bullet
 		{
 			RaycastHit[] hit;
 			Vector3 fwd = transform.TransformDirection(Vector3.right);
-			hit = Physics.RaycastAll(transform.position, fwd, BulletLength());
+			hit = Physics.RaycastAll(transform.position, fwd, BulletLength(), 1<<9);
 			if (hit.Length > 0)
 			{
 				targets = new Creature[hit.Length];
@@ -167,6 +192,7 @@ public class LightningBullet : Bullet
 			targetPos.z = Mathf.Sin(transform.rotation.eulerAngles.y*Mathf.Deg2Rad)*-BulletLength();
 			targetPos.x += transform.position.x;
 			targetPos.z += transform.position.z;
+			targetPos.y = m_ownerCreature.transform.localPosition.y;
 
 			createChanningParticle(transform.position, targetPos, 0, particles.Length);
 			

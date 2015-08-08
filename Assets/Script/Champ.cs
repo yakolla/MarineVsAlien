@@ -52,7 +52,7 @@ public class Champ : Creature {
 
 		MobKills = 0;
 		m_machoSkillStacks = 0;
-		m_remainStatPoint = Cheat.HowManyAbilityPointOnStart;
+		m_remainStatPoint = 0;
 		m_lastLevelupTime = Time.time;
 	}
 
@@ -254,28 +254,48 @@ public class Champ : Creature {
 
 		}
 
-		bool touched = false;
-		Vector3 touchPos = Vector3.zero;
+		int touchedCount = 0;
+		Vector3[] touchPos = new Vector3[5];
 #if UNITY_EDITOR
-		touched = Input.GetMouseButtonUp(0);
-		if (touched == true)
-			touchPos = Input.mousePosition;
+		touchedCount = Input.GetMouseButtonUp(0) == true ? 1 : 0;
+		if (touchedCount > 0)
+			touchPos[0] = Input.mousePosition;
+
 #else
-		touched = Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began;
-		if (touched == true)
-			touchPos = Input.GetTouch(0).position;
-#endif
-		if (touched == true) 
+		touchedCount = Input.touchCount;
+		if (touchedCount > 0)
 		{
-			Ray ray = Camera.main.ScreenPointToRay( touchPos );
+			int aa = 0;
+			for(int i = 0; i < touchedCount; ++i)
+			{
+				if (Input.GetTouch (i).phase == TouchPhase.Began)
+				{
+					touchPos[aa] = Input.GetTouch(i).position;
+					++aa;
+				}
+			}
+
+			touchedCount = aa;
+		}
+#endif
+		for (int i = 0; i < touchedCount; ++i) 
+		{
+			Ray ray = Camera.main.ScreenPointToRay( touchPos[i] );
 			RaycastHit[] hits;
-			hits = Physics.RaycastAll(ray, Mathf.Infinity, 1<<9);
+			hits = Physics.RaycastAll(ray, Mathf.Infinity, 1<<9 | 1<<10);
 			foreach(RaycastHit hit in hits )
 			{
 				Creature target = hit.transform.GetComponent<Creature>();
-				if (IsEnemy(target, this))
+				if (target != null && IsEnemy(target, this))
 				{
 					target.TakeDamage(this, new DamageDesc(10, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
+				}
+				else if (hit.transform.tag.CompareTo("ItemBox") == 0)
+				{
+
+					ItemBox itemBox = hit.transform.gameObject.GetComponent<ItemBox>();
+					itemBox.StartPickupEffect(this);
+
 				}
 			}
 		}

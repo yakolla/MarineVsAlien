@@ -26,12 +26,12 @@ public class ItemWeaponData : ItemData{
 	{
 		obj.EquipWeapon(this, null);
 
-		ApplyOptions(obj, 0);
+		base.Equip(obj);
 	}
 
 	override public void NoUse(Creature obj)
 	{
-		NoApplyOptions(obj);
+
 	}
 	
 	override public string Description()
