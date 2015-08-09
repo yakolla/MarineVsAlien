@@ -326,13 +326,15 @@ public class Spawn : MonoBehaviour {
 
 		if (mob.Boss)
 		{
-			SpawnItemBox(GetCurrentWave().itemSpawn.bossDefaultItem, mob.transform.position);
-			TimeEffector.Instance.BulletTime(0.005f);
-			Const.SaveGame((SavedGameRequestStatus, ISavedGameMetadata)=>{});
 			Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
 			Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
 			Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
 			Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
+
+			SpawnItemBox(GetCurrentWave().itemSpawn.bossDefaultItem, mob.transform.position);
+			TimeEffector.Instance.BulletTime(0.005f);
+			Const.SaveGame((SavedGameRequestStatus, ISavedGameMetadata)=>{});
+
 		}
 
 		if (true == mob.CheckOnDeath)
