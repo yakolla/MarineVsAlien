@@ -82,6 +82,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(21));
 				Warehouse.Instance.PushItem(new ItemStatData(22));
 				Warehouse.Instance.PushItem(new ItemStatData(23));
+				Warehouse.Instance.PushItem(new ItemStatData(24));
 			}
 			byte[] data = Warehouse.Instance.Serialize();
 			Warehouse.Instance.Deserialize(data);
@@ -123,6 +124,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(21));
 				Warehouse.Instance.PushItem(new ItemStatData(22));
 				Warehouse.Instance.PushItem(new ItemStatData(23));
+				Warehouse.Instance.PushItem(new ItemStatData(24));
 			}
 
 			byte[] data = Warehouse.Instance.Serialize();

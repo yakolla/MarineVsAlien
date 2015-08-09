@@ -44,8 +44,9 @@ public class YGUISystem {
 		virtual public void Update()
 		{
 			m_button.interactable = m_enableChecker();
-
-			//m_button.image.color = color;
+			m_lable.Text.gameObject.SetActive(m_button.interactable);
+			if (m_icon != null)
+				m_icon.RawImage.gameObject.SetActive(m_button.interactable);
 		}
 
 		public GUILable Lable
@@ -159,6 +160,7 @@ public class YGUISystem {
 		{
 			m_guiCoolDown.Update();
 			base.Update();
+			m_chargingText.gameObject.SetActive(Button.interactable);
 		}
 
 		public int ChargingPoint

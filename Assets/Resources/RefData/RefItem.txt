@@ -71,7 +71,7 @@
 		"id":21,
 		"codeName":"NuclearSkill",
 		"type":"Skill",
-		"icon":"Sprites/LevelUp",
+		"icon":"Sprites/dash-skill",
 		"defaultLock":true,
 		"weaponId":133,
 		"weaponStat":
@@ -97,8 +97,7 @@
 					"refItemId":8,
 					"count":10
 				}
-			],
-			"pricePerLevel":1.5
+			]
 		},		
 		"unlock":
 		{
@@ -126,7 +125,7 @@
 		"id":22,
 		"codeName":"MachoSkill",
 		"type":"Skill",
-		"icon":"Sprites/LevelUp",
+		"icon":"Sprites/ComboSkill",
 		"defaultLock":true,
 		"weaponStat":
 		{
@@ -151,8 +150,7 @@
 					"refItemId":8,
 					"count":50
 				}
-			],
-			"pricePerLevel":1.5
+			]
 		},		
 		"unlock":
 		{
@@ -205,8 +203,60 @@
 					"refItemId":8,
 					"count":50
 				}
+			]
+		},		
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":1000
+				},
+				{
+					"refItemId":5, 
+					"count":10
+				}
 			],
-			"pricePerLevel":1.5
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":10
+				}
+			]
+		}	
+	},
+	{
+		"id":24,
+		"codeName":"DamageMultiplySkill",
+		"type":"Skill",
+		"icon":"Sprites/LevelUp",
+		"defaultLock":true,
+		"weaponStat":
+		{
+			"coolTime":600
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":5000
+				},
+				{
+					"refItemId":5, 
+					"count":50
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":50
+				}
+			]
 		},		
 		"unlock":
 		{

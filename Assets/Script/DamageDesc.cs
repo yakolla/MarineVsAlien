@@ -25,10 +25,13 @@ public class DamageDesc {
 		Poison,
 		Macho,
 		Dash,
+		DamageMultiply,
+		Healing,
 		Count,
 	}
 
 	int			m_damage;
+	float		m_damageRatio;
 	Type		m_type;
 	GameObject	m_prefEffect;
 	BuffType	m_buffType;
@@ -74,5 +77,11 @@ public class DamageDesc {
 	{
 		get { return m_dir;}
 		set {m_dir = value;}
+	}
+
+	public float DamageRatio
+	{
+		get {return m_damageRatio;}
+		set {m_damageRatio = value;}
 	}
 }

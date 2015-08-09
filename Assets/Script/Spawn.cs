@@ -293,11 +293,16 @@ public class Spawn : MonoBehaviour {
 				}
 
 				yield return new WaitForSeconds(5f);
-				NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
-				nav.SetDestination(m_goalPoints[(m_wave+1)%m_goalPoints.Length].transform.position);
-				while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)
+
+				if (m_champ != null)
 				{
-					yield return null;
+					NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
+					nav.SetDestination(m_goalPoints[(m_wave+1)%m_goalPoints.Length].transform.position);
+					m_champ.RotateToTarget(m_goalPoints[(m_wave+1)%m_goalPoints.Length].transform.position);
+					while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)
+					{
+						yield return null;
+					}
 				}
 
 				m_wave++;

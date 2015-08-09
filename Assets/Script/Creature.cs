@@ -605,6 +605,40 @@ public class Creature : MonoBehaviour {
 		DestroyObject(effect);
 	}
 
+	IEnumerator EffectDamageMultiply(float time, float damageRatio)
+	{
+		GameObject pref = Resources.Load<GameObject>("Pref/ef combo skill");
+		GameObject effect = (GameObject)Instantiate(pref);
+		effect.transform.parent = transform;
+		effect.transform.localPosition = pref.transform.position;
+		effect.transform.localRotation = pref.transform.rotation;
+		
+		m_creatureProperty.DamageRatio += damageRatio;
+		
+		yield return new WaitForSeconds(time);
+		
+		m_buffEffects[(int)DamageDesc.BuffType.DamageMultiply].m_run = false;
+		m_creatureProperty.DamageRatio -= damageRatio;
+		
+		DestroyObject(effect);
+	}
+
+	IEnumerator EffectHealing(float time, float damageRatio)
+	{
+		float timeout = Time.time+time;
+		while(Time.time < timeout)
+		{
+			int heal = (int)(m_creatureProperty.MaxHP*damageRatio);
+			Heal(heal);
+			DamageText("Heal " + heal, Color.green, DamageNumberSprite.MovementType.Parabola);
+			yield return new WaitForSeconds(1f);
+		}
+		
+		m_buffEffects[(int)DamageDesc.BuffType.Healing].m_run = false;
+		
+
+	}
+
 	void ApplyDamageEffect(DamageDesc.Type type, GameObject prefEffect)
 	{
 		if (prefEffect == null)
@@ -619,8 +653,8 @@ public class Creature : MonoBehaviour {
 
 	virtual public bool ApplyBuff(Creature offender, DamageDesc.BuffType type, float time, DamageDesc damageDesc)
 	{
-		if (m_buffEffects[(int)type].m_run == true)
-			return false;
+		//if (m_buffEffects[(int)type].m_run == true)
+		//	return false;
 
 		m_buffEffects[(int)type].m_run = true;
 
@@ -646,6 +680,12 @@ public class Creature : MonoBehaviour {
 			break;
 		case DamageDesc.BuffType.Dash:
 			StartCoroutine(EffectDash(damageDesc, time));
+			break;
+		case DamageDesc.BuffType.DamageMultiply:
+			StartCoroutine(EffectDamageMultiply(time, damageDesc.DamageRatio));
+			break;
+		case DamageDesc.BuffType.Healing:
+			StartCoroutine(EffectHealing(time, damageDesc.DamageRatio));
 			break;
 		}
 

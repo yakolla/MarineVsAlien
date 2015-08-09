@@ -30,41 +30,25 @@ public class ChampStatusGUI : MonoBehaviour {
 
 		m_accessoryBoard = transform.Find("Accessory").gameObject;
 
-		m_specialButtons[0] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button0").gameObject, ()=>{
-			return Warehouse.Instance.FindItem(23).Item.Level > 0;
+		assignSkillButton(0, Warehouse.Instance.FindItem(23), 1, 1, ()=>{
+			DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+			desc.DamageRatio = Warehouse.Instance.FindItem(23).Item.Level*0.1f;
+			m_champ.ApplyBuff(null, DamageDesc.BuffType.Healing, 60f, desc);
 		});
 
-		m_specialButtons[0].DoFunctor = ()=>{
-			m_champ.Heal(m_champ.m_creatureProperty.MaxHP);
-		};
-
-		m_specialButtons[0].MaxChargingPoint = 1;
-		m_specialButtons[0].ChargingPoint = 1;
-		m_specialButtons[0].CoolDownTime = Warehouse.Instance.FindItem(23).Item.RefItem.weaponStat.coolTime;
-
-		m_specialButtons[1] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button1").gameObject, ()=>{
-
-			return Warehouse.Instance.FindItem(22).Item.Level > 0;
-		});
-		m_specialButtons[1].DoFunctor = ()=>{
+		assignSkillButton(1, Warehouse.Instance.FindItem(22), 1, 1, ()=>{
 			m_champ.ApplyMachoSkill();
-		};
-
-		m_specialButtons[1].MaxChargingPoint = 1;
-		m_specialButtons[1].ChargingPoint = 1;
-		m_specialButtons[1].CoolDownTime = Warehouse.Instance.FindItem(22).Item.RefItem.weaponStat.coolTime;
-
-		m_specialButtons[2] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button2").gameObject, ()=>{
-			return Warehouse.Instance.FindItem(21).Item.Level > 0;
 		});
-		m_specialButtons[2].DoFunctor = ()=>{
-			
-			m_champ.WeaponHolder.ActiveWeaponSkillFire(Const.NuclearRefItemId, transform.eulerAngles.y);
-		};
 
-		m_specialButtons[2].MaxChargingPoint = 3;
-		m_specialButtons[2].ChargingPoint = 3;
-		m_specialButtons[2].CoolDownTime = Warehouse.Instance.FindItem(21).Item.RefItem.weaponStat.coolTime;
+		assignSkillButton(2, Warehouse.Instance.FindItem(21), 3, 3, ()=>{			
+			m_champ.WeaponHolder.ActiveWeaponSkillFire(Const.NuclearRefItemId, transform.eulerAngles.y);
+		});
+
+		assignSkillButton(3, Warehouse.Instance.FindItem(24), 3, 3, ()=>{	
+			DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+			desc.DamageRatio = 10f*Warehouse.Instance.FindItem(24).Item.Level;
+			m_champ.ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 60f, desc);
+		});
 
 		for(int i = 0; i < m_accessoryButtons.Length; ++i)
 		{
@@ -90,6 +74,22 @@ public class ChampStatusGUI : MonoBehaviour {
 			()=>{return Mathf.FloorToInt(m_champ.m_creatureProperty.SP).ToString() + " / " + Mathf.FloorToInt(m_champ.m_creatureProperty.MaxSP).ToString();
 			}
 		);
+	}
+
+	void assignSkillButton(int slot, ItemObject itemObj, int maxChargingPoint, int chargingPoint, System.Action doFunctor)
+	{
+		m_specialButtons[slot] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button"+slot).gameObject, ()=>{
+			return itemObj.Item.Level > 0;
+		});
+		
+		m_specialButtons[slot].Icon.Image = itemObj.ItemIcon;
+		
+		m_specialButtons[slot].DoFunctor = doFunctor;
+		
+		m_specialButtons[slot].MaxChargingPoint = maxChargingPoint;
+		m_specialButtons[slot].ChargingPoint = chargingPoint;
+		m_specialButtons[slot].CoolDownTime = itemObj.Item.RefItem.weaponStat.coolTime;
+
 	}
 
 	public void OnClickLevelUp(bool autoAssigned)
