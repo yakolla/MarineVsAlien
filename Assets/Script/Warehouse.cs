@@ -20,6 +20,7 @@ public class WarehouseData
 	public Options					m_options = new Options();
 	public EquipItems				m_equipItems = new EquipItems();
 	public GameDataContext			m_gameDataContext = new GameDataContext();
+	public Tutorial					m_tutorial = new Tutorial();
 
 	public class 	GameStatistics
 	{
@@ -65,6 +66,14 @@ public class WarehouseData
 		public SecuredType.XInt	m_hp = 100;
 		public SecuredType.XInt	m_xp = 0;
 		public SecuredType.XInt	m_level = 1;
+	}
+
+	public class Tutorial
+	{
+		public bool		m_unlockedWeaponTab;
+		public bool		m_unlockedStatTab;
+		public bool		m_unlockedSkillTab;
+		public bool		m_unlockedFollowerTab;
 	}
 }
 
@@ -259,6 +268,11 @@ public class Warehouse {
 	public WarehouseData.GameDataContext GameDataContext
 	{
 		get {return m_warehouseData.m_gameDataContext;}
+	}
+
+	public WarehouseData.Tutorial GameTutorial
+	{
+		get {return m_warehouseData.m_tutorial;}
 	}
 		
 	static protected void initInven(Dictionary<ItemData.Type, List<ItemObject>> items)

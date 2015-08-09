@@ -17,6 +17,8 @@ public class ChampSettingGUI : MonoBehaviour {
 	GameObject	m_followerPanel;
 	GameObject	m_skillPanel;
 
+	YGUISystem.GUIButton[]	m_tabs = new YGUISystem.GUIButton[4];
+
 	[SerializeField]
 	Transform		m_spawnChamp;
 
@@ -150,12 +152,17 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		m_start = new YGUISystem.GUIButton(transform.Find("StartButton").gameObject, ()=>{return m_equipedWeapon != null;});
 
+		m_tabs[0] = new YGUISystem.GUIButton(transform.Find("StatTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedStatTab;});
+		m_tabs[1] = new YGUISystem.GUIButton(transform.Find("WeaponTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedWeaponTab;});
+		m_tabs[2] = new YGUISystem.GUIButton(transform.Find("SkillTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedSkillTab;});
+		m_tabs[3] = new YGUISystem.GUIButton(transform.Find("FollowerTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedFollowerTab;});
+
 		m_weaponPanel = settingItemList("WeaponPanel", ItemData.Type.Weapon);
 		m_statPanel = settingItemList("StatPanel", ItemData.Type.Stat);
 		m_followerPanel = settingItemList("FollowerPanel", ItemData.Type.Follower);
 		m_skillPanel = settingItemList("SkillPanel", ItemData.Type.Skill);
 
-		OnClickStat();
+		//OnClickStat();
 
 		OnClickStart();
 	}
@@ -247,6 +254,10 @@ public class ChampSettingGUI : MonoBehaviour {
 	{
 		m_start.Update();
 
+		foreach(YGUISystem.GUIButton button in m_tabs)
+		{
+			button.Update();
+		}
 
 	}
 
