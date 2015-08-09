@@ -62,6 +62,7 @@ public class WeaponStat
 	public float			coolTime;
 	public float			range;
 	public int				firingCount;
+	public int				incBulletOnLevel = 2;
 	public int				spPerLevel;
 	public int				skillId;
 	public int				summonRefMobId;
@@ -89,6 +90,9 @@ public class WeaponStat
 
 		if (buffOnHitDesc.chance == 0 && buffOnHitDesc.buffType == DamageDesc.BuffType.Nothing)
 			buffOnHitDesc = weaponStat.buffOnHitDesc;
+
+		if (incBulletOnLevel == 2)
+			incBulletOnLevel = weaponStat.incBulletOnLevel;
 
 	}
 }

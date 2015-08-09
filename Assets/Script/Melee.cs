@@ -5,15 +5,6 @@ public class Melee : Weapon {
 
 	MeleeBullet	m_bullet;
 
-	override protected Weapon.FiringDesc DefaultFiringDesc()
-	{
-		Weapon.FiringDesc desc = new Weapon.FiringDesc();
-		desc.angle = 0;
-		desc.delayTime = 0.3f;
-		
-		return desc;
-	}
-
 	override public Bullet CreateBullet(Weapon.FiringDesc targetAngle, Vector3 startPos)
 	{
 		Bullet bullet = base.CreateBullet(targetAngle, startPos);
@@ -75,6 +66,9 @@ public class Melee : Weapon {
 	
 	override public bool MoreFire()
 	{
+		if (m_firingDescs.Count == 0)
+			return base.MoreFire();
+
 		return false;
 	}
 	

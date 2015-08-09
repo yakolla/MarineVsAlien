@@ -715,7 +715,7 @@ public class Creature : MonoBehaviour {
 			if (Random.Range(0, 1f) < offender.m_creatureProperty.CriticalChance)
 			{
 				critical = true;
-				criticalDamage = offender.m_creatureProperty.CriticalDamage;
+				criticalDamage = 1f+offender.m_creatureProperty.CriticalDamage;
 			}
 		}
 

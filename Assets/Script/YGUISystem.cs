@@ -137,6 +137,7 @@ public class YGUISystem {
 
 		GUICoolDown m_guiCoolDown;
 		Text	m_chargingText;
+		System.Action m_do;
 		public GUIChargeButton(GameObject obj, System.Func<bool> enableChecker)
 			: base(obj, ()=>{return m_charge > 0 && enableChecker();})
 		{
@@ -146,6 +147,12 @@ public class YGUISystem {
 
 			m_chargingText = obj.transform.Find("Cooldown/ChargingPoint").gameObject.GetComponent<Text>();
 
+		}
+
+		public System.Action DoFunctor
+		{
+			set{m_do = value;}
+			get{return m_do;}
 		}
 
 		override public void Update()

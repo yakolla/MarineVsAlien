@@ -4,19 +4,21 @@ using System.Collections;
 public class Gun : Weapon {
 
 	[SerializeField]
-	float		m_bulletSpeed = 3f;
+	float		m_minBulletSpeed = 3f;
 
 	[SerializeField]
 	float		m_maxBulletSpeed = 10f;
+
+	float		m_bulletSpeed = 3f;
 
 	override public void LevelUp()
 	{
 		base.LevelUp();
 
-		if (Level % 2 == 0)
+		if (Level % WeaponStat.incBulletOnLevel == 0)
 		{
-			m_bulletSpeed += Level/2*2;
-			m_bulletSpeed = Mathf.Min(m_bulletSpeed, m_maxBulletSpeed);
+			m_bulletSpeed = m_minBulletSpeed+(m_maxBulletSpeed-m_minBulletSpeed)/(float)(Level/RefItem.maxLevel);
+			m_bulletSpeed = Mathf.Min(m_minBulletSpeed, m_maxBulletSpeed);
 		}
 	}
 

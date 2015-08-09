@@ -96,9 +96,4 @@ public class LightningLauncher : Weapon {
 		return true;
 	}
 
-	override public void LevelUp()
-	{
-		++m_level;
-		MoreFire();
-	}
 }

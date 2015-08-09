@@ -31,21 +31,40 @@ public class ChampStatusGUI : MonoBehaviour {
 		m_accessoryBoard = transform.Find("Accessory").gameObject;
 
 		m_specialButtons[0] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button0").gameObject, ()=>{
-			m_specialButtons[0].Lable.Text.text = m_champ.RemainStatPoint.ToString();
-
-			if (Cheat.AutoAssignedAbility && m_champ.RemainStatPoint > 0 && m_champ.LastLevelupTime+10f < Time.time)
-			{
-				OnClickLevelUp(true);
-			}
-
-			return m_champ.RemainStatPoint > 0;
+			return Warehouse.Instance.FindItem(23).Item.Level > 0;
 		});
+
+		m_specialButtons[0].DoFunctor = ()=>{
+			m_champ.Heal(m_champ.m_creatureProperty.MaxHP);
+		};
+
+		m_specialButtons[0].MaxChargingPoint = 1;
+		m_specialButtons[0].ChargingPoint = 1;
+		m_specialButtons[0].CoolDownTime = Warehouse.Instance.FindItem(23).Item.RefItem.weaponStat.coolTime;
+
 		m_specialButtons[1] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button1").gameObject, ()=>{
-			return true;
+
+			return Warehouse.Instance.FindItem(22).Item.Level > 0;
 		});
+		m_specialButtons[1].DoFunctor = ()=>{
+			m_champ.ApplyMachoSkill();
+		};
+
+		m_specialButtons[1].MaxChargingPoint = 1;
+		m_specialButtons[1].ChargingPoint = 1;
+		m_specialButtons[1].CoolDownTime = Warehouse.Instance.FindItem(22).Item.RefItem.weaponStat.coolTime;
+
 		m_specialButtons[2] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button2").gameObject, ()=>{
-			return true;
+			return Warehouse.Instance.FindItem(21).Item.Level > 0;
 		});
+		m_specialButtons[2].DoFunctor = ()=>{
+			
+			m_champ.WeaponHolder.ActiveWeaponSkillFire(Const.NuclearRefItemId, transform.eulerAngles.y);
+		};
+
+		m_specialButtons[2].MaxChargingPoint = 3;
+		m_specialButtons[2].ChargingPoint = 3;
+		m_specialButtons[2].CoolDownTime = Warehouse.Instance.FindItem(21).Item.RefItem.weaponStat.coolTime;
 
 		for(int i = 0; i < m_accessoryButtons.Length; ++i)
 		{
@@ -95,24 +114,14 @@ public class ChampStatusGUI : MonoBehaviour {
 		GameObject.Find("HudGUI/OptionGUI").transform.Find("Panel").gameObject.SetActive(true);
 	}
 
-	public void OnClickMachoSkill()
+	public void OnClickSkill(int slot)
 	{
-		if (m_specialButtons[1].ChargingPoint == 0)
+		if (m_specialButtons[slot].ChargingPoint == 0)
 			return;
 
-		m_champ.ApplyMachoSkill();
+		m_specialButtons[slot].DoFunctor.Invoke();
 
-		--m_specialButtons[1].ChargingPoint;
-	}
-
-	public void OnClickNuclearSkill()
-	{
-		if (m_specialButtons[2].ChargingPoint == 0)
-			return;
-		
-		m_champ.WeaponHolder.ActiveWeaponSkillFire(Const.NuclearRefItemId, transform.eulerAngles.y);
-
-		--m_specialButtons[2].ChargingPoint;
+		--m_specialButtons[slot].ChargingPoint;
 	}
 
 	public void OnClickAccessory(int slot)
@@ -159,16 +168,6 @@ public class ChampStatusGUI : MonoBehaviour {
 			}
 
 			m_champ = obj.GetComponent<Champ>();
-
-			int[] maxChargings = {0, 1, 3};
-			int[] cooldownTimes = {0, 30, 90};
-
-			for(int i = 0; i < Const.SpecialButtons; ++i)
-			{
-				m_specialButtons[i].MaxChargingPoint = maxChargings[i];
-				m_specialButtons[i].ChargingPoint = maxChargings[i];
-				m_specialButtons[i].CoolDownTime = cooldownTimes[i];
-			}
 
 			for(int i = 0; i < Const.AccessoriesSlots; ++i)
 			{

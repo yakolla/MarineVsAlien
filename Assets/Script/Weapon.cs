@@ -67,10 +67,6 @@ public class Weapon : MonoBehaviour {
 		m_gunPoint = creature.WeaponHolder.gameObject;
 		m_refItem = weaponData.RefItem;
 
-		Weapon.FiringDesc desc = DefaultFiringDesc();
-		m_firingDescs.Clear();
-		m_firingDescs.Add(desc);
-
 		m_lastCreated = Time.time;
 		m_firing = false;
 		m_level = 0;
@@ -85,26 +81,25 @@ public class Weapon : MonoBehaviour {
 			m_weaponStat.OverrideStat(m_refItem.weaponStat);
 		}
 	
-		for(int i = 0; i < m_weaponStat.firingCount; ++i)
+		for(int i = 0; i <= m_weaponStat.firingCount; ++i)
 			MoreFire();
 
 		for(int i = 0; i < weaponData.Level; ++i)
 			LevelUp();
 	}
 
-	virtual protected Weapon.FiringDesc DefaultFiringDesc()
-	{
-		Weapon.FiringDesc desc = new Weapon.FiringDesc();
-		desc.angle = 0;
-		desc.delayTime = 0;
-
-		return desc;
-	}
-
 	virtual public bool MoreFire()
 	{
 		if (m_refItem.evolutionFiring == null)
+		{
+			if (m_firingDescs.Count == 0)
+			{
+				m_firingDescs.Add(new Weapon.FiringDesc());
+				return true;
+			}
+
 			return false;
+		}
 
 		int count = m_firingDescs.Count;
 
@@ -133,7 +128,7 @@ public class Weapon : MonoBehaviour {
 	virtual public void LevelUp()
 	{
 		++m_level;
-		if (m_level % 2 == 0)
+		if (m_level % WeaponStat.incBulletOnLevel == 0)
 		{
 			MoreFire();
 		}
@@ -227,10 +222,7 @@ public class Weapon : MonoBehaviour {
 
 	protected float coolDownTime()
 	{
-		const float maxCool = 0.5f;
-		float levelRatio = (m_level-1)/(float)RefItem.maxLevel;
-		float coolPerLevel = (1-levelRatio)*1 + levelRatio*maxCool;
-		return m_weaponStat.coolTime*m_creature.m_creatureProperty.AttackCoolTime*coolPerLevel;
+		return m_weaponStat.coolTime*m_creature.m_creatureProperty.AttackCoolTime;
 	}
 
 	public bool canConsumeSP()

@@ -21,9 +21,4 @@ public class ItemStatData : ItemData{
 
 	}
 
-	override public string Description()
-	{
-		return OptionsDescription();
-	}
-
 }

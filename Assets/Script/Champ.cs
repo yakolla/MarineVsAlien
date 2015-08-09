@@ -71,7 +71,7 @@ public class Champ : Creature {
 	{
 		m_remainStatPoint+=1*Cheat.HowManyAbilityPointRatioOnLevelUp;
 
-		ApplyBuff(null, DamageDesc.BuffType.LevelUp, 10f, null);
+		ApplyBuff(null, DamageDesc.BuffType.Macho, 10f, null);
 		m_lastLevelupTime = Time.time;
 	}
 

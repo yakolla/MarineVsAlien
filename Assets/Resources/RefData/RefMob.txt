@@ -343,11 +343,10 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"126",
+					"refItemId":"103",
 					"weaponStat":
 					{
-						"coolTime":4,
-						"summonRefMobId":31001
+						"coolTime":4
 					}	
 				}
 				
@@ -538,15 +537,10 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"110"
-				},
-				{
-					"reqLevel":2,
-					"refItemId":"126",
+					"refItemId":"103",
 					"weaponStat":
 					{
-						"coolTime":4,
-						"summonRefMobId":31001
+						"coolTime":4
 					}	
 				}
 			],
@@ -632,14 +626,6 @@
 			[
 				{
 					"refItemId":"107"
-				},
-				{
-					"refItemId":"126",
-					"weaponStat":
-					{
-						"coolTime":4,
-						"summonRefMobId":31006
-					}	
 				}
 			],
 			"mobAI":"Normal",
@@ -883,13 +869,6 @@
 						
 						"firingCount":1
 					}	
-				},
-				{
-					"refItemId":"126",
-					"weaponStat":
-					{	
-						"summonRefMobId":31001
-					}
 				}
 			],
 			"mobAI":"Normal",		
@@ -916,15 +895,7 @@
 			"prefBody":"big_Worm_skin",
 			"refWeaponItems":
 			[				
-				{
-					"refItemId":"126",
-					"weaponStat":
-					{
-						"coolTime":4,
-						
-						"summonRefMobId":31004
-					}
-				},
+				
 				{
 					"refItemId":"115",
 					"weaponStat":
@@ -983,14 +954,6 @@
 					{
 						"coolTime":3
 					}	
-				},
-				{
-					"refItemId":"126",
-					"weaponStat":
-					{
-						"coolTime":4,
-						"summonRefMobId":31007
-					}
 				}
 			],
 			"mobAI":"Normal",		
@@ -1102,7 +1065,11 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"201"
+					"refItemId":"201",
+					"weaponStat":
+					{
+						"incBulletOnLevel":10
+					}
 				}
 			],
 			"mobAI":"Follow",
@@ -1114,9 +1081,9 @@
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
-				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":2,
-				"hpPerLevel":0.33,
+				"phyDamagePerLevel":0,
+				"phyDefencePerLevel":0,
+				"hpPerLevel":0,
 				"moveSpeed":3,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,				
@@ -1131,7 +1098,11 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"202"
+					"refItemId":"202",
+					"weaponStat":
+					{
+						"incBulletOnLevel":10
+					}
 				}
 			],
 			"mobAI":"Follow",
@@ -1161,7 +1132,11 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"208"
+					"refItemId":"208",
+					"weaponStat":
+					{
+						"incBulletOnLevel":10
+					}
 				}
 			],
 			"mobAI":"Follow",
@@ -1190,7 +1165,11 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"204"
+					"refItemId":"204",
+					"weaponStat":
+					{
+						"incBulletOnLevel":10
+					}
 				}
 			],
 			"mobAI":"Follow",

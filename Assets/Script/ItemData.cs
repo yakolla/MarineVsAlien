@@ -90,8 +90,8 @@ public class ItemData {
 			}
 			else
 			{
-				head = op.option.type.ToString() + ":";
-				optionValue = op.option.values[0]*Level;
+				head = "per Lv" + op.level + ":" + op.option.type.ToString() + ":";
+				optionValue = op.option.values[0]*(Level/op.level);
 			}
 
 			switch(op.option.type)
@@ -144,6 +144,8 @@ public class ItemData {
 			if (Level < op.level)
 				continue;
 			if (op.levelPer == false && op.level != Level)
+				continue;
+			if (op.levelPer == true && (Level%op.level) > 0)
 				continue;
 
 			switch(op.option.type)

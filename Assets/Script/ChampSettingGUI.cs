@@ -15,6 +15,7 @@ public class ChampSettingGUI : MonoBehaviour {
 	GameObject	m_weaponPanel;
 	GameObject	m_statPanel;
 	GameObject	m_followerPanel;
+	GameObject	m_skillPanel;
 
 	[SerializeField]
 	Transform		m_spawnChamp;
@@ -77,6 +78,10 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2003));
 				Warehouse.Instance.PushItem(new ItemStatData(2004));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
+
+				Warehouse.Instance.PushItem(new ItemStatData(21));
+				Warehouse.Instance.PushItem(new ItemStatData(22));
+				Warehouse.Instance.PushItem(new ItemStatData(23));
 			}
 			byte[] data = Warehouse.Instance.Serialize();
 			Warehouse.Instance.Deserialize(data);
@@ -114,6 +119,10 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2003));
 				Warehouse.Instance.PushItem(new ItemStatData(2004));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
+
+				Warehouse.Instance.PushItem(new ItemStatData(21));
+				Warehouse.Instance.PushItem(new ItemStatData(22));
+				Warehouse.Instance.PushItem(new ItemStatData(23));
 			}
 
 			byte[] data = Warehouse.Instance.Serialize();
@@ -142,6 +151,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_weaponPanel = settingItemList("WeaponPanel", ItemData.Type.Weapon);
 		m_statPanel = settingItemList("StatPanel", ItemData.Type.Stat);
 		m_followerPanel = settingItemList("FollowerPanel", ItemData.Type.Follower);
+		m_skillPanel = settingItemList("SkillPanel", ItemData.Type.Skill);
 
 		OnClickStat();
 
@@ -541,7 +551,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		RectTransform rectScrollView = transform.Find(panel + "/ScrollView").gameObject.GetComponent<RectTransform>();
 		GameObject contentsObj = transform.Find(panel+ "/ScrollView/Contents").gameObject;
 		RectTransform rectInventoryObj = contentsObj.GetComponent<RectTransform>();
-		Vector2 rectContents = new Vector2(	rectInventoryObj.rect.width, 0);
+
 		
 		GameObject prefGUIInventorySlot = Resources.Load<GameObject>("Pref/GUIInventorySlot");
 		RectTransform	rectGUIInventorySlot = prefGUIInventorySlot.GetComponent<RectTransform>();
@@ -589,7 +599,7 @@ public class ChampSettingGUI : MonoBehaviour {
 			
 			++itemAddedCount;
 		}
-		rectContents.y = rectGUIInventorySlot.rect.height*itemAddedCount;
+		Vector2 rectContents = new Vector2(	rectInventoryObj.rect.width, rectGUIInventorySlot.rect.height*itemAddedCount);
 		rectInventoryObj.sizeDelta = rectContents;
 		//rectInventoryObj.position = new Vector3(rectInventoryObj.position.x, -(rectContents.y/2-rectScrollView.rect.height/2), rectInventoryObj.position.z);
 		rectInventoryObj.localPosition = new Vector3(0, -(rectContents.y/2-rectScrollView.rect.height/2-rectGUIInventorySlot.rect.height*equipItemIndex), 0);
@@ -602,6 +612,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_weaponPanel.SetActive(true);
 		m_statPanel.SetActive(false);
 		m_followerPanel.SetActive(false);
+		m_skillPanel.SetActive(false);
 	}
 
 	public void OnClickStat()
@@ -609,6 +620,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_weaponPanel.SetActive(false);
 		m_statPanel.SetActive(true);
 		m_followerPanel.SetActive(false);
+		m_skillPanel.SetActive(false);
 	}
 
 	public void OnClickFollower()
@@ -616,6 +628,15 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_weaponPanel.SetActive(false);
 		m_statPanel.SetActive(false);
 		m_followerPanel.SetActive(true);
+		m_skillPanel.SetActive(false);
+	}
+
+	public void OnClickSkill()
+	{
+		m_weaponPanel.SetActive(false);
+		m_statPanel.SetActive(false);
+		m_followerPanel.SetActive(false);
+		m_skillPanel.SetActive(true);
 	}
 }
 

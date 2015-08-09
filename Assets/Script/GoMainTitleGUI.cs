@@ -29,8 +29,10 @@ public class GoMainTitleGUI : MonoBehaviour {
 	public void OnClickYes()
 	{
 		Const.ShowLoadingGUI("Loading...");
-		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game)=>{
+		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game)=>{			
+
 			Application.LoadLevel("Worldmap");
+			TimeEffector.Instance.StartTime();
 		});
 
 	}
