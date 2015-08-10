@@ -9,21 +9,12 @@ public class GameOverGUI : MonoBehaviour {
 
 	ADMob					m_admob;
 
-	YGUISystem.GUIPriceButton	m_continueButton;
-	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[1];
-	YGUISystem.GUILable	m_restartText;
-	YGUISystem.GUILable	m_continueText;
+	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[2];
+
 	string[]				m_leaderBoards = {Const.LEADERBOARD_KILLED_MOBS};
 
 	void Start () {
-
-
-		m_restartText = new YGUISystem.GUILable(transform.Find("RestartButton/Text").gameObject);
-		m_restartText.Text.text = "Continue at " + (Warehouse.Instance.WaveIndex/2+1) + " wave";
-
-		m_restartText = new YGUISystem.GUILable(transform.Find("ContinueButton/Text").gameObject);
-		m_restartText.Text.text = "Continue at " + (Warehouse.Instance.WaveIndex+1) + " wave";
-
+	
 		m_admob = GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>();
 
 		m_guages[0] = new YGUISystem.GUIGuage(transform.Find("Killed Mobs/Guage/Guage").gameObject, 
@@ -39,19 +30,19 @@ public class GameOverGUI : MonoBehaviour {
 		}
 		);
 
-		for(int i = 0; i < m_guages.Length; ++i)
-		{
-			m_guages[i].Update();
+		m_guages[1] = new YGUISystem.GUIGuage(transform.Find("Waves/Guage/Guage").gameObject, 
+		                                      ()=>{
+			if (Warehouse.Instance.GameBestStats.WaveIndex == 0)
+				return 1f;
+			return (float)Warehouse.Instance.NewGameStats.WaveIndex/Warehouse.Instance.GameBestStats.WaveIndex;
+		}, 
+		()=>{
+			if (Warehouse.Instance.GameBestStats.WaveIndex == 0)
+				return "1 / 1";
+			return (Warehouse.Instance.NewGameStats.WaveIndex+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString(); 
 		}
+		);
 
-
-		m_continueButton = new YGUISystem.GUIPriceButton(transform.Find("ContinueButton").gameObject, Const.StartPosYOfPriceButtonImage, ()=>{
-			return true;
-		});
-
-
-		m_continueButton.NormalWorth = Warehouse.Instance.WaveIndex;
-		m_continueButton.Prices = RefData.Instance.RefItems[Const.RandomAbilityRefItemId].levelup.conds;
 
 		m_admob.ShowInterstitial();
 		m_admob.ShowBanner(true);
@@ -98,41 +89,36 @@ public class GameOverGUI : MonoBehaviour {
 
 	void Update()
 	{
-		m_continueButton.Update();
+		for(int i = 0; i < m_guages.Length; ++i)
+		{
+			m_guages[i].Update();
+		}
 	}
 
-	public void OnClickRestart()
+	public void OnClickDecWave()
 	{
-		m_admob.ShowBanner(false);
+		Warehouse.Instance.NewGameStats.WaveIndex = Mathf.Max(0, --Warehouse.Instance.NewGameStats.WaveIndex);
+	}
 
-		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Restart", 0);
-
-		Warehouse.Instance.WaveIndex /= 2;
-		Warehouse.Instance.KilledMobs /= 2;
-
-
-		SaveGame(false);
+	public void OnClickIncWave()
+	{
+		Warehouse.Instance.NewGameStats.WaveIndex = Mathf.Min(Warehouse.Instance.GameBestStats.WaveIndex, ++Warehouse.Instance.NewGameStats.WaveIndex);
 	}
 
 	public void OnClickContinue()
 	{
-		if (true == m_continueButton.TryToPay())
-		{
-			m_admob.ShowBanner(false);
-			GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Continue", 0);
-			
-			SaveGame(false);
-		}
+
+		m_admob.ShowBanner(false);
+		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Continue", 0);
+		Warehouse.Instance.WaveIndex = Warehouse.Instance.NewGameStats.WaveIndex;
+		Warehouse.Instance.KilledMobs = (int)(Warehouse.Instance.KilledMobs*((float)Warehouse.Instance.WaveIndex/Warehouse.Instance.GameBestStats.WaveIndex));
+		SaveGame(false);
 	}
 
 	public void OnClickTitle()
 	{
 		m_admob.ShowBanner(false);
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Title", 0);
-
-
-		Warehouse.Instance.WaveIndex /= 2;
-		Warehouse.Instance.KilledMobs /= 2;
 
 		SaveGame(true);
 	}
