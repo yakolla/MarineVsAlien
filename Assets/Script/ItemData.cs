@@ -37,6 +37,7 @@ public class ItemData {
 		Weapon,
 		Strength,
 		MaxHp,
+		MaxSp,
 		CriticalChance,
 		CriticalDamage,
 		GainExtraGold,
@@ -105,6 +106,7 @@ public class ItemData {
 				break;
 			case Option.Strength:
 			case Option.MaxHp:
+			case Option.MaxSp:
 				desc += head + (optionValue) + "</color>\n";
 				break;
 			case Option.CriticalChance:
@@ -178,6 +180,9 @@ public class ItemData {
 				break;
 			case Option.MaxHp:
 				obj.m_creatureProperty.AlphaMaxHP += (int)op.option.values[0];
+				break;
+			case Option.MaxSp:
+				obj.m_creatureProperty.AlphaMaxSP += (int)op.option.values[0];
 				break;
 			case Option.CriticalChance:
 				obj.m_creatureProperty.AlphaCriticalChance += op.option.values[0];

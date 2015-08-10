@@ -326,9 +326,6 @@ public class Spawn : MonoBehaviour {
 
 		if (mob.Boss)
 		{
-			Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
-			Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
-			Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
 			Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
 
 			SpawnItemBox(GetCurrentWave().itemSpawn.bossDefaultItem, mob.transform.position);

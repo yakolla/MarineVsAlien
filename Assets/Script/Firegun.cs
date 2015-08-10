@@ -8,7 +8,7 @@ public class Firegun : Weapon {
 
 	override public void StartFiring(float targetAngle)
 	{		
-		if (canConsumeSP() == true )
+		if (m_creature.m_creatureProperty.SP > 0)
 		{
 			if (m_firing == false)
 			{
@@ -32,7 +32,7 @@ public class Firegun : Weapon {
 				this.audio.Play();
 			}
 
-			m_accSp += SP * Time.deltaTime * coolDownTime();
+			m_accSp += SP * Time.deltaTime;
 			if (m_accSp >= 1)
 			{
 				m_creature.m_creatureProperty.SP -= (int)m_accSp;

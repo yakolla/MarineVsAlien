@@ -11,7 +11,7 @@ public class LightningLauncher : Weapon {
 
 	override public void StartFiring(float targetAngle)
 	{		
-		if (canConsumeSP() == true )
+		if (m_creature.m_creatureProperty.SP > 0)
 		{
 			if (null == m_bullet)
 			{
@@ -26,7 +26,7 @@ public class LightningLauncher : Weapon {
 			if (this.audio.isPlaying == false)
 				this.audio.Play();
 
-			m_accSp += SP * Time.deltaTime * coolDownTime();
+			m_accSp += SP * Time.deltaTime;
 			if (m_accSp >= 1)
 			{
 				m_creature.m_creatureProperty.SP -= (int)m_accSp;
@@ -80,7 +80,7 @@ public class LightningLauncher : Weapon {
 	override public void StopFiring()
 	{
 		if (m_firing == true)
-			m_fadeOutEffect = 1f;
+			m_fadeOutEffect = 0.3f;
 
 		base.StopFiring();
 

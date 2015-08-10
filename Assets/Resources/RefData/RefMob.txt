@@ -1285,6 +1285,8 @@
 			"baseCreatureProperty":
 			{
 				"maxHP":100,
+				"maxSP":100,
+				"spRecoveryPerSec":1,
 				"physicalDamage":5,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,

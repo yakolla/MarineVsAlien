@@ -59,8 +59,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemGoldMedalData(1000));
 				Warehouse.Instance.PushItem(new ItemGemData(12000));
 				
-				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));
-				
+				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));				
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampLightningLauncherRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampFiregunRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGuidedRocketLauncherRefItemId));
@@ -80,12 +79,19 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2003));
 				Warehouse.Instance.PushItem(new ItemStatData(2004));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
+				Warehouse.Instance.PushItem(new ItemStatData(2006));
 
 				Warehouse.Instance.PushItem(new ItemStatData(21));
 				Warehouse.Instance.PushItem(new ItemStatData(22));
 				Warehouse.Instance.PushItem(new ItemStatData(23));
 				Warehouse.Instance.PushItem(new ItemStatData(24));
 			}
+
+			Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
+			Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
+			Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
+			Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
+
 			byte[] data = Warehouse.Instance.Serialize();
 			Warehouse.Instance.Deserialize(data);
 
@@ -102,12 +108,9 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemGemData(0));
 
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));
-
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampLightningLauncherRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampFiregunRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGuidedRocketLauncherRefItemId));
-				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampRocketLauncherRefItemId));
-				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampBoomerangLauncherRefItemId));
 
 				foreach(RefMob follower in RefData.Instance.RefFollowerMobs)
 				{
@@ -122,6 +125,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2003));
 				Warehouse.Instance.PushItem(new ItemStatData(2004));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
+				Warehouse.Instance.PushItem(new ItemStatData(2006));
 
 				Warehouse.Instance.PushItem(new ItemStatData(21));
 				Warehouse.Instance.PushItem(new ItemStatData(22));
@@ -390,7 +394,11 @@ public class ChampSettingGUI : MonoBehaviour {
 				++selectedItem.Item.Level;
 
 				if (selectedItem.Item.RefItem.type == ItemData.Type.Weapon)
+				{
 					m_champ.WeaponHolder.MainWeapon.LevelUp();
+					Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
+					Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
+				}
 				else if (selectedItem.Item.RefItem.type == ItemData.Type.Follower)
 				{
 					ItemFollowerData itemFollowerData = selectedItem.Item as ItemFollowerData;
@@ -400,6 +408,10 @@ public class ChampSettingGUI : MonoBehaviour {
 				else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat)
 				{
 					selectedItem.Item.Use(m_champ);
+
+					if (selectedItem.Item.Level == 5)
+						Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
+
 				}
 
 				if (selectedItem.Item.Level == selectedItem.Item.RefItem.maxLevel)

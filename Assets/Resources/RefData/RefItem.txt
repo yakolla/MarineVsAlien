@@ -386,6 +386,22 @@
 		"type":"Weapon",
 		"icon":"Sprites/Firegun",
 		"defaultLock":true,
+		"evolutionFiring":
+		{
+			"angle":5,
+			"delay":0.3
+		},
+		"weaponStat":
+		{
+			"coolTime":4,
+			"range":4,			
+			"spPerLevel":1,
+			"buffOnHitDesc":
+			{
+				"chance":0,
+				"buffType":"Slow"
+			}
+		},
 		"levelup":
 		{
 			"conds":
@@ -454,21 +470,6 @@
 					"count":50
 				}
 			]
-		},
-		"evolutionFiring":
-		{
-			"angle":30,
-			"delay":0.3
-		},
-		"weaponStat":
-		{
-			"coolTime":4,
-			"range":4,
-			"buffOnHitDesc":
-			{
-				"chance":0,
-				"buffType":"Slow"
-			}
 		}
 	},
 	{
@@ -481,7 +482,8 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":4,			
+			"range":4,
+			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -690,7 +692,8 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":4
+			"range":4,			
+			"spPerLevel":1,
 		},		
 		"levelup":
 		{
@@ -816,7 +819,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.7,
-			"range":4,			
+			"range":4,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -941,7 +944,8 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":4			
+			"range":4,			
+			"spPerLevel":1,
 		},		
 		"levelup":
 		{
@@ -1325,6 +1329,7 @@
 		{
 			"coolTime":2,
 			"range":4,			
+			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -2424,7 +2429,7 @@
 		"codeName":"Boots",
 		"type":"Stat",
 		"icon":"Sprites/Boots",
-		"maxLevel":90,
+		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
 		{
@@ -2482,7 +2487,7 @@
 		"codeName":"Boots",
 		"type":"Stat",
 		"icon":"Sprites/Boots",
-		"maxLevel":90,
+		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
 		{
@@ -2598,7 +2603,7 @@
 		"codeName":"Boots",
 		"type":"Stat",
 		"icon":"Sprites/Boots",
-		"maxLevel":90,
+		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
 		{
@@ -2656,7 +2661,7 @@
 		"codeName":"Boots",
 		"type":"Stat",
 		"icon":"Sprites/Boots",
-		"maxLevel":100,
+		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
 		{
@@ -2704,6 +2709,64 @@
 					{
 						"type":"CriticalDamage",
 						"values":[0.1]
+					}
+				}
+			]
+		}
+	},
+	{
+		"id":2006,
+		"codeName":"Boots",
+		"type":"Stat",
+		"icon":"Sprites/Boots",
+		"maxLevel":900,
+		"defaultLock":true,
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				},
+				{
+					"refItemId":5, 
+					"count":1
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
+				}
+			]
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"MaxSp",						
+						"values":[10]
 					}
 				}
 			]
