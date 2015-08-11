@@ -33,6 +33,7 @@ public class ItemData {
 	{
 		DamageMultiplier,
 		DamageReduction,
+		TapDamage,
 		MoveSpeed,
 		Weapon,
 		Strength,
@@ -107,6 +108,7 @@ public class ItemData {
 			case Option.Strength:
 			case Option.MaxHp:
 			case Option.MaxSp:
+			case Option.TapDamage:
 				desc += head + (optionValue) + "</color>\n";
 				break;
 			case Option.CriticalChance:
@@ -183,6 +185,9 @@ public class ItemData {
 				break;
 			case Option.MaxSp:
 				obj.m_creatureProperty.AlphaMaxSP += (int)op.option.values[0];
+				break;
+			case Option.TapDamage:
+				obj.m_creatureProperty.TabDamage += (int)op.option.values[0];
 				break;
 			case Option.CriticalChance:
 				obj.m_creatureProperty.AlphaCriticalChance += op.option.values[0];

@@ -425,22 +425,6 @@
 			"optionPerLevel":
 			[
 				{
-					"level":3,
-					"option":
-					{
-						"type":"MoveSpeed",
-						"values":[1]
-					}
-				},
-				{
-					"level":6,
-					"option":
-					{
-						"type":"DamageReduction",
-						"values":[0.3]
-					}
-				},
-				{
 					"level":9,
 					"option":
 					{
@@ -512,22 +496,6 @@
 			],
 			"optionPerLevel":
 			[
-				{
-					"level":3,
-					"option":
-					{
-						"type":"MoveSpeed",
-						"values":[1]
-					}
-				},
-				{
-					"level":6,
-					"option":
-					{
-						"type":"DamageReduction",
-						"values":[0.3]
-					}
-				},
 				{
 					"level":9,
 					"option":
@@ -718,22 +686,6 @@
 			"optionPerLevel":
 			[
 				{
-					"level":3,
-					"option":
-					{
-						"type":"MoveSpeed",
-						"values":[1]
-					}
-				},
-				{
-					"level":6,
-					"option":
-					{
-						"type":"DamageReduction",
-						"values":[0.3]
-					}
-				},
-				{
 					"level":9,
 					"option":
 					{
@@ -820,6 +772,7 @@
 		{
 			"coolTime":0.7,
 			"range":4,
+			"spPerLevel":1,		
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -847,23 +800,7 @@
 				}
 			],
 			"optionPerLevel":
-			[
-				{
-					"level":3,
-					"option":
-					{
-						"type":"MoveSpeed",
-						"values":[1]
-					}
-				},
-				{
-					"level":6,
-					"option":
-					{
-						"type":"DamageReduction",
-						"values":[0.3]
-					}
-				},
+			[				
 				{
 					"level":9,
 					"option":
@@ -968,23 +905,7 @@
 				}
 			],
 			"optionPerLevel":
-			[
-				{
-					"level":3,
-					"option":
-					{
-						"type":"MoveSpeed",
-						"values":[1]
-					}
-				},
-				{
-					"level":6,
-					"option":
-					{
-						"type":"DamageReduction",
-						"values":[0.3]
-					}
-				},
+			[				
 				{
 					"level":9,
 					"option":
@@ -1358,22 +1279,6 @@
 			],
 			"optionPerLevel":
 			[
-				{
-					"level":3,
-					"option":
-					{
-						"type":"MoveSpeed",
-						"values":[1]
-					}
-				},
-				{
-					"level":6,
-					"option":
-					{
-						"type":"DamageReduction",
-						"values":[0.3]
-					}
-				},
 				{
 					"level":9,
 					"option":
@@ -2766,6 +2671,64 @@
 					"option":
 					{
 						"type":"MaxSp",						
+						"values":[10]
+					}
+				}
+			]
+		}
+	},
+	{
+		"id":2007,
+		"codeName":"Boots",
+		"type":"Stat",
+		"icon":"Sprites/Boots",
+		"maxLevel":900,
+		"defaultLock":false,
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				},
+				{
+					"refItemId":5, 
+					"count":1
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
+				}
+			]
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"TapDamage",						
 						"values":[10]
 					}
 				}

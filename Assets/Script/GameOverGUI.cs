@@ -111,7 +111,6 @@ public class GameOverGUI : MonoBehaviour {
 		m_admob.ShowBanner(false);
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Continue", 0);
 		Warehouse.Instance.WaveIndex = Warehouse.Instance.NewGameStats.WaveIndex;
-		Warehouse.Instance.KilledMobs = (int)(Warehouse.Instance.KilledMobs*((float)Warehouse.Instance.WaveIndex/Warehouse.Instance.GameBestStats.WaveIndex));
 		SaveGame(false);
 	}
 

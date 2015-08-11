@@ -80,6 +80,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2004));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
+				Warehouse.Instance.PushItem(new ItemStatData(2007));
 
 				Warehouse.Instance.PushItem(new ItemStatData(21));
 				Warehouse.Instance.PushItem(new ItemStatData(22));
@@ -91,9 +92,6 @@ public class ChampSettingGUI : MonoBehaviour {
 			Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
 			Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
 			Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
-
-			byte[] data = Warehouse.Instance.Serialize();
-			Warehouse.Instance.Deserialize(data);
 
 #endif
 		}
@@ -126,6 +124,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2004));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
+				Warehouse.Instance.PushItem(new ItemStatData(2007));
 
 				Warehouse.Instance.PushItem(new ItemStatData(21));
 				Warehouse.Instance.PushItem(new ItemStatData(22));
@@ -133,13 +132,14 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(24));
 			}
 
-			byte[] data = Warehouse.Instance.Serialize();
-			Warehouse.Instance.Deserialize(data);
+
 
 		}
 
-
-
+#if UNITY_EDITOR
+		byte[] data = Warehouse.Instance.Serialize();
+		Warehouse.Instance.Deserialize(data);
+#endif
 		for(int i = 0; i < m_equipedAccessories.Length; ++i)
 		{
 			m_equipedAccessories[i] = new EquippedContext();
@@ -165,8 +165,6 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_statPanel = settingItemList("StatPanel", ItemData.Type.Stat);
 		m_followerPanel = settingItemList("FollowerPanel", ItemData.Type.Follower);
 		m_skillPanel = settingItemList("SkillPanel", ItemData.Type.Skill);
-
-		//OnClickStat();
 
 		OnClickStart();
 	}

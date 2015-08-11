@@ -51,6 +51,8 @@ public class CreatureProperty {
 
 	SecuredType.XInt	m_bombRange = 0;
 
+	SecuredType.XInt	m_tabDamage = 0;
+
 	SecuredType.XFloat	m_damageRatio = 0;
 
 	public void 	init(Creature owner, RefCreatureBaseProperty baseProperty, int level)
@@ -143,10 +145,15 @@ public class CreatureProperty {
 		get { return Mathf.FloorToInt(m_level.Value*350*1.1f); }
 	}
 
-	public int Exp	
+	public int Exp
 	{
 		get { return m_exp.Value; }
 		set { m_exp.Value = value; }
+	}
+
+	public int RewardExp
+	{
+		get{return (int)(Exp+Exp*m_baseProperty.expPerLevel*(Level-1));}
 	}
 
 	public void		giveExp(int exp)
@@ -315,6 +322,12 @@ public class CreatureProperty {
 		get {return m_callableFollowers.Value;}
 	}
 
+	public int TabDamage
+	{
+		set {m_tabDamage.Value = value;}
+		get {return m_tabDamage.Value;}
+	}
+
 	public void Update()
 	{
 		m_accSPRecoveryPerSec.Value += (SPRecoveryPerSec * Time.deltaTime);
@@ -346,6 +359,7 @@ public class CreatureProperty {
 		other.m_level = m_level;
 		other.m_exp = m_exp;
 		other.m_bulletLength = m_bulletLength;
+		other.m_tabDamage = m_tabDamage;
 
 		other.m_shield = m_shield;
 		other.m_bombRange = m_bombRange;

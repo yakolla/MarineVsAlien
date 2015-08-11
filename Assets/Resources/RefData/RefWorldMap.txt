@@ -14,7 +14,7 @@
 								"count":[3,10]
 							}
 						},
-						"interval":5,
+						"interval":3,
 						"repeatCount":[4,4]
 					},
 					{
@@ -28,7 +28,7 @@
 								"count":[1,5]
 							}
 						},
-						"interval":5,
+						"interval":3,
 						"repeatCount":[3,3]
 					},
 					{
@@ -38,7 +38,7 @@
 								"count":[4,12]
 							}
 						},
-						"interval":5,
+						"interval":3,
 						"repeatCount":[4,4]
 					},
 					{
@@ -52,7 +52,7 @@
 								"count":[3,15]
 							}
 						},
-						"interval":5,
+						"interval":3,
 						"repeatCount":[3,3]
 					},
 					{
@@ -80,7 +80,7 @@
 								"count":[1,6]
 							}
 						},
-						"interval":5,
+						"interval":3,
 						"repeatCount":[1,1],
 						"boss":true
 					}

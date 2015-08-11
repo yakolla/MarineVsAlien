@@ -24,6 +24,7 @@ public class RefCreatureBaseProperty
 	public int	physicalDefence;
 	public float	evolutionPerLevel;
 	public int		exp;
+	public float 	expPerLevel;
 	[Range (0, 1)]
 	public float 	phyDamagePerLevel;
 	[Range (0, 1)]

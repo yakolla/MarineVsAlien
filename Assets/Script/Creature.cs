@@ -826,7 +826,7 @@ public class Creature : MonoBehaviour {
 					offender.DamageText(lifeSteal.ToString(), Color.green, DamageNumberSprite.MovementType.RisingUp);
 					offender.Heal(lifeSteal);
 				}
-				Const.GetSpawn().SharePotinsChamps(offender, ItemData.Type.XPPotion, m_creatureProperty.Exp, false);
+				Const.GetSpawn().SharePotinsChamps(offender, ItemData.Type.XPPotion, m_creatureProperty.RewardExp, false);
 			}
 
 			Death();
