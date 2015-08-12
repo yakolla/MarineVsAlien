@@ -23,7 +23,7 @@ public class Spawn : MonoBehaviour {
 	AudioClip	m_bossBg;
 
 	Transform[]	m_goalPoints;
-
+	int			m_goalPointIndex;
 
 	FollowingCamera	m_followingCamera = null;
 
@@ -116,8 +116,6 @@ public class Spawn : MonoBehaviour {
 		return m_mobsOfCheckOnDeath > 0;
 	}
 
-
-
 	class SpawnMobDescResult
 	{
 		public List<RefMob>	spawnMobs = new List<RefMob>();
@@ -204,13 +202,30 @@ public class Spawn : MonoBehaviour {
 						
 						RefMob refMob = spawnMobDescResult.spawnMobs[ii];
 						Vector3 enemyPos = cp;
-						float[] angles = {0f, 3.14f};
-						float angle = angles[Random.Range(0, angles.Length)];
+
+					float[] angles = {0f, 3.14f};
+					float angle = 0f;
+					float length = 8f;
+					switch(m_goalPointIndex)
+					{
+					case 1:
+						angle = 0f;
+						length = 16;
+						break;
+					case 3:
+						angle = 3.14f;
+						length = 16;
+						break;
+					default:
+						angle = angles[Random.Range(0, angles.Length)];
+						break;
+					}
+						
 
 						if (refMob.baseCreatureProperty.moveSpeed > 0f)
 						{
-							enemyPos.x += Mathf.Cos(angle) * 8f;
-							enemyPos.z += Mathf.Sin(angle) * 8f;							
+						enemyPos.x += Mathf.Cos(angle) * length;
+						enemyPos.z += Mathf.Sin(angle) * length;							
 						}
 						else
 						{
@@ -297,8 +312,9 @@ public class Spawn : MonoBehaviour {
 				if (m_champ != null)
 				{
 					NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
-					nav.SetDestination(m_goalPoints[(m_wave+1)%m_goalPoints.Length].transform.position);
-					m_champ.RotateToTarget(m_goalPoints[(m_wave+1)%m_goalPoints.Length].transform.position);
+					m_goalPointIndex = (m_wave+1)%m_goalPoints.Length;
+					nav.SetDestination(m_goalPoints[m_goalPointIndex].transform.position);
+					m_champ.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
 					while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)
 					{
 						yield return null;
