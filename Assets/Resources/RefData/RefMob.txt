@@ -49,7 +49,7 @@
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":10,
-				"moveSpeed":1.7,
+				"moveSpeed":1.2,
 				"navMeshBaseOffset":0
 			}
 		},
@@ -80,7 +80,7 @@
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":10,
-				"moveSpeed":3,
+				"moveSpeed":1.5,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0
 			}
@@ -109,7 +109,7 @@
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":10,
-				"moveSpeed":5,
+				"moveSpeed":2,
 				"navMeshBaseOffset":0
 			}
 		},
@@ -133,7 +133,7 @@
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":10,
-				"moveSpeed":3,								
+				"moveSpeed":2.3,								
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0
 			}
@@ -158,7 +158,7 @@
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":10,
-				"moveSpeed":1,
+				"moveSpeed":2.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
 			},
@@ -795,7 +795,6 @@
 			[
 				{
 					"refItemId":"127",
-					"passive":true,
 					"weaponStat":
 					{
 						"coolTime":2,
@@ -807,7 +806,7 @@
 					"refItemId":"121",
 					"weaponStat":
 					{
-						"coolTime":1
+						"coolTime":3
 						
 					}
 				},
