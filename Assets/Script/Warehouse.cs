@@ -183,6 +183,16 @@ public class Warehouse {
 
 	public ItemObject FindItem(int refItemId)
 	{
+		switch(RefData.Instance.RefItems[refItemId].type)
+		{
+		case ItemData.Type.Gold:
+			return m_gold;
+		case ItemData.Type.GoldMedal:
+			return m_goldMedal;
+		case ItemData.Type.Gem:
+			return m_gem;
+		}
+
 		foreach(ItemObject obj in m_warehouseData.m_items[RefData.Instance.RefItems[refItemId].type])
 		{
 			if (obj.Item.RefItem.id == refItemId)
@@ -275,7 +285,7 @@ public class Warehouse {
 		get {return m_warehouseData.m_tutorial;}
 	}
 		
-	static protected void initInven(Dictionary<ItemData.Type, List<ItemObject>> items)
+	protected void initInven(Dictionary<ItemData.Type, List<ItemObject>> items)
 	{
 		items.Clear();
 		foreach (ItemData.Type type in System.Enum.GetValues(typeof(ItemData.Type)))
@@ -285,6 +295,12 @@ public class Warehouse {
 			
 			items.Add(type, new List<ItemObject>());
 		}
+
+
+		m_gold = new ItemObject(new ItemGoldData(0));
+		m_goldMedal = new ItemObject(new ItemGoldMedalData(0));
+		m_gem = new ItemObject(new ItemGoldMedalData(0));
+
 	}
 
 	public byte[] Serialize()
@@ -335,15 +351,15 @@ public class Warehouse {
 			{
 			case ItemData.Type.Gold:
 				ItemGoldData goldData = JsonConvert.DeserializeObject<ItemGoldData>(reader.ReadLine());
-				items[type].Add(new ItemObject(goldData));
+				m_gold = new ItemObject(goldData);
 				break;
 			case ItemData.Type.GoldMedal:
 				ItemGoldMedalData goldMedalData = JsonConvert.DeserializeObject<ItemGoldMedalData>(reader.ReadLine());
-				items[type].Add(new ItemObject(goldMedalData));
+				m_goldMedal = new ItemObject(goldMedalData);
 				break;
 			case ItemData.Type.Gem:
 				ItemGemData gemData = JsonConvert.DeserializeObject<ItemGemData>(reader.ReadLine());
-				items[type].Add(new ItemObject(gemData));
+				m_gem = new ItemObject(gemData);
 				break;
 			case ItemData.Type.Weapon:
 				ItemWeaponData weaponData = JsonConvert.DeserializeObject<ItemWeaponData>(reader.ReadLine());
@@ -388,10 +404,6 @@ public class Warehouse {
 		m_warehouseData = JsonConvert.DeserializeObject<WarehouseData>(reader.ReadToEnd());
 		m_warehouseData.m_version = version;
 		m_warehouseData.m_items = items;
-
-		m_gold = FindItem(1);
-		m_goldMedal = FindItem(5);
-		m_gem	= FindItem(8);
 
 		reader.Close();
 	}

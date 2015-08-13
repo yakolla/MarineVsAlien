@@ -136,10 +136,6 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		}
 
-#if UNITY_EDITOR
-		byte[] data = Warehouse.Instance.Serialize();
-		Warehouse.Instance.Deserialize(data);
-#endif
 		for(int i = 0; i < m_equipedAccessories.Length; ++i)
 		{
 			m_equipedAccessories[i] = new EquippedContext();
@@ -394,8 +390,6 @@ public class ChampSettingGUI : MonoBehaviour {
 				if (selectedItem.Item.RefItem.type == ItemData.Type.Weapon)
 				{
 					m_champ.WeaponHolder.MainWeapon.LevelUp();
-					Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
-					Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
 				}
 				else if (selectedItem.Item.RefItem.type == ItemData.Type.Follower)
 				{

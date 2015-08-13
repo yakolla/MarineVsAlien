@@ -359,6 +359,10 @@ public class Spawn : MonoBehaviour {
 		{
 			++m_champ.MobKills;
 
+			if (m_champ.MobKills > 200)
+				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
+			else if (m_champ.MobKills > 500)
+				Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
 
 		}
 	}

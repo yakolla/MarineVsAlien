@@ -394,7 +394,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":4,			
+			"range":5,			
 			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
@@ -466,7 +466,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":4,
+			"range":6,
 			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
@@ -660,7 +660,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":4,			
+			"range":7,			
 			"spPerLevel":1,
 		},		
 		"levelup":
@@ -881,7 +881,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":4,			
+			"range":7,			
 			"spPerLevel":1,
 		},		
 		"levelup":
@@ -1249,7 +1249,7 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":4,			
+			"range":8,			
 			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
