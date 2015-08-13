@@ -278,6 +278,7 @@ public class Champ : Creature {
 			touchedCount = aa;
 		}
 #endif
+		bool hitted = false;
 		for (int i = 0; i < touchedCount; ++i) 
 		{
 			Ray ray = Camera.main.ScreenPointToRay( touchPos[i] );
@@ -289,12 +290,26 @@ public class Champ : Creature {
 				if (target != null && IsEnemy(target, this))
 				{
 					target.TakeDamage(this, new DamageDesc(m_creatureProperty.TabDamage, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
+					hitted = true;
 				}
 				else if (hit.transform.tag.CompareTo("ItemBox") == 0)
 				{
 					ItemBox itemBox = hit.transform.gameObject.GetComponent<ItemBox>();
 					itemBox.StartPickupEffect(this);
+					hitted = true;
 				}
+			}
+		}
+
+		if (hitted == false)
+		{
+			Creature[] targets = Bullet.SearchTarget(transform.position, GetMyEnemyType(), 4f);
+			int length = 0;
+			if (targets != null)
+				length = Mathf.Min(touchedCount, targets.Length);
+			for(int i = 0; i < length; ++i)
+			{
+				targets[i].TakeDamage(this, new DamageDesc(m_creatureProperty.TabDamage, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
 			}
 		}
 
