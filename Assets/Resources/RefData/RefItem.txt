@@ -1808,18 +1808,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":2000
 				},
 				{
 					"refItemId":5, 
-					"count":50
+					"count":20
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":20
 				}
 			]
 		},
@@ -2248,18 +2248,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":3000
 				},
 				{
 					"refItemId":5, 
-					"count":50
+					"count":30
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":30
 				}
 			]
 		},

@@ -299,24 +299,6 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		m_champ.WeaponHolder.EquipActiveSkillWeapon(m_champ.instanceWeapon(new ItemWeaponData(Const.NuclearRefItemId), null));
 
-		foreach(ItemObject itemFollowerObject in Warehouse.Instance.Items[ItemData.Type.Follower])
-		{
-			if (itemFollowerObject.Item.Level > 0)
-			{
-				itemFollowerObject.Item.Equip(m_champ);
-			}
-		}
-
-		for(int x = 0; x < m_equipedAccessories.Length; ++x)
-		{
-			if (m_equipedAccessories[x].m_itemObject != null)
-			{
-				m_equipedAccessories[x].m_itemObject.Item.Equip(champ);
-				champ.AccessoryItems[x] = m_equipedAccessories[x].m_itemObject;
-				Warehouse.Instance.ChampEquipItems.m_accessoryRefItemId[x] = m_equipedAccessories[x].m_itemObject.Item.RefItemID;
-			}
-		}
-
 		m_champ.m_creatureProperty.Exp = Warehouse.Instance.GameDataContext.m_xp.Value;
 		m_champ.m_creatureProperty.HP = Warehouse.Instance.GameDataContext.m_hp.Value;
 

@@ -307,7 +307,7 @@ public class Spawn : MonoBehaviour {
 				if (mobSpawn.boss == false)
 				{
 					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomMobSpawns[m_wave%GetCurrentWave().randomMobSpawns.Length], waveProgress));
-					yield return new WaitForSeconds(5f);
+					yield return new WaitForSeconds(3f);
 				}
 
 				if (m_champ != null)
@@ -362,7 +362,7 @@ public class Spawn : MonoBehaviour {
 
 			if (m_champ.MobKills > 200)
 				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
-			else if (m_champ.MobKills > 500)
+			if (m_champ.MobKills > 500)
 				Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
 
 		}

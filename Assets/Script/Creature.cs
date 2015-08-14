@@ -592,7 +592,7 @@ public class Creature : MonoBehaviour {
 		m_creatureProperty.AlphaAttackCoolTime -= 0.5f;
 		m_creatureProperty.BetaMoveSpeed += 1f;
 		Vector3 scale = transform.localScale;
-		transform.localScale = scale*1.3f;
+		transform.localScale += scale;
 		
 		yield return new WaitForSeconds(time);
 		
@@ -600,7 +600,7 @@ public class Creature : MonoBehaviour {
 		m_creatureProperty.AlphaAttackCoolTime += 0.5f;
 		m_creatureProperty.BulletLength -= 1f;
 		m_creatureProperty.BetaMoveSpeed -= 1f;
-		transform.localScale = scale;
+		transform.localScale -= scale;
 
 		DestroyObject(effect);
 	}
