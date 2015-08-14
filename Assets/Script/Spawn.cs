@@ -358,11 +358,11 @@ public class Spawn : MonoBehaviour {
 
 		if (m_champ)
 		{
-			++m_champ.MobKills;
+			++Warehouse.Instance.AlienEssence.Item.Count;
 
-			if (m_champ.MobKills > 200)
+			if (Warehouse.Instance.AlienEssence.Item.Count > 200)
 				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
-			if (m_champ.MobKills > 500)
+			if (Warehouse.Instance.AlienEssence.Item.Count > 500)
 				Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
 
 		}

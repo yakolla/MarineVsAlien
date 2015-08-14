@@ -185,12 +185,12 @@ public class ChampStatusGUI : MonoBehaviour {
 
 		m_level.Text.text = m_champ.m_creatureProperty.Level.ToString();
 
-		if (m_oldMobKills != m_champ.MobKills)
+		if (m_oldMobKills != Warehouse.Instance.AlienEssence.Item.Count)
 		{
-			m_oldMobKills = m_champ.MobKills;
+			m_oldMobKills = Warehouse.Instance.AlienEssence.Item.Count;
 			m_mobKills.enabled = true;
 			m_mobKills.shake = 2f;
-			m_mobKills.Text = m_champ.MobKills.ToString();
+			m_mobKills.Text = Warehouse.Instance.AlienEssence.Item.Count.ToString();
 		}
 
 		//m_mobKills.Text = System.String.Format("{0}/{1:00}:{2:00}", m_champ.MobKills, Warehouse.Instance.PlayTime / 60, Warehouse.Instance.PlayTime % 60);

@@ -302,7 +302,6 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_champ.m_creatureProperty.Exp = Warehouse.Instance.GameDataContext.m_xp.Value;
 		m_champ.m_creatureProperty.HP = Warehouse.Instance.GameDataContext.m_hp.Value;
 
-		m_champ.MobKills = Warehouse.Instance.KilledMobs;
 		m_spawn.StartWave(Warehouse.Instance.WaveIndex, champ);
 
 

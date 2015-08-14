@@ -14,7 +14,7 @@ public class WarehouseData
 	public Dictionary<ItemData.Type, List<ItemObject>>	m_items = new Dictionary<ItemData.Type, List<ItemObject>>();
 	
 	public SecuredType.XInt	m_waveIndex = 0;
-	public SecuredType.XInt	m_killedMobs = 0;
+	public SecuredType.XInt	m_alienEssence = 0;
 	public SecuredType.XInt	m_gold = 0;
 	public SecuredType.XInt	m_goldMedal = 0;
 	public SecuredType.XInt	m_gem = 0;
@@ -88,6 +88,7 @@ public class Warehouse {
 	ItemObject			m_gold;
 	ItemObject			m_goldMedal;
 	ItemObject			m_gem;
+	ItemObject			m_alienEssence;
 
 	WarehouseData.GameStatistics			m_newGameStats = new WarehouseData.GameStatistics();
 
@@ -194,6 +195,8 @@ public class Warehouse {
 			return m_goldMedal;
 		case ItemData.Type.Gem:
 			return m_gem;
+		case ItemData.Type.AlienEssence:
+			return m_alienEssence;
 		}
 
 		foreach(ItemObject obj in m_warehouseData.m_items[RefData.Instance.RefItems[refItemId].type])
@@ -227,6 +230,11 @@ public class Warehouse {
 		get { return m_gem; }
 	}
 
+	public ItemObject AlienEssence
+	{
+		get { return m_alienEssence; }
+	}
+
 	public string FileName
 	{
 		get {return m_fileName;}
@@ -257,11 +265,7 @@ public class Warehouse {
 		set {m_warehouseData.m_waveIndex.Value = value;}
 	}
 	
-	public int KilledMobs
-	{
-		get {return m_warehouseData.m_killedMobs.Value;}
-		set {m_warehouseData.m_killedMobs.Value = value;}
-	}	
+
 	
 	public WarehouseData.GameStatistics GameBestStats
 	{
@@ -303,7 +307,7 @@ public class Warehouse {
 		m_gold = new ItemObject(new ItemGoldData(0));
 		m_goldMedal = new ItemObject(new ItemGoldMedalData(0));
 		m_gem = new ItemObject(new ItemGoldMedalData(0));
-
+		m_alienEssence = new ItemObject(new ItemAlienEssenceData(0));
 	}
 
 	public byte[] Serialize()
@@ -330,6 +334,7 @@ public class Warehouse {
 		m_warehouseData.m_gold = m_gold.Item.Count;
 		m_warehouseData.m_goldMedal = m_goldMedal.Item.Count;
 		m_warehouseData.m_gem = m_gem.Item.Count;
+		m_warehouseData.m_alienEssence = m_alienEssence.Item.Count;
 		writer.Write(JsonConvert.SerializeObject(m_warehouseData));
 		
 		writer.Close();
@@ -403,6 +408,7 @@ public class Warehouse {
 		m_gold.Item.Count = m_warehouseData.m_gold.Value;
 		m_goldMedal.Item.Count = m_warehouseData.m_goldMedal.Value;
 		m_gem.Item.Count = m_warehouseData.m_gem.Value;
+		m_alienEssence.Item.Count = m_warehouseData.m_alienEssence.Value;
 
 		reader.Close();
 	}

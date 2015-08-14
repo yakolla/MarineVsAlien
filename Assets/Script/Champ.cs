@@ -50,7 +50,6 @@ public class Champ : Creature {
 	{
 		base.Init(refMob, level);
 
-		MobKills = 0;
 		m_machoSkillStacks = 0;
 		m_remainStatPoint = 0;
 		m_lastLevelupTime = Time.time;
@@ -168,12 +167,6 @@ public class Champ : Creature {
 		}
 
 		m_moveDir = pos.normalized;
-	}
-
-	public int MobKills
-	{
-		get {return m_mobKills.Value;}
-		set {m_mobKills.Value = value;}
 	}
 
 	public Vector3 MoveDir
@@ -351,10 +344,8 @@ public class Champ : Creature {
 
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Death", "Wave"+Warehouse.Instance.WaveIndex, 0);
 
-		Warehouse.Instance.NewGameStats.KilledMobs = MobKills;
 		Warehouse.Instance.NewGameStats.WaveIndex = Warehouse.Instance.WaveIndex;
-
-		Warehouse.Instance.KilledMobs = MobKills;
+		Warehouse.Instance.NewGameStats.KilledMobs = Warehouse.Instance.AlienEssence.Item.Count;
 		Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
 
 		m_creatureProperty.Level = 1;
