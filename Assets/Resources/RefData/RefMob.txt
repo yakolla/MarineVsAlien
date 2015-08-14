@@ -277,8 +277,7 @@
 				"phyDefencePerLevel":3,
 				"hpPerLevel":3,
 				"moveSpeed":1.2,
-				"navMeshBaseOffset":0,
-				"backwardOnDamage":false
+				"navMeshBaseOffset":2
 			}
 		},
 		{
@@ -333,8 +332,7 @@
 				"phyDefencePerLevel":3,
 				"hpPerLevel":3,
 				"moveSpeed":1.6,
-				"navMeshBaseOffset":2,
-				"backwardOnDamage":false
+				"navMeshBaseOffset":2
 			}
 		},		
 		{
@@ -363,8 +361,7 @@
 				"phyDefencePerLevel":3,
 				"hpPerLevel":3,
 				"moveSpeed":1.8,
-				"navMeshBaseOffset":2,
-				"backwardOnDamage":false
+				"navMeshBaseOffset":2
 			}
 		},			
 		{
@@ -784,8 +781,7 @@
 				"phyDefencePerLevel":3,
 				"hpPerLevel":3,
 				"moveSpeed":1.5,
-				"navMeshBaseOffset":0,
-				"backwardOnDamage":false
+				"navMeshBaseOffset":0
 			}			
 		},
 		{
@@ -833,8 +829,7 @@
 				"phyDefencePerLevel":3,
 				"hpPerLevel":3,
 				"moveSpeed":1,
-				"navMeshBaseOffset":0,
-				"backwardOnDamage":false
+				"navMeshBaseOffset":0
 			}
 		},
 		{
@@ -884,8 +879,7 @@
 				"hpPerLevel":3,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0,
-				"rotationSpeedRatio":20,
-				"backwardOnDamage":false
+				"rotationSpeedRatio":20
 			}
 		},
 		{
@@ -931,8 +925,7 @@
 				"phyDefencePerLevel":3,
 				"hpPerLevel":3,
 				"moveSpeed":1,
-				"navMeshBaseOffset":0,
-				"backwardOnDamage":false
+				"navMeshBaseOffset":0
 			}
 		},
 		{
@@ -968,8 +961,7 @@
 				"phyDefencePerLevel":3,
 				"hpPerLevel":3,
 				"moveSpeed":1,
-				"navMeshBaseOffset":0,
-				"backwardOnDamage":false
+				"navMeshBaseOffset":0
 			}
 		}
 	],

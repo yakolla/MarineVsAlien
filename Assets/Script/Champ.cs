@@ -303,7 +303,7 @@ public class Champ : Creature {
 
 		if (hitted == false)
 		{
-			Creature[] targets = Bullet.SearchTarget(transform.position, GetMyEnemyType(), 4f);
+			Creature[] targets = Bullet.SearchTarget(transform.position, GetMyEnemyType(), 4f+m_creatureProperty.AttackRange);
 			int length = 0;
 			if (targets != null)
 				length = Mathf.Min(touchedCount, targets.Length);

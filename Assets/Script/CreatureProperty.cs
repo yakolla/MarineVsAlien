@@ -50,6 +50,7 @@ public class CreatureProperty {
 	SecuredType.XFloat	m_accSPRecoveryPerSec = 0f;
 
 	SecuredType.XInt	m_bombRange = 0;
+	SecuredType.XInt	m_attackRange = 0;
 
 	SecuredType.XInt	m_tabDamage = 0;
 
@@ -316,6 +317,12 @@ public class CreatureProperty {
 		get {return m_bombRange.Value;}
 	}
 
+	public int AttackRange
+	{
+		set {m_attackRange.Value = value;}
+		get {return m_attackRange.Value;}
+	}
+
 	public int CallableFollowers
 	{
 		set {m_callableFollowers.Value = value;}
@@ -363,6 +370,7 @@ public class CreatureProperty {
 
 		other.m_shield = m_shield;
 		other.m_bombRange = m_bombRange;
+		other.m_attackRange = m_attackRange;
 		other.m_alphaMaxSP = m_alphaMaxSP;
 		other.m_sp = m_sp;
 		other.m_alphaSPRecoveryPerSec = m_alphaSPRecoveryPerSec;

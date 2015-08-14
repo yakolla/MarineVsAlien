@@ -15,6 +15,9 @@ public class WarehouseData
 	
 	public SecuredType.XInt	m_waveIndex = 0;
 	public SecuredType.XInt	m_killedMobs = 0;
+	public SecuredType.XInt	m_gold = 0;
+	public SecuredType.XInt	m_goldMedal = 0;
+	public SecuredType.XInt	m_gem = 0;
 	
 	public GameStatistics			m_gameBestStats = new GameStatistics();
 	public Options					m_options = new Options();
@@ -312,6 +315,7 @@ public class Warehouse {
 
 		writer.WriteLine(JsonConvert.SerializeObject(m_warehouseData.m_version));
 		writer.WriteLine(JsonConvert.SerializeObject(InvenSize));
+
 		
 		foreach(KeyValuePair<ItemData.Type, List<ItemObject>> pair in m_warehouseData.m_items)
 		{
@@ -323,6 +327,9 @@ public class Warehouse {
 			}
 		}
 
+		m_warehouseData.m_gold = m_gold.Item.Count;
+		m_warehouseData.m_goldMedal = m_goldMedal.Item.Count;
+		m_warehouseData.m_gem = m_gem.Item.Count;
 		writer.Write(JsonConvert.SerializeObject(m_warehouseData));
 		
 		writer.Close();
@@ -348,19 +355,7 @@ public class Warehouse {
 			ItemData.Type type = JsonConvert.DeserializeObject<ItemData.Type>(reader.ReadLine());
 			
 			switch(type)
-			{
-			case ItemData.Type.Gold:
-				ItemGoldData goldData = JsonConvert.DeserializeObject<ItemGoldData>(reader.ReadLine());
-				m_gold = new ItemObject(goldData);
-				break;
-			case ItemData.Type.GoldMedal:
-				ItemGoldMedalData goldMedalData = JsonConvert.DeserializeObject<ItemGoldMedalData>(reader.ReadLine());
-				m_goldMedal = new ItemObject(goldMedalData);
-				break;
-			case ItemData.Type.Gem:
-				ItemGemData gemData = JsonConvert.DeserializeObject<ItemGemData>(reader.ReadLine());
-				m_gem = new ItemObject(gemData);
-				break;
+			{			
 			case ItemData.Type.Weapon:
 				ItemWeaponData weaponData = JsonConvert.DeserializeObject<ItemWeaponData>(reader.ReadLine());
 				items[type].Add(new ItemObject(weaponData));
@@ -404,6 +399,10 @@ public class Warehouse {
 		m_warehouseData = JsonConvert.DeserializeObject<WarehouseData>(reader.ReadToEnd());
 		m_warehouseData.m_version = version;
 		m_warehouseData.m_items = items;
+
+		m_gold.Item.Count = m_warehouseData.m_gold.Value;
+		m_goldMedal.Item.Count = m_warehouseData.m_goldMedal.Value;
+		m_gem.Item.Count = m_warehouseData.m_gem.Value;
 
 		reader.Close();
 	}

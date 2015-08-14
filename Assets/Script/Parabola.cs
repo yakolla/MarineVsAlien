@@ -63,8 +63,7 @@ public class Parabola {
 	public void Destroy()
 	{
 		MonoBehaviour.DestroyObject(m_obj);
-	}	
-
+	}
 
 	public bool Update()
 	{
