@@ -1835,10 +1835,6 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
 					"refItemId":11, 
 					"count":10
 				}
@@ -1908,10 +1904,6 @@
 		{
 			"conds":
 			[
-				{
-					"refItemId":1, 
-					"count":100
-				},
 				{
 					"refItemId":11, 
 					"count":10
@@ -1983,10 +1975,6 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
 					"refItemId":11, 
 					"count":10
 				}
@@ -2056,10 +2044,6 @@
 		{
 			"conds":
 			[
-				{
-					"refItemId":1, 
-					"count":100
-				},
 				{
 					"refItemId":11, 
 					"count":10
@@ -2131,10 +2115,6 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
 					"refItemId":11, 
 					"count":10
 				}
@@ -2205,10 +2185,6 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
 					"refItemId":11, 
 					"count":10
 				}
@@ -2274,10 +2250,6 @@
 		{
 			"conds":
 			[
-				{
-					"refItemId":1, 
-					"count":5000
-				},
 				{
 					"refItemId":11, 
 					"count":500
