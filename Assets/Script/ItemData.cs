@@ -25,6 +25,7 @@ public class ItemData {
 		Skill,
 		Cheat,
 		Stat,
+		AlienEssence,
 		Count
 	}
 

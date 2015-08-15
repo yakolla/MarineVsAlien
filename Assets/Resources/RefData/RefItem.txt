@@ -68,6 +68,13 @@
 		]
 	},
 	{
+		"id":11,
+		"codeName":"AlienEssence",		
+		"name":"Alien Essence",
+		"type":"AlienEssence",
+		"icon":"Sprites/Kill"
+	},
+	{
 		"id":21,
 		"codeName":"NuclearSkill",
 		"type":"Skill",
@@ -105,18 +112,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":1000
+					"count":500
 				},
 				{
 					"refItemId":5, 
-					"count":10
+					"count":5
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":5
 				}
 			]
 		}	
@@ -211,18 +218,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":1000
+					"count":2000
 				},
 				{
 					"refItemId":5, 
-					"count":10
+					"count":20
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":20
 				}
 			]
 		}	
@@ -264,18 +271,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":1000
+					"count":3000
 				},
 				{
 					"refItemId":5, 
-					"count":10
+					"count":30
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":30
 				}
 			]
 		}	
@@ -1808,18 +1815,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":2000
 				},
 				{
-					"refItemId":5, 
-					"count":50
+					"refItemId":11, 
+					"count":200
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":20
 				}
 			]
 		},
@@ -1828,12 +1835,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
-					"refItemId":5, 
-					"count":1
+					"refItemId":11, 
+					"count":10
 				}
 			],
 			"else_conds":
@@ -1885,8 +1888,8 @@
 					"count":15000
 				},
 				{
-					"refItemId":5, 
-					"count":150
+					"refItemId":11, 
+					"count":1500
 				}
 			],
 			"else_conds":
@@ -1902,12 +1905,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
-					"refItemId":5, 
-					"count":1
+					"refItemId":11, 
+					"count":10
 				}
 			],
 			"else_conds":
@@ -1959,8 +1958,8 @@
 					"count":25000
 				},
 				{
-					"refItemId":5, 
-					"count":250
+					"refItemId":11, 
+					"count":2500
 				}
 			],
 			"else_conds":
@@ -1976,11 +1975,7 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
-					"refItemId":5, 
+					"refItemId":11, 
 					"count":10
 				}
 			],
@@ -2033,8 +2028,8 @@
 					"count":35000
 				},
 				{
-					"refItemId":5, 
-					"count":350
+					"refItemId":11, 
+					"count":3500
 				}
 			],
 			"else_conds":
@@ -2050,12 +2045,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
-					"refItemId":5, 
-					"count":1
+					"refItemId":11, 
+					"count":10
 				}
 			],
 			"else_conds":
@@ -2107,8 +2098,8 @@
 					"count":45000
 				},
 				{
-					"refItemId":5, 
-					"count":450
+					"refItemId":11, 
+					"count":4500
 				}
 			],
 			"else_conds":
@@ -2124,12 +2115,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
-					"refItemId":5, 
-					"count":1
+					"refItemId":11, 
+					"count":10
 				}
 			],
 			"else_conds":
@@ -2181,8 +2168,8 @@
 					"count":55000
 				},
 				{
-					"refItemId":5, 
-					"count":550
+					"refItemId":11, 
+					"count":5500
 				}
 			],
 			"else_conds":
@@ -2198,12 +2185,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
-					"refItemId":5, 
-					"count":1
+					"refItemId":11, 
+					"count":10
 				}
 			],
 			"else_conds":
@@ -2248,18 +2231,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":3000
 				},
 				{
-					"refItemId":5, 
-					"count":50
+					"refItemId":11, 
+					"count":300
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":30
 				}
 			]
 		},
@@ -2268,12 +2251,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":5000
-				},
-				{
-					"refItemId":5, 
-					"count":50
+					"refItemId":11, 
+					"count":500
 				}
 			],
 			"else_conds":

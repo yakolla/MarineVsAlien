@@ -193,15 +193,15 @@ public class Spawn : MonoBehaviour {
 			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.miniBoss, RefData.Instance.RefMiniBossMobs, true, false);
 			
 
-				Vector3 cp = m_champ.transform.position;
+			Vector3 cp = m_champ.transform.position;
 
-				for(int ii = 0;  ii < spawnMobDescResult.spawnMobs.Count; ++ii)
+			for(int ii = 0;  ii < spawnMobDescResult.spawnMobs.Count; ++ii)
+			{
+				for(int i = 0; i < spawnMobDescResult.spawnMobCount[ii]; ++i)
 				{
-					for(int i = 0; i < spawnMobDescResult.spawnMobCount[ii]; ++i)
-					{
-						
-						RefMob refMob = spawnMobDescResult.spawnMobs[ii];
-						Vector3 enemyPos = cp;
+					
+					RefMob refMob = spawnMobDescResult.spawnMobs[ii];
+					Vector3 enemyPos = cp;
 
 					float[] angles = {0f, 3.14f};
 					float angle = 0f;
@@ -211,49 +211,51 @@ public class Spawn : MonoBehaviour {
 					case 1:
 						angle = 0f;
 						length = 16;
+						if (m_champ != null)
+							m_champ.m_creatureProperty.AttackRange=4;
 						break;
 					case 3:
 						angle = 3.14f;
 						length = 16;
+						if (m_champ != null)
+							m_champ.m_creatureProperty.AttackRange=4;
 						break;
 					default:
 						angle = angles[Random.Range(0, angles.Length)];
+						if (m_champ != null)
+							m_champ.m_creatureProperty.AttackRange=0;
 						break;
-					}
-						
+					}							
 
-						if (refMob.baseCreatureProperty.moveSpeed > 0f)
-						{
+					if (refMob.baseCreatureProperty.moveSpeed > 0f)
+					{
 						enemyPos.x += Mathf.Cos(angle) * length;
 						enemyPos.z += Mathf.Sin(angle) * length;							
-						}
-						else
-						{
-							enemyPos.x += Mathf.Cos(angle) * 4f;
-							enemyPos.z += Mathf.Sin(angle) * 4f;							
-						}
-						
-						yield return new WaitForSeconds (0.1f);
-						
-						Creature cre = SpawnMob(refMob, SpawnMobLevel(), enemyPos, spawnMobDescResult.spawnMobBoss[ii], spawnMobDescResult.spawnMobMonitored[ii]);
-						cre.gameObject.SetActive(false);
-						
-						switch(spawnMobDescResult.spawnEffectType[ii])
-						{
-						case MobSpawnEffectType.Falling:
-							StartCoroutine(  EffectSpawnMob1(cre.transform.position, cre) );
-							break;
-						default:
-							StartCoroutine(  EffectSpawnMob(cre.transform.position, cre) );
-							break;
-						}
-						
-						
 					}
+					else
+					{
+						enemyPos.x += Mathf.Cos(angle) * 4f;
+						enemyPos.z += Mathf.Sin(angle) * 4f;							
+					}
+					
+					yield return new WaitForSeconds (0.1f);
+					
+					Creature cre = SpawnMob(refMob, SpawnMobLevel(), enemyPos, spawnMobDescResult.spawnMobBoss[ii], spawnMobDescResult.spawnMobMonitored[ii]);
+					cre.gameObject.SetActive(false);
+					
+					switch(spawnMobDescResult.spawnEffectType[ii])
+					{
+					case MobSpawnEffectType.Falling:
+						StartCoroutine(  EffectSpawnMob1(cre.transform.position, cre) );
+						break;
+					default:
+						StartCoroutine(  EffectSpawnMob(cre.transform.position, cre) );
+						break;
+					}
+					
+					
 				}
-
-			
-			
+			}
 		}
 	}
 
@@ -305,9 +307,8 @@ public class Spawn : MonoBehaviour {
 				if (mobSpawn.boss == false)
 				{
 					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomMobSpawns[m_wave%GetCurrentWave().randomMobSpawns.Length], waveProgress));
+					yield return new WaitForSeconds(3f);
 				}
-
-				yield return new WaitForSeconds(5f);
 
 				if (m_champ != null)
 				{
@@ -357,11 +358,11 @@ public class Spawn : MonoBehaviour {
 
 		if (m_champ)
 		{
-			++m_champ.MobKills;
+			++Warehouse.Instance.AlienEssence.Item.Count;
 
-			if (m_champ.MobKills > 200)
+			if (Warehouse.Instance.AlienEssence.Item.Count > 200)
 				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
-			else if (m_champ.MobKills > 500)
+			if (Warehouse.Instance.AlienEssence.Item.Count > 500)
 				Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
 
 		}
