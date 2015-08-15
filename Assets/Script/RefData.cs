@@ -142,6 +142,7 @@ public class RefItem : RefBaseData
 	public  WeaponStat			weaponStat;
 	public 	RefItemOption[]		options;
 	public 	int					weaponId;
+	public 	int					followerId;
 	public 	bool				defaultLock = false;
 	public  int					maxLevel = Const.MaxItemLevel;
 

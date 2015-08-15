@@ -614,6 +614,11 @@ public class Spawn : MonoBehaviour {
 			}
 			*/
 			break;
+		case ItemData.Type.Gold:
+			Warehouse.Instance.Gold.Item.Count += xp;
+			if (enableEffect == true)
+				m_champ.ApplyPickUpItemEffect(type, Const.GetPrefItemEatEffect(RefData.Instance.RefItems[1]), xp);
+			break;
 		}
 
 

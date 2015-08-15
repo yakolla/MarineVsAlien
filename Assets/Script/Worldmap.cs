@@ -37,7 +37,7 @@ public class Worldmap : MonoBehaviour {
 		if (status == SavedGameRequestStatus.Success) {
 			GPlusPlatform.Instance.LoadGame(game, OnReadGame);
 			Warehouse.Instance.FileName = game.Filename;
-
+			Warehouse.Instance.LastModifiedFileTime = game.LastModifiedTimestamp;
 		} else {
 			if (m_try < 3)
 			{

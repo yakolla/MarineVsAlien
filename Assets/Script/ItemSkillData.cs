@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 
 public class ItemSkillData : ItemData{
 
-	public int m_refWeaponItemId;
 	[JsonConstructor]
 	private ItemSkillData()
 	{
@@ -12,7 +11,7 @@ public class ItemSkillData : ItemData{
 
 	public ItemSkillData(int refItemId) : base(refItemId, 1)
 	{
-		m_refWeaponItemId = RefData.Instance.RefItems[refItemId].weaponId;
+
 	}
 
 	override public void Pickup(Creature obj)
@@ -23,11 +22,11 @@ public class ItemSkillData : ItemData{
 
 	override public void Use(Creature obj)
 	{
-		if (obj.WeaponHolder.GetActiveSkillWeapon(m_refWeaponItemId) == false)
+		if (obj.WeaponHolder.GetActiveSkillWeapon(RefItem.weaponId) == false)
 		{
-			obj.EquipActiveSkillWeapon(new ItemWeaponData(m_refWeaponItemId), null);
+			obj.EquipActiveSkillWeapon(new ItemWeaponData(RefItem.weaponId), null);
 		}
-		obj.WeaponHolder.ActiveWeaponSkillFire(m_refWeaponItemId, obj.transform.eulerAngles.y);
+		obj.WeaponHolder.ActiveWeaponSkillFire(RefItem.weaponId, obj.transform.eulerAngles.y);
 	}
 
 	override public void NoUse(Creature obj)
@@ -45,7 +44,7 @@ public class ItemSkillData : ItemData{
 			return false;
 
 		ItemSkillData itemData = item as ItemSkillData;
-		return m_refWeaponItemId == itemData.m_refWeaponItemId;
+		return RefItem.weaponId == itemData.RefItem.weaponId;
 	}
 
 }

@@ -66,11 +66,12 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampRocketLauncherRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampBoomerangLauncherRefItemId));
 				
-				foreach(RefMob follower in RefData.Instance.RefFollowerMobs)
-				{
-					ItemFollowerData followerData = new ItemFollowerData(follower.id);
-					Warehouse.Instance.PushItem(followerData);
-				}
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGunMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerFireMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerRocketMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerLightningMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerBoomerangMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
 				
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
@@ -82,10 +83,10 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
 				Warehouse.Instance.PushItem(new ItemStatData(2007));
 
-				Warehouse.Instance.PushItem(new ItemStatData(21));
-				Warehouse.Instance.PushItem(new ItemStatData(22));
-				Warehouse.Instance.PushItem(new ItemStatData(23));
-				Warehouse.Instance.PushItem(new ItemStatData(24));
+				Warehouse.Instance.PushItem(new ItemSkillData(21));
+				Warehouse.Instance.PushItem(new ItemSkillData(22));
+				Warehouse.Instance.PushItem(new ItemSkillData(23));
+				Warehouse.Instance.PushItem(new ItemSkillData(24));
 			}
 
 			Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
@@ -110,11 +111,12 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampFiregunRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGuidedRocketLauncherRefItemId));
 
-				foreach(RefMob follower in RefData.Instance.RefFollowerMobs)
-				{
-					ItemFollowerData followerData = new ItemFollowerData(follower.id);
-					Warehouse.Instance.PushItem(followerData);
-				}
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGunMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerFireMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerRocketMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerLightningMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerBoomerangMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
 
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
@@ -126,14 +128,17 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
 				Warehouse.Instance.PushItem(new ItemStatData(2007));
 
-				Warehouse.Instance.PushItem(new ItemStatData(21));
-				Warehouse.Instance.PushItem(new ItemStatData(22));
-				Warehouse.Instance.PushItem(new ItemStatData(23));
-				Warehouse.Instance.PushItem(new ItemStatData(24));
+				Warehouse.Instance.PushItem(new ItemSkillData(21));
+				Warehouse.Instance.PushItem(new ItemSkillData(22));
+				Warehouse.Instance.PushItem(new ItemSkillData(23));
+				Warehouse.Instance.PushItem(new ItemSkillData(24));
 			}
+		}
 
-
-
+		if (Const.AppOnce == false)
+		{
+			Warehouse.Instance.AutoEarnGold += (int)System.DateTime.UtcNow.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5;
+			Const.AppOnce = true;
 		}
 
 		for(int i = 0; i < m_equipedAccessories.Length; ++i)

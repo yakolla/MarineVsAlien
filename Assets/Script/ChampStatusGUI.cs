@@ -17,6 +17,7 @@ public class ChampStatusGUI : MonoBehaviour {
 	YGUISystem.GUIChargeButton[]	m_accessoryButtons = new YGUISystem.GUIChargeButton[Const.AccessoriesSlots];
 	YGUISystem.GUIGuage[] m_guages = new YGUISystem.GUIGuage[Const.Guages];
 	YGUISystem.GUILable m_level;
+	YGUISystem.GUIButton			m_autoEarnButton;
 	ComboGUIShake	m_gold;
 	ComboGUIShake	m_mobKills;
 	ComboGUIShake	m_goldMedal;
@@ -29,6 +30,12 @@ public class ChampStatusGUI : MonoBehaviour {
 		m_mobKills = transform.Find("Kills/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 
 		m_accessoryBoard = transform.Find("Accessory").gameObject;
+
+		m_autoEarnButton = new YGUISystem.GUIButton(transform.Find("Special/AutoEarnButton").gameObject, ()=>{
+			return Warehouse.Instance.AutoEarnGold > 0;
+		});
+
+		m_autoEarnButton.Lable.Text.text = Warehouse.Instance.AutoEarnGold.ToString();
 
 		assignSkillButton(0, Warehouse.Instance.FindItem(23), 1, 1, ()=>{
 			DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
@@ -122,6 +129,16 @@ public class ChampStatusGUI : MonoBehaviour {
 		m_specialButtons[slot].DoFunctor.Invoke();
 
 		--m_specialButtons[slot].ChargingPoint;
+	}
+
+	public void OnClickAutoEarnGold()
+	{
+		if (Warehouse.Instance.AutoEarnGold == 0)
+			return;
+
+		Const.GetSpawn().SharePotinsChamps(m_champ, ItemData.Type.Gold, Warehouse.Instance.AutoEarnGold, true);
+
+		Warehouse.Instance.AutoEarnGold = 0;
 	}
 
 	public void OnClickAccessory(int slot)
@@ -224,6 +241,8 @@ public class ChampStatusGUI : MonoBehaviour {
 		{
 			guage.Update();
 		}
+
+		m_autoEarnButton.Update();
 	}
 
 }
