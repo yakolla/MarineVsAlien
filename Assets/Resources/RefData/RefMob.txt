@@ -803,14 +803,6 @@
 					}
 				},
 				{
-					"refItemId":"121",
-					"weaponStat":
-					{
-						"coolTime":3
-						
-					}
-				},
-				{
 					"refItemId":"105",
 					"weaponStat":
 					{

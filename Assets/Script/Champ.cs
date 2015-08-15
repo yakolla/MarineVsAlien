@@ -309,6 +309,7 @@ public class Champ : Creature {
 		Warehouse.Instance.GameDataContext.m_level.Value = m_creatureProperty.Level;
 		Warehouse.Instance.GameDataContext.m_hp.Value = m_creatureProperty.HP;
 		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
+		Warehouse.Instance.GameDataContext.m_sp.Value = m_creatureProperty.SP;
 
 		TimeEffector.Instance.Update();
 	}
@@ -353,6 +354,7 @@ public class Champ : Creature {
 		Warehouse.Instance.GameDataContext.m_level.Value = m_creatureProperty.Level;
 		Warehouse.Instance.GameDataContext.m_hp.Value = m_creatureProperty.MaxHP;
 		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
+		Warehouse.Instance.GameDataContext.m_sp.Value = m_creatureProperty.SP;
 
 		ShowGameOverGUI();
 

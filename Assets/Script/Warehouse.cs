@@ -69,6 +69,7 @@ public class WarehouseData
 	{
 		public SecuredType.XInt	m_hp = 100;
 		public SecuredType.XInt	m_xp = 0;
+		public SecuredType.XInt	m_sp = 0;
 		public SecuredType.XInt	m_level = 1;
 	}
 
