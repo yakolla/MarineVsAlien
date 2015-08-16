@@ -401,7 +401,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":5,			
+			"range":4,			
 			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
@@ -415,18 +415,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":8000
 				},
 				{
 					"refItemId":5, 
-					"count":50
+					"count":80
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":80
 				}
 			],
 			"optionPerLevel":
@@ -447,11 +447,11 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":8000
 				},
 				{
 					"refItemId":5, 
-					"count":50
+					"count":80
 				}
 			],
 			"else_conds":
@@ -473,7 +473,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":6,
+			"range":4,
 			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
@@ -591,7 +591,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.9,
-			"range":3
+			"range":4
 		},
 		"unlock":
 		{
@@ -623,7 +623,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":3
+			"range":4
 		},
 		"evolutionFiring":
 		{
@@ -667,7 +667,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":7,			
+			"range":5,			
 			"spPerLevel":1,
 		},		
 		"levelup":
@@ -676,18 +676,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":7000
+					"count":16000
 				},
 				{
 					"refItemId":5, 
-					"count":70
+					"count":160
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":70
+					"count":160
 				}
 			],
 			"optionPerLevel":
@@ -709,18 +709,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":7000
+					"count":16000
 				},
 				{
 					"refItemId":5, 
-					"count":70
+					"count":160
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":70
+					"count":160
 				}
 			]
 		}
@@ -888,7 +888,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":7,			
+			"range":5,			
 			"spPerLevel":1,
 		},		
 		"levelup":
@@ -897,18 +897,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":7000
+					"count":32000
 				},
 				{
 					"refItemId":5, 
-					"count":70
+					"count":320
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":70
+					"count":320
 				}
 			],
 			"optionPerLevel":
@@ -930,18 +930,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":7000
+					"count":32000
 				},
 				{
 					"refItemId":5, 
-					"count":70
+					"count":320
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":70
+					"count":320
 				}
 			]
 		}
@@ -972,7 +972,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":3,
+			"range":4,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -995,7 +995,7 @@
 		"weaponStat":
 		{
 			"coolTime":1,
-			"range":4,			
+			"range":5,			
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1056,7 +1056,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.5,
-			"range":3,
+			"range":4,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1142,7 +1142,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":3
+			"range":4
 		},
 		"unlock":
 		{
@@ -1174,7 +1174,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.5,
-			"range":3
+			"range":4
 		},
 		"levelup":
 		{
@@ -1256,7 +1256,7 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":8,			
+			"range":6,			
 			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
@@ -1270,18 +1270,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":8000
+					"count":64000
 				},
 				{
 					"refItemId":5, 
-					"count":80
+					"count":640
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":80
+					"count":640
 				}
 			],
 			"optionPerLevel":
@@ -1303,18 +1303,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":8000
+					"count":64000
 				},
 				{
 					"refItemId":5, 
-					"count":80
+					"count":640
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":80
+					"count":640
 				}
 			]
 		}
@@ -1503,7 +1503,7 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":3
+			"range":4
 		}
 	},
 	{
@@ -1514,7 +1514,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":3,
+			"range":4,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1631,7 +1631,7 @@
 		"evolutionFiring":
 		{
 			"angle":10,
-			"delay":3
+			"delay":4
 		},
 		"weaponStat":
 		{

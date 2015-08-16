@@ -125,6 +125,7 @@ public class Const {
 					System.TimeSpan totalPlayingTime = game.TotalTimePlayed;
 					totalPlayingTime += new System.TimeSpan(System.TimeSpan.TicksPerSecond*(long)(Warehouse.Instance.SaveTime));					
 					Warehouse.Instance.SaveTime = Time.time;
+					Warehouse.Instance.LastModifiedFileTime = game.LastModifiedTimestamp;
 					GPlusPlatform.Instance.SaveGame(game, Warehouse.Instance.Serialize(), totalPlayingTime, Const.getScreenshot(), callback);
 				} 
 				else {

@@ -38,9 +38,7 @@ public class ChampStatusGUI : MonoBehaviour {
 		m_autoEarnButton.Lable.Text.text = Warehouse.Instance.AutoEarnGold.ToString();
 
 		assignSkillButton(0, Warehouse.Instance.FindItem(23), 1, 1, ()=>{
-			DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
-			desc.DamageRatio = Warehouse.Instance.FindItem(23).Item.Level*0.1f;
-			m_champ.ApplyBuff(null, DamageDesc.BuffType.Healing, 60f, desc);
+			m_champ.ApplyHealingSkill();
 		});
 
 		assignSkillButton(1, Warehouse.Instance.FindItem(22), 1, 1, ()=>{
@@ -52,9 +50,7 @@ public class ChampStatusGUI : MonoBehaviour {
 		});
 
 		assignSkillButton(3, Warehouse.Instance.FindItem(24), 3, 3, ()=>{	
-			DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
-			desc.DamageRatio = 10f*Warehouse.Instance.FindItem(24).Item.Level;
-			m_champ.ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 60f, desc);
+			m_champ.ApplyDamageMultiplySkill();
 		});
 
 		for(int i = 0; i < m_accessoryButtons.Length; ++i)
@@ -86,15 +82,17 @@ public class ChampStatusGUI : MonoBehaviour {
 	void assignSkillButton(int slot, ItemObject itemObj, int maxChargingPoint, int chargingPoint, System.Action doFunctor)
 	{
 		m_specialButtons[slot] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button"+slot).gameObject, ()=>{
+			if (m_specialButtons[slot].MaxChargingPoint != itemObj.Item.Level)
+			{
+				m_specialButtons[slot].MaxChargingPoint = itemObj.Item.Level;
+				m_specialButtons[slot].ChargingPoint++;
+			}
 			return itemObj.Item.Level > 0;
 		});
 		
 		m_specialButtons[slot].Icon.Image = itemObj.ItemIcon;
 		
 		m_specialButtons[slot].DoFunctor = doFunctor;
-		
-		m_specialButtons[slot].MaxChargingPoint = maxChargingPoint;
-		m_specialButtons[slot].ChargingPoint = chargingPoint;
 		m_specialButtons[slot].CoolDownTime = itemObj.Item.RefItem.weaponStat.coolTime;
 
 	}
@@ -185,17 +183,6 @@ public class ChampStatusGUI : MonoBehaviour {
 			}
 
 			m_champ = obj.GetComponent<Champ>();
-
-			for(int i = 0; i < Const.AccessoriesSlots; ++i)
-			{
-				if (m_champ.AccessoryItems[i] == null)
-					continue;
-				
-				m_accessoryButtons[i].Icon.Image = m_champ.AccessoryItems[i].ItemIcon;
-				m_accessoryButtons[i].MaxChargingPoint = 2;
-				m_accessoryButtons[i].ChargingPoint = 2;
-				m_accessoryButtons[i].CoolDownTime = m_champ.AccessoryItems[i].Item.RefItem.weaponStat.coolTime;
-			}
 
 			SetActiveGUI(true);
 		}

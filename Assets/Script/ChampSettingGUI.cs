@@ -137,8 +137,8 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		if (Const.AppOnce == false)
 		{
-			Warehouse.Instance.AutoEarnGold += (int)System.DateTime.UtcNow.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5;
-			Const.AppOnce = true;
+			Warehouse.Instance.AutoEarnGold = (int)System.DateTime.UtcNow.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5;
+			//Const.AppOnce = true;
 		}
 
 		for(int i = 0; i < m_equipedAccessories.Length; ++i)

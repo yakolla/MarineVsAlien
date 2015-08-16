@@ -330,7 +330,32 @@ public class Champ : Creature {
 
 	public void ApplyMachoSkill()
 	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run == true)
+			return;
+
 		ApplyBuff(null, DamageDesc.BuffType.Macho, 5f, null);
+		
+	}
+
+	public void ApplyHealingSkill()
+	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.Healing].m_run == true)
+			return;
+
+		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+		desc.DamageRatio = Warehouse.Instance.FindItem(23).Item.Level*0.1f;
+		ApplyBuff(null, DamageDesc.BuffType.Healing, 60f, desc);
+		
+	}
+
+	public void ApplyDamageMultiplySkill()
+	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.DamageMultiply].m_run == true)
+			return;
+		
+		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+		desc.DamageRatio = 10f*Warehouse.Instance.FindItem(24).Item.Level;
+		ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 60f, desc);
 		
 	}
 
