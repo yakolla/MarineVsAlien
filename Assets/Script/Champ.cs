@@ -343,8 +343,8 @@ public class Champ : Creature {
 			return;
 
 		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
-		desc.DamageRatio = Warehouse.Instance.FindItem(23).Item.Level*0.1f;
-		ApplyBuff(null, DamageDesc.BuffType.Healing, 60f, desc);
+		desc.DamageRatio = 0.1f*Warehouse.Instance.FindItem(23).Item.Level;
+		ApplyBuff(null, DamageDesc.BuffType.Healing, 10f, desc);
 		
 	}
 
@@ -355,7 +355,7 @@ public class Champ : Creature {
 		
 		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
 		desc.DamageRatio = 10f*Warehouse.Instance.FindItem(24).Item.Level;
-		ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 60f, desc);
+		ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 20f, desc);
 		
 	}
 

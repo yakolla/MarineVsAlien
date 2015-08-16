@@ -136,7 +136,7 @@
 		"defaultLock":true,
 		"weaponStat":
 		{
-			"coolTime":30
+			"coolTime":90
 		},
 		"levelup":
 		{
@@ -189,7 +189,7 @@
 		"defaultLock":true,
 		"weaponStat":
 		{
-			"coolTime":30
+			"coolTime":90
 		},
 		"levelup":
 		{
@@ -200,7 +200,7 @@
 					"count":5000
 				},
 				{
-					"refItemId":5, 
+					"refItemId":5,
 					"count":50
 				}
 			],
@@ -271,18 +271,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":3000
+					"count":5000
 				},
 				{
 					"refItemId":5, 
-					"count":30
+					"count":50
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":30
+					"count":50
 				}
 			]
 		}	
@@ -2444,11 +2444,11 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				},
 				{
 					"refItemId":5, 
-					"count":1
+					"count":100
 				}
 			],
 			"else_conds":
@@ -2465,14 +2465,14 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":100
 				}
 			],
 			"optionPerLevel":
@@ -2560,11 +2560,11 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				},
 				{
 					"refItemId":5, 
-					"count":1
+					"count":100
 				}
 			],
 			"else_conds":
@@ -2581,14 +2581,14 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":100
 				}
 			],
 			"optionPerLevel":
