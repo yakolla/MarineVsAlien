@@ -1799,6 +1799,45 @@
 		}
 	},
 	{
+		"id":209,
+		"codeName":"FollowerLeapStrikeLauncher",
+		"type":"Weapon",
+		"icon":"Sprites/LeapStrike",		
+		
+		"weaponStat":
+		{
+			"coolTime":5,
+			"range":5,
+			"buffOnHitDesc":
+			{
+				"chance":1,
+				"buffType":"Airborne"
+			}
+		},
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":50
+				},
+				{
+					"refItemId":5, 
+					"count":5
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":5
+				}
+			]
+		}
+		
+	},
+	{
 		"id":1001,
 		"codeName":"Follower",
 		"type":"Follower",

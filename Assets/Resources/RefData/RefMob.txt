@@ -1120,8 +1120,8 @@
 		{
 			"id":30003,			
 			"prefHead":"Follower",
-			"prefBody":"marine_skin",
-			"name":"Lightning Marines",
+			"prefBody":"bat_skin",
+			"name":"Bat Marines",
 			"refWeaponItems":
 			[
 				{
@@ -1147,7 +1147,7 @@
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
 				"aniSpeedRatio":0.5,
-				"navMeshBaseOffset":0,
+				"navMeshBaseOffset":2,
 				"backwardOnDamage":false
 			}
 		},
@@ -1159,11 +1159,8 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"204",
-					"weaponStat":
-					{
-						"incBulletOnLevel":10
-					}
+					"refItemId":"209"
+					
 				}
 			],
 			"mobAI":"Follow",

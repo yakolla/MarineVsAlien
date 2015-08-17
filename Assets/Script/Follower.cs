@@ -11,6 +11,9 @@ public class Follower : Creature {
 	// Update is called once per frame
 	new void Update () {
 
+		if (m_owner == null)
+			return;
+
 		base.Update();
 
 		m_ai.Update();
@@ -24,7 +27,7 @@ public class Follower : Creature {
 		{
 			if (Targetting == null)
 			{
-				SetTarget(SearchTarget(GetMyEnemyType(), null, 50f));
+				SetTarget(m_owner.SearchTarget(GetMyEnemyType(), null, 5f));
 			}
 			
 			if (Targetting != null)
@@ -34,6 +37,9 @@ public class Follower : Creature {
 					m_weaponHolder.StartFiring(RotateToTarget(Targetting.transform.position));
 					return true;
 				}
+
+				m_weaponHolder.StopFiring();
+				return false;
 			}
 		}
 		
@@ -45,6 +51,13 @@ public class Follower : Creature {
 	override public Creature GetOwner()
 	{
 		return m_owner;
+	}
+
+	public override void SetTarget(Creature target)
+	{
+		base.SetTarget(target);
+		m_ai.SetTarget(target);
+		
 	}
 
 	IEnumerator DecHpEffect()
