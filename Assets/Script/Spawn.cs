@@ -212,13 +212,13 @@ public class Spawn : MonoBehaviour {
 						angle = 0f;
 						length = 16;
 						if (m_champ != null)
-							m_champ.m_creatureProperty.AttackRange=4;
+							m_champ.m_creatureProperty.AttackRange=2;
 						break;
 					case 3:
 						angle = 3.14f;
 						length = 16;
 						if (m_champ != null)
-							m_champ.m_creatureProperty.AttackRange=4;
+							m_champ.m_creatureProperty.AttackRange=2;
 						break;
 					default:
 						angle = angles[Random.Range(0, angles.Length)];
