@@ -195,7 +195,7 @@ public class CreatureProperty {
 
 	public int	PhysicalDefencePoint
 	{
-		get {return Mathf.Min(100, (int)(m_baseProperty.physicalDefence + AlphaPhysicalDefencePoint + (m_baseProperty.physicalDefence + AlphaPhysicalDefencePoint)*(Level-1)*m_baseProperty.phyDefencePerLevel));}
+		get {return (int)((m_baseProperty.physicalDefence + AlphaPhysicalDefencePoint)*(Level-1)*m_baseProperty.phyDefencePerLevel);}
 	}
 
 	public int	AlphaPhysicalDefencePoint

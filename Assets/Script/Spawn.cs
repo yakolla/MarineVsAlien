@@ -521,7 +521,7 @@ public class Spawn : MonoBehaviour {
 						item.Count += (int)(item.Count*goldAlpha);
 
 						if (m_champ != null)
-							item.Count += (int)(item.Count*m_champ.m_creatureProperty.GainExtraGold);
+							item.Count += (int)(item.Count*((m_champ.m_creatureProperty.Level-1)+m_champ.m_creatureProperty.GainExtraGold));
 
 						break;
 					case ItemData.Type.HealPosion:
@@ -613,6 +613,11 @@ public class Spawn : MonoBehaviour {
 					f.ApplyPickUpItemEffect(type, Const.GetPrefItemEatEffect(RefData.Instance.RefItems[2]), xp);
 			}
 			*/
+			break;
+		case ItemData.Type.Gold:
+			Warehouse.Instance.Gold.Item.Count += xp;
+			if (enableEffect == true)
+				m_champ.ApplyPickUpItemEffect(type, Const.GetPrefItemEatEffect(RefData.Instance.RefItems[1]), xp);
 			break;
 		}
 

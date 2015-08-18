@@ -140,7 +140,7 @@ public class YGUISystem {
 		Text	m_chargingText;
 		System.Action m_do;
 		public GUIChargeButton(GameObject obj, System.Func<bool> enableChecker)
-			: base(obj, ()=>{return m_charge > 0 && enableChecker();})
+			: base(obj, ()=>{return enableChecker();})
 		{
 			m_guiCoolDown = new GUICoolDown(obj.transform.Find("Cooldown").gameObject, ()=>{
 				++ChargingPoint;
@@ -179,6 +179,7 @@ public class YGUISystem {
 		public int MaxChargingPoint
 		{
 			set {m_maxCharge = value;}
+			get {return m_maxCharge;}
 		}
 
 		public float CoolDownTime

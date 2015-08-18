@@ -136,7 +136,7 @@
 		"defaultLock":true,
 		"weaponStat":
 		{
-			"coolTime":30
+			"coolTime":90
 		},
 		"levelup":
 		{
@@ -189,7 +189,7 @@
 		"defaultLock":true,
 		"weaponStat":
 		{
-			"coolTime":30
+			"coolTime":90
 		},
 		"levelup":
 		{
@@ -200,7 +200,7 @@
 					"count":5000
 				},
 				{
-					"refItemId":5, 
+					"refItemId":5,
 					"count":50
 				}
 			],
@@ -271,22 +271,22 @@
 			[
 				{
 					"refItemId":1, 
-					"count":3000
+					"count":5000
 				},
 				{
 					"refItemId":5, 
-					"count":30
+					"count":50
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":30
+					"count":50
 				}
 			]
 		}	
-	},
+	},	
 	{
 		"id":51,
 		"codeName":"Engineering Bay",
@@ -401,7 +401,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":5,			
+			"range":4,			
 			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
@@ -415,18 +415,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":8000
 				},
 				{
 					"refItemId":5, 
-					"count":50
+					"count":80
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":80
 				}
 			],
 			"optionPerLevel":
@@ -447,11 +447,11 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":8000
 				},
 				{
 					"refItemId":5, 
-					"count":50
+					"count":80
 				}
 			],
 			"else_conds":
@@ -473,7 +473,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":6,
+			"range":4,
 			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
@@ -591,7 +591,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.9,
-			"range":3
+			"range":4
 		},
 		"unlock":
 		{
@@ -623,7 +623,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":3
+			"range":4
 		},
 		"evolutionFiring":
 		{
@@ -667,7 +667,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":7,			
+			"range":5,			
 			"spPerLevel":1,
 		},		
 		"levelup":
@@ -676,18 +676,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":7000
+					"count":16000
 				},
 				{
 					"refItemId":5, 
-					"count":70
+					"count":160
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":70
+					"count":160
 				}
 			],
 			"optionPerLevel":
@@ -709,18 +709,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":7000
+					"count":16000
 				},
 				{
 					"refItemId":5, 
-					"count":70
+					"count":160
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":70
+					"count":160
 				}
 			]
 		}
@@ -792,18 +792,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":3000
+					"count":500
 				},
 				{
 					"refItemId":5, 
-					"count":30
+					"count":5
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":30
+					"count":5
 				}
 			],
 			"optionPerLevel":
@@ -888,7 +888,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":7,			
+			"range":5,			
 			"spPerLevel":1,
 		},		
 		"levelup":
@@ -897,18 +897,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":7000
+					"count":32000
 				},
 				{
 					"refItemId":5, 
-					"count":70
+					"count":320
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":70
+					"count":320
 				}
 			],
 			"optionPerLevel":
@@ -930,18 +930,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":7000
+					"count":32000
 				},
 				{
 					"refItemId":5, 
-					"count":70
+					"count":320
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":70
+					"count":320
 				}
 			]
 		}
@@ -972,7 +972,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":3,
+			"range":4,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -995,7 +995,7 @@
 		"weaponStat":
 		{
 			"coolTime":1,
-			"range":4,			
+			"range":5,			
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1056,7 +1056,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.5,
-			"range":3,
+			"range":4,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1142,7 +1142,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":3
+			"range":4
 		},
 		"unlock":
 		{
@@ -1174,7 +1174,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.5,
-			"range":3
+			"range":4
 		},
 		"levelup":
 		{
@@ -1256,7 +1256,7 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":8,			
+			"range":6,			
 			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
@@ -1270,18 +1270,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":8000
+					"count":64000
 				},
 				{
 					"refItemId":5, 
-					"count":80
+					"count":640
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":80
+					"count":640
 				}
 			],
 			"optionPerLevel":
@@ -1303,18 +1303,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":8000
+					"count":64000
 				},
 				{
 					"refItemId":5, 
-					"count":80
+					"count":640
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":80
+					"count":640
 				}
 			]
 		}
@@ -1503,7 +1503,7 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":3
+			"range":4
 		}
 	},
 	{
@@ -1514,7 +1514,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":3,
+			"range":4,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1631,7 +1631,7 @@
 		"evolutionFiring":
 		{
 			"angle":10,
-			"delay":3
+			"delay":4
 		},
 		"weaponStat":
 		{
@@ -1799,12 +1799,52 @@
 		}
 	},
 	{
+		"id":209,
+		"codeName":"FollowerLeapStrikeLauncher",
+		"type":"Weapon",
+		"icon":"Sprites/LeapStrike",		
+		
+		"weaponStat":
+		{
+			"coolTime":5,
+			"range":5,
+			"buffOnHitDesc":
+			{
+				"chance":1,
+				"buffType":"Airborne"
+			}
+		},
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":50
+				},
+				{
+					"refItemId":5, 
+					"count":5
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":5
+				}
+			]
+		}
+		
+	},
+	{
 		"id":1001,
 		"codeName":"Follower",
 		"type":"Follower",
 		"icon":"Sprites/FollowerGunMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"followerId":30001,
 		"weaponStat":
 		{
 			"coolTime":90
@@ -1875,6 +1915,7 @@
 		"icon":"Sprites/FollowerFireMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"followerId":30002,
 		"weaponStat":
 		{
 			"coolTime":90
@@ -1945,6 +1986,7 @@
 		"icon":"Sprites/FollowerLightningMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"followerId":30003,
 		"weaponStat":
 		{
 			"coolTime":90
@@ -2015,6 +2057,7 @@
 		"icon":"Sprites/FollowerRocketMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"followerId":30004,
 		"weaponStat":
 		{
 			"coolTime":90
@@ -2085,6 +2128,7 @@
 		"icon":"Sprites/FollowerBoomerangMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"followerId":30005,
 		"weaponStat":
 		{
 			"coolTime":90
@@ -2155,6 +2199,7 @@
 		"icon":"Sprites/FollowerTurret",
 		"maxLevel":900,
 		"defaultLock":true,
+		"followerId":30006,
 		"weaponStat":
 		{
 			"coolTime":150
@@ -2225,6 +2270,7 @@
 		"icon":"Sprites/FollowerBoomerangMarines",
 		"maxLevel":100,
 		"defaultLock":true,
+		"followerId":30007,
 		"unlock":
 		{
 			"conds":
@@ -2437,11 +2483,11 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				},
 				{
 					"refItemId":5, 
-					"count":1
+					"count":100
 				}
 			],
 			"else_conds":
@@ -2458,14 +2504,14 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":100
 				}
 			],
 			"optionPerLevel":
@@ -2553,11 +2599,11 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				},
 				{
 					"refItemId":5, 
-					"count":1
+					"count":100
 				}
 			],
 			"else_conds":
@@ -2574,14 +2620,14 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":100
 				}
 			],
 			"optionPerLevel":

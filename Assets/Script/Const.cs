@@ -45,12 +45,12 @@ public class Const {
 	public const int EmbersRefItemId = 132;
 	public const int NuclearRefItemId = 133;
 	public const int GoldMedalRefItemId = 5;
-	public const int GunMarineRefItemId = 1001;
-	public const int FireMarineRefItemId = 1002;
-	public const int RocketMarineRefItemId = 1003;
-	public const int GuidedRocketMarineRefItemId = 1004;
-	public const int BoomerangMarineRefItemId = 1005;
-	public const int PetRefMobId = 30007;
+	public const int FollowerGunMarineRefItemId = 1001;
+	public const int FollowerFireMarineRefItemId = 1002;
+	public const int FollowerLightningMarineRefItemId = 1003;
+	public const int FollowerRocketMarineRefItemId = 1004;
+	public const int FollowerBoomerangMarineRefItemId = 1005;
+	public const int FollowerPetRefItemId = 1007;
 
 
 	public const string LEADERBOARD_KILLED_MOBS = "CgkI4IXrjtcPEAIQBg";
@@ -125,6 +125,7 @@ public class Const {
 					System.TimeSpan totalPlayingTime = game.TotalTimePlayed;
 					totalPlayingTime += new System.TimeSpan(System.TimeSpan.TicksPerSecond*(long)(Warehouse.Instance.SaveTime));					
 					Warehouse.Instance.SaveTime = Time.time;
+					Warehouse.Instance.LastModifiedFileTime = game.LastModifiedTimestamp;
 					GPlusPlatform.Instance.SaveGame(game, Warehouse.Instance.Serialize(), totalPlayingTime, Const.getScreenshot(), callback);
 				} 
 				else {
@@ -182,5 +183,12 @@ public class Const {
 		}
 
 		return pref;
+	}
+
+	static bool appOnce = false;
+	public static bool AppOnce
+	{
+		get {return appOnce;}
+		set {appOnce = value;}
 	}
 }

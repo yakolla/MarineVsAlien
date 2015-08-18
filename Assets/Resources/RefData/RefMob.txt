@@ -631,12 +631,12 @@
 			{
 				"maxHP":50,
 				"physicalDamage":15,
-				"physicalDefence":1,
+				"physicalDefence":30,
 				"evolutionPerLevel":0.3,
 				"exp":100,
 				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":5,
 				"moveSpeed":1.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -658,12 +658,12 @@
 			{
 				"maxHP":51,
 				"physicalDamage":15,
-				"physicalDefence":0,
+				"physicalDefence":30,
 				"evolutionPerLevel":0.3,
 				"exp":110,
 				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":5,
 				"moveSpeed":1.7,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -694,12 +694,12 @@
 			{
 				"maxHP":52,
 				"physicalDamage":15,
-				"physicalDefence":1,
+				"physicalDefence":30,
 				"evolutionPerLevel":0.3,
 				"exp":150,
 				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":5,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -726,12 +726,12 @@
 			{
 				"maxHP":53,
 				"physicalDamage":15,
-				"physicalDefence":1,
+				"physicalDefence":30,
 				"evolutionPerLevel":0.3,
 				"exp":200,
 				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":5,
 				"moveSpeed":3,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -777,11 +777,11 @@
 			{
 				"maxHP":500,
 				"physicalDamage":10,
-				"physicalDefence":0,
+				"physicalDefence":50,
 				"evolutionPerLevel":0.5,
 				"exp":500,
 				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":3,
+				"phyDefencePerLevel":0.1,
 				"hpPerLevel":3,
 				"moveSpeed":1.5,
 				"navMeshBaseOffset":0,
@@ -803,14 +803,6 @@
 					}
 				},
 				{
-					"refItemId":"121",
-					"weaponStat":
-					{
-						"coolTime":3
-						
-					}
-				},
-				{
 					"refItemId":"105",
 					"weaponStat":
 					{
@@ -826,11 +818,11 @@
 			{
 				"maxHP":700,
 				"physicalDamage":10,
-				"physicalDefence":0,
+				"physicalDefence":50,
 				"evolutionPerLevel":0.5,
 				"exp":700,
 				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":3,
+				"phyDefencePerLevel":0.1,
 				"hpPerLevel":3,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0,
@@ -876,11 +868,11 @@
 			{
 				"maxHP":1000,
 				"physicalDamage":10,
-				"physicalDefence":1,
+				"physicalDefence":50,
 				"evolutionPerLevel":0.5,
 				"exp":3000,
 				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":3,
+				"phyDefencePerLevel":0.1,
 				"hpPerLevel":3,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0,
@@ -924,11 +916,11 @@
 			{
 				"maxHP":1300,
 				"physicalDamage":10,
-				"physicalDefence":1,
+				"physicalDefence":50,
 				"evolutionPerLevel":0.5,
 				"exp":4000,
 				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":3,
+				"phyDefencePerLevel":0.1,
 				"hpPerLevel":3,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0,
@@ -961,11 +953,11 @@
 			{
 				"maxHP":2000,
 				"physicalDamage":10,
-				"physicalDefence":1,
+				"physicalDefence":50,
 				"evolutionPerLevel":0.5,
 				"exp":5000,
 				"phyDamagePerLevel":1,
-				"phyDefencePerLevel":3,
+				"phyDefencePerLevel":0.1,
 				"hpPerLevel":3,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0,
@@ -1128,8 +1120,8 @@
 		{
 			"id":30003,			
 			"prefHead":"Follower",
-			"prefBody":"marine_skin",
-			"name":"Lightning Marines",
+			"prefBody":"bat_skin",
+			"name":"Bat Marines",
 			"refWeaponItems":
 			[
 				{
@@ -1155,7 +1147,7 @@
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
 				"aniSpeedRatio":0.5,
-				"navMeshBaseOffset":0,
+				"navMeshBaseOffset":2,
 				"backwardOnDamage":false
 			}
 		},
@@ -1167,11 +1159,8 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"204",
-					"weaponStat":
-					{
-						"incBulletOnLevel":10
-					}
+					"refItemId":"209"
+					
 				}
 			],
 			"mobAI":"Follow",

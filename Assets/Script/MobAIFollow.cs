@@ -12,12 +12,26 @@ public class MobAIFollow : MobAI {
 	// Update is called once per frame
 	override public void Update () {
 
+		if (TimeEffector.Instance.IsStop() == true)
+			return;
+
 		if (m_mob.AutoAttack() == false)
 		{
+			if (m_target)
+			{
+				m_navAgent.SetDestination(m_target.transform.position);
+				
+				m_mob.RotateToTarget(m_target.transform.position);
+			}
+			else
+			{
+				if (m_owner != null)
+					m_navAgent.SetDestination(m_owner.transform.position);
+			}
 		}
-		
-		if (m_owner != null)
-			m_navAgent.SetDestination(m_owner.transform.position);
+		else
+			m_navAgent.Stop();
+
 	}
 
 

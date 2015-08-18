@@ -4,8 +4,6 @@ using Newtonsoft.Json;
 
 public class ItemFollowerData : ItemData{
 
-	public int		m_refMobId;
-
 	[JsonIgnore]
 	public Follower	m_follower;
 
@@ -14,10 +12,9 @@ public class ItemFollowerData : ItemData{
 	{
 	}
 
-	public ItemFollowerData(int refMobId) : base(refMobId-30001+1001, 1)
+	public ItemFollowerData(int refItemId) : base(refItemId, 1)
 	{
-		RefMob refMob = RefData.Instance.RefMobs[refMobId];
-		m_refMobId = refMobId;
+
 	}
 
 	override public void Equip(Creature obj)
@@ -33,7 +30,7 @@ public class ItemFollowerData : ItemData{
 
 	Follower	InstanceFollower(Creature obj)
 	{
-		RefMob refMob = RefData.Instance.RefMobs[m_refMobId];
+		RefMob refMob = RefData.Instance.RefMobs[RefItem.followerId];
 		
 		Vector3 enemyPos = obj.transform.position;
 		float angle = Random.Range(-3.14f, 3.14f);
@@ -61,7 +58,7 @@ public class ItemFollowerData : ItemData{
 	
 	override public string Description()
 	{
-		return "<color=white>" + RefData.Instance.RefMobs[m_refMobId].name + "</color>" + "\n" +  base.Description();
+		return "<color=white>" + RefData.Instance.RefMobs[RefItem.followerId].name + "</color>" + "\n" +  base.Description();
 	}
 
 	override public bool Compare(ItemData item)
@@ -70,7 +67,7 @@ public class ItemFollowerData : ItemData{
 			return false;
 
 		ItemFollowerData itemFollowerData = item as ItemFollowerData;
-		return m_refMobId == itemFollowerData.m_refMobId;
+		return RefItem.followerId == itemFollowerData.RefItem.followerId;
 	}
 
 }

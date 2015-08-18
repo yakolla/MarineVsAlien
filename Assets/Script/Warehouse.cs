@@ -18,6 +18,7 @@ public class WarehouseData
 	public SecuredType.XInt	m_gold = 0;
 	public SecuredType.XInt	m_goldMedal = 0;
 	public SecuredType.XInt	m_gem = 0;
+	public SecuredType.XInt	m_autoEarnGold = 0;
 	
 	public GameStatistics			m_gameBestStats = new GameStatistics();
 	public Options					m_options = new Options();
@@ -68,6 +69,7 @@ public class WarehouseData
 	{
 		public SecuredType.XInt	m_hp = 100;
 		public SecuredType.XInt	m_xp = 0;
+		public SecuredType.XInt	m_sp = 0;
 		public SecuredType.XInt	m_level = 1;
 	}
 
@@ -83,7 +85,8 @@ public class WarehouseData
 public class Warehouse {
 
 	WarehouseData	m_warehouseData = new WarehouseData();
-	public string				m_fileName;
+	string				m_fileName;
+	System.DateTime		m_lastModifiedFile = System.DateTime.UtcNow;
 
 	ItemObject			m_gold;
 	ItemObject			m_goldMedal;
@@ -241,6 +244,12 @@ public class Warehouse {
 		set {m_fileName = value;}
 	}
 
+	public System.DateTime LastModifiedFileTime
+	{
+		get {return m_lastModifiedFile;}
+		set {m_lastModifiedFile = value;}
+	}
+
 	public WarehouseData.GameStatistics NewGameStats
 	{
 		get {return m_newGameStats;}
@@ -264,7 +273,12 @@ public class Warehouse {
 		get {return m_warehouseData.m_waveIndex.Value;}
 		set {m_warehouseData.m_waveIndex.Value = value;}
 	}
-	
+
+	public int AutoEarnGold
+	{
+		get{return m_warehouseData.m_autoEarnGold.Value;}
+		set{m_warehouseData.m_autoEarnGold.Value = value;}
+	}
 
 	
 	public WarehouseData.GameStatistics GameBestStats

@@ -309,6 +309,7 @@ public class Champ : Creature {
 		Warehouse.Instance.GameDataContext.m_level.Value = m_creatureProperty.Level;
 		Warehouse.Instance.GameDataContext.m_hp.Value = m_creatureProperty.HP;
 		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
+		Warehouse.Instance.GameDataContext.m_sp.Value = m_creatureProperty.SP;
 
 		TimeEffector.Instance.Update();
 	}
@@ -329,7 +330,32 @@ public class Champ : Creature {
 
 	public void ApplyMachoSkill()
 	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run == true)
+			return;
+
 		ApplyBuff(null, DamageDesc.BuffType.Macho, 5f, null);
+		
+	}
+
+	public void ApplyHealingSkill()
+	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.Healing].m_run == true)
+			return;
+
+		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+		desc.DamageRatio = 0.1f*Warehouse.Instance.FindItem(23).Item.Level;
+		ApplyBuff(null, DamageDesc.BuffType.Healing, 10f, desc);
+		
+	}
+
+	public void ApplyDamageMultiplySkill()
+	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.DamageMultiply].m_run == true)
+			return;
+		
+		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+		desc.DamageRatio = 10f*Warehouse.Instance.FindItem(24).Item.Level;
+		ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 20f, desc);
 		
 	}
 
@@ -353,6 +379,7 @@ public class Champ : Creature {
 		Warehouse.Instance.GameDataContext.m_level.Value = m_creatureProperty.Level;
 		Warehouse.Instance.GameDataContext.m_hp.Value = m_creatureProperty.MaxHP;
 		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
+		Warehouse.Instance.GameDataContext.m_sp.Value = m_creatureProperty.SP;
 
 		ShowGameOverGUI();
 
