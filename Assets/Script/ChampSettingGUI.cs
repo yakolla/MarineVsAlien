@@ -78,7 +78,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2001));
 				Warehouse.Instance.PushItem(new ItemStatData(2002));
 				Warehouse.Instance.PushItem(new ItemStatData(2003));
-				Warehouse.Instance.PushItem(new ItemStatData(2004));
+				//Warehouse.Instance.PushItem(new ItemStatData(2004));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
 				Warehouse.Instance.PushItem(new ItemStatData(2007));
@@ -123,7 +123,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2001));
 				Warehouse.Instance.PushItem(new ItemStatData(2002));
 				Warehouse.Instance.PushItem(new ItemStatData(2003));
-				Warehouse.Instance.PushItem(new ItemStatData(2004));
+				//Warehouse.Instance.PushItem(new ItemStatData(2004));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
 				Warehouse.Instance.PushItem(new ItemStatData(2007));
@@ -377,6 +377,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				if (selectedItem.Item.RefItem.type == ItemData.Type.Weapon)
 				{
 					m_champ.WeaponHolder.MainWeapon.LevelUp();
+					selectedItem.Item.Use(m_champ);
 				}
 				else if (selectedItem.Item.RefItem.type == ItemData.Type.Follower)
 				{
