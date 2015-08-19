@@ -38,19 +38,20 @@ public class ChampStatusGUI : MonoBehaviour {
 		m_autoEarnButton.Lable.Text.text = Warehouse.Instance.AutoEarnGold.ToString();
 
 		assignSkillButton(0, Warehouse.Instance.FindItem(23), 1, 1, ()=>{
-			m_champ.ApplyHealingSkill();
+			return m_champ.ApplyHealingSkill();
 		});
 
 		assignSkillButton(1, Warehouse.Instance.FindItem(22), 1, 1, ()=>{
-			m_champ.ApplyMachoSkill();
+			return m_champ.ApplyMachoSkill();
 		});
 
 		assignSkillButton(2, Warehouse.Instance.FindItem(21), 3, 3, ()=>{			
 			m_champ.WeaponHolder.ActiveWeaponSkillFire(Const.NuclearRefItemId, transform.eulerAngles.y);
+			return true;
 		});
 
 		assignSkillButton(3, Warehouse.Instance.FindItem(24), 3, 3, ()=>{	
-			m_champ.ApplyDamageMultiplySkill();
+			return m_champ.ApplyDamageMultiplySkill();
 		});
 
 		for(int i = 0; i < m_accessoryButtons.Length; ++i)
@@ -79,7 +80,7 @@ public class ChampStatusGUI : MonoBehaviour {
 		);
 	}
 
-	void assignSkillButton(int slot, ItemObject itemObj, int maxChargingPoint, int chargingPoint, System.Action doFunctor)
+	void assignSkillButton(int slot, ItemObject itemObj, int maxChargingPoint, int chargingPoint, System.Func<bool> doFunctor)
 	{
 		m_specialButtons[slot] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button"+slot).gameObject, ()=>{
 			if (m_specialButtons[slot].MaxChargingPoint != itemObj.Item.Level)
@@ -124,7 +125,8 @@ public class ChampStatusGUI : MonoBehaviour {
 		if (m_specialButtons[slot].ChargingPoint == 0)
 			return;
 
-		m_specialButtons[slot].DoFunctor.Invoke();
+		if (m_specialButtons[slot].DoFunctor.Invoke() == false)
+			return;
 
 		--m_specialButtons[slot].ChargingPoint;
 	}

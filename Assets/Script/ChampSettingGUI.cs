@@ -302,6 +302,14 @@ public class ChampSettingGUI : MonoBehaviour {
 			}
 		}
 
+		foreach(ItemObject itemStatObject in Warehouse.Instance.Items[ItemData.Type.WeaponParts])
+		{
+			if (itemStatObject.Item.Level > 0)
+			{
+				itemStatObject.Item.Equip(m_champ);
+			}
+		}
+
 		m_champ.WeaponHolder.EquipActiveSkillWeapon(m_champ.instanceWeapon(new ItemWeaponData(Const.NuclearRefItemId), null));
 
 		m_champ.m_creatureProperty.Exp = Warehouse.Instance.GameDataContext.m_xp.Value;

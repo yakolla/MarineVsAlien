@@ -510,6 +510,11 @@ public class Spawn : MonoBehaviour {
 			for(int i = 0; i < desc.count; ++i)
 			{
 				float ratio = Random.Range(0f, 1f);
+				if (desc.refItem.type == ItemData.Type.WeaponParts)
+				{
+					ratio += m_wave*0.01f;
+				}
+
 				if (ratio <= desc.ratio)
 				{
 					float scale = 1f;
@@ -531,10 +536,10 @@ public class Spawn : MonoBehaviour {
 						item = new ItemWeaponData(desc.refItem.id);
 						break;
 					case ItemData.Type.WeaponParts:
-						item = new ItemWeaponPartsData(desc.refItemId, Random.Range(desc.minValue, desc.maxValue));					
+						item = new ItemWeaponPartsData(desc.refItemId);					
 						break;					
 					case ItemData.Type.WeaponDNA:
-						item = new ItemWeaponDNAData(Random.Range(desc.minValue, desc.maxValue));					
+						item = new ItemWeaponDNAData(desc.refItem.id);					
 						break;
 					case ItemData.Type.Accessory:
 						item = new ItemAccessoryData(desc.refItem.id);					

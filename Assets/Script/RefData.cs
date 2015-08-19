@@ -135,6 +135,7 @@ public class RefItem : RefBaseData
 	public 	string 				codeName;
 	public 	string 				name;
 	public	string				icon;
+	public 	string				partName;
 	public	RefPriceCondition	levelup;
 	public	RefPriceCondition	evolution;
 	public 	RefPriceCondition	unlock;

@@ -26,7 +26,7 @@ public class MeleeBullet : Bullet {
 			Creature creature = hit.transform.gameObject.GetComponent<Creature>();
 			if (creature && Creature.IsEnemy(creature, m_ownerCreature))
 			{				
-				float dist = Vector3.Distance(m_ownerCreature.transform.position, creature.transform.position);
+				float dist = Vector3.Distance(m_ownerCreature.WeaponHolder.transform.position, creature.transform.position);
 				if (dist < 2f)
 				{
 					GiveDamage(creature);
