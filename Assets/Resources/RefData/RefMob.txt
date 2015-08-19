@@ -930,14 +930,7 @@
 			"prefBody":"mon_kingbug_skin",
 			"refWeaponItems":
 			[
-			{
-					"refItemId":"107",
-					"weaponStat":
-					{
-						"range":3.5
-					}	
-				}
-				/*
+			
 				{
 					"refItemId":"117"
 				},
@@ -955,7 +948,7 @@
 						"coolTime":3
 					}	
 				}
-				*/
+				
 			],
 			"mobAI":"Normal",		
 			"nearByChampOnSpawn":true,
@@ -1096,7 +1089,7 @@
 		{
 			"id":30002,
 			"prefHead":"Follower",
-			"prefBody":"marine_skin",
+			"prefBody":"newchamp_skin",
 			"name":"Fire Marines",
 			"refWeaponItems":
 			[

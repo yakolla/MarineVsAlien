@@ -264,7 +264,7 @@ public class Creature : MonoBehaviour {
 		{
 			if (m_pushbackSpeedOnDamage > 0)
 			{
-				m_pushbackSpeedOnDamage -= 1f;
+				m_pushbackSpeedOnDamage -= 2f;
 				EnableNavmeshUpdatePos(false);
 			}
 			else
