@@ -209,6 +209,13 @@ public class Champ : Creature {
 		UpdateChampMovement();
 	}
 */
+
+	override public void EquipWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	{
+		base.EquipWeapon(weaponData, weaponStat);
+		if (weaponData.RefItem.partName != null)
+			transform.Find("Body/"+weaponData.RefItem.partName).gameObject.SetActive(true);
+	}
 	// Update is called once per frame
 	new void Update () {
 		base.Update();
@@ -328,35 +335,35 @@ public class Champ : Creature {
 		return dmg;
 	}
 
-	public void ApplyMachoSkill()
+	public bool ApplyMachoSkill()
 	{
 		if (m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run == true)
-			return;
+			return false;
 
 		ApplyBuff(null, DamageDesc.BuffType.Macho, 5f, null);
-		
+		return true;
 	}
 
-	public void ApplyHealingSkill()
+	public bool ApplyHealingSkill()
 	{
 		if (m_buffEffects[(int)DamageDesc.BuffType.Healing].m_run == true)
-			return;
+			return false;
 
 		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
 		desc.DamageRatio = 0.1f*Warehouse.Instance.FindItem(23).Item.Level;
 		ApplyBuff(null, DamageDesc.BuffType.Healing, 10f, desc);
-		
+		return true;
 	}
 
-	public void ApplyDamageMultiplySkill()
+	public bool ApplyDamageMultiplySkill()
 	{
 		if (m_buffEffects[(int)DamageDesc.BuffType.DamageMultiply].m_run == true)
-			return;
+			return false;
 		
 		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
 		desc.DamageRatio = 10f*Warehouse.Instance.FindItem(24).Item.Level;
 		ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 20f, desc);
-		
+		return true;
 	}
 
 	override public void Death()

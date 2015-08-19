@@ -769,6 +769,7 @@
 		"name":"Machine Gun",
 		"type":"Weapon",
 		"icon":"Sprites/Gun",
+		"partName":"gun_a",
 		"defaultLock":true,
 		"evolutionFiring":
 		{
@@ -2759,5 +2760,40 @@
 				}
 			]
 		}
+	},
+	{
+		"id":3001,
+		"codeName":"WeaponParts",
+		"type":"WeaponParts",
+		"icon":"Sprites/WeaponParts",
+		"partName":"body_b"
+	},
+	{
+		"id":3002,
+		"codeName":"WeaponParts",
+		"type":"WeaponParts",
+		"icon":"Sprites/WeaponParts",
+		"partName":"head_b"
+	},
+	{
+		"id":3003,
+		"codeName":"WeaponParts",
+		"type":"WeaponParts",
+		"icon":"Sprites/WeaponParts",
+		"partName":"leg_b"
+	},
+	{
+		"id":3004,
+		"codeName":"WeaponParts",
+		"type":"WeaponParts",
+		"icon":"Sprites/WeaponParts",
+		"partName":"hand_b"
+	},
+	{
+		"id":3005,
+		"codeName":"WeaponParts",
+		"type":"WeaponParts",
+		"icon":"Sprites/WeaponParts",
+		"partName":"booster_a"
 	}
 ]

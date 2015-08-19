@@ -121,7 +121,7 @@ public class Creature : MonoBehaviour {
 		return weapon;
 	}
 
-	public void EquipWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	virtual public void EquipWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
 	{		
 		Weapon weapon = instanceWeapon(weaponData, weaponStat);
 

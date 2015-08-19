@@ -138,7 +138,7 @@ public class YGUISystem {
 
 		GUICoolDown m_guiCoolDown;
 		Text	m_chargingText;
-		System.Action m_do;
+		System.Func<bool> m_do;
 		public GUIChargeButton(GameObject obj, System.Func<bool> enableChecker)
 			: base(obj, ()=>{return enableChecker();})
 		{
@@ -150,7 +150,7 @@ public class YGUISystem {
 
 		}
 
-		public System.Action DoFunctor
+		public System.Func<bool> DoFunctor
 		{
 			set{m_do = value;}
 			get{return m_do;}
