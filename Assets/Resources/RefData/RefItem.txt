@@ -1795,7 +1795,7 @@
 		},
 		"weaponStat":
 		{
-			"coolTime":1,
+			"coolTime":4,
 			"range":4
 		}
 	},

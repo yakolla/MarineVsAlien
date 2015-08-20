@@ -15,21 +15,21 @@ public class MobAIFollow : MobAI {
 		if (TimeEffector.Instance.IsStop() == true)
 			return;
 
+		if (m_target)
+		{
+			if (5f < Vector3.Distance(m_owner.transform.position, m_target.transform.position))
+			{
+				m_navAgent.Stop();
+				m_mob.SetTarget(null);
+			}
+		}
+
 		if (m_mob.AutoAttack() == false)
 		{
 			if (m_target)
 			{
-				if (5f < Vector3.Distance(m_owner.transform.position, m_target.transform.position))
-				{
-					m_navAgent.Stop();
-					SetTarget(null);
-				}
-				else
-				{
-					m_navAgent.SetDestination(m_target.transform.position);
-					m_mob.RotateToTarget(m_target.transform.position);
-				}
-
+				m_navAgent.SetDestination(m_target.transform.position);
+				m_mob.RotateToTarget(m_target.transform.position);
 			}
 			else
 			{

@@ -43,6 +43,7 @@ public class Spawn : MonoBehaviour {
 
 	[SerializeField]
 	int				m_wave = 0;
+	int				m_relWave = 0;
 	// Use this for initialization
 	void Awake () {
 
@@ -310,13 +311,15 @@ public class Spawn : MonoBehaviour {
 					yield return new WaitForSeconds(3f);
 				}
 
+				++m_relWave;
+
 				if (m_champ != null)
 				{
 					NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
-					if ((m_wave+1)/m_goalPoints.Length%2==0)
-						m_goalPointIndex = (m_wave+1)%m_goalPoints.Length;
+					if (m_relWave/m_goalPoints.Length%2==0)
+						m_goalPointIndex = m_relWave%m_goalPoints.Length;
 					else
-						m_goalPointIndex = m_goalPoints.Length-(m_wave)%m_goalPoints.Length;
+						m_goalPointIndex = m_goalPoints.Length-m_relWave%m_goalPoints.Length-1;
 					nav.SetDestination(m_goalPoints[m_goalPointIndex].transform.position);
 					m_champ.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
 					while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)

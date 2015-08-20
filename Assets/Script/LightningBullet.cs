@@ -91,7 +91,9 @@ public class LightningBullet : Bullet
 			Creature creature = null;
 			RaycastHit hit;
 			Vector3 fwd = transform.TransformDirection(Vector3.right);
-			if (Physics.Raycast(transform.position, fwd, out hit, BulletLength(), 1<<9))
+			Vector3 pos = transform.position;
+			pos.y=0;
+			if (Physics.Raycast(pos, fwd, out hit, BulletLength(), 1<<9))
 				creature = hit.transform.GetComponent<Creature>();
 
 /*
@@ -183,20 +185,24 @@ public class LightningBullet : Bullet
 		else
 		{
 			m_lastDamageTime = Time.time;
-		}
 
-		if (mobHitted == false)
-		{
 			Vector3 targetPos = new Vector3();
 			targetPos.x = Mathf.Cos(transform.rotation.eulerAngles.y*Mathf.Deg2Rad)*BulletLength();
 			targetPos.z = Mathf.Sin(transform.rotation.eulerAngles.y*Mathf.Deg2Rad)*-BulletLength();
 			targetPos.x += transform.position.x;
 			targetPos.z += transform.position.z;
 			targetPos.y = m_ownerCreature.transform.localPosition.y;
-
+			
 			createChanningParticle(transform.position, targetPos, 0, particles.Length);
 			
 			particleEmitter.particles = particles;
+
+			m_ownerCreature.SetTarget(null);
+		}
+
+		if (mobHitted == false)
+		{
+
 		}
 	}	
 
