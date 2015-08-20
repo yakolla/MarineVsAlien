@@ -670,18 +670,12 @@ public class Creature : MonoBehaviour {
 		switch(type)
 		{
 		case DamageDesc.BuffType.Airborne:
-			if (m_buffEffects[(int)type].m_run == true)
-				return false;
 			StartCoroutine(EffectAirborne());
 			break;
 		case DamageDesc.BuffType.Stun:
-			if (m_buffEffects[(int)type].m_run == true)
-				return false;
 			StartCoroutine(EffectStun());
 			break;
 		case DamageDesc.BuffType.Slow:
-			if (m_buffEffects[(int)type].m_run == true)
-				return false;
 			StartCoroutine(EffectSlow(time));
 			break;
 		case DamageDesc.BuffType.LevelUp:
