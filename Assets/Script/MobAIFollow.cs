@@ -19,9 +19,17 @@ public class MobAIFollow : MobAI {
 		{
 			if (m_target)
 			{
-				m_navAgent.SetDestination(m_target.transform.position);
-				
-				m_mob.RotateToTarget(m_target.transform.position);
+				if (5f < Vector3.Distance(m_owner.transform.position, m_target.transform.position))
+				{
+					m_navAgent.Stop();
+					SetTarget(null);
+				}
+				else
+				{
+					m_navAgent.SetDestination(m_target.transform.position);
+					m_mob.RotateToTarget(m_target.transform.position);
+				}
+
 			}
 			else
 			{

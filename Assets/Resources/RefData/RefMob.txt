@@ -1124,7 +1124,7 @@
 		{
 			"id":30003,			
 			"prefHead":"Follower",
-			"prefBody":"bat_skin",
+			"prefBody":"thunder_skin",
 			"name":"Bat Marines",
 			"refWeaponItems":
 			[
@@ -1151,7 +1151,7 @@
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
 				"aniSpeedRatio":0.5,
-				"navMeshBaseOffset":2,
+				"navMeshBaseOffset":3,
 				"backwardOnDamage":false
 			}
 		},

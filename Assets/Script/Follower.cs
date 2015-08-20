@@ -41,6 +41,7 @@ public class Follower : Creature {
 				m_weaponHolder.StopFiring();
 				return false;
 			}
+
 		}
 		
 		SetTarget(null);

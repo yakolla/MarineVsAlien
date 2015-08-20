@@ -214,7 +214,7 @@ public class Spawn : MonoBehaviour {
 						if (m_champ != null)
 							m_champ.m_creatureProperty.AttackRange=2;
 						break;
-					case 3:
+					case 7:
 						angle = 3.14f;
 						length = 16;
 						if (m_champ != null)
@@ -313,7 +313,10 @@ public class Spawn : MonoBehaviour {
 				if (m_champ != null)
 				{
 					NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
-					m_goalPointIndex = (m_wave+1)%m_goalPoints.Length;
+					if ((m_wave+1)/m_goalPoints.Length%2==0)
+						m_goalPointIndex = (m_wave+1)%m_goalPoints.Length;
+					else
+						m_goalPointIndex = m_goalPoints.Length-(m_wave)%m_goalPoints.Length;
 					nav.SetDestination(m_goalPoints[m_goalPointIndex].transform.position);
 					m_champ.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
 					while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)

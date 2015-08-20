@@ -29,9 +29,14 @@ public class Champ : Creature {
 	float		m_autoMoveTime;
 	float		m_autoMoveAngTime;
 
+	ADMob					m_admob;
+	float		m_idleTime;
+
 	new void Start () {
 
 		base.Start();
+
+		m_admob = GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>();
 
 		ApplyGameOptions();
 
@@ -317,6 +322,18 @@ public class Champ : Creature {
 		Warehouse.Instance.GameDataContext.m_hp.Value = m_creatureProperty.HP;
 		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
 		Warehouse.Instance.GameDataContext.m_sp.Value = m_creatureProperty.SP;
+
+		if (touchedCount > 0)
+		{
+			m_idleTime = 0f;
+			m_admob.ShowBanner(false);
+		}
+		else
+		{
+			m_idleTime += Time.deltaTime;
+			if (m_idleTime > 180f)
+				m_admob.ShowBanner(true);
+		}
 
 		TimeEffector.Instance.Update();
 	}
