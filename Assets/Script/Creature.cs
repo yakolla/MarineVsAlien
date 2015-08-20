@@ -655,6 +655,15 @@ public class Creature : MonoBehaviour {
 	{
 		//if (m_buffEffects[(int)type].m_run == true)
 		//	return false;
+		switch(type)
+		{
+		case DamageDesc.BuffType.Airborne:
+		case DamageDesc.BuffType.Stun:
+		case DamageDesc.BuffType.Slow:
+			if (m_buffEffects[(int)type].m_run == true)
+				return false;
+			break;
+		}
 
 		m_buffEffects[(int)type].m_run = true;
 
