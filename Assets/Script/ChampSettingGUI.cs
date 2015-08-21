@@ -420,7 +420,8 @@ public class ChampSettingGUI : MonoBehaviour {
 			}
 			else
 			{
-				PopupShop();
+				if (priceGemButton.m_gemButton == button)
+					PopupShop();
 			}
 		}
 
@@ -459,7 +460,8 @@ public class ChampSettingGUI : MonoBehaviour {
 			}
 			else
 			{
-				PopupShop();
+				if (priceGemButton.m_gemButton == button)
+					PopupShop();
 			}
 		}
 	}

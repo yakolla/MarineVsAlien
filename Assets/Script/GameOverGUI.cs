@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using GooglePlayGames;
@@ -12,7 +13,8 @@ public class GameOverGUI : MonoBehaviour {
 	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[2];
 
 	string[]				m_leaderBoards = {Const.LEADERBOARD_KILLED_MOBS};
-
+	Slider	m_waveSlider;
+	Text	m_waveText;
 	void Start () {
 	
 		m_admob = GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>();
@@ -29,6 +31,15 @@ public class GameOverGUI : MonoBehaviour {
 			return Warehouse.Instance.NewGameStats.KilledMobs.ToString() + " / " + Warehouse.Instance.GameBestStats.KilledMobs.ToString(); 
 		}
 		);
+
+		m_waveText = transform.Find("WaveGUI/Slider/Text").gameObject.GetComponent<Text>();
+		m_waveText.text = (Warehouse.Instance.NewGameStats.WaveIndex+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString();
+
+		m_waveSlider = transform.Find("WaveGUI/Slider").gameObject.GetComponent<Slider>();
+		m_waveSlider.minValue = 0;
+		m_waveSlider.maxValue = Warehouse.Instance.GameBestStats.WaveIndex+1;
+		m_waveSlider.value = Warehouse.Instance.NewGameStats.WaveIndex+1;
+
 
 		m_guages[1] = new YGUISystem.GUIGuage(transform.Find("Waves/Guage/Guage").gameObject, 
 		                                      ()=>{
@@ -103,6 +114,13 @@ public class GameOverGUI : MonoBehaviour {
 	public void OnClickIncWave()
 	{
 		Warehouse.Instance.NewGameStats.WaveIndex = Mathf.Min(Warehouse.Instance.GameBestStats.WaveIndex, ++Warehouse.Instance.NewGameStats.WaveIndex);
+	}
+
+	public void OnWaveSliderChanged(float value)
+	{
+		Debug.Log("OnWaveSliderChanged:" + m_waveSlider.value);
+		Warehouse.Instance.NewGameStats.WaveIndex = Mathf.Min(Warehouse.Instance.GameBestStats.WaveIndex, (int)m_waveSlider.value);
+		m_waveText.text = (Warehouse.Instance.NewGameStats.WaveIndex+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString();
 	}
 
 	public void OnClickContinue()

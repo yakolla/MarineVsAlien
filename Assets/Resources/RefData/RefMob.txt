@@ -742,6 +742,35 @@
 				"refMobId":31005,
 				"maxCount":3
 			}
+		},		
+		{
+			"id":40007,
+			"prefBody":"robot_skin",
+			"refWeaponItems":
+			[
+				{
+					"refItemId":"123",
+					"weaponStat":
+					{
+						"coolTime":4
+					}	
+				}
+				
+			],
+			"mobAI":"Normal",
+			"baseCreatureProperty":
+			{
+				"maxHP":54,
+				"physicalDamage":15,
+				"physicalDefence":30,
+				"evolutionPerLevel":0.2,
+				"exp":250,
+				"phyDamagePerLevel":1,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":5,
+				"moveSpeed":3,
+				"navMeshBaseOffset":2
+			}
 		}
 	],
 	"boss":
