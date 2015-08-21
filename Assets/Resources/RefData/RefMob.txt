@@ -1080,7 +1080,7 @@
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0,
 				"hpPerLevel":0,
-				"moveSpeed":3,
+				"moveSpeed":1.5,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,				
 				"backwardOnDamage":false
@@ -1114,7 +1114,7 @@
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
-				"moveSpeed":3,
+				"moveSpeed":1.5,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"bulletLength":1.5,
@@ -1180,7 +1180,7 @@
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
-				"moveSpeed":3,
+				"moveSpeed":1.5,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -1210,7 +1210,7 @@
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
-				"moveSpeed":3,
+				"moveSpeed":1.5,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false

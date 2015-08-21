@@ -17,7 +17,7 @@ public class GuidedRocketLauncherBullet : RocketLauncherBullet {
 	int maxSearch = 3;
 
 	float	m_refreshAngleCoolTime = 0f;
-
+	Bezier 	m_bezier;
 
 	GuidedRocketLauncher	m_weapon;
 	// Use this for initialization
@@ -31,6 +31,8 @@ public class GuidedRocketLauncherBullet : RocketLauncherBullet {
 
 		m_weapon = weapon as GuidedRocketLauncher;
 		m_selfDestoryTime = Time.time + 5f;
+
+
 	}
 
 	new void OnEnable()
@@ -61,11 +63,28 @@ public class GuidedRocketLauncherBullet : RocketLauncherBullet {
 
 			Creature[] searchedTargets = Bullet.SearchTarget(transform.position, m_ownerCreature.GetMyEnemyType(), m_searchRange);
 			if (searchedTargets != null)
+			{
 				m_target = searchedTargets[Random.Range(0, searchedTargets.Length)];
+				Vector3 handle1 = transform.position;
+				handle1 += (transform.forward+transform.up)*(Vector3.Distance(transform.position, m_target.transform.position)*0.5f);
+				Vector3 handle2 = m_target.transform.position;
+				handle2.y = 3f;
+				m_bezier = new Bezier(gameObject, m_target.gameObject, handle1, handle2, 0.01f);
+			}
 
 		}
 
-
+		if (m_bezier != null)
+		{
+			if (m_bezier.Update() == false)
+			{
+				if (m_weapon != null)
+					m_weapon.OnDestroyBullet();
+				Bomb();
+				m_bezier = null;
+			}
+		}
+		/*
 		float destAngle = transform.eulerAngles.y;
 		if (m_target != null)
 		{
@@ -75,10 +94,12 @@ public class GuidedRocketLauncherBullet : RocketLauncherBullet {
 
 		transform.Translate(Mathf.Clamp(m_accel, 0, 0.2f), 0, 0, transform);
 		m_accel += Time.fixedDeltaTime*Time.fixedDeltaTime*m_speed;
-
+*/
 	}
 
 	new void OnTriggerEnter(Collider other) {
+		return;
+
 		if (m_isDestroying == true)
 			return;
 
