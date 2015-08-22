@@ -813,12 +813,7 @@
 					"refItemId":"128"
 				},
 				{
-					"refItemId":"119",
-					"weaponStat":
-					{
-						"coolTime":2,						
-						"firingCount":5
-					}	
+					"refItemId":"107"
 				},
 				{
 					"refItemId":"105",

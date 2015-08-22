@@ -544,7 +544,8 @@ public class Spawn : MonoBehaviour {
 						item = new ItemWeaponData(desc.refItem.id);
 						break;
 					case ItemData.Type.WeaponParts:
-						item = new ItemWeaponPartsData(desc.refItemId);					
+						if (m_champ != null && m_champ.WeaponHolder.MainWeapon != null)
+							item = new ItemWeaponPartsData(desc.refItemId);					
 						break;					
 					case ItemData.Type.WeaponDNA:
 						item = new ItemWeaponDNAData(desc.refItem.id);					

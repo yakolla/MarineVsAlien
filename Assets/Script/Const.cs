@@ -123,10 +123,13 @@ public class Const {
 				if (status == SavedGameRequestStatus.Success) 
 				{
 					System.TimeSpan totalPlayingTime = game.TotalTimePlayed;
-					totalPlayingTime += new System.TimeSpan(System.TimeSpan.TicksPerSecond*(long)(Warehouse.Instance.SaveTime));					
-					Warehouse.Instance.SaveTime = Time.time;
-					Warehouse.Instance.LastModifiedFileTime = game.LastModifiedTimestamp;
-					GPlusPlatform.Instance.SaveGame(game, Warehouse.Instance.Serialize(), totalPlayingTime, Const.getScreenshot(), callback);
+					totalPlayingTime += new System.TimeSpan(System.TimeSpan.TicksPerSecond*(long)(Warehouse.Instance.SaveTime));
+
+					GPlusPlatform.Instance.SaveGame(game, Warehouse.Instance.Serialize(), totalPlayingTime, Const.getScreenshot(), (SavedGameRequestStatus status1, ISavedGameMetadata game1)=>{
+						Warehouse.Instance.SaveTime = Time.time;
+						Warehouse.Instance.LastModifiedFileTime = game.LastModifiedTimestamp;
+						callback(status1, game1);
+					});
 				} 
 				else {
 					callback(status, game);
@@ -190,5 +193,38 @@ public class Const {
 	{
 		get {return appOnce;}
 		set {appOnce = value;}
+	}
+
+	public enum WindowGUIType
+	{
+		SettingGUI,
+		ShopGUI,
+		OptionGUI,
+		MainTitleGUI,
+		ExitGUI,
+		CreditsGUI,
+		GameOverGUI,
+	}
+	public static GameObject GetWindowGui(WindowGUIType type)
+	{
+		GameObject obj = GameObject.Find("HudGUI");
+		switch(type)
+		{
+		case WindowGUIType.SettingGUI:
+			return obj.transform.Find("SettingGUI/Panel").gameObject;
+		case WindowGUIType.ShopGUI:
+			return obj.transform.Find("ShopGUI/Panel").gameObject;
+		case WindowGUIType.OptionGUI:
+			return obj.transform.Find("OptionGUI/Panel").gameObject;
+		case WindowGUIType.MainTitleGUI:
+			return obj.transform.Find("GoMainTitleGUI/Panel").gameObject;
+		case WindowGUIType.ExitGUI:
+			return obj.transform.Find("ExitGUI/Panel").gameObject;
+		case WindowGUIType.CreditsGUI:
+			return obj.transform.Find("OptionGUI/CreditsPanel").gameObject;
+		case WindowGUIType.GameOverGUI:
+			return obj.transform.Find("GameOverGUI/Panel").gameObject;
+		}
+		return null;
 	}
 }

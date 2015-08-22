@@ -7,6 +7,7 @@ public class DamageNumberSprite : MonoBehaviour {
 	{
 		Parabola,
 		RisingUp,
+		ParabolaAlpha,
 		FloatingUp,
 		FloatingUpAlways,
 	}
@@ -50,9 +51,10 @@ public class DamageNumberSprite : MonoBehaviour {
 		//transform.localScale = Vector3.one/2f;
 
 
-		if (movementType == MovementType.Parabola)
+		if (movementType == MovementType.Parabola || movementType == MovementType.ParabolaAlpha)
 		{
-			m_parabola = new Parabola(gameObject, 5f, 0f, 90*Mathf.Deg2Rad, 1);
+			float[] angs = {80,100};
+			m_parabola = new Parabola(gameObject, 6f, 0f,angs[Random.Range(0, angs.Length)]*Mathf.Deg2Rad, 1);
 		}
 	}
 	
@@ -82,6 +84,15 @@ public class DamageNumberSprite : MonoBehaviour {
 			m_targetPos.y += m_posY;
 			transform.position = m_targetPos;
 
+			if (m_startTime+m_duration < Time.time)
+			{
+				DestroyObject();
+			}
+			break;
+		case MovementType.ParabolaAlpha:
+			m_parabola.Update();			
+			float t = (Time.time-m_startTime);
+			m_text.ColorTopLeft.a = 5*t-t*t*0.5f*10f;
 			if (m_startTime+m_duration < Time.time)
 			{
 				DestroyObject();

@@ -630,7 +630,7 @@ public class Creature : MonoBehaviour {
 		{
 			int heal = (int)(m_creatureProperty.MaxHP*damageRatio);
 			Heal(heal);
-			DamageText("Heal " + heal, Color.green, DamageNumberSprite.MovementType.Parabola);
+			DamageText("Heal " + heal, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
 			yield return new WaitForSeconds(1f);
 		}
 		
@@ -715,17 +715,17 @@ public class Creature : MonoBehaviour {
 		{
 		case ItemData.Type.Gold:
 			{
-				DamageText("Gold " + strDamage, Color.yellow, DamageNumberSprite.MovementType.Parabola);
+			DamageText("Gold " + strDamage, Color.yellow, DamageNumberSprite.MovementType.ParabolaAlpha);
 			}
 			break;
 		case ItemData.Type.HealPosion:
 			{
-			DamageText("Heal " + strDamage, Color.green, DamageNumberSprite.MovementType.Parabola);
+			DamageText("Heal " + strDamage, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
 			}
 			break;
 		case ItemData.Type.XPPotion:
 			{
-			DamageText("XP " + strDamage, Color.blue, DamageNumberSprite.MovementType.Parabola);
+			DamageText("XP " + strDamage, Color.blue, DamageNumberSprite.MovementType.ParabolaAlpha);
 			}
 			break;
 		}
@@ -747,13 +747,13 @@ public class Creature : MonoBehaviour {
 
 		if (m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run == true)
 		{
-			DamageText("Blocked", Color.white, DamageNumberSprite.MovementType.Parabola);
+			DamageText("Blocked", Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 
 		if (m_buffEffects[(int)DamageDesc.BuffType.Dash].m_run == true)
 		{
-			DamageText("Blocked", Color.white, DamageNumberSprite.MovementType.Parabola);
+			DamageText("Blocked", Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 
@@ -779,7 +779,7 @@ public class Creature : MonoBehaviour {
 		if (dmg > 0 && m_creatureProperty.Shield > 0)
 		{
 			--m_creatureProperty.Shield;
-			DamageText("Shielded", Color.white, DamageNumberSprite.MovementType.Parabola);
+			DamageText("Shielded", Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 
@@ -787,7 +787,7 @@ public class Creature : MonoBehaviour {
 		if (dmg == 0)
 		{
 			strDamage = "Blocked";
-			DamageText(strDamage, Color.white, DamageNumberSprite.MovementType.Parabola);
+			DamageText(strDamage, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 		
@@ -805,7 +805,7 @@ public class Creature : MonoBehaviour {
 				color = Color.magenta;
 			}
 
-			DamageText(strDamage, color, DamageNumberSprite.MovementType.Parabola);
+			DamageText(strDamage, color, DamageNumberSprite.MovementType.ParabolaAlpha);
 
 			StartCoroutine(BodyRedColoredOnTakenDamage());
 

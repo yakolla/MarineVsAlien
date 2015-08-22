@@ -16,6 +16,7 @@ public class ChampSettingGUI : MonoBehaviour {
 	GameObject	m_statPanel;
 	GameObject	m_followerPanel;
 	GameObject	m_skillPanel;
+	GeneralInfoPanel	m_generalInfoPanel;
 
 	YGUISystem.GUIButton[]	m_tabs = new YGUISystem.GUIButton[4];
 
@@ -166,7 +167,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_statPanel = settingItemList("StatPanel", ItemData.Type.Stat);
 		m_followerPanel = settingItemList("FollowerPanel", ItemData.Type.Follower);
 		m_skillPanel = settingItemList("SkillPanel", ItemData.Type.Skill);
-
+		m_generalInfoPanel = transform.Find("GeneralInfoPanel").gameObject.GetComponent<GeneralInfoPanel>();
 		OnClickStart();
 	}
 	enum ButtonRole
@@ -316,11 +317,10 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_champ.m_creatureProperty.HP = Warehouse.Instance.GameDataContext.m_hp.Value;
 		m_champ.m_creatureProperty.SP = Warehouse.Instance.GameDataContext.m_sp.Value;
 
+		m_generalInfoPanel.SetChamp(m_champ);
 		m_spawn.StartWave(Warehouse.Instance.WaveIndex, champ);
 
-
 		GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", "Stage:"+Warehouse.Instance.WaveIndex, 0);
-
 		
 		champObj.SetActive(false);
 
@@ -628,6 +628,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_statPanel.SetActive(false);
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(false);
+		m_generalInfoPanel.gameObject.SetActive(false);
 	}
 
 	public void OnClickStat()
@@ -636,6 +637,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_statPanel.SetActive(true);
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(false);
+		m_generalInfoPanel.gameObject.SetActive(false);
 	}
 
 	public void OnClickFollower()
@@ -644,6 +646,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_statPanel.SetActive(false);
 		m_followerPanel.SetActive(true);
 		m_skillPanel.SetActive(false);
+		m_generalInfoPanel.gameObject.SetActive(false);
 	}
 
 	public void OnClickSkill()
@@ -652,6 +655,24 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_statPanel.SetActive(false);
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(true);
+		m_generalInfoPanel.gameObject.SetActive(false);
+	}
+
+	public void OnClickGeneralInfo()
+	{
+		m_weaponPanel.SetActive(false);
+		m_statPanel.SetActive(false);
+		m_followerPanel.SetActive(false);
+		m_skillPanel.SetActive(false);
+		m_generalInfoPanel.gameObject.SetActive(true);
+	}
+
+	public void OnEscapeKeyUp()
+	{		
+		if (m_generalInfoPanel.gameObject.activeSelf == true)
+			Const.GetWindowGui(Const.WindowGUIType.MainTitleGUI).SetActive(true);
+		else
+			OnClickGeneralInfo();
 	}
 }
 

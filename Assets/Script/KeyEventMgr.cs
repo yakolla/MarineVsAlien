@@ -17,18 +17,18 @@ public class KeyEventMgr : MonoBehaviour {
 
 	void Start()
 	{
-		m_settings = transform.Find("SettingGUI/Panel").gameObject;
-		m_shop = transform.Find("ShopGUI/Panel").gameObject;
-		m_option = transform.Find("OptionGUI/Panel").gameObject;
-		m_goMainTitle = transform.Find("GoMainTitleGUI/Panel").gameObject;
-		m_exit = transform.Find("ExitGUI/Panel").gameObject;
-		m_credits = transform.Find("OptionGUI/CreditsPanel").gameObject;
-		m_gameOver = transform.Find("GameOverGUI/Panel").gameObject;
+		m_settings = Const.GetWindowGui(Const.WindowGUIType.SettingGUI);
+		m_shop = Const.GetWindowGui(Const.WindowGUIType.ShopGUI);
+		m_option = Const.GetWindowGui(Const.WindowGUIType.OptionGUI);
+		m_goMainTitle = Const.GetWindowGui(Const.WindowGUIType.MainTitleGUI);
+		m_exit = Const.GetWindowGui(Const.WindowGUIType.ExitGUI);
+		m_credits = Const.GetWindowGui(Const.WindowGUIType.CreditsGUI);
+		m_gameOver = Const.GetWindowGui(Const.WindowGUIType.GameOverGUI);
 	}
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape)) 
+		if (Input.GetKeyUp(KeyCode.Escape)) 
 		{ 
 			if (m_shop.activeSelf || m_gameOver.activeSelf)
 				return;
@@ -45,7 +45,7 @@ public class KeyEventMgr : MonoBehaviour {
 			}
 			if (m_settings.activeSelf)
 			{
-				m_goMainTitle.SetActive(true);
+				m_settings.SendMessage("OnEscapeKeyUp");
 				return;
 			}
 
