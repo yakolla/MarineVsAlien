@@ -35,7 +35,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		if (m_champ == null)
 			return;
 
-		m_strength.Text.text = m_champ.m_creatureProperty.PhysicalAttackDamage.ToString();
+		m_strength.Text.text = m_champ.m_creatureProperty.Strength.ToString();
 		m_maxHP.Text.text = m_champ.m_creatureProperty.MaxHP.ToString();
 		m_gainExtraGold.Text.text = (m_champ.m_creatureProperty.GainExtraGold*100f).ToString() + "%";
 		m_damageReduction.Text.text = (m_champ.m_creatureProperty.DamageReduction*100f).ToString() + "%";

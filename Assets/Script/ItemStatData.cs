@@ -12,7 +12,7 @@ public class ItemStatData : ItemData{
 
 	override public void Use(Creature obj)
 	{	
-		ApplyOptions(obj);
+		ApplyOptions(obj, true);
 	}
 
 

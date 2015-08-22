@@ -179,10 +179,18 @@ public class CreatureProperty {
 		set{m_damageRatio.Value = value;}
 	}
 
+	public int Strength
+	{
+		get {
+			return (int)(m_baseProperty.physicalDamage + AlphaPhysicalAttackDamage + (m_baseProperty.physicalDamage + AlphaPhysicalAttackDamage)*(Level-1)*m_baseProperty.phyDamagePerLevel);
+
+		}
+	}
+
 	public int	PhysicalAttackDamage
 	{
 		get {
-			int damage = (int)(m_baseProperty.physicalDamage + AlphaPhysicalAttackDamage + (m_baseProperty.physicalDamage + AlphaPhysicalAttackDamage)*(Level-1)*m_baseProperty.phyDamagePerLevel);
+			int damage = Strength;
 			return damage + (int)(damage*DamageRatio);
 		}
 	}

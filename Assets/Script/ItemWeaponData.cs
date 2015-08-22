@@ -31,7 +31,7 @@ public class ItemWeaponData : ItemData{
 
 	override public void Use(Creature obj)
 	{	
-		ApplyOptions(obj);
+		ApplyOptions(obj, true);
 	}
 	
 	override public string Description()

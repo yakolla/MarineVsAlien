@@ -131,8 +131,7 @@ public class ItemData {
 
 	virtual public void Pickup(Creature obj){Warehouse.Instance.PushItem(this);}
 	virtual public void Equip(Creature obj){
-		for(int i = 0; i < Level; ++i)
-			ApplyOptions(obj);
+			ApplyOptions(obj, false);
 	}
 	virtual public void Use(Creature obj){}
 	virtual public bool Usable(Creature obj){return true;}
@@ -142,69 +141,79 @@ public class ItemData {
 		return item.RefItem.type == RefItem.type;
 	}
 
-	public void ApplyOptions(Creature obj)
+	public void ApplyOptions(Creature obj, bool levelup)
 	{
 		if (m_refItem.levelup == null || m_refItem.levelup.optionPerLevel == null)
 			return;
 
 		foreach(RefPriceCondition.RefOptionPerLevel op in m_refItem.levelup.optionPerLevel)
 		{
-			if (Level < op.level)
-				continue;
-			if (op.levelPer == false && op.level != Level)
-				continue;
-			if (op.levelPer == true && (Level%op.level) > 0)
-				continue;
+			float optionValue = 0f;
+			if (op.levelPer == false)
+			{
+				if (Level == op.level)
+					optionValue = op.option.values[0];
+			}
+			else
+			{
+				if (levelup == false)
+					optionValue = op.option.values[0]*(Level/op.level);
+				else
+				{
+					if (Level%op.level == 0)
+						optionValue = op.option.values[0];
+				}
+			}
 
 			switch(op.option.type)
 			{
 			case Option.DamageMultiplier:
-				obj.m_creatureProperty.DamageRatio += op.option.values[0];
+				obj.m_creatureProperty.DamageRatio += optionValue;
 				break;
 			case Option.MoveSpeed:
-				obj.m_creatureProperty.AlphaMoveSpeed += op.option.values[0];
+				obj.m_creatureProperty.AlphaMoveSpeed += optionValue;
 				break;
 			case Option.DamageReduction:
-				obj.m_creatureProperty.DamageReduction += op.option.values[0];
+				obj.m_creatureProperty.DamageReduction += optionValue;
 				break;
 			case Option.Weapon:
-				int weaponRefItemId = (int)op.option.values[0];
+				int weaponRefItemId = (int)optionValue;
 				if (weaponRefItemId == Const.EmbersRefItemId)
 				{
 					obj.SetSubWeapon(obj.WeaponHolder.MainWeapon, new ItemWeaponData(Const.EmbersRefItemId), null);
 				}
 				else
 				{
-					ItemWeaponData weaponData = new ItemWeaponData((int)op.option.values[0]);
+					ItemWeaponData weaponData = new ItemWeaponData((int)optionValue);
 
 					weaponData.Level = (int)op.option.values[1];
 					obj.EquipPassiveSkillWeapon(weaponData, null);
 				}
 				break;
 			case Option.Strength:
-				obj.m_creatureProperty.AlphaPhysicalAttackDamage += (int)op.option.values[0];
+				obj.m_creatureProperty.AlphaPhysicalAttackDamage += (int)optionValue;
 				break;
 			case Option.MaxHp:
-				obj.m_creatureProperty.AlphaMaxHP += (int)op.option.values[0];
+				obj.m_creatureProperty.AlphaMaxHP += (int)optionValue;
 				break;
 			case Option.MaxSp:
-				obj.m_creatureProperty.AlphaMaxSP += (int)op.option.values[0];
+				obj.m_creatureProperty.AlphaMaxSP += (int)optionValue;
 				break;
 			case Option.TapDamage:
-				obj.m_creatureProperty.TabDamage += (int)op.option.values[0];
+				obj.m_creatureProperty.TabDamage += (int)optionValue;
 				break;
 			case Option.CriticalChance:
-				obj.m_creatureProperty.AlphaCriticalChance += op.option.values[0];
+				obj.m_creatureProperty.AlphaCriticalChance += optionValue;
 				break;
 			case Option.CriticalDamage:
-				obj.m_creatureProperty.AlphaCriticalDamage += op.option.values[0];
+				obj.m_creatureProperty.AlphaCriticalDamage += optionValue;
 				break;
 			case Option.GainExtraGold:
-				obj.m_creatureProperty.GainExtraGold += op.option.values[0];
+				obj.m_creatureProperty.GainExtraGold += optionValue;
 				Creature owner = obj.GetOwner();
 				if (owner != null)
 				{
-					owner.m_creatureProperty.GainExtraGold += op.option.values[0];
+					owner.m_creatureProperty.GainExtraGold += optionValue;
 				}
 				break;
 			}

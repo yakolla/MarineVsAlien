@@ -715,17 +715,17 @@ public class Creature : MonoBehaviour {
 		{
 		case ItemData.Type.Gold:
 			{
-			DamageText("Gold " + strDamage, Color.yellow, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(strDamage + "G", Color.yellow, DamageNumberSprite.MovementType.ParabolaAlpha);
 			}
 			break;
 		case ItemData.Type.HealPosion:
 			{
-			DamageText("Heal " + strDamage, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(strDamage+ "HP", Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
 			}
 			break;
 		case ItemData.Type.XPPotion:
 			{
-			DamageText("XP " + strDamage, Color.blue, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(strDamage + "XP", Color.blue, DamageNumberSprite.MovementType.ParabolaAlpha);
 			}
 			break;
 		}

@@ -25,7 +25,7 @@ public class ItemFollowerData : ItemData{
 
 	override public void Use(Creature obj)
 	{
-		ApplyOptions(m_follower);
+		ApplyOptions(m_follower, true);
 	}
 
 	Follower	InstanceFollower(Creature obj)
