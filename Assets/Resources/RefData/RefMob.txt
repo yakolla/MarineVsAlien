@@ -1127,7 +1127,7 @@
 			{
 				"maxHP":15,
 				"maxSP":100,
-				"physicalDamage":5,
+				"physicalDamage":1,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
@@ -1161,7 +1161,7 @@
 			{
 				"maxHP":15,
 				"maxSP":100,
-				"physicalDamage":5,
+				"physicalDamage":2,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
@@ -1196,7 +1196,7 @@
 			{
 				"maxHP":15,
 				"maxSP":100,
-				"physicalDamage":5,
+				"physicalDamage":3,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
@@ -1227,7 +1227,7 @@
 			{
 				"maxHP":15,
 				"maxSP":100,
-				"physicalDamage":5,
+				"physicalDamage":4,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
@@ -1287,7 +1287,7 @@
 			{
 				"maxHP":30,
 				"maxSP":100,
-				"physicalDamage":5,
+				"physicalDamage":6,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,

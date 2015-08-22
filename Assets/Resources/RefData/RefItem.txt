@@ -1679,7 +1679,8 @@
 		"weaponStat":
 		{
 			"coolTime":1,
-			"range":4
+			"range":4,
+			"incBulletOnLevel":90
 		}
 	},
 	{
@@ -1695,7 +1696,8 @@
 		"weaponStat":
 		{
 			"coolTime":0.3,
-			"range":4
+			"range":4,
+			"incBulletOnLevel":90
 		}
 	},
 	{
@@ -1711,7 +1713,8 @@
 		"weaponStat":
 		{
 			"coolTime":1,
-			"range":4
+			"range":4,
+			"incBulletOnLevel":90
 		}
 		
 	},
@@ -1729,7 +1732,8 @@
 		"weaponStat":
 		{
 			"coolTime":1,
-			"range":4
+			"range":4,
+			"incBulletOnLevel":90
 		}
 	},
 	{
@@ -1746,7 +1750,8 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":4
+			"range":4,
+			"incBulletOnLevel":90
 		}
 	},
 	{
@@ -1762,7 +1767,8 @@
 		"weaponStat":
 		{
 			"coolTime":0.5,
-			"range":4
+			"range":4,
+			"incBulletOnLevel":90
 		}
 	},
 	{
@@ -1796,7 +1802,8 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":4
+			"range":4,
+			"incBulletOnLevel":90
 		}
 	},
 	{
