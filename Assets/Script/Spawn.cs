@@ -528,11 +528,13 @@ public class Spawn : MonoBehaviour {
 					switch(desc.refItem.type)
 					{
 					case ItemData.Type.Gold:
-						item = new ItemGoldData(Random.Range(desc.minValue, desc.maxValue));
-						item.Count += (int)(item.Count*goldAlpha);
-
+						item = new ItemGoldData(m_wave+1);
 						if (m_champ != null)
-							item.Count += (int)(item.Count*((m_champ.m_creatureProperty.Level-1)+m_champ.m_creatureProperty.GainExtraGold));
+						{
+							item.Count *= m_champ.m_creatureProperty.Level;
+							int extraCount = (int)(item.Count*m_champ.m_creatureProperty.GainExtraGold);
+							item.Count += extraCount;
+						}
 
 						break;
 					case ItemData.Type.HealPosion:

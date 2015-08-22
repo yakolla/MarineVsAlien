@@ -51,11 +51,13 @@ public class DamageNumberSprite : MonoBehaviour {
 
 
 		if (movementType == MovementType.Parabola)
+		{
 			m_parabola = new Parabola(gameObject, 5f, 0f, 90*Mathf.Deg2Rad, 1);
+		}
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {		
+	void LateUpdate () {
 
 		switch(m_movementType)
 		{

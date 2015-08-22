@@ -93,7 +93,8 @@ public class ItemData {
 			}
 			else
 			{
-				head = "per Lv" + op.level + ":" + op.option.type.ToString() + ":";
+				//head = "per Lv" + op.level + ":" + op.option.type.ToString() + ":";
+				head = op.option.type.ToString() + ":";
 				optionValue = op.option.values[0]*(Level/op.level);
 			}
 
@@ -103,6 +104,8 @@ public class ItemData {
 				desc += head + RefData.Instance.RefItems[(int)optionValue].name + "</color>\n";
 				break;
 			case Option.DamageMultiplier:
+				desc += head + "Damage" + ":"+ (optionValue*100) + "%</color>\n";
+				break;
 			case Option.DamageReduction:
 				desc += head + op.option.type.ToString() + ":"+ (optionValue*100) + "%</color>\n";
 				break;

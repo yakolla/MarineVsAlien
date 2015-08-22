@@ -21,7 +21,7 @@
 				"exp":10,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0
 			}
@@ -48,7 +48,7 @@
 				"exp":20,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1.2,
 				"navMeshBaseOffset":0
 			}
@@ -79,7 +79,7 @@
 				"exp":30,				
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1.5,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0
@@ -108,7 +108,7 @@
 				"exp":40,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0
 			}
@@ -132,7 +132,7 @@
 				"exp":50,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2.3,								
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0
@@ -157,7 +157,7 @@
 				"exp":10,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -187,7 +187,7 @@
 				"exp":60,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.2,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2.7,
 				"navMeshBaseOffset":0
 			}
@@ -211,7 +211,7 @@
 				"exp":70,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":3,
 				"navMeshBaseOffset":0
 			}
@@ -244,7 +244,7 @@
 				"exp":30,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":3,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0
 			}
@@ -275,7 +275,7 @@
 				"exp":40,
 				"phyDamagePerLevel":0.3,
 				"phyDefencePerLevel":3,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1.2,
 				"navMeshBaseOffset":2
 			}
@@ -303,7 +303,7 @@
 				"exp":50,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":3,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1.4,
 				"navMeshBaseOffset":0
 			}
@@ -330,7 +330,7 @@
 				"exp":60,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":3,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1.6,
 				"navMeshBaseOffset":2
 			}
@@ -359,7 +359,7 @@
 				"exp":70,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":3,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1.8,
 				"navMeshBaseOffset":2
 			}
@@ -387,7 +387,7 @@
 				"exp":80,
 				"phyDamagePerLevel":0.3,
 				"phyDefencePerLevel":5,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0
 			}
@@ -415,7 +415,7 @@
 				"exp":10,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0
 			}
@@ -440,7 +440,7 @@
 				"exp":20,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0
 			}
@@ -465,7 +465,7 @@
 				"exp":30,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0
 			}
@@ -491,7 +491,7 @@
 				"exp":40,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0
 			}
@@ -516,7 +516,7 @@
 				"exp":50,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -552,7 +552,7 @@
 				"exp":60,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -578,7 +578,7 @@
 				"exp":70,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":6,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -608,7 +608,7 @@
 				"exp":80,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":6,
 				"navMeshBaseOffset":0
 			}
@@ -660,7 +660,7 @@
 				"physicalDamage":15,
 				"physicalDefence":30,
 				"evolutionPerLevel":0.3,
-				"exp":110,
+				"exp":150,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
 				"hpPerLevel":5,
@@ -771,12 +771,41 @@
 				"moveSpeed":3,
 				"navMeshBaseOffset":2
 			}
+		},		
+		{
+			"id":40008,
+			"prefBody":"spider_green_skin",
+			"refWeaponItems":
+			[
+				{
+					"refItemId":"107"
+				},
+				{
+					"refItemId":"129",
+					"passive":true
+				}
+			],
+			"mobAI":"Normal",
+			"baseCreatureProperty":
+			{
+				"maxHP":65,
+				"physicalDamage":15,
+				"physicalDefence":30,
+				"evolutionPerLevel":0.3,
+				"exp":300,
+				"phyDamagePerLevel":1,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":5,
+				"moveSpeed":3,
+				"navMeshBaseOffset":0
+			}
 		}
 	],
 	"boss":
 	[			
 		{
 			"id":50001,
+			"prefHead":"gidra",
 			"prefBody":"gidra_skin",
 			"refWeaponItems":
 			[				
@@ -862,6 +891,7 @@
 		},
 		{
 			"id":50003,
+			"prefHead":"eye_brain",
 			"prefBody":"eye_brain_skin",
 			"refWeaponItems":
 			[
@@ -1023,7 +1053,7 @@
 				"exp":10,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0
 			}
@@ -1047,7 +1077,7 @@
 				"exp":10,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0
 			}
@@ -1072,7 +1102,7 @@
 				"exp":10,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0,
-				"hpPerLevel":3,
+				"hpPerLevel":6,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0
 			}
@@ -1315,7 +1345,7 @@
 				"maxHP":100,
 				"maxSP":100,
 				"spRecoveryPerSec":1,
-				"physicalDamage":5,
+				"physicalDamage":1,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
