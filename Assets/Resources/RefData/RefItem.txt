@@ -655,7 +655,7 @@
 	{
 		"id":106,
 		"codeName":"ChampGuidedRocketLauncher",
-		"name":"Guided Missile Launcher",
+		"name":"Missile Launcher",
 		"type":"Weapon",
 		"icon":"Sprites/RocketLauncher",
 		"defaultLock":true,
@@ -2771,36 +2771,121 @@
 	{
 		"id":3001,
 		"codeName":"WeaponParts",
+		"name":"Chest Suit B",
 		"type":"WeaponParts",
-		"icon":"Sprites/WeaponParts",
-		"partName":"body_b"
+		"icon":"Sprites/ChestSuitB",
+		"partName":"body_b",
+		"defaultLock":true,
+		"levelup":
+		{
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"DamageReduction",						
+						"values":[0.01]
+					}
+				}
+			]
+		}
 	},
 	{
 		"id":3002,
 		"codeName":"WeaponParts",
+		"name":"Helmet Suit B",
 		"type":"WeaponParts",
-		"icon":"Sprites/WeaponParts",
-		"partName":"head_b"
+		"icon":"Sprites/HeLmetSuitB",
+		"partName":"head_b",
+		"defaultLock":true,
+		"levelup":
+		{
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"DamageReduction",						
+						"values":[0.01]
+					}
+				}
+			]
+		}
 	},
 	{
 		"id":3003,
 		"codeName":"WeaponParts",
+		"name":"Boots Suit B",
 		"type":"WeaponParts",
-		"icon":"Sprites/WeaponParts",
-		"partName":"leg_b"
+		"icon":"Sprites/BootsSuitB",
+		"partName":"leg_b",
+		"defaultLock":true,
+		"levelup":
+		{
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"DamageReduction",						
+						"values":[0.01]
+					}
+				}
+			]
+		}
 	},
 	{
 		"id":3004,
 		"codeName":"WeaponParts",
+		"name":"Hands Suit B",
 		"type":"WeaponParts",
-		"icon":"Sprites/WeaponParts",
-		"partName":"hand_b"
+		"icon":"Sprites/HandsSuitB",
+		"partName":"hand_b",
+		"defaultLock":true,
+		"levelup":
+		{
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"DamageReduction",						
+						"values":[0.01]
+					}
+				}
+			]
+		}
 	},
 	{
 		"id":3005,
 		"codeName":"WeaponParts",
+		"name":"Wing Suit B",
 		"type":"WeaponParts",
-		"icon":"Sprites/WeaponParts",
-		"partName":"booster_a"
+		"icon":"Sprites/WingSuitB",
+		"partName":"booster_b",
+		"defaultLock":true,
+		"levelup":
+		{
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"DamageReduction",						
+						"values":[0.01]
+					}
+				}
+			]
+		}
 	}
 ]

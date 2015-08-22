@@ -518,7 +518,7 @@ public class Spawn : MonoBehaviour {
 				float ratio = Random.Range(0f, 1f);
 				if (desc.refItem.type == ItemData.Type.WeaponParts)
 				{
-					ratio += m_wave*0.01f;
+					ratio += Mathf.Min(m_wave, 100)*0.001f;
 				}
 
 				if (ratio <= desc.ratio)

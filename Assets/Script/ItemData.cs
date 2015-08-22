@@ -107,7 +107,7 @@ public class ItemData {
 				desc += head + "Damage" + ":"+ (optionValue*100) + "%</color>\n";
 				break;
 			case Option.DamageReduction:
-				desc += head + op.option.type.ToString() + ":"+ (optionValue*100) + "%</color>\n";
+				desc += head + (optionValue*100) + "%</color>\n";
 				break;
 			case Option.Strength:
 			case Option.MaxHp:

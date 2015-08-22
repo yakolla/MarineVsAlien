@@ -69,16 +69,16 @@ public class GUIInventorySlot : MonoBehaviour {
 	GameObject	m_checkImage;
 	GUIPriceGemButton	m_priceButton0;
 	GUIPriceGemButton	m_priceButton1;
-
-	public void Init(Texture icon, string desc)
+	ItemObject 	m_itemObjOfWarehouse;
+	public void Init(ItemObject itemObj)
 	{
-
+		m_itemObjOfWarehouse = itemObj;
 		m_priceButton0 = new GUIPriceGemButton(transform, "GUIPriceButton0", ()=>{return true;});
 		m_priceButton1 = new GUIPriceGemButton(transform, "GUIPriceButton1", ()=>{return true;});
 
 		m_item = new YGUISystem.GUIButton(transform.Find("PictureButton").gameObject, m_priceButton0.EnableChecker);
-		m_item.Icon.Lable.Text.text = desc;
-		m_item.Icon.Image = icon;
+		m_item.Icon.Lable.Text.text = itemObj.Item.Description();
+		m_item.Icon.Image = itemObj.ItemIcon;
 
 		m_checkImage = transform.Find("PictureButton/Check").gameObject;
 	}
@@ -107,6 +107,7 @@ public class GUIInventorySlot : MonoBehaviour {
 
 	public void Update()
 	{
+		ItemDesc = m_itemObjOfWarehouse.Item.Description();
 		m_item.Update();
 		m_priceButton0.Update();
 		m_priceButton1.Update();

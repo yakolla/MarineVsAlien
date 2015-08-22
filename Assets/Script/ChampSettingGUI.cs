@@ -88,6 +88,12 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemSkillData(22));
 				Warehouse.Instance.PushItem(new ItemSkillData(23));
 				Warehouse.Instance.PushItem(new ItemSkillData(24));
+
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3001));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3002));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3003));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3004));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3005));
 			}
 
 			Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
@@ -133,6 +139,12 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemSkillData(22));
 				Warehouse.Instance.PushItem(new ItemSkillData(23));
 				Warehouse.Instance.PushItem(new ItemSkillData(24));
+
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3001));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3002));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3003));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3004));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3005));
 			}
 		}
 
@@ -163,10 +175,10 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_tabs[2] = new YGUISystem.GUIButton(transform.Find("SkillTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedSkillTab;});
 		m_tabs[3] = new YGUISystem.GUIButton(transform.Find("FollowerTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedFollowerTab;});
 
-		m_weaponPanel = settingItemList("WeaponPanel", ItemData.Type.Weapon);
-		m_statPanel = settingItemList("StatPanel", ItemData.Type.Stat);
-		m_followerPanel = settingItemList("FollowerPanel", ItemData.Type.Follower);
-		m_skillPanel = settingItemList("SkillPanel", ItemData.Type.Skill);
+		m_weaponPanel = settingItemList("WeaponPanel", new ItemData.Type[]{ItemData.Type.Weapon, ItemData.Type.WeaponParts});
+		m_statPanel = settingItemList("StatPanel", new ItemData.Type[]{ItemData.Type.Stat});
+		m_followerPanel = settingItemList("FollowerPanel", new ItemData.Type[]{ItemData.Type.Follower});
+		m_skillPanel = settingItemList("SkillPanel", new ItemData.Type[]{ItemData.Type.Skill});
 		m_generalInfoPanel = transform.Find("GeneralInfoPanel").gameObject.GetComponent<GeneralInfoPanel>();
 		OnClickStart();
 	}
@@ -364,14 +376,6 @@ public class ChampSettingGUI : MonoBehaviour {
 		}
 	}
 
-	void UpdateAccessorySlots()
-	{
-		for(int i = Const.HalfAccessoriesSlots; i < Cheat.HowManyAccessorySlot; ++i)
-		{
-			m_accessories[i].Lock = false;
-		}
-	}
-
 	public void OnClickLevelup(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, YGUISystem.GUIPriceButton button, ItemObject selectedItem)
 	{
 
@@ -414,7 +418,6 @@ public class ChampSettingGUI : MonoBehaviour {
 
 				invSlot.ItemDesc = selectedItem.Item.Description();
 
-				UpdateAccessorySlots();
 
 				GPlusPlatform.Instance.AnalyticsTrackEvent("Weapon", "Levelup", selectedItem.Item.RefItem.codeName + "_Lv:" + selectedItem.Item.Level, 0);
 			}
@@ -501,7 +504,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				obj.transform.localScale = prefGUIInventorySlot.transform.localScale;
 				obj.transform.localPosition = new Vector3(0f, rectGUIInventorySlot.rect.height/2*(maxCount-1)-rectGUIInventorySlot.rect.height*itemAddedCount, 0);
 				
-				invSlot.Init(item.ItemIcon, item.Item.Description());
+				invSlot.Init(item);
 				invSlot.PriceButton0.EnableChecker = ()=>{return false;};
 				invSlot.PriceButton1.EnableChecker = ()=>{return false;};
 				
@@ -555,13 +558,12 @@ public class ChampSettingGUI : MonoBehaviour {
 		//rectInventoryObj.position = new Vector3(rectInventoryObj.position.x, -(rectContents.y/2-rectScrollView.rect.height/2), rectInventoryObj.position.z);
 		rectInventoryObj.localPosition = new Vector3(0, -(rectContents.y/2-rectScrollView.rect.height/2-rectGUIInventorySlot.rect.height*equipItemIndex), 0);
 
-		UpdateAccessorySlots();
 
 		return transform.Find("InvPanel").gameObject;
 	}
 
 
-	GameObject settingItemList(string panel, ItemData.Type itemType)
+	GameObject settingItemList(string panel, ItemData.Type[] itemTypes)
 	{
 		RectTransform rectScrollView = transform.Find(panel + "/ScrollView").gameObject.GetComponent<RectTransform>();
 		GameObject contentsObj = transform.Find(panel+ "/ScrollView/Contents").gameObject;
@@ -573,46 +575,51 @@ public class ChampSettingGUI : MonoBehaviour {
 		
 		int itemAddedCount = 0;
 		int itemIndex = 0;
-		int maxCount = Warehouse.Instance.Items[itemType].Count;
+		int maxCount = 0;
+		foreach(ItemData.Type itemType in itemTypes)
+			maxCount += Warehouse.Instance.Items[itemType].Count;
 		int equipItemIndex = 0;
-		
-		foreach(ItemObject item in Warehouse.Instance.Items[itemType])
+
+		foreach(ItemData.Type itemType in itemTypes)
 		{
-			
-			GameObject obj = Instantiate(prefGUIInventorySlot) as GameObject;
-			GUIInventorySlot invSlot = obj.GetComponent<GUIInventorySlot>();
-			
-			obj.transform.parent = contentsObj.transform;
-			obj.transform.localScale = prefGUIInventorySlot.transform.localScale;
-			obj.transform.localPosition = new Vector3(0f, rectGUIInventorySlot.rect.height/2*(maxCount-1)-rectGUIInventorySlot.rect.height*itemAddedCount, 0);
-			
-			invSlot.Init(item.ItemIcon, item.Item.Description());
-			invSlot.PriceButton0.EnableChecker = ()=>{return false;};
-			invSlot.PriceButton1.EnableChecker = ()=>{return false;};
-			
-			int capturedItemIndex = itemIndex;
-			
-			
-			if (item.Item.Lock == true)
+			foreach(ItemObject item in Warehouse.Instance.Items[itemType])
 			{
-				if (item.Item.RefItem.unlock != null)
+				
+				GameObject obj = Instantiate(prefGUIInventorySlot) as GameObject;
+				GUIInventorySlot invSlot = obj.GetComponent<GUIInventorySlot>();
+				
+				obj.transform.parent = contentsObj.transform;
+				obj.transform.localScale = prefGUIInventorySlot.transform.localScale;
+				obj.transform.localPosition = new Vector3(0f, rectGUIInventorySlot.rect.height/2*(maxCount-1)-rectGUIInventorySlot.rect.height*itemAddedCount, 0);
+				
+				invSlot.Init(item);
+				invSlot.PriceButton0.EnableChecker = ()=>{return false;};
+				invSlot.PriceButton1.EnableChecker = ()=>{return false;};
+				
+				int capturedItemIndex = itemIndex;
+				
+				
+				if (item.Item.Lock == true)
 				{
-					SetButtonRole(ButtonRole.Unlock, invSlot, invSlot.PriceButton0, item);
+					if (item.Item.RefItem.unlock != null)
+					{
+						SetButtonRole(ButtonRole.Unlock, invSlot, invSlot.PriceButton0, item);
+					}
 				}
+				else
+				{
+					SetButtonRole(ButtonRole.Equip, invSlot, invSlot.PriceButton0, item);
+				}
+				
+				if (item.Item.RefItem.levelup != null)
+				{
+					SetButtonRole(ButtonRole.Levelup, invSlot, invSlot.PriceButton1, item);
+				}			
+				
+				invSlot.Update();
+				
+				++itemAddedCount;
 			}
-			else
-			{
-				SetButtonRole(ButtonRole.Equip, invSlot, invSlot.PriceButton0, item);
-			}
-			
-			if (item.Item.RefItem.levelup != null)
-			{
-				SetButtonRole(ButtonRole.Levelup, invSlot, invSlot.PriceButton1, item);
-			}			
-			
-			invSlot.Update();
-			
-			++itemAddedCount;
 		}
 		Vector2 rectContents = new Vector2(	rectInventoryObj.rect.width, rectGUIInventorySlot.rect.height*itemAddedCount);
 		rectInventoryObj.sizeDelta = rectContents;
