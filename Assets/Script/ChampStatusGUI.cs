@@ -32,10 +32,10 @@ public class ChampStatusGUI : MonoBehaviour {
 		m_accessoryBoard = transform.Find("Accessory").gameObject;
 
 		m_autoEarnButton = new YGUISystem.GUIButton(transform.Find("Special/AutoEarnButton").gameObject, ()=>{
+			m_autoEarnButton.Lable.Text.text = Warehouse.Instance.AutoEarnGold.ToString();
 			return Warehouse.Instance.AutoEarnGold > 0;
 		});
 
-		m_autoEarnButton.Lable.Text.text = Warehouse.Instance.AutoEarnGold.ToString();
 
 		assignSkillButton(0, Warehouse.Instance.FindItem(23), 1, 1, ()=>{
 			return m_champ.ApplyHealingSkill();

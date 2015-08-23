@@ -2280,7 +2280,7 @@
 		"codeName":"Follower",
 		"type":"Follower",
 		"icon":"Sprites/FollowerPet",
-		"maxLevel":100,
+		"maxLevel":900,
 		"defaultLock":true,
 		"followerId":30007,
 		"unlock":
@@ -2289,18 +2289,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":3000
+					"count":5000
 				},
 				{
 					"refItemId":11, 
-					"count":300
+					"count":500
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":30
+					"count":50
 				}
 			]
 		},
@@ -2317,7 +2317,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":30
 				}
 			],
 			"optionPerLevel":
@@ -2748,7 +2748,11 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":100
+				},
+				{
+					"refItemId":5, 
+					"count":1
 				}
 			],
 			"else_conds":

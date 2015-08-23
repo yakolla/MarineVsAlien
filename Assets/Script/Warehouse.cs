@@ -19,6 +19,7 @@ public class WarehouseData
 	public SecuredType.XInt	m_goldMedal = 0;
 	public SecuredType.XInt	m_gem = 0;
 	public SecuredType.XInt	m_autoEarnGold = 0;
+	public System.DateTime			m_lastModifiedTime = System.DateTime.UtcNow;
 	
 	public GameStatistics			m_gameBestStats = new GameStatistics();
 	public Options					m_options = new Options();
@@ -84,9 +85,8 @@ public class WarehouseData
 
 public class Warehouse {
 
-	WarehouseData	m_warehouseData = new WarehouseData();
+	WarehouseData		m_warehouseData = new WarehouseData();
 	string				m_fileName;
-	System.DateTime		m_lastModifiedFile = System.DateTime.UtcNow;
 
 	ItemObject			m_gold;
 	ItemObject			m_goldMedal;
@@ -246,8 +246,8 @@ public class Warehouse {
 
 	public System.DateTime LastModifiedFileTime
 	{
-		get {return m_lastModifiedFile;}
-		set {m_lastModifiedFile = value;}
+		get {return m_warehouseData.m_lastModifiedTime;}
+		set {m_warehouseData.m_lastModifiedTime = value;}
 	}
 
 	public WarehouseData.GameStatistics NewGameStats

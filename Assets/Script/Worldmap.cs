@@ -35,9 +35,8 @@ public class Worldmap : MonoBehaviour {
 	int m_try = 0;
 	void OnOpenSavedGameForLoading(SavedGameRequestStatus status, ISavedGameMetadata game) {
 		if (status == SavedGameRequestStatus.Success) {
-			GPlusPlatform.Instance.LoadGame(game, OnReadGame);
 			Warehouse.Instance.FileName = game.Filename;
-			Warehouse.Instance.LastModifiedFileTime = game.LastModifiedTimestamp;
+			GPlusPlatform.Instance.LoadGame(game, OnReadGame);
 		} else {
 			if (m_try < 3)
 			{
@@ -185,8 +184,32 @@ public class Worldmap : MonoBehaviour {
 	}
 
 	public void OpenGame()
-	{
+	{		
 		GPlusPlatform.Instance.OpenGame("marineVsAlien.sav", OnOpenSavedGameForLoading);
+	}
+
+	public void OpenPreGame()
+	{
+		GPlusPlatform.Instance.OpenGame("meta.sav", (SavedGameRequestStatus status, ISavedGameMetadata game)=>{
+			if (status == SavedGameRequestStatus.Success) {
+				m_try = 0;
+				OpenGame();
+			} else {
+				if (m_try < 3)
+				{
+					++m_try;
+					log = "OnOpenSavedGameForLoading:" + status + m_try;
+					
+					StartCoroutine(DelayMessage("OpenPreGame", 1f));
+					return;
+				}
+				m_try = 0;
+				OpenGame();
+			}			
+			
+			log = "OnOpenSavedGameForLoading:" + status + game;
+
+		});
 	}
 
 	public void OnClickLeaderBoard()

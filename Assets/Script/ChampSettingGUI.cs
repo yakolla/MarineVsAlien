@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.UI;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using GooglePlayGames.BasicApi.SavedGame;
 
 public class ChampSettingGUI : MonoBehaviour {
 
@@ -150,12 +153,6 @@ public class ChampSettingGUI : MonoBehaviour {
 			}
 		}
 
-		if (Const.AppOnce == false)
-		{
-			Warehouse.Instance.AutoEarnGold = (int)System.DateTime.UtcNow.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5;
-			//Const.AppOnce = true;
-		}
-
 		for(int i = 0; i < m_equipedAccessories.Length; ++i)
 		{
 			m_equipedAccessories[i] = new EquippedContext();
@@ -279,6 +276,34 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	}
 
+	IEnumerator AutoGoldUpdate()
+	{
+		Warehouse.Instance.AutoEarnGold = 0;
+
+		WWW www = new WWW("http://currentmillis.com/api/millis-since-unix-epoch.php");
+		yield return www;
+
+		if (www.error == null)
+		{
+			System.DateTime now = new System.DateTime().AddMilliseconds(double.Parse(www.text));
+			Warehouse.Instance.AutoEarnGold = (int)now.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5;
+			Warehouse.Instance.LastModifiedFileTime = now;
+		}
+		/*
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			GPlusPlatform.Instance.OpenGame("meta.sav", (SavedGameRequestStatus status, ISavedGameMetadata game)=>{
+				if (status == SavedGameRequestStatus.Success)
+				{
+					GPlusPlatform.Instance.SaveGame(game, new byte[]{0}, new System.TimeSpan(), null, (SavedGameRequestStatus status1, ISavedGameMetadata game1)=>{
+						Warehouse.Instance.AutoEarnGold = (int)game.LastModifiedTimestamp.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5;
+						Warehouse.Instance.LastModifiedFileTime = game.LastModifiedTimestamp;
+					});
+				} 
+			});
+		}*/
+	}
+
 	public void StartSpinButton(YGUISystem.GUIButton button)
 	{
 		button.Button.animator.SetBool("Spin", true);
@@ -338,7 +363,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		
 		champObj.SetActive(false);
 
-		//gameObject.SetActive(false);
+		StartCoroutine(AutoGoldUpdate());
 
 	}
 
