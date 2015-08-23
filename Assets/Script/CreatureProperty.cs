@@ -45,7 +45,7 @@ public class CreatureProperty {
 
 	SecuredType.XInt		m_callableFollowers = 1;
 
-	SecuredType.XFloat	m_alphaSPRecoveryPerSec = 0f;
+	SecuredType.XFloat	m_alphaSPRegen = 0f;
 
 	SecuredType.XFloat	m_accSPRecoveryPerSec = 0f;
 
@@ -115,15 +115,15 @@ public class CreatureProperty {
 
 	}
 
-	public float AlphaSPRecoveryPerSec
+	public float AlphaSPRegen
 	{
-		get { return m_alphaSPRecoveryPerSec.Value; }
-		set { m_alphaSPRecoveryPerSec.Value = value; }
+		get { return m_alphaSPRegen.Value; }
+		set { m_alphaSPRegen.Value = value; }
 	}
 
-	public float SPRecoveryPerSec
+	public float SPRegen
 	{
-		get{ return (m_baseProperty.spRecoveryPerSec + m_alphaSPRecoveryPerSec.Value);}
+		get{ return (m_baseProperty.spRegen + m_alphaSPRegen.Value);}
 	}
 
 	public int Level
@@ -345,7 +345,7 @@ public class CreatureProperty {
 
 	public void Update()
 	{
-		m_accSPRecoveryPerSec.Value += (SPRecoveryPerSec * Time.deltaTime);
+		m_accSPRecoveryPerSec.Value += (SPRegen * Time.deltaTime);
 		if (m_accSPRecoveryPerSec.Value >= 1f)
 		{
 			SP += (int)m_accSPRecoveryPerSec.Value;
@@ -381,7 +381,7 @@ public class CreatureProperty {
 		other.m_attackRange = m_attackRange;
 		other.m_alphaMaxSP = m_alphaMaxSP;
 		other.m_sp = m_sp;
-		other.m_alphaSPRecoveryPerSec = m_alphaSPRecoveryPerSec;
+		other.m_alphaSPRegen = m_alphaSPRegen;
 		other.m_callableFollowers = m_callableFollowers;
 		other.m_damageRatio = m_damageRatio;
 	}

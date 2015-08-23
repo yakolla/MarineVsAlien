@@ -146,12 +146,7 @@ public class Weapon : MonoBehaviour {
 
 	public int SP
 	{
-		get{return GetSP(m_refItem, Level);}
-	}
-
-	static public int GetSP(RefItem refItem, int level)
-	{
-		return refItem.weaponStat.spPerLevel*level;
+		get{return m_refItem.consumedSP*Level;}
 	}
 
 	public int Damage
@@ -215,8 +210,11 @@ public class Weapon : MonoBehaviour {
 	protected IEnumerator DelayToStartFiring(Weapon.FiringDesc targetAngle, float delay)
 	{
 		yield return new WaitForSeconds(delay);
-
-		CreateBullet(targetAngle, m_gunPoint.transform.position);
+		if (canConsumeSP())
+		{
+			CreateBullet(targetAngle, m_gunPoint.transform.position);
+			ConsumeSP();
+		}
 
 	}
 
@@ -227,7 +225,7 @@ public class Weapon : MonoBehaviour {
 
 	public bool canConsumeSP()
 	{
-		return SP <= m_creature.m_creatureProperty.SP;
+		return SP == 0 || SP < m_creature.m_creatureProperty.SP;
 	}
 
 	protected bool isCoolTime()
@@ -263,7 +261,6 @@ public class Weapon : MonoBehaviour {
 				delay = m_firingDescs[i].delayTime;
 			}
 			
-			ConsumeSP();
 			DidStartFiring(delay);
 		}
 

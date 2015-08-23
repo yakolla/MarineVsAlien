@@ -393,6 +393,7 @@
 		"type":"Weapon",
 		"icon":"Sprites/Firegun",
 		"defaultLock":true,
+		"consumedSP":1,
 		"evolutionFiring":
 		{
 			"angle":5,
@@ -401,8 +402,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":4,			
-			"spPerLevel":1,
+			"range":4,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -470,11 +470,11 @@
 		"type":"Weapon",
 		"icon":"Sprites/LightningBolt",
 		"defaultLock":true,
+		"consumedSP":1,
 		"weaponStat":
 		{
 			"coolTime":4,
 			"range":4,
-			"spPerLevel":1,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -659,6 +659,7 @@
 		"type":"Weapon",
 		"icon":"Sprites/RocketLauncher",
 		"defaultLock":true,
+		"consumedSP":3,
 		"evolutionFiring":
 		{
 			"angle":3,
@@ -667,8 +668,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":5,			
-			"spPerLevel":1,
+			"range":5
 		},		
 		"levelup":
 		{
@@ -771,6 +771,7 @@
 		"icon":"Sprites/Gun",
 		"partName":"gun_a",
 		"defaultLock":true,
+		"consumedSP":1,
 		"evolutionFiring":
 		{
 			"angle":1,
@@ -780,7 +781,6 @@
 		{
 			"coolTime":0.7,
 			"range":4,
-			"spPerLevel":1,		
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -881,6 +881,7 @@
 		"type":"Weapon",
 		"icon":"Sprites/RocketLauncher",
 		"defaultLock":true,
+		"consumedSP":1,
 		"evolutionFiring":
 		{
 			"angle":5,
@@ -889,8 +890,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":5,			
-			"spPerLevel":1,
+			"range":5
 		},		
 		"levelup":
 		{
@@ -1257,8 +1257,7 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":6,			
-			"spPerLevel":1,
+			"range":6,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -1852,6 +1851,7 @@
 		"icon":"Sprites/FollowerGunMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"consumedSP":1,
 		"followerId":30001,
 		"weaponStat":
 		{
@@ -1923,6 +1923,7 @@
 		"icon":"Sprites/FollowerFireMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"consumedSP":2,
 		"followerId":30002,
 		"weaponStat":
 		{
@@ -1994,6 +1995,7 @@
 		"icon":"Sprites/FollowerLightningMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"consumedSP":3,
 		"followerId":30003,
 		"weaponStat":
 		{
@@ -2065,6 +2067,7 @@
 		"icon":"Sprites/FollowerRocketMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"consumedSP":4,
 		"followerId":30004,
 		"weaponStat":
 		{
@@ -2136,6 +2139,7 @@
 		"icon":"Sprites/FollowerBoomerangMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"consumedSP":5,
 		"followerId":30005,
 		"weaponStat":
 		{
@@ -2275,7 +2279,7 @@
 		"id":1007,
 		"codeName":"Follower",
 		"type":"Follower",
-		"icon":"Sprites/FollowerBoomerangMarines",
+		"icon":"Sprites/FollowerPet",
 		"maxLevel":100,
 		"defaultLock":true,
 		"followerId":30007,
@@ -2763,6 +2767,64 @@
 					{
 						"type":"TapDamage",						
 						"values":[10]
+					}
+				}
+			]
+		}
+	},
+	{
+		"id":2008,
+		"codeName":"Boots",
+		"type":"Stat",
+		"icon":"Sprites/Boots",
+		"maxLevel":900,
+		"defaultLock":true,
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":100
+				},
+				{
+					"refItemId":5, 
+					"count":10
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":10
+				}
+			]
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":100
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":10
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"RegenSp",
+						"values":[1]
 					}
 				}
 			]

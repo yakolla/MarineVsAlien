@@ -8,11 +8,6 @@ public class ItemWeaponPartsData : ItemData{
 	{
 	}
 
-	override public string Description()
-	{
-		return "<color=white>" + RefItem.name + "</color>" + "\n" +  base.Description();
-	}
-
 	override public void Pickup(Creature obj)
 	{
 		base.Pickup(obj);

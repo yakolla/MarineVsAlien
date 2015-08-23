@@ -630,7 +630,7 @@ public class Creature : MonoBehaviour {
 		{
 			int heal = (int)(m_creatureProperty.MaxHP*damageRatio);
 			Heal(heal);
-			DamageText("Heal " + heal, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(heal + "HP", Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
 			yield return new WaitForSeconds(1f);
 		}
 		

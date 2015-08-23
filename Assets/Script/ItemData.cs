@@ -40,6 +40,7 @@ public class ItemData {
 		Strength,
 		MaxHp,
 		MaxSp,
+		RegenSp,
 		CriticalChance,
 		CriticalDamage,
 		GainExtraGold,
@@ -67,10 +68,24 @@ public class ItemData {
 		Lock = m_refItem.defaultLock;
 	}
 
+	virtual protected string itemName()
+	{
+		if (RefItem.name != null)
+			return RefItem.name;
+
+		return RefItem.codeName;
+	}
+
 	virtual public string Description()
 	{
+		string sp = "";
+		if (RefItem.consumedSP > 0)
+			sp = "SP:" + RefItem.consumedSP*Level + "\n";
+
 		return "<color=white>" + 
+				itemName() + "\n" + 
 				"Level:" + Level + "\n" + 
+				sp +
 				"</color>" +
 				OptionsDescription();
 	}
@@ -106,22 +121,14 @@ public class ItemData {
 			case Option.DamageMultiplier:
 				desc += head + "Damage" + ":"+ (optionValue*100) + "%</color>\n";
 				break;
-			case Option.DamageReduction:
-				desc += head + (optionValue*100) + "%</color>\n";
-				break;
-			case Option.Strength:
-			case Option.MaxHp:
-			case Option.MaxSp:
-			case Option.TapDamage:
-				desc += head + (optionValue) + "</color>\n";
-				break;
+			case Option.DamageReduction:						
 			case Option.CriticalChance:
 			case Option.CriticalDamage:
 			case Option.GainExtraGold:
 				desc += head + (optionValue*100) + "%</color>\n";
 				break;
 			default:
-				desc += op.option.type.ToString() + ":"+ op.option.values[0] + "</color>\n";
+				desc += head + optionValue + "</color>\n";
 				break;
 			}
 		}
@@ -178,6 +185,9 @@ public class ItemData {
 				break;
 			case Option.Weapon:
 				int weaponRefItemId = (int)optionValue;
+				if (weaponRefItemId == 0)
+					break;
+
 				if (weaponRefItemId == Const.EmbersRefItemId)
 				{
 					obj.SetSubWeapon(obj.WeaponHolder.MainWeapon, new ItemWeaponData(Const.EmbersRefItemId), null);
@@ -198,6 +208,9 @@ public class ItemData {
 				break;
 			case Option.MaxSp:
 				obj.m_creatureProperty.AlphaMaxSP += (int)optionValue;
+				break;
+			case Option.RegenSp:
+				obj.m_creatureProperty.AlphaSPRegen += optionValue;
 				break;
 			case Option.TapDamage:
 				obj.m_creatureProperty.TabDamage += (int)optionValue;

@@ -6,8 +6,12 @@ public class Follower : Creature {
 
 	Creature	m_owner;
 	MobAI		m_ai;
-	int			m_refMobId;
-
+	bool		m_updatable;
+	int			m_consumedSP;
+	int SP
+	{
+		get {return m_consumedSP*m_creatureProperty.Level;}
+	}
 	// Update is called once per frame
 	new void Update () {
 
@@ -23,7 +27,7 @@ public class Follower : Creature {
 	override public bool AutoAttack() {
 		
 		
-		if (HasCrowdControl() == false)
+		if (m_updatable == true && HasCrowdControl() == false)
 		{
 			if (Targetting == null)
 			{
@@ -72,12 +76,34 @@ public class Follower : Creature {
 		Death();
 	}
 
-	public void Init(Creature owner, RefMob refMob, int level)
+	IEnumerator DecSpEffect()
+	{
+		while(m_behaviourType == BehaviourType.ALive)
+		{
+			yield return new WaitForSeconds(1f);
+			if (m_owner == null)
+				break;
+
+			if (m_owner.m_creatureProperty.SP > SP)
+			{
+				m_owner.m_creatureProperty.SP -= SP;
+				m_updatable = true;
+			}
+			else
+			{
+				m_updatable = false;
+			}
+		}		
+
+	}
+
+	public void Init(Creature owner, RefMob refMob, RefItem refItem, int level)
 	{
 		base.Init(refMob, level);
 
 		m_owner = owner;
 		CreatureType = m_owner.CreatureType;
+		m_consumedSP = refItem.consumedSP;
 
 		if (m_creatureProperty.MoveSpeed == 0f)
 		{
@@ -109,19 +135,14 @@ public class Follower : Creature {
 			((MobAIFollow)(m_ai)).SetOwner(m_owner);
 			CreatureType = Type.ChampNpc;	
 			gameObject.layer = 0;
-			//StartCoroutine(DecHpEffect());
+			StartCoroutine(DecSpEffect());
 			break;
 		}
 		
 		m_ai.Init(this);
 	
 	}
-
-	public int FollowerID
-	{
-		get{return m_refMobId;}
-	}
-
+	
 	public void LevelUp()
 	{
 		++m_creatureProperty.Level;

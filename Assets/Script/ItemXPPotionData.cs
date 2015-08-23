@@ -14,6 +14,6 @@ public class ItemXPPotionData : ItemData{
 	}
 	
 	override public void Equip(Creature obj){
-		Const.GetSpawn().SharePotinsChamps(obj, ItemData.Type.XPPotion, Count, true);
+		Const.GetSpawn().SharePotinsChamps(obj, ItemData.Type.XPPotion, Count, false);
 	}
 }

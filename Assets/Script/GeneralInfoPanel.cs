@@ -7,7 +7,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 
 	Champ	m_champ;
 	YGUISystem.GUILable 	m_strength;
-	YGUISystem.GUILable 	m_maxHP;
+	YGUISystem.GUILable 	m_regenSP;
 	YGUISystem.GUILable 	m_gainExtraGold;
 	YGUISystem.GUILable 	m_damageReduction;
 	YGUISystem.GUILable 	m_damageMultiplier;
@@ -17,7 +17,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 	void Start()
 	{
 		m_strength =  new YGUISystem.GUILable(transform.Find("Strength/Text").gameObject);
-		m_maxHP = new YGUISystem.GUILable(transform.Find("MaxHP/Text").gameObject);
+		m_regenSP = new YGUISystem.GUILable(transform.Find("RegenSP/Text").gameObject);
 		m_gainExtraGold = new YGUISystem.GUILable(transform.Find("GainExtraGold/Text").gameObject);
 		m_damageReduction = new YGUISystem.GUILable(transform.Find("DamageReduction/Text").gameObject);
 		m_damageMultiplier = new YGUISystem.GUILable(transform.Find("DamageMultiplier/Text").gameObject);
@@ -36,7 +36,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 			return;
 
 		m_strength.Text.text = m_champ.m_creatureProperty.Strength.ToString();
-		m_maxHP.Text.text = m_champ.m_creatureProperty.MaxHP.ToString();
+		m_regenSP.Text.text = m_champ.m_creatureProperty.SPRegen.ToString();
 		m_gainExtraGold.Text.text = (m_champ.m_creatureProperty.GainExtraGold*100f).ToString() + "%";
 		m_damageReduction.Text.text = (m_champ.m_creatureProperty.DamageReduction*100f).ToString() + "%";
 		m_damageMultiplier.Text.text = (m_champ.m_creatureProperty.DamageRatio*100f).ToString() + "%";

@@ -40,7 +40,7 @@ public class ItemFollowerData : ItemData{
 		followerObj.transform.localScale = new Vector3(refMob.scale, refMob.scale, refMob.scale);
 
 		Follower follower = (Follower)followerObj.GetComponent<Follower>();
-		follower.Init(obj, refMob, Level);
+		follower.Init(obj, refMob, RefItem, Level);
 		
 		foreach(RefMob.WeaponDesc weaponDesc in refMob.refWeaponItems)
 		{
@@ -56,9 +56,9 @@ public class ItemFollowerData : ItemData{
 	{
 	}
 	
-	override public string Description()
+	override protected string itemName()
 	{
-		return "<color=white>" + RefData.Instance.RefMobs[RefItem.followerId].name + "</color>" + "\n" +  base.Description();
+		return RefData.Instance.RefMobs[RefItem.followerId].name;
 	}
 
 	override public bool Compare(ItemData item)

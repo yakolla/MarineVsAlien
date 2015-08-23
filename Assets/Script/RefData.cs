@@ -18,7 +18,7 @@ public class RefCreatureBaseProperty
 	public int	maxHP;
 	public int	physicalDamage;
 	public int	maxSP;
-	public float spRecoveryPerSec;
+	public float spRegen;
 
 	[Range (0, 100)]
 	public int	physicalDefence;
@@ -64,7 +64,6 @@ public class WeaponStat
 	public float			range;
 	public int				firingCount;
 	public int				incBulletOnLevel = 2;
-	public int				spPerLevel;
 	public int				skillId;
 	public int				summonRefMobId;
 	public BuffOnHitDesc	buffOnHitDesc;
@@ -80,8 +79,7 @@ public class WeaponStat
 		if (firingCount == 0)
 			firingCount = weaponStat.firingCount;
 
-		if (spPerLevel == 0)
-			spPerLevel = weaponStat.spPerLevel;
+
 
 		if (skillId == 0)
 			skillId = weaponStat.skillId;
@@ -146,7 +144,7 @@ public class RefItem : RefBaseData
 	public 	int					followerId;
 	public 	bool				defaultLock = false;
 	public  int					maxLevel = Const.MaxItemLevel;
-
+	public 	int					consumedSP;
 }
 
 public class RefItemOptionSpawn
@@ -229,6 +227,7 @@ public class RefMob : RefBaseData
 	public MobAIType			mobAI;
 	public float				scale = 1f;
 	public float				mass = 1f;
+	public int					consumedSP;
 }
 
 public class RefMobClass

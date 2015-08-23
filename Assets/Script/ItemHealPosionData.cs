@@ -14,7 +14,7 @@ public class ItemHealPosionData : ItemData{
 	}
 
 	override public void Equip(Creature obj){
-		Const.GetSpawn().SharePotinsChamps(obj, ItemData.Type.HealPosion, Count, true);
+		Const.GetSpawn().SharePotinsChamps(obj, ItemData.Type.HealPosion, Count, false);
 	}
 
 }

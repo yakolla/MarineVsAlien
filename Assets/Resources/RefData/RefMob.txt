@@ -1121,7 +1121,7 @@
 					}
 				}
 			],
-			"mobAI":"Follow",
+			"mobAI":"Follow",			
 			"scale":0.7,
 			"baseCreatureProperty":
 			{
@@ -1339,7 +1339,7 @@
 			{
 				"maxHP":100,
 				"maxSP":100,
-				"spRecoveryPerSec":1,
+				"spRegen":1,
 				"physicalDamage":1,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,

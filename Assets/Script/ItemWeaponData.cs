@@ -33,11 +33,6 @@ public class ItemWeaponData : ItemData{
 	{	
 		ApplyOptions(obj, true);
 	}
-	
-	override public string Description()
-	{
-		return "<color=white>" + WeaponName + "</color>" + "\n" +  base.Description();
-	}
 
 	override public bool Compare(ItemData item)
 	{

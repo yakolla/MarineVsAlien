@@ -32,11 +32,6 @@ public class ItemSkillData : ItemData{
 	override public void NoUse(Creature obj)
 	{
 	}
-	
-	override public string Description()
-	{
-		return "<color=white>" + RefItem.codeName + "</color>" + "\n" +  base.Description();
-	}
 
 	override public bool Compare(ItemData item)
 	{

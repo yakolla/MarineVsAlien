@@ -25,7 +25,7 @@ public class ItemCheatData : ItemData{
 	
 	override public string Description()
 	{
-		string desc = "<color=white>" + RefItem.codeName + "</color>" + "\n" +  base.Description();
+		string desc = base.Description();
 
 		int level = Lock == true ? 0 : Level;
 
