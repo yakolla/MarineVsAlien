@@ -351,6 +351,18 @@ public class Spawn : MonoBehaviour {
 		{
 			Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
 
+			if (Warehouse.Instance.GameTutorial.m_unlockedFollowerTab == true)
+			{
+				ItemObject petObj = Warehouse.Instance.FindItem(Const.FollowerPetRefItemId);
+				if (petObj.Item.Lock == true)
+				{
+					petObj.Item.Lock = false;
+					petObj.Item.Level = 1;
+					petObj.Item.Equip(m_champ);
+				}
+
+			}
+
 			SpawnItemBox(GetCurrentWave().itemSpawn.bossDefaultItem, mob.transform.position);
 			TimeEffector.Instance.BulletTime(0.005f);
 			Const.SaveGame((SavedGameRequestStatus, ISavedGameMetadata)=>{});

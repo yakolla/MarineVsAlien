@@ -2282,28 +2282,7 @@
 		"icon":"Sprites/FollowerPet",
 		"maxLevel":900,
 		"defaultLock":true,
-		"followerId":30007,
-		"unlock":
-		{
-			"conds":
-			[
-				{
-					"refItemId":1, 
-					"count":5000
-				},
-				{
-					"refItemId":11, 
-					"count":500
-				}
-			],
-			"else_conds":
-			[
-				{
-					"refItemId":8,
-					"count":50
-				}
-			]
-		},
+		"followerId":30007,		
 		"levelup":
 		{
 			"conds":
