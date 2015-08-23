@@ -144,7 +144,7 @@ public class RefItem : RefBaseData
 	public 	int					followerId;
 	public 	bool				defaultLock = false;
 	public  int					maxLevel = Const.MaxItemLevel;
-	public 	int					consumedSP;
+	public 	float					consumedSP;
 }
 
 public class RefItemOptionSpawn

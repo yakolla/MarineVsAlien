@@ -294,7 +294,7 @@ public class Champ : Creature {
 				Creature target = hit.transform.GetComponent<Creature>();
 				if (target != null && IsEnemy(target, this))
 				{
-					target.TakeDamage(this, new DamageDesc(m_creatureProperty.TabDamage, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
+					target.TakeDamage(this, new DamageDesc(m_creatureProperty.TapDamage, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
 					hitted = true;
 				}
 				else if (hit.transform.tag.CompareTo("ItemBox") == 0)
@@ -314,7 +314,7 @@ public class Champ : Creature {
 				length = Mathf.Min(touchedCount, targets.Length);
 			for(int i = 0; i < length; ++i)
 			{
-				targets[i].TakeDamage(this, new DamageDesc(m_creatureProperty.TabDamage, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
+				targets[i].TakeDamage(this, new DamageDesc(m_creatureProperty.TapDamage, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
 			}
 		}
 

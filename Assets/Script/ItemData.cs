@@ -213,7 +213,7 @@ public class ItemData {
 				obj.m_creatureProperty.AlphaSPRegen += optionValue;
 				break;
 			case Option.TapDamage:
-				obj.m_creatureProperty.TabDamage += (int)optionValue;
+				obj.m_creatureProperty.TapDamage += (int)optionValue;
 				break;
 			case Option.CriticalChance:
 				obj.m_creatureProperty.AlphaCriticalChance += optionValue;

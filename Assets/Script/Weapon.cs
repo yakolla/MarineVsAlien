@@ -146,7 +146,7 @@ public class Weapon : MonoBehaviour {
 
 	public int SP
 	{
-		get{return m_refItem.consumedSP*Level;}
+		get{return (int)(m_refItem.consumedSP*Level);}
 	}
 
 	public int Damage

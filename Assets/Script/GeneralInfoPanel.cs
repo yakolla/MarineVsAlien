@@ -13,6 +13,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 	YGUISystem.GUILable 	m_damageMultiplier;
 	YGUISystem.GUILable 	m_criticalChance;
 	YGUISystem.GUILable 	m_criticalDamage;
+	YGUISystem.GUILable 	m_tapDamage;
 
 	void Start()
 	{
@@ -23,6 +24,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_damageMultiplier = new YGUISystem.GUILable(transform.Find("DamageMultiplier/Text").gameObject);
 		m_criticalChance = new YGUISystem.GUILable(transform.Find("CriticalChance/Text").gameObject);
 		m_criticalDamage = new YGUISystem.GUILable(transform.Find("CriticalDamage/Text").gameObject);
+		m_tapDamage = new YGUISystem.GUILable(transform.Find("TapDamage/Text").gameObject);
 	}
 
 	public void SetChamp(Champ champ)
@@ -37,6 +39,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 
 		m_strength.Text.text = m_champ.m_creatureProperty.Strength.ToString();
 		m_regenSP.Text.text = m_champ.m_creatureProperty.SPRegen.ToString();
+		m_tapDamage.Text.text = m_champ.m_creatureProperty.TapDamage.ToString();
 		m_gainExtraGold.Text.text = (m_champ.m_creatureProperty.GainExtraGold*100f).ToString() + "%";
 		m_damageReduction.Text.text = (m_champ.m_creatureProperty.DamageReduction*100f).ToString() + "%";
 		m_damageMultiplier.Text.text = (m_champ.m_creatureProperty.DamageRatio*100f).ToString() + "%";

@@ -337,7 +337,7 @@ public class CreatureProperty {
 		get {return m_callableFollowers.Value;}
 	}
 
-	public int TabDamage
+	public int TapDamage
 	{
 		set {m_tabDamage.Value = value;}
 		get {return m_tabDamage.Value;}

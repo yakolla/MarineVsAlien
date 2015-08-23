@@ -771,6 +771,7 @@
 		"icon":"Sprites/Gun",
 		"partName":"gun_a",
 		"defaultLock":true,
+		"consumedSP":0.23,
 		"evolutionFiring":
 		{
 			"angle":1,

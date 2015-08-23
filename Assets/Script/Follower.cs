@@ -7,10 +7,10 @@ public class Follower : Creature {
 	Creature	m_owner;
 	MobAI		m_ai;
 	bool		m_updatable;
-	int			m_consumedSP;
+	float			m_consumedSP;
 	int SP
 	{
-		get {return m_consumedSP*m_creatureProperty.Level;}
+		get {return (int)(m_consumedSP*m_creatureProperty.Level);}
 	}
 	// Update is called once per frame
 	new void Update () {
