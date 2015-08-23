@@ -120,7 +120,7 @@ public class Const {
 		if (Application.platform == RuntimePlatform.Android)
 		{
 			GPlusPlatform.Instance.OpenGame(Warehouse.Instance.FileName, (SavedGameRequestStatus status, ISavedGameMetadata game)=>{
-
+				Warehouse.Instance.LastModifiedFileTime = game.LastModifiedTimestamp;
 				if (status == SavedGameRequestStatus.Success) 
 				{
 					System.TimeSpan totalPlayingTime = game.TotalTimePlayed;
@@ -139,6 +139,7 @@ public class Const {
 		}
 		else
 		{
+			Warehouse.Instance.LastModifiedFileTime = System.DateTime.UtcNow;
 			callback(SavedGameRequestStatus.Success, null);
 		}
 	}
