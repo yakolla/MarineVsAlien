@@ -1773,7 +1773,7 @@
 	{
 		"id":207,
 		"codeName":"SummonMobLauncher",
-		"name":"Auto tracking Drone",
+		"name":"Mine Drone",
 		"type":"Weapon",
 		"icon":"Sprites/SummonMob",		
 		"evolutionFiring":
@@ -1851,7 +1851,7 @@
 		"icon":"Sprites/FollowerGunMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":1,
+		"consumedSP":0.05,
 		"followerId":30001,
 		"weaponStat":
 		{
@@ -1923,7 +1923,7 @@
 		"icon":"Sprites/FollowerFireMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":2,
+		"consumedSP":0.1,
 		"followerId":30002,
 		"weaponStat":
 		{
@@ -1995,7 +1995,7 @@
 		"icon":"Sprites/FollowerLightningMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":3,
+		"consumedSP":0.2,
 		"followerId":30003,
 		"weaponStat":
 		{
@@ -2067,7 +2067,7 @@
 		"icon":"Sprites/FollowerRocketMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":4,
+		"consumedSP":0.3,
 		"followerId":30004,
 		"weaponStat":
 		{
@@ -2139,7 +2139,7 @@
 		"icon":"Sprites/FollowerBoomerangMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":5,
+		"consumedSP":0.5,
 		"followerId":30005,
 		"weaponStat":
 		{
@@ -2349,7 +2349,7 @@
 		"id":2001,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/Boots",
+		"icon":"Sprites/StatStrength",
 		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
@@ -2407,7 +2407,7 @@
 		"id":2002,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/Boots",
+		"icon":"Sprites/StatMaxHP",
 		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
@@ -2465,7 +2465,7 @@
 		"id":2003,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/Boots",
+		"icon":"Sprites/StatCriticalChance",
 		"maxLevel":100,
 		"defaultLock":true,
 		"unlock":
@@ -2523,7 +2523,7 @@
 		"id":2004,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/Boots",
+		"icon":"Sprites/StatGainExtraGold",
 		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
@@ -2581,7 +2581,7 @@
 		"id":2005,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/Boots",
+		"icon":"Sprites/StatCriticalDamage",
 		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
@@ -2639,7 +2639,7 @@
 		"id":2006,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/Boots",
+		"icon":"Sprites/StatMaxSP",
 		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
@@ -2697,7 +2697,7 @@
 		"id":2007,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/Boots",
+		"icon":"Sprites/StatTapDamage",
 		"maxLevel":900,
 		"defaultLock":false,
 		"unlock":
@@ -2759,7 +2759,7 @@
 		"id":2008,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/Boots",
+		"icon":"Sprites/StatRegenSP",
 		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
@@ -2831,7 +2831,7 @@
 					"option":
 					{
 						"type":"DamageReduction",						
-						"values":[0.01]
+						"values":[0.06]
 					}
 				}
 			]
@@ -2848,14 +2848,14 @@
 		"levelup":
 		{
 			"optionPerLevel":
-			[
+			[				
 				{
 					"level":1,
 					"levelPer":true,
 					"option":
 					{
-						"type":"DamageReduction",						
-						"values":[0.01]
+						"type":"CriticalChance",
+						"values":[0.1]
 					}
 				}
 			]
@@ -2872,14 +2872,14 @@
 		"levelup":
 		{
 			"optionPerLevel":
-			[
+			[				
 				{
 					"level":1,
 					"levelPer":true,
 					"option":
 					{
-						"type":"DamageReduction",						
-						"values":[0.01]
+						"type":"RegenSp",
+						"values":[30]
 					}
 				}
 			]
@@ -2896,14 +2896,14 @@
 		"levelup":
 		{
 			"optionPerLevel":
-			[
+			[				
 				{
 					"level":1,
 					"levelPer":true,
 					"option":
 					{
-						"type":"DamageReduction",						
-						"values":[0.01]
+						"type":"Strength",
+						"values":[10]
 					}
 				}
 			]
@@ -2926,8 +2926,8 @@
 					"levelPer":true,
 					"option":
 					{
-						"type":"DamageReduction",						
-						"values":[0.01]
+						"type":"LifeSteal",						
+						"values":[0.03]
 					}
 				}
 			]

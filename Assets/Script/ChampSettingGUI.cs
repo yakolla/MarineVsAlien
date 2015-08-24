@@ -81,12 +81,13 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
 				Warehouse.Instance.PushItem(new ItemStatData(2001));
 				Warehouse.Instance.PushItem(new ItemStatData(2002));
-				Warehouse.Instance.PushItem(new ItemStatData(2003));
+				//Warehouse.Instance.PushItem(new ItemStatData(2003));
 				//Warehouse.Instance.PushItem(new ItemStatData(2004));
-				Warehouse.Instance.PushItem(new ItemStatData(2005));
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
-				Warehouse.Instance.PushItem(new ItemStatData(2007));
 				Warehouse.Instance.PushItem(new ItemStatData(2008));
+				Warehouse.Instance.PushItem(new ItemStatData(2005));
+				Warehouse.Instance.PushItem(new ItemStatData(2007));
+
 
 				Warehouse.Instance.PushItem(new ItemSkillData(21));
 				Warehouse.Instance.PushItem(new ItemSkillData(22));
@@ -98,6 +99,18 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3003));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3004));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3005));
+
+				Warehouse.Instance.FindItem(3001).Item.Lock = false;
+				Warehouse.Instance.FindItem(3001).Item.Level = 9;
+				Warehouse.Instance.FindItem(3002).Item.Lock = false;
+				Warehouse.Instance.FindItem(3002).Item.Level = 9;
+				Warehouse.Instance.FindItem(3003).Item.Lock = false;
+				Warehouse.Instance.FindItem(3003).Item.Level = 9;
+				Warehouse.Instance.FindItem(3004).Item.Lock = false;
+				Warehouse.Instance.FindItem(3004).Item.Level = 9;
+				Warehouse.Instance.FindItem(3005).Item.Lock = false;
+				Warehouse.Instance.FindItem(3005).Item.Level = 9;
+
 			}
 
 			Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
@@ -133,12 +146,13 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
 				Warehouse.Instance.PushItem(new ItemStatData(2001));
 				Warehouse.Instance.PushItem(new ItemStatData(2002));
-				Warehouse.Instance.PushItem(new ItemStatData(2003));
+				//Warehouse.Instance.PushItem(new ItemStatData(2003));
 				//Warehouse.Instance.PushItem(new ItemStatData(2004));
-				Warehouse.Instance.PushItem(new ItemStatData(2005));
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
-				Warehouse.Instance.PushItem(new ItemStatData(2007));
 				Warehouse.Instance.PushItem(new ItemStatData(2008));
+				Warehouse.Instance.PushItem(new ItemStatData(2005));
+				Warehouse.Instance.PushItem(new ItemStatData(2007));
+
 
 				Warehouse.Instance.PushItem(new ItemSkillData(21));
 				Warehouse.Instance.PushItem(new ItemSkillData(22));

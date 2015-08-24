@@ -44,6 +44,7 @@ public class ItemData {
 		CriticalChance,
 		CriticalDamage,
 		GainExtraGold,
+		LifeSteal,
 		Count
 	}
 
@@ -125,6 +126,7 @@ public class ItemData {
 			case Option.CriticalChance:
 			case Option.CriticalDamage:
 			case Option.GainExtraGold:
+			case Option.LifeSteal:
 				desc += head + (optionValue*100) + "%</color>\n";
 				break;
 			default:
@@ -220,6 +222,9 @@ public class ItemData {
 				break;
 			case Option.CriticalDamage:
 				obj.m_creatureProperty.AlphaCriticalDamage += optionValue;
+				break;
+			case Option.LifeSteal:
+				obj.m_creatureProperty.AlphaLifeSteal += optionValue;
 				break;
 			case Option.GainExtraGold:
 				obj.m_creatureProperty.GainExtraGold += optionValue;

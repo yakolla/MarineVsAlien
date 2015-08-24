@@ -829,10 +829,10 @@ public class Creature : MonoBehaviour {
 		{
 			if (offender != null)
 			{
-				int lifeSteal = (int)(offender.m_creatureProperty.LifeSteal);
+				int lifeSteal = (int)(offender.m_creatureProperty.LifeSteal*dmg);
 				if (lifeSteal > 0)
 				{
-					offender.DamageText(lifeSteal.ToString(), Color.green, DamageNumberSprite.MovementType.RisingUp);
+					offender.DamageText(lifeSteal.ToString() + "L", Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
 					offender.Heal(lifeSteal);
 				}
 				Const.GetSpawn().SharePotinsChamps(offender, ItemData.Type.XPPotion, m_creatureProperty.RewardExp, false);
