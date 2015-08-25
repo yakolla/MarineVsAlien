@@ -81,11 +81,11 @@ public class ItemData {
 	{
 		string sp = "";
 		if (RefItem.consumedSP > 0)
-			sp = "SP:" + RefItem.consumedSP*Level + "\n";
+			sp = "SP:" + "<color=yellow>"+RefItem.consumedSP*Level+"</color>" + "\n";
 
-		return "<color=white>" + 
-				itemName() + "\n" + 
-				"Level:" + Level + "\n" + 
+		return  "<color=white>" + 
+				"<size=20>"+itemName()+"</size>" + "\n" + 
+				"Lv:" + "<color=yellow>"+Level+"</color>" + "\n" + 
 				sp +
 				"</color>" +
 				OptionsDescription();
@@ -104,7 +104,7 @@ public class ItemData {
 			float optionValue = 0f;
 			if (op.levelPer == false)
 			{
-				head = "Lv" + op.level + ":";
+				head = "Lv" + "<color=yellow>"+op.level+"</color>" + ":";
 				optionValue = op.option.values[0];
 			}
 			else
@@ -120,17 +120,17 @@ public class ItemData {
 				desc += head + RefData.Instance.RefItems[(int)optionValue].name + "</color>\n";
 				break;
 			case Option.DamageMultiplier:
-				desc += head + "Damage" + ":"+ (optionValue*100) + "%</color>\n";
+				desc += head + "Damage" + ":"+ "<color=yellow>"+(optionValue*100)+"</color>" + "%</color>\n";
 				break;
 			case Option.DamageReduction:						
 			case Option.CriticalChance:
 			case Option.CriticalDamage:
 			case Option.GainExtraGold:
 			case Option.LifeSteal:
-				desc += head + (optionValue*100) + "%</color>\n";
+				desc += head + "<color=yellow>"+(optionValue*100)+"</color>" + "%</color>\n";
 				break;
 			default:
-				desc += head + optionValue + "</color>\n";
+				desc += head + "<color=yellow>"+optionValue+"</color>" + "</color>\n";
 				break;
 			}
 		}

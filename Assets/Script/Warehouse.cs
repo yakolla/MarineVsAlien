@@ -27,10 +27,28 @@ public class WarehouseData
 	public GameDataContext			m_gameDataContext = new GameDataContext();
 	public Tutorial					m_tutorial = new Tutorial();
 
+	public class PerSec
+	{
+		public int		amount;
+		int		prevAmount;
+		public float	perSec;
+
+		public void Update(float delta)
+		{
+			perSec = (perSec+(amount-prevAmount)/delta)/2f;
+			prevAmount = amount;
+		}
+	}
+
 	public class 	GameStatistics
 	{
 		public SecuredType.XInt		m_waveIndex = 0;
 		public SecuredType.XInt		m_killedMobs = 0;
+
+		PerSec	m_kills = new PerSec();
+		PerSec	m_damages = new PerSec();
+
+		float	m_startPerSec;
 		
 		public void SetBestStats(GameStatistics newStats)
 		{
@@ -41,7 +59,10 @@ public class WarehouseData
 		[JsonIgnore]
 		public int KilledMobs
 		{
-			set{m_killedMobs.Value = value;}
+			set{
+				m_killedMobs.Value = value;
+				m_kills.amount = value;
+			}
 			get{return m_killedMobs.Value;}
 		}
 		
@@ -50,6 +71,34 @@ public class WarehouseData
 		{
 			set{m_waveIndex.Value = value;}
 			get{return m_waveIndex.Value;}
+		}
+
+		public int Damages
+		{
+			set{m_damages.amount = value;}
+			get{return m_damages.amount;}
+		}
+
+		public float KillPerSec
+		{
+			get{return m_kills.perSec;}
+		}
+
+		public float DamagePerSec
+		{
+			get{return m_damages.perSec;}
+		}
+
+		public void Update()
+		{
+			float perDelta = Time.time - m_startPerSec;
+			if (perDelta >= 1f)
+			{
+				m_kills.Update(perDelta);
+				m_damages.Update(perDelta);
+
+				m_startPerSec = Time.time;
+			}
 		}
 	}
 	
@@ -94,6 +143,7 @@ public class Warehouse {
 	ItemObject			m_alienEssence;
 
 	WarehouseData.GameStatistics			m_newGameStats = new WarehouseData.GameStatistics();
+	WarehouseData.GameStatistics			m_updateGameStats = new WarehouseData.GameStatistics();
 
 	float					m_playTime = 0f;
 	float					m_saveTime = 0f;
@@ -253,6 +303,11 @@ public class Warehouse {
 	public WarehouseData.GameStatistics NewGameStats
 	{
 		get {return m_newGameStats;}
+	}
+
+	public WarehouseData.GameStatistics UpdateGameStats
+	{
+		get {return m_updateGameStats;}
 	}
 
 	public int InvenSize

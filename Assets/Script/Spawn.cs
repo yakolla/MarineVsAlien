@@ -377,6 +377,7 @@ public class Spawn : MonoBehaviour {
 		if (m_champ)
 		{
 			++Warehouse.Instance.AlienEssence.Item.Count;
+			++Warehouse.Instance.UpdateGameStats.KilledMobs;
 
 			if (Warehouse.Instance.AlienEssence.Item.Count > 200)
 				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;

@@ -16,17 +16,24 @@ public class GeneralInfoPanel : MonoBehaviour {
 	YGUISystem.GUILable 	m_tapDamage;
 	YGUISystem.GUILable 	m_lifeSteal;
 
+	YGUISystem.GUILable 	m_statisticsDmgPS;
+	YGUISystem.GUILable 	m_statisticsGoldPS;
+	YGUISystem.GUILable 	m_statisticsKillPS;
+
 	void Start()
 	{
-		m_strength =  new YGUISystem.GUILable(transform.Find("Strength/Text").gameObject);
-		m_regenSP = new YGUISystem.GUILable(transform.Find("RegenSP/Text").gameObject);
-		m_gainExtraGold = new YGUISystem.GUILable(transform.Find("GainExtraGold/Text").gameObject);
-		m_damageReduction = new YGUISystem.GUILable(transform.Find("DamageReduction/Text").gameObject);
-		m_damageMultiplier = new YGUISystem.GUILable(transform.Find("DamageMultiplier/Text").gameObject);
-		m_criticalChance = new YGUISystem.GUILable(transform.Find("CriticalChance/Text").gameObject);
-		m_criticalDamage = new YGUISystem.GUILable(transform.Find("CriticalDamage/Text").gameObject);
-		m_tapDamage = new YGUISystem.GUILable(transform.Find("TapDamage/Text").gameObject);
-		m_lifeSteal = new YGUISystem.GUILable(transform.Find("LifeSteal/Text").gameObject);
+		m_strength =  new YGUISystem.GUILable(transform.Find("ScrollView/Contents/Strength/Text").gameObject);
+		m_regenSP = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/RegenSP/Text").gameObject);
+		m_gainExtraGold = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/GainExtraGold/Text").gameObject);
+		m_damageReduction = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/DamageReduction/Text").gameObject);
+		m_damageMultiplier = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/DamageMultiplier/Text").gameObject);
+		m_criticalChance = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/CriticalChance/Text").gameObject);
+		m_criticalDamage = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/CriticalDamage/Text").gameObject);
+		m_tapDamage = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/TapDamage/Text").gameObject);
+		m_lifeSteal = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/LifeSteal/Text").gameObject);
+		m_statisticsDmgPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsDmgPS/Text").gameObject);
+		m_statisticsGoldPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsGoldPS/Text").gameObject);
+		m_statisticsKillPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsKillPS/Text").gameObject);
 	}
 
 	public void SetChamp(Champ champ)
@@ -48,6 +55,13 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_criticalChance.Text.text = (m_champ.m_creatureProperty.CriticalChance*100f).ToString() + "%";
 		m_criticalDamage.Text.text = (m_champ.m_creatureProperty.CriticalDamage*100f).ToString() + "%";
 		m_lifeSteal.Text.text = (m_champ.m_creatureProperty.LifeSteal*100f).ToString() + "%";
+
+
+		Warehouse.Instance.UpdateGameStats.Update();
+		m_statisticsKillPS.Text.text = System.String.Format("{0:F2}",Warehouse.Instance.UpdateGameStats.KillPerSec);
+		m_statisticsDmgPS.Text.text = System.String.Format("{0:F2}",Warehouse.Instance.UpdateGameStats.DamagePerSec);
+
+
 	}
 }
 

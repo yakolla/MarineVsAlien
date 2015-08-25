@@ -21,16 +21,12 @@ public class MeleeBullet : Bullet {
 
 		RaycastHit hit;
 		Vector3 fwd = transform.TransformDirection(Vector3.right);
-		if (Physics.Raycast(transform.position, fwd, out hit, 5f, 1<<9))
+		if (Physics.Raycast(transform.position, fwd, out hit, 3f, 1<<9))
 		{
 			Creature creature = hit.transform.gameObject.GetComponent<Creature>();
 			if (creature && Creature.IsEnemy(creature, m_ownerCreature))
-			{				
-				float dist = Vector3.Distance(m_ownerCreature.WeaponHolder.transform.position, creature.transform.position);
-				if (dist < 2f)
-				{
-					GiveDamage(creature);
-				}
+			{
+				GiveDamage(creature);
 				
 			}
 		}

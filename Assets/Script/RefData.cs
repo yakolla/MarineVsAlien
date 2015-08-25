@@ -312,6 +312,7 @@ public class RefData {
 	Dictionary<int, RefItem>		m_refItems = new Dictionary<int, RefItem>();
 	Dictionary<int, RefMob>			m_refMobs = new Dictionary<int, RefMob>();
 	Dictionary<int, RefMob>			m_refChamps = new Dictionary<int, RefMob>();
+	string[]		m_texts	= null;
 
 	static RefData m_ins = null;
 	static public RefData Instance
@@ -331,6 +332,8 @@ public class RefData {
 
 	void Load()
 	{
+		Deserialize(ref m_texts, "en/MultiLang");
+
 		DeserializeArray(m_refWorldMaps, "RefWorldMap");
 		Deserialize(ref m_refMobClass, "RefMob");
 		DeserializeArray(m_refItems, "RefItem");
@@ -487,4 +490,10 @@ public class RefData {
 		get {return m_refChamps[1];}
 	}
 
+	public string[] RefTexts
+	{
+		get {
+			return m_texts;
+		}
+	}
 }
