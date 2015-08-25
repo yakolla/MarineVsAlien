@@ -1109,7 +1109,7 @@
 		{
 			"id":30001,
 			"prefHead":"Follower",
-			"prefBody":"marine_skin",
+			"prefBody":"robogun_skin",
 			"name":"Gun Marine",
 			"refWeaponItems":
 			[
