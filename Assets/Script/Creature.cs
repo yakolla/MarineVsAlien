@@ -840,9 +840,14 @@ public class Creature : MonoBehaviour {
 
 			Death();
 		}
-		if (offender != null && (offender.CreatureType | Type.Champ) > 0)
+		if (offender != null && (offender.CreatureType & Type.Champ) > 0)
 		{
-			Warehouse.Instance.UpdateGameStats.Damages += dmg;
+			Warehouse.Instance.UpdateGameStats.DealDamages += dmg;
+		}
+
+		if (CreatureType == Type.Champ)
+		{
+			Warehouse.Instance.UpdateGameStats.TakenDamages += dmg;
 		}
 		return dmg;
 	}

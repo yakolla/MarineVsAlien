@@ -16,8 +16,8 @@ public class GeneralInfoPanel : MonoBehaviour {
 	YGUISystem.GUILable 	m_tapDamage;
 	YGUISystem.GUILable 	m_lifeSteal;
 
-	YGUISystem.GUILable 	m_statisticsDmgPS;
-	YGUISystem.GUILable 	m_statisticsGoldPS;
+	YGUISystem.GUILable 	m_statisticsDealDmgPS;
+	YGUISystem.GUILable 	m_statisticsTakenDmgPS;
 	YGUISystem.GUILable 	m_statisticsKillPS;
 
 	void Start()
@@ -31,8 +31,8 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_criticalDamage = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/CriticalDamage/Text").gameObject);
 		m_tapDamage = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/TapDamage/Text").gameObject);
 		m_lifeSteal = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/LifeSteal/Text").gameObject);
-		m_statisticsDmgPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsDmgPS/Text").gameObject);
-		m_statisticsGoldPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsGoldPS/Text").gameObject);
+		m_statisticsDealDmgPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsDealDmgPS/Text").gameObject);
+		m_statisticsTakenDmgPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsTakenDmgPS/Text").gameObject);
 		m_statisticsKillPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsKillPS/Text").gameObject);
 	}
 
@@ -59,8 +59,8 @@ public class GeneralInfoPanel : MonoBehaviour {
 
 		Warehouse.Instance.UpdateGameStats.Update();
 		m_statisticsKillPS.Text.text = System.String.Format("{0:F2}",Warehouse.Instance.UpdateGameStats.KillPerSec);
-		m_statisticsDmgPS.Text.text = System.String.Format("{0:F2}",Warehouse.Instance.UpdateGameStats.DamagePerSec);
-
+		m_statisticsDealDmgPS.Text.text = System.String.Format("{0:F2}",Warehouse.Instance.UpdateGameStats.DealDamagePerSec);
+		m_statisticsTakenDmgPS.Text.text = System.String.Format("{0:F2}",Warehouse.Instance.UpdateGameStats.TakenDamagePerSec);
 
 	}
 }

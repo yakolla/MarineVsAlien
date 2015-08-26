@@ -46,7 +46,8 @@ public class WarehouseData
 		public SecuredType.XInt		m_killedMobs = 0;
 
 		PerSec	m_kills = new PerSec();
-		PerSec	m_damages = new PerSec();
+		PerSec	m_dealDamages = new PerSec();
+		PerSec	m_takenDamages = new PerSec();
 
 		float	m_startPerSec;
 		
@@ -73,10 +74,16 @@ public class WarehouseData
 			get{return m_waveIndex.Value;}
 		}
 
-		public int Damages
+		public int DealDamages
 		{
-			set{m_damages.amount = value;}
-			get{return m_damages.amount;}
+			set{m_dealDamages.amount = value;}
+			get{return m_dealDamages.amount;}
+		}
+
+		public int TakenDamages
+		{
+			set{m_takenDamages.amount = value;}
+			get{return m_takenDamages.amount;}
 		}
 
 		public float KillPerSec
@@ -84,9 +91,14 @@ public class WarehouseData
 			get{return m_kills.perSec;}
 		}
 
-		public float DamagePerSec
+		public float DealDamagePerSec
 		{
-			get{return m_damages.perSec;}
+			get{return m_dealDamages.perSec;}
+		}
+
+		public float TakenDamagePerSec
+		{
+			get{return m_takenDamages.perSec;}
 		}
 
 		public void Update()
@@ -95,7 +107,8 @@ public class WarehouseData
 			if (perDelta >= 1f)
 			{
 				m_kills.Update(perDelta);
-				m_damages.Update(perDelta);
+				m_dealDamages.Update(perDelta);
+				m_takenDamages.Update(perDelta);
 
 				m_startPerSec = Time.time;
 			}
