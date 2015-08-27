@@ -183,10 +183,10 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		m_start = new YGUISystem.GUIButton(transform.Find("StartButton").gameObject, ()=>{return m_equipedWeapon != null;});
 
-		m_tabs[0] = new YGUISystem.GUIButton(transform.Find("StatTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedStatTab;});
-		m_tabs[1] = new YGUISystem.GUIButton(transform.Find("WeaponTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedWeaponTab;});
-		m_tabs[2] = new YGUISystem.GUIButton(transform.Find("SkillTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedSkillTab;});
-		m_tabs[3] = new YGUISystem.GUIButton(transform.Find("FollowerTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedFollowerTab;});
+		m_tabs[0] = new YGUISystem.GUIButton(transform.Find("StatTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedStatTab && m_champ != null;});
+		m_tabs[1] = new YGUISystem.GUIButton(transform.Find("WeaponTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedWeaponTab && m_champ != null;});
+		m_tabs[2] = new YGUISystem.GUIButton(transform.Find("SkillTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedSkillTab && m_champ != null;});
+		m_tabs[3] = new YGUISystem.GUIButton(transform.Find("FollowerTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedFollowerTab && m_champ != null;});
 
 		m_weaponPanel = settingItemList("WeaponPanel", new ItemData.Type[]{ItemData.Type.Weapon, ItemData.Type.WeaponParts});
 		m_statPanel = settingItemList("StatPanel", new ItemData.Type[]{ItemData.Type.Stat});
@@ -287,6 +287,9 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 			button.Update();
 		}
+
+		if (m_champ == null)
+			OnClickGeneralInfo();
 
 	}
 

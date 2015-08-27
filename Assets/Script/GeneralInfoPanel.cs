@@ -16,9 +16,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 	YGUISystem.GUILable 	m_tapDamage;
 	YGUISystem.GUILable 	m_lifeSteal;
 
-	YGUISystem.GUILable 	m_statisticsDealDmgPS;
-	YGUISystem.GUILable 	m_statisticsTakenDmgPS;
-	YGUISystem.GUILable 	m_statisticsKillPS;
+	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[3];
 
 	void Start()
 	{
@@ -31,9 +29,48 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_criticalDamage = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/CriticalDamage/Text").gameObject);
 		m_tapDamage = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/TapDamage/Text").gameObject);
 		m_lifeSteal = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/LifeSteal/Text").gameObject);
-		m_statisticsDealDmgPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsDealDmgPS/Text").gameObject);
-		m_statisticsTakenDmgPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsTakenDmgPS/Text").gameObject);
-		m_statisticsKillPS = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/StatisticsKillPS/Text").gameObject);
+
+		m_guages[0] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsDealDmgPS/Guage/Guage").gameObject, 
+		                                      ()=>{
+			if (Warehouse.Instance.UpdateGameStats.DealDamagePerSec == 0)
+				return 1f;
+			return Warehouse.Instance.UpdateGameStats.DealDamagePerSec/Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec;
+		}, 
+		()=>{
+			if (Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec == 0)
+				return 0 + " / " + 0;
+
+			return System.String.Format("{0:F2} / {1:F2}",Warehouse.Instance.UpdateGameStats.DealDamagePerSec, Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec); 
+		}
+		);
+
+		m_guages[1] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsTakenDmgPS/Guage/Guage").gameObject, 
+		                                      ()=>{
+			if (Warehouse.Instance.UpdateGameStats.TakenDamagePerSec == 0)
+				return 1f;
+			return Warehouse.Instance.UpdateGameStats.TakenDamagePerSec/Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec;
+		}, 
+		()=>{
+			if (Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec == 0)
+				return 0 + " / " + 0;
+			
+			return System.String.Format("{0:F2} / {1:F2}",Warehouse.Instance.UpdateGameStats.TakenDamagePerSec, Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec); 
+		}
+		);
+
+		m_guages[2] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsKillPS/Guage/Guage").gameObject, 
+		                                      ()=>{
+			if (Warehouse.Instance.UpdateGameStats.KillPerSec == 0)
+				return 1f;
+			return Warehouse.Instance.UpdateGameStats.KillPerSec/Warehouse.Instance.UpdateGameStats.MaxKillPerSec;
+		}, 
+		()=>{
+			if (Warehouse.Instance.UpdateGameStats.MaxKillPerSec == 0)
+				return 0 + " / " + 0;
+			
+			return System.String.Format("{0:F2} / {1:F2}",Warehouse.Instance.UpdateGameStats.KillPerSec, Warehouse.Instance.UpdateGameStats.MaxKillPerSec); 
+		}
+		);
 	}
 
 	public void SetChamp(Champ champ)
@@ -58,9 +95,10 @@ public class GeneralInfoPanel : MonoBehaviour {
 
 
 		Warehouse.Instance.UpdateGameStats.Update();
-		m_statisticsKillPS.Text.text = System.String.Format("{0:F2}",Warehouse.Instance.UpdateGameStats.KillPerSec);
-		m_statisticsDealDmgPS.Text.text = System.String.Format("{0:F2}",Warehouse.Instance.UpdateGameStats.DealDamagePerSec);
-		m_statisticsTakenDmgPS.Text.text = System.String.Format("{0:F2}",Warehouse.Instance.UpdateGameStats.TakenDamagePerSec);
+		foreach(YGUISystem.GUIGuage guage in m_guages)
+		{
+			guage.Update();
+		}
 
 	}
 }

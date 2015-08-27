@@ -29,6 +29,7 @@ public class WarehouseData
 
 	public class PerSec
 	{
+		public float	maxPerSec;
 		public int		amount;
 		int		prevAmount;
 		public float	perSec;
@@ -36,6 +37,8 @@ public class WarehouseData
 		public void Update(float delta)
 		{
 			perSec = (perSec+(amount-prevAmount)/delta)/2f;
+			if (perSec > maxPerSec)
+				maxPerSec = perSec;
 			prevAmount = amount;
 		}
 	}
@@ -99,6 +102,21 @@ public class WarehouseData
 		public float TakenDamagePerSec
 		{
 			get{return m_takenDamages.perSec;}
+		}
+
+		public float MaxKillPerSec
+		{
+			get{return m_kills.maxPerSec;}
+		}
+
+		public float MaxDealDamagePerSec
+		{
+			get{return m_dealDamages.maxPerSec;}
+		}
+
+		public float MaxTakenDamagePerSec
+		{
+			get{return m_takenDamages.maxPerSec;}
 		}
 
 		public void Update()
