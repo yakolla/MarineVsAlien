@@ -190,7 +190,7 @@
 									"refItemId":3002,
 									"minValue":1,
 									"maxValue":1,
-									"ratio":0,
+									"ratio":0.2,
 									"count":1
 								}
 							]
@@ -203,7 +203,7 @@
 									"refItemId":3003,
 									"minValue":1,
 									"maxValue":1,
-									"ratio":0,
+									"ratio":0.1,
 									"count":1
 								}
 							]
@@ -216,7 +216,7 @@
 									"refItemId":3004,
 									"minValue":1,
 									"maxValue":1,
-									"ratio":0,
+									"ratio":0.05,
 									"count":1
 								}
 							]
