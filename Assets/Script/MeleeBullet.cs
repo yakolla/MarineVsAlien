@@ -4,30 +4,35 @@ using System.Collections;
 public class MeleeBullet : Bullet {
 	
 	public float	m_damageOnTime = 0.3f;
-	
-	float			m_lastDamageTime = 0f;
+
+	BoxCollider		m_boxCollider;
 
 	// Use this for initialization
 	void Start () 
 	{
 		m_damageType = DamageDesc.Type.Normal;
-		m_lastDamageTime = Time.time;
+		m_boxCollider = transform.GetComponent<BoxCollider>();
 	}
 
 	public void SetCollider(bool enable)
 	{
+		if (m_boxCollider != null)
+			m_boxCollider.enabled = enable;
+
 		if (enable == false)
 			return;
 
-		RaycastHit hit;
-		Vector3 fwd = transform.TransformDirection(Vector3.right);
-		if (Physics.Raycast(transform.position, fwd, out hit, 3f, 1<<9))
+		if (m_boxCollider == null)
 		{
-			Creature creature = hit.transform.gameObject.GetComponent<Creature>();
-			if (creature && Creature.IsEnemy(creature, m_ownerCreature))
+			RaycastHit hit;
+			Vector3 fwd = transform.TransformDirection(Vector3.right);
+			if (Physics.Raycast(transform.position, fwd, out hit, 3f, 1<<9))
 			{
-				GiveDamage(creature);
-				
+				Creature creature = hit.transform.gameObject.GetComponent<Creature>();
+				if (creature && Creature.IsEnemy(creature, m_ownerCreature))
+				{
+					GiveDamage(creature);				
+				}
 			}
 		}
 	}
@@ -41,4 +46,12 @@ public class MeleeBullet : Bullet {
 
 	}
 
+	void OnTriggerEnter(Collider other) {
+		
+		Creature creature = other.gameObject.GetComponent<Creature>();
+		if (creature && Creature.IsEnemy(creature, m_ownerCreature))
+		{
+			GiveDamage(creature);
+		}
+	}
 }

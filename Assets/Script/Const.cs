@@ -50,7 +50,9 @@ public class Const {
 	public const int FollowerLightningMarineRefItemId = 1003;
 	public const int FollowerRocketMarineRefItemId = 1004;
 	public const int FollowerBoomerangMarineRefItemId = 1005;
+	public const int FollowerGrenadeMarineRefItemId = 1006;
 	public const int FollowerPetRefItemId = 1007;
+	public const int FollowerMeleeRefItemId = 1008;
 
 
 	public const string LEADERBOARD_KILLED_MOBS = "CgkI4IXrjtcPEAIQBg";

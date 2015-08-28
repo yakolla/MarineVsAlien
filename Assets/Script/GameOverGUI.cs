@@ -15,6 +15,15 @@ public class GameOverGUI : MonoBehaviour {
 	string[]				m_leaderBoards = {Const.LEADERBOARD_KILLED_MOBS};
 	Slider	m_waveSlider;
 	Text	m_waveText;
+	Text	m_continueText;
+
+	enum SaveWithType
+	{
+		MainTitle,
+		Exit,
+		Continue,
+	}
+
 	void Start () {
 	
 		m_admob = GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>();
@@ -34,6 +43,9 @@ public class GameOverGUI : MonoBehaviour {
 
 		m_waveText = transform.Find("WaveGUI/Slider/Text").gameObject.GetComponent<Text>();
 		m_waveText.text = (Warehouse.Instance.NewGameStats.WaveIndex+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString();
+
+		m_continueText = transform.Find("ContinueButton/Text").gameObject.GetComponent<Text>();
+		m_continueText.text = "Continue at " + (Warehouse.Instance.NewGameStats.WaveIndex+1);
 
 		m_waveSlider = transform.Find("WaveGUI/Slider").gameObject.GetComponent<Slider>();
 		m_waveSlider.minValue = 0;
@@ -73,7 +85,7 @@ public class GameOverGUI : MonoBehaviour {
 
 	}
 
-	void SaveGame(bool mainTitle)
+	void SaveGame(SaveWithType type)
 	{
 		Const.ShowLoadingGUI("Loading...");
 
@@ -90,10 +102,18 @@ public class GameOverGUI : MonoBehaviour {
 			
 			TimeEffector.Instance.StartTime();
 
-			if (mainTitle == true)
+			switch(type)
+			{
+			case SaveWithType.MainTitle:
 				Application.LoadLevel("Worldmap");
-			else
+				break;
+			case SaveWithType.Continue:
 				Application.LoadLevel("Basic Dungeon");
+				break;
+			case SaveWithType.Exit:
+				Application.Quit();
+				break;
+			}
 		});
 
 	}
@@ -121,6 +141,7 @@ public class GameOverGUI : MonoBehaviour {
 		Debug.Log("OnWaveSliderChanged:" + m_waveSlider.value);
 		Warehouse.Instance.NewGameStats.WaveIndex = Mathf.Min(Warehouse.Instance.GameBestStats.WaveIndex, (int)m_waveSlider.value);
 		m_waveText.text = (Warehouse.Instance.NewGameStats.WaveIndex+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString();
+		m_continueText.text = "Continue at " + (Warehouse.Instance.NewGameStats.WaveIndex+1);
 	}
 
 	public void OnClickContinue()
@@ -129,7 +150,7 @@ public class GameOverGUI : MonoBehaviour {
 		m_admob.ShowBanner(false);
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Continue", 0);
 		Warehouse.Instance.WaveIndex = Warehouse.Instance.NewGameStats.WaveIndex;
-		SaveGame(false);
+		SaveGame(SaveWithType.Continue);
 	}
 
 	public void OnClickTitle()
@@ -137,7 +158,12 @@ public class GameOverGUI : MonoBehaviour {
 		m_admob.ShowBanner(false);
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Title", 0);
 
-		SaveGame(true);
+		SaveGame(SaveWithType.MainTitle);
+	}
+
+	public void OnClickExit()
+	{
+		SaveGame(SaveWithType.Exit);
 	}
 
 	public void OnClickLeaderBoard(int slot)

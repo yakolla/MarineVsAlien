@@ -15,7 +15,7 @@
 							}
 						},
 						"interval":3,
-						"repeatCount":[4,4]
+						"repeatCount":[4,20]
 					},
 					{
 						"refMobIds":{
@@ -29,7 +29,7 @@
 							}
 						},
 						"interval":3,
-						"repeatCount":[3,3]
+						"repeatCount":[3,15]
 					},
 					{
 						"refMobIds":{
@@ -39,7 +39,7 @@
 							}
 						},
 						"interval":3,
-						"repeatCount":[4,4]
+						"repeatCount":[4,20]
 					},
 					{
 						"refMobIds":{
@@ -53,7 +53,7 @@
 							}
 						},
 						"interval":3,
-						"repeatCount":[3,3]
+						"repeatCount":[3,15]
 					},
 					{
 						"refMobIds":{
@@ -71,7 +71,7 @@
 							}
 						},
 						"interval":7,
-						"repeatCount":[3,3]
+						"repeatCount":[3,15]
 					},
 					{
 						"refMobIds":{

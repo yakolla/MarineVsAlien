@@ -1696,7 +1696,7 @@
 		{
 			"coolTime":0.3,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":900
 		}
 	},
 	{
@@ -1772,20 +1772,18 @@
 	},
 	{
 		"id":207,
-		"codeName":"SummonMobLauncher",
-		"name":"Mine Drone",
+		"codeName":"FollowerGrenadeLauncher",
 		"type":"Weapon",
-		"icon":"Sprites/SummonMob",		
+		"icon":"Sprites/Grenade",		
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":3,
 			"delay":1
 		},
 		"weaponStat":
 		{
-			"coolTime":12,
-			"range":8,
-			"summonRefMobId":31008
+			"coolTime":3,
+			"range":5
 		}
 	},
 	{
@@ -1820,29 +1818,25 @@
 				"chance":1,
 				"buffType":"Airborne"
 			}
-		},
-		"unlock":
-		{
-			"conds":
-			[
-				{
-					"refItemId":1, 
-					"count":50
-				},
-				{
-					"refItemId":5, 
-					"count":5
-				}
-			],
-			"else_conds":
-			[
-				{
-					"refItemId":8,
-					"count":5
-				}
-			]
 		}
 		
+	},
+	{
+		"id":210,
+		"codeName":"FollowerMelee",
+		"type":"Weapon",
+		"icon":"Sprites/swordoftruth",
+		
+		"evolutionFiring":
+		{
+			"angle":0,
+			"delay":0.3
+		},
+		"weaponStat":
+		{
+			"coolTime":0.5,
+			"range":1.5
+		}
 	},
 	{
 		"id":1001,
@@ -1851,7 +1845,7 @@
 		"icon":"Sprites/FollowerGunMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.05,
+		"consumedSP":0.07,
 		"followerId":30001,
 		"weaponStat":
 		{
@@ -1863,18 +1857,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":2000
+					"count":5000
 				},
 				{
 					"refItemId":11, 
-					"count":200
+					"count":500
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":20
+					"count":50
 				}
 			]
 		},
@@ -2208,7 +2202,7 @@
 		"id":1006,
 		"codeName":"Follower",
 		"type":"Follower",
-		"icon":"Sprites/FollowerTurret",
+		"icon":"Sprites/FollowerGrenadeMarines",
 		"maxLevel":900,
 		"defaultLock":true,
 		"followerId":30006,
@@ -2307,6 +2301,78 @@
 					"option":
 					{
 						"type":"GainExtraGold",
+						"values":[1]
+					}
+				}
+			]
+		}
+	},
+	{
+		"id":1008,
+		"codeName":"Follower",
+		"type":"Follower",
+		"icon":"Sprites/FollowerMeleeMarines",
+		"maxLevel":900,
+		"defaultLock":true,
+		"consumedSP":0.05,
+		"followerId":30008,
+		"weaponStat":
+		{
+			"coolTime":90
+		},
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":2000
+				},
+				{
+					"refItemId":11, 
+					"count":200
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":20
+				}
+			]
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":10
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":900,
+					"option":
+					{
+						"type":"Weapon",
+						"values":[131,3]
+					}
+				},
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"Strength",
 						"values":[1]
 					}
 				}

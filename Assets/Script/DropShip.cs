@@ -9,19 +9,19 @@ public class DropShip : MonoBehaviour {
 	public void SetChamp(Champ champ)
 	{
 		m_champ = champ;
+
 	}
 
 	void OnDropChamp()
 	{
 		m_champ.gameObject.SetActive(true);
 
-		foreach(ItemObject itemFollowerObject in Warehouse.Instance.Items[ItemData.Type.Follower])
-		{
-			if (itemFollowerObject.Item.Level > 0)
+		Warehouse.Instance.Items[ItemData.Type.Follower].ForEach(item=>{
+			if (item.Item.Level > 0)
 			{
-				itemFollowerObject.Item.Equip(m_champ);
+				item.Item.Equip(m_champ);
 			}
-		}
+		});
 	}
 }
 

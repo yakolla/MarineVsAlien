@@ -1148,11 +1148,7 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"202",
-					"weaponStat":
-					{
-						"incBulletOnLevel":10
-					}
+					"refItemId":"202"
 				}
 			],
 			"mobAI":"Follow",
@@ -1272,29 +1268,29 @@
 		},
 		{
 			"id":30006,			
-			"prefHead":"Turret",
-			"prefBody":"turret_skin",
-			"name":"Turret",
+			"prefHead":"Follower",
+			"prefBody":"marine_skin",
+			"name":"Grenade Marines",
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"206"
+					"refItemId":"207"
 				}
 			],
 			"mobAI":"Follow",
 			"scale":0.7,
 			"baseCreatureProperty":
 			{
-				"maxHP":30,
+				"maxHP":15,
 				"maxSP":100,
-				"physicalDamage":6,
+				"physicalDamage":10,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
-				"moveSpeed":0,
+				"moveSpeed":1.5,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -1323,7 +1319,37 @@
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
-				"moveSpeed":3,
+				"moveSpeed":5,
+				"aniSpeedRatio":0.5,
+				"navMeshBaseOffset":0,
+				"backwardOnDamage":false
+			}
+		},
+		{
+			"id":30008,			
+			"prefHead":"Follower",
+			"prefBody":"marine_skin",
+			"name":"Sword Marines",
+			"refWeaponItems":
+			[
+				{
+					"refItemId":"210"
+				}
+			],
+			"mobAI":"Follow",
+			"scale":0.7,
+			"baseCreatureProperty":
+			{
+				"maxHP":15,
+				"maxSP":100,
+				"physicalDamage":1,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.2,
+				"exp":0,
+				"phyDamagePerLevel":1,
+				"phyDefencePerLevel":2,
+				"hpPerLevel":0.33,
+				"moveSpeed":4.5,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false

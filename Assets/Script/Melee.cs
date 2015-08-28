@@ -57,7 +57,6 @@ public class Melee : Weapon {
 		if (m_bullet != null)
 		{
 			m_bullet.StopFiring();
-			m_bullet.gameObject.SetActive(false);
 		}
 		
 		stopGunPointEffect();

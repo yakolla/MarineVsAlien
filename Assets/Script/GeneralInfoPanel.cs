@@ -33,7 +33,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_guages[0] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsDealDmgPS/Guage/Guage").gameObject, 
 		                                      ()=>{
 			if (Warehouse.Instance.UpdateGameStats.DealDamagePerSec == 0)
-				return 1f;
+				return 0f;
 			return Warehouse.Instance.UpdateGameStats.DealDamagePerSec/Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec;
 		}, 
 		()=>{
@@ -47,7 +47,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_guages[1] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsTakenDmgPS/Guage/Guage").gameObject, 
 		                                      ()=>{
 			if (Warehouse.Instance.UpdateGameStats.TakenDamagePerSec == 0)
-				return 1f;
+				return 0f;
 			return Warehouse.Instance.UpdateGameStats.TakenDamagePerSec/Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec;
 		}, 
 		()=>{
@@ -61,7 +61,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_guages[2] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsKillPS/Guage/Guage").gameObject, 
 		                                      ()=>{
 			if (Warehouse.Instance.UpdateGameStats.KillPerSec == 0)
-				return 1f;
+				return 0f;
 			return Warehouse.Instance.UpdateGameStats.KillPerSec/Warehouse.Instance.UpdateGameStats.MaxKillPerSec;
 		}, 
 		()=>{

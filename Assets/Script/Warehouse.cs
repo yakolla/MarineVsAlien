@@ -41,6 +41,14 @@ public class WarehouseData
 				maxPerSec = perSec;
 			prevAmount = amount;
 		}
+
+		public void Reset()
+		{
+			maxPerSec = 0;
+			amount = 0;
+			prevAmount = 0;
+			perSec = 0;
+		}
 	}
 
 	public class 	GameStatistics
@@ -59,8 +67,17 @@ public class WarehouseData
 			KilledMobs = Mathf.Max(KilledMobs, newStats.KilledMobs);
 			WaveIndex = Mathf.Max(WaveIndex, newStats.WaveIndex);
 		}
+
+		public void Reset()
+		{
+			KilledMobs = 0;
+			WaveIndex = 0;
+			m_kills.Reset();
+			m_dealDamages.Reset();
+			m_takenDamages.Reset();
+			m_startPerSec = Time.time;
+		}
 		
-		[JsonIgnore]
 		public int KilledMobs
 		{
 			set{
@@ -70,7 +87,6 @@ public class WarehouseData
 			get{return m_killedMobs.Value;}
 		}
 		
-		[JsonIgnore]
 		public int WaveIndex
 		{
 			set{m_waveIndex.Value = value;}
