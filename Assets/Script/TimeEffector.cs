@@ -43,6 +43,9 @@ public class TimeEffector {
 
 	public void BulletTime(float decreaseFactor)
 	{
+		if (m_type == Type.Stop)
+			return;
+
 		m_type = Type.BulletTime;
 		m_bulletTime = 1f;
 		m_decreaseFactor = decreaseFactor;

@@ -28,6 +28,8 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	[SerializeField]
 	bool		m_cheat = true;
+	[SerializeField]
+	bool		m_eqipedAllItem = false;
 
 	Champ		m_champ;
 
@@ -102,16 +104,20 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3004));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3005));
 
-				Warehouse.Instance.FindItem(3001).Item.Lock = false;
-				Warehouse.Instance.FindItem(3001).Item.Level = 9;
-				Warehouse.Instance.FindItem(3002).Item.Lock = false;
-				Warehouse.Instance.FindItem(3002).Item.Level = 9;
-				Warehouse.Instance.FindItem(3003).Item.Lock = false;
-				Warehouse.Instance.FindItem(3003).Item.Level = 9;
-				Warehouse.Instance.FindItem(3004).Item.Lock = false;
-				Warehouse.Instance.FindItem(3004).Item.Level = 9;
-				Warehouse.Instance.FindItem(3005).Item.Lock = false;
-				Warehouse.Instance.FindItem(3005).Item.Level = 9;
+				if (m_eqipedAllItem == true)
+				{
+					Warehouse.Instance.FindItem(3001).Item.Lock = false;
+					Warehouse.Instance.FindItem(3001).Item.Level = 9;
+					Warehouse.Instance.FindItem(3002).Item.Lock = false;
+					Warehouse.Instance.FindItem(3002).Item.Level = 9;
+					Warehouse.Instance.FindItem(3003).Item.Lock = false;
+					Warehouse.Instance.FindItem(3003).Item.Level = 9;
+					Warehouse.Instance.FindItem(3004).Item.Lock = false;
+					Warehouse.Instance.FindItem(3004).Item.Level = 9;
+					Warehouse.Instance.FindItem(3005).Item.Lock = false;
+					Warehouse.Instance.FindItem(3005).Item.Level = 9;
+				}
+
 
 			}
 

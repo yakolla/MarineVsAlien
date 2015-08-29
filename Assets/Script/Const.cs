@@ -208,6 +208,7 @@ public class Const {
 		ExitGUI,
 		CreditsGUI,
 		GameOverGUI,
+		FoundItemGUI,
 	}
 	public static GameObject GetWindowGui(WindowGUIType type)
 	{
@@ -228,6 +229,8 @@ public class Const {
 			return obj.transform.Find("OptionGUI/CreditsPanel").gameObject;
 		case WindowGUIType.GameOverGUI:
 			return obj.transform.Find("GameOverGUI/Panel").gameObject;
+		case WindowGUIType.FoundItemGUI:
+			return obj.transform.Find("FoundItemGUI/Panel").gameObject;
 		}
 		return null;
 	}

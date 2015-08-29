@@ -34,6 +34,8 @@ public class ItemWeaponData : ItemData{
 		ApplyOptions(obj, true);
 	}
 
+
+
 	override public bool Compare(ItemData item)
 	{
 		if (item.RefItem.type != ItemData.Type.Weapon)
