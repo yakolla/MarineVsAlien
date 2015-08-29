@@ -24,6 +24,9 @@ public class ItemWeaponPartsData : ItemData{
 			itemObj.Item.Level = Mathf.Min(RefItem.maxLevel, itemObj.Item.Level+1);
 			Use(obj);
 		}
+
+		Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).GetComponent<FoundItemGUI>().SetItemObj(itemObj);
+		Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).SetActive(true);
 	}
 
 	override public void Use(Creature obj)

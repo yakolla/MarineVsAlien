@@ -359,6 +359,9 @@ public class Spawn : MonoBehaviour {
 					petObj.Item.Lock = false;
 					petObj.Item.Level = 1;
 					petObj.Item.Equip(m_champ);
+
+					Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).GetComponent<FoundItemGUI>().SetItemObj(petObj);
+					Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).SetActive(true);
 				}
 
 			}

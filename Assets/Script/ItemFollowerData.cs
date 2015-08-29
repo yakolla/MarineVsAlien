@@ -61,6 +61,16 @@ public class ItemFollowerData : ItemData{
 		return RefData.Instance.RefMobs[RefItem.followerId].name;
 	}
 
+	override public string Description()
+	{
+		string desc = base.Description();
+
+		if (m_follower != null)
+			desc += "Dmg:" + m_follower.WeaponHolder.MainWeapon.Damage;
+
+		return desc;
+	}
+
 	override public bool Compare(ItemData item)
 	{
 		if (item.RefItem.type != ItemData.Type.Follower)

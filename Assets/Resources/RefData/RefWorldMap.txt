@@ -177,7 +177,7 @@
 									"refItemId":3001,
 									"minValue":1,
 									"maxValue":1,
-									"ratio":0.3,
+									"ratio":1,
 									"count":1
 								}
 							]
