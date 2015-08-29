@@ -1,37 +1,33 @@
 fileFormatVersion: 2
-guid: 63e7271547469f643a921123a84bafd9
+guid: c61c13345aedaff4fac52835e6dcfb36
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Box005
-    100002: Object013
-    100004: Object016
-    100006: Object031
-    100008: Object032
-    100010: //RootNode
-    400000: Box005
-    400002: Object013
-    400004: Object016
-    400006: Object031
-    400008: Object032
-    400010: //RootNode
-    2300000: Box005
-    2300002: Object013
-    2300004: Object016
-    2300006: Object031
-    2300008: Object032
-    2300010: //RootNode
-    3300000: Box005
-    3300002: Object013
-    3300004: Object016
-    3300006: Object031
-    3300008: Object032
-    3300010: //RootNode
+    100000: Object013
+    100002: Object016
+    100004: Object031
+    100006: Object032
+    100008: //RootNode
+    400000: Object013
+    400002: Object016
+    400004: Object031
+    400006: Object032
+    400008: //RootNode
+    2300000: Object013
+    2300002: Object016
+    2300004: Object031
+    2300006: Object032
+    2300008: //RootNode
+    3300000: Object013
+    3300002: Object016
+    3300004: Object031
+    3300006: Object032
+    3300008: //RootNode
     4300000: Box005
-    4300002: Object013
-    4300004: Object016
-    4300006: Object031
-    4300008: Object032
+    4300002: Object032
+    4300004: Object031
+    4300006: Object016
+    4300008: Object013
     9500000: //RootNode
   materials:
     importMaterials: 1
