@@ -134,13 +134,17 @@ public class LightningBullet : Bullet
 					}
 					
 					int perParticles = particles.Length/hittedTargetCount;
-					Vector3 oldAimpoint = targets[0].transform.Find("Body/Aimpoint").transform.position;
-					createChanningParticle(transform.position, oldAimpoint, 0, perParticles);
-					for(int i = 1; i < hittedTargetCount; ++i)
+					Transform old = targets[0].transform.Find("Body/Aimpoint");
+					if (old != null)
 					{
-						Vector3 aimpoint = targets[i].transform.Find("Body/Aimpoint").transform.position;
-						createChanningParticle(oldAimpoint, aimpoint, perParticles*(i), perParticles*(i)+perParticles);
-						oldAimpoint = aimpoint;
+						Vector3 oldAimpoint = old.position;
+						createChanningParticle(transform.position, oldAimpoint, 0, perParticles);
+						for(int i = 1; i < hittedTargetCount; ++i)
+						{
+							Vector3 aimpoint = targets[i].transform.Find("Body/Aimpoint").position;
+							createChanningParticle(oldAimpoint, aimpoint, perParticles*(i), perParticles*(i)+perParticles);
+							oldAimpoint = aimpoint;
+						}
 					}
 					
 					particleEmitter.particles = particles;

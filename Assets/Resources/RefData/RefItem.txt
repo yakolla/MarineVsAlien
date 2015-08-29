@@ -2797,14 +2797,14 @@
 				},
 				{
 					"refItemId":5, 
-					"count":1
+					"count":10
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":10
 				}
 			],
 			"optionPerLevel":
@@ -2834,18 +2834,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":100
+					"count":1000
 				},
 				{
 					"refItemId":5, 
-					"count":10
+					"count":100
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":100
 				}
 			]
 		},
@@ -2855,14 +2855,14 @@
 			[
 				{
 					"refItemId":1, 
-					"count":100
+					"count":1000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":100
 				}
 			],
 			"optionPerLevel":

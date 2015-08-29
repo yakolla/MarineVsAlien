@@ -155,4 +155,11 @@ public class WeaponHolder : MonoBehaviour {
 		}
 	}
 
+	public List<Weapon> Weapons
+	{
+		get{
+			return m_weapons;
+		}
+	}
+
 }

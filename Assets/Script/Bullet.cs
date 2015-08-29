@@ -136,17 +136,28 @@ public class Bullet : MonoBehaviour {
 		bombPos.y = prefBombEffect.transform.position.y;
 		
 		GameObject bombEffect = (GameObject)Instantiate(prefBombEffect, bombPos, prefBombEffect.transform.rotation);
-		ParticleSystem[] particleSystems = bombEffect.GetComponentsInChildren<ParticleSystem>();
-		bombEffect.particleSystem.maxParticles = (int)bombRange;
+		float duration = ParticleScale(bombEffect, bombRange);
+
+		this.audio.Play();
+		StartCoroutine(destoryBombObject(bombEffect, duration));
+	}
+
+	static public float ParticleScale(GameObject obj, float size)
+	{
+		if (obj.particleSystem == null)
+			return 0f;
+
+		ParticleSystem[] particleSystems = obj.GetComponentsInChildren<ParticleSystem>();
+		obj.particleSystem.maxParticles = (int)size;
 		float duration = 0;
 		foreach(ParticleSystem ps in particleSystems)
 		{
-			ps.startSize *= bombRange;
+			ps.startSize *= size;
 			if (duration < ps.duration)
 				duration = ps.duration;
 		}
-		this.audio.Play();
-		StartCoroutine(destoryBombObject(bombEffect, duration));
+
+		return duration;
 	}
 
 	virtual public void StartFiring()

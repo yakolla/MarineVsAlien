@@ -535,6 +535,7 @@ public class Spawn : MonoBehaviour {
 				if (desc.refItem.type == ItemData.Type.WeaponParts)
 				{
 					ratio += Mathf.Min(m_wave, 100)*0.001f;
+					Debug.Log("ItemData.Type.WeaponParts:" + ratio);
 				}
 
 				if (ratio <= desc.ratio)

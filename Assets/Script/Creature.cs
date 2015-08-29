@@ -648,6 +648,7 @@ public class Creature : MonoBehaviour {
 		dmgEffect.transform.parent = m_aimpoint.transform;
 		dmgEffect.transform.localPosition = Vector3.zero;
 		dmgEffect.transform.localScale = m_aimpoint.transform.localScale;
+		Bullet.ParticleScale(dmgEffect, m_aimpoint.transform.localScale.x);
 		StartCoroutine(UpdateDamageEffect(dmgEffect));	
 	}
 
