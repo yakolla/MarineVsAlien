@@ -55,8 +55,9 @@ public class Mob : Creature {
 		case MobAIType.Rotation:
 			m_ai = new MobAIRotation();
 			break;
-		case MobAIType.Revolution:
-			m_ai = new MobAIRevolution();
+		case MobAIType.FlyingAround:
+			m_ai = new MobAIFlyingAround();
+			CreatureType = Type.MobNpc;
 			break;
 		case MobAIType.ItemShuttle:
 			m_ai = new MobAIItemShuttle();

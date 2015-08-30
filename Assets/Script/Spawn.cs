@@ -40,6 +40,8 @@ public class Spawn : MonoBehaviour {
 	YGUISystem.GUILable	m_stageText;
 	YGUISystem.GUILable	m_waveText;
 
+	float			m_dropBuffItemTime;
+
 
 	[SerializeField]
 	int				m_wave = 0;
@@ -100,6 +102,7 @@ public class Spawn : MonoBehaviour {
 		
 		Warehouse.Instance.ResetNewGameStats();
 
+		m_dropBuffItemTime = Time.time+90f;
 		m_dropShip.SetChamp(champ);
 		m_dropShip.GetComponent<Animator>().SetTrigger("Move");
 		StartCoroutine(spawnMobPer());
@@ -192,6 +195,7 @@ public class Spawn : MonoBehaviour {
 			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.itemPandora, RefData.Instance.RefItemPandoraMobs, false, false);
 			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.itemDummy, RefData.Instance.RefItemDummyMobs, false, false);
 			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.miniBoss, RefData.Instance.RefMiniBossMobs, true, false);
+			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.skilled, RefData.Instance.RefSkilledMobs, false, false);
 			
 
 			Vector3 cp = m_champ.transform.position;
@@ -299,6 +303,11 @@ public class Spawn : MonoBehaviour {
 
 				yield return StartCoroutine(spawnMobPerCore(mobSpawn, waveProgress));
 
+				if (m_dropBuffItemTime < Time.time)
+				{
+					m_dropBuffItemTime = Time.time+180f;
+					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomSkillItemSpawns[m_wave%GetCurrentWave().randomSkillItemSpawns.Length], waveProgress));
+				}
 
 				while(checkBossAlive())
 				{
@@ -572,6 +581,9 @@ public class Spawn : MonoBehaviour {
 						break;
 					case ItemData.Type.GoldMedal:
 						item = new ItemGoldMedalData(Random.Range(desc.minValue, desc.maxValue));					
+						break;
+					case ItemData.Type.Skill:
+						item = new ItemSkillData(Random.Range(desc.minValue, desc.maxValue));	
 						break;
 					case ItemData.Type.XPPotion:
 						item = new ItemXPPotionData(Random.Range(desc.minValue, desc.maxValue));		

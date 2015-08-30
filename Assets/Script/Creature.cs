@@ -10,6 +10,7 @@ public class Creature : MonoBehaviour {
 		Mob = 2,
 		Npc = 4,
 		ChampNpc = Champ+Npc,
+		MobNpc = Mob+Npc,
 	}
 
 	public enum CrowdControlType
@@ -591,7 +592,7 @@ public class Creature : MonoBehaviour {
 		m_creatureProperty.BulletLength += 1f;
 		m_creatureProperty.AlphaAttackCoolTime -= 0.5f;
 		m_creatureProperty.BetaMoveSpeed += 1f;
-		Vector3 scale = transform.localScale;
+		Vector3 scale = transform.localScale*0.5f;
 		transform.localScale += scale;
 		
 		yield return new WaitForSeconds(time);
@@ -730,6 +731,37 @@ public class Creature : MonoBehaviour {
 			}
 			break;
 		}
+	}
+
+	public bool ApplyMachoSkill()
+	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run == true)
+			return false;
+		
+		ApplyBuff(null, DamageDesc.BuffType.Macho, 5f, null);
+		return true;
+	}
+	
+	public bool ApplyHealingSkill()
+	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.Healing].m_run == true)
+			return false;
+		
+		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+		desc.DamageRatio = 0.1f;
+		ApplyBuff(null, DamageDesc.BuffType.Healing, 10f, desc);
+		return true;
+	}
+	
+	public bool ApplyDamageMultiplySkill()
+	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.DamageMultiply].m_run == true)
+			return false;
+		
+		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+		desc.DamageRatio = 10f;
+		ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 20f, desc);
+		return true;
 	}
 
 	public DamageNumberSprite DamageText(string damage, Color color, DamageNumberSprite.MovementType movementType)

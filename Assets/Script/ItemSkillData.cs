@@ -16,17 +16,26 @@ public class ItemSkillData : ItemData{
 
 	override public void Pickup(Creature obj)
 	{
-		base.Pickup(obj);
 		Use (obj);
 	}
 
 	override public void Use(Creature obj)
 	{
-		if (obj.WeaponHolder.GetActiveSkillWeapon(RefItem.weaponId) == false)
+		switch(RefItemID)
 		{
-			obj.EquipActiveSkillWeapon(new ItemWeaponData(RefItem.weaponId), null);
+		case 21:
+			obj.WeaponHolder.ActiveWeaponSkillFire(Const.NuclearRefItemId, obj.transform.eulerAngles.y);
+			break;
+		case 22:
+			obj.ApplyMachoSkill();
+			break;
+		case 23:
+			obj.ApplyHealingSkill();
+			break;
+		case 24:
+			obj.ApplyDamageMultiplySkill();
+			break;
 		}
-		obj.WeaponHolder.ActiveWeaponSkillFire(RefItem.weaponId, obj.transform.eulerAngles.y);
 	}
 
 	override public void NoUse(Creature obj)

@@ -288,7 +288,7 @@ public class Champ : Creature {
 		{
 			Ray ray = Camera.main.ScreenPointToRay( touchPos[i] );
 			RaycastHit[] hits;
-			hits = Physics.RaycastAll(ray, Mathf.Infinity, 1<<9 | 1<<10);
+			hits = Physics.RaycastAll(ray, Mathf.Infinity, 1<<9 | 1<<10 | 1<<11);
 			foreach(RaycastHit hit in hits )
 			{
 				Creature target = hit.transform.GetComponent<Creature>();
@@ -352,36 +352,7 @@ public class Champ : Creature {
 		return dmg;
 	}
 
-	public bool ApplyMachoSkill()
-	{
-		if (m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run == true)
-			return false;
 
-		ApplyBuff(null, DamageDesc.BuffType.Macho, 5f, null);
-		return true;
-	}
-
-	public bool ApplyHealingSkill()
-	{
-		if (m_buffEffects[(int)DamageDesc.BuffType.Healing].m_run == true)
-			return false;
-
-		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
-		desc.DamageRatio = 0.1f*Warehouse.Instance.FindItem(23).Item.Level;
-		ApplyBuff(null, DamageDesc.BuffType.Healing, 10f, desc);
-		return true;
-	}
-
-	public bool ApplyDamageMultiplySkill()
-	{
-		if (m_buffEffects[(int)DamageDesc.BuffType.DamageMultiply].m_run == true)
-			return false;
-		
-		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
-		desc.DamageRatio = 10f*Warehouse.Instance.FindItem(24).Item.Level;
-		ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 20f, desc);
-		return true;
-	}
 
 	override public void Death()
 	{

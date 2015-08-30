@@ -105,6 +105,20 @@
 						"repeatCount":[3,3]
 					}
 				],
+				"randomSkillItemSpawns":
+				[
+					{
+						"refMobIds":{
+							"skilled":{
+								"ratio":[0,1],
+								"count":[1,1],
+								"chance":1
+							}
+						},
+						"interval":1,
+						"repeatCount":[1,1]
+					}
+				],
 				"itemSpawn":
 				{
 					"mobItems":
@@ -230,6 +244,19 @@
 									"minValue":1,
 									"maxValue":1,
 									"ratio":0,
+									"count":1
+								}
+							]
+						},
+						{
+							"refMobId":5001,
+							"refDropItems":
+							[								
+								{
+									"refItemId":23,
+									"minValue":21,
+									"maxValue":24,
+									"ratio":1,
 									"count":1
 								}
 							]

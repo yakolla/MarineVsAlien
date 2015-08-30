@@ -38,20 +38,23 @@ public class ChampStatusGUI : MonoBehaviour {
 
 
 		assignSkillButton(0, Warehouse.Instance.FindItem(23), 1, 1, ()=>{
-			return m_champ.ApplyHealingSkill();
+			Warehouse.Instance.FindItem(23).Item.Use(m_champ);
+			return true;
 		});
 
 		assignSkillButton(1, Warehouse.Instance.FindItem(22), 1, 1, ()=>{
-			return m_champ.ApplyMachoSkill();
+			Warehouse.Instance.FindItem(22).Item.Use(m_champ);
+			return true;
 		});
 
 		assignSkillButton(2, Warehouse.Instance.FindItem(21), 3, 3, ()=>{			
-			m_champ.WeaponHolder.ActiveWeaponSkillFire(Const.NuclearRefItemId, transform.eulerAngles.y);
+			Warehouse.Instance.FindItem(21).Item.Use(m_champ);
 			return true;
 		});
 
 		assignSkillButton(3, Warehouse.Instance.FindItem(24), 3, 3, ()=>{	
-			return m_champ.ApplyDamageMultiplySkill();
+			Warehouse.Instance.FindItem(24).Item.Use(m_champ);
+			return true;
 		});
 
 		for(int i = 0; i < m_accessoryButtons.Length; ++i)

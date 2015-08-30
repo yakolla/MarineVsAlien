@@ -188,7 +188,7 @@ public enum MobAIType
 {
 	Normal,
 	Rotation,
-	Revolution,
+	FlyingAround,
 	ItemShuttle,
 	Dummy,
 	Bomber,
@@ -242,6 +242,7 @@ public class RefMobClass
 	public RefMob[]				itemDummy;
 	public RefMob[]				follower;
 	public RefMob[]				champ;
+	public RefMob[]				skilled;
 }
 
 public class RefMobSpawnRatio
@@ -260,6 +261,7 @@ public class RefMobSpawnRatio
 	public Desc	boss;
 	public Desc	itemPandora;
 	public Desc	itemDummy;
+	public Desc	skilled;
 }
 
 public class RefMobSpawn
@@ -293,6 +295,7 @@ public class RefWave
 {
 	public RefMobSpawn[]	mobSpawns;
 	public RefMobSpawn[]	randomMobSpawns;
+	public RefMobSpawn[]	randomSkillItemSpawns;
 	public RefWaveItemSpawn	itemSpawn;
 }
 
@@ -368,7 +371,8 @@ public class RefData {
 			}
 		}
 
-		List<RefMob[]> mobs= new List<RefMob[]>(){m_refMobClass.melee, m_refMobClass.range, m_refMobClass.boss, m_refMobClass.egg, m_refMobClass.shuttle, m_refMobClass.follower, m_refMobClass.miniBoss};
+		List<RefMob[]> mobs= new List<RefMob[]>(){	m_refMobClass.melee, m_refMobClass.range, m_refMobClass.boss, m_refMobClass.egg, 
+													m_refMobClass.shuttle, m_refMobClass.follower, m_refMobClass.miniBoss, m_refMobClass.skilled};
 
 		foreach(RefMob[] refMobs in mobs)
 		{
@@ -488,6 +492,11 @@ public class RefData {
 	public RefMob RefChamp
 	{
 		get {return m_refChamps[1];}
+	}
+
+	public RefMob[] RefSkilledMobs
+	{
+		get {return m_refMobClass.skilled;}
 	}
 
 	public string[] RefTexts

@@ -118,8 +118,8 @@ public class Follower : Creature {
 		case MobAIType.Rotation:
 			m_ai = new MobAIRotation();
 			break;
-		case MobAIType.Revolution:
-			m_ai = new MobAIRevolution();
+		case MobAIType.FlyingAround:
+			m_ai = new MobAIFlyingAround();
 			break;
 		case MobAIType.ItemShuttle:
 			m_ai = new MobAIItemShuttle();

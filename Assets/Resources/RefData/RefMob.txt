@@ -1076,31 +1076,6 @@
 				"moveSpeed":1,
 				"navMeshBaseOffset":0
 			}
-		},
-		{
-			"id":1001,
-			"prefBody":"drumtong_skin",
-			"refWeaponItems":
-			[
-				{
-					"refItemId":"109"
-				}
-			],
-			"mobAI":"Revolution",		
-			"nearByChampOnSpawn":true,
-			"baseCreatureProperty":
-			{
-				"maxHP":30,
-				"physicalDamage":30,
-				"physicalDefence":0,
-				"evolutionPerLevel":0.1,
-				"exp":10,
-				"phyDamagePerLevel":0,
-				"phyDefencePerLevel":0,
-				"hpPerLevel":6,
-				"moveSpeed":1,
-				"navMeshBaseOffset":0
-			}
 		}
 		
 	],
@@ -1122,7 +1097,7 @@
 				}
 			],
 			"mobAI":"Follow",			
-			"scale":0.7,
+			"scale":1,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1143,7 +1118,7 @@
 		{
 			"id":30002,
 			"prefHead":"Follower",
-			"prefBody":"newchamp_skin",
+			"prefBody":"robofire_skin",
 			"name":"Fire Marines",
 			"refWeaponItems":
 			[
@@ -1152,7 +1127,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"scale":0.7,
+			"scale":1,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1187,7 +1162,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"scale":0.7,
+			"scale":1,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1218,7 +1193,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"scale":0.7,
+			"scale":1,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1248,7 +1223,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"scale":0.7,
+			"scale":1,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1278,7 +1253,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"scale":0.7,
+			"scale":1,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1337,7 +1312,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"scale":0.7,
+			"scale":1,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1434,6 +1409,35 @@
 				"hpPerLevel":1,
 				"moveSpeed":0,
 				"navMeshBaseOffset":0,
+				"backwardOnDamage":false
+			}
+		}
+	],
+	"skilled":
+	[		
+		{
+			"id":5001,
+			"prefHead":"buffBox",
+			"prefBody":"drumtong_skin",
+			"refWeaponItems":
+			[
+				{
+					"refItemId":"109"
+				}
+			],
+			"mobAI":"FlyingAround",
+			"baseCreatureProperty":
+			{
+				"maxHP":1,
+				"physicalDamage":0,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.1,
+				"exp":0,
+				"phyDamagePerLevel":0,
+				"phyDefencePerLevel":0,
+				"hpPerLevel":1,
+				"moveSpeed":0,
+				"navMeshBaseOffset":4,
 				"backwardOnDamage":false
 			}
 		}
