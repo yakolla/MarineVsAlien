@@ -1811,7 +1811,7 @@
 		
 		"weaponStat":
 		{
-			"coolTime":5,
+			"coolTime":3,
 			"range":5,
 			"buffOnHitDesc":
 			{
@@ -1857,18 +1857,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":7000
 				},
 				{
 					"refItemId":11, 
-					"count":500
+					"count":700
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":70
 				}
 			]
 		},
@@ -1929,18 +1929,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":15000
+					"count":9000
 				},
 				{
 					"refItemId":11, 
-					"count":1500
+					"count":900
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":150
+					"count":90
 				}
 			]
 		},
@@ -2001,18 +2001,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":25000
+					"count":10000
 				},
 				{
 					"refItemId":11, 
-					"count":2500
+					"count":1000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":250
+					"count":100
 				}
 			]
 		},
@@ -2073,18 +2073,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":35000
+					"count":8000
 				},
 				{
 					"refItemId":11, 
-					"count":3500
+					"count":800
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":350
+					"count":80
 				}
 			]
 		},
@@ -2145,18 +2145,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":45000
+					"count":15000
 				},
 				{
 					"refItemId":11, 
-					"count":4500
+					"count":1500
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":450
+					"count":150
 				}
 			]
 		},
@@ -2216,18 +2216,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":55000
+					"count":7000
 				},
 				{
 					"refItemId":11, 
-					"count":5500
+					"count":700
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":550
+					"count":70
 				}
 			]
 		},

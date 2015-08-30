@@ -583,7 +583,7 @@ public class Spawn : MonoBehaviour {
 						item = new ItemGoldMedalData(Random.Range(desc.minValue, desc.maxValue));					
 						break;
 					case ItemData.Type.Skill:
-						item = new ItemSkillData(Random.Range(desc.minValue, desc.maxValue));	
+						item = new ItemSkillData(Random.Range(desc.minValue, desc.maxValue+1));	
 						break;
 					case ItemData.Type.XPPotion:
 						item = new ItemXPPotionData(Random.Range(desc.minValue, desc.maxValue));		

@@ -870,7 +870,7 @@
 			"nearByChampOnSpawn":true,
 			"baseCreatureProperty":
 			{
-				"maxHP":1000,
+				"maxHP":700,
 				"maxSP":100,
 				"physicalDamage":10,
 				"physicalDefence":50,
@@ -922,7 +922,7 @@
 			"nearByChampOnSpawn":true,
 			"baseCreatureProperty":
 			{
-				"maxHP":1500,
+				"maxHP":1000,
 				"maxSP":100,
 				"physicalDamage":10,
 				"physicalDefence":50,
