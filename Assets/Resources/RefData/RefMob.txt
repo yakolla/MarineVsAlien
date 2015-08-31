@@ -1084,7 +1084,7 @@
 		{
 			"id":30001,
 			"prefHead":"Follower",
-			"prefBody":"newchamp_skin",
+			"prefBody":"robogun_skin",
 			"name":"Gun Marine",
 			"refWeaponItems":
 			[
@@ -1127,7 +1127,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"scale":1,
+			"scale":3,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
