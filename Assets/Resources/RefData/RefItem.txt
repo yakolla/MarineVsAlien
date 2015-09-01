@@ -676,18 +676,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":16000
+					"count":10000
 				},
 				{
 					"refItemId":5, 
-					"count":160
+					"count":100
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":160
+					"count":100
 				}
 			],
 			"optionPerLevel":
@@ -709,18 +709,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":16000
+					"count":10000
 				},
 				{
 					"refItemId":5, 
-					"count":160
+					"count":100
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":160
+					"count":100
 				}
 			]
 		}
@@ -793,18 +793,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":500
+					"count":1500
 				},
 				{
 					"refItemId":5, 
-					"count":5
+					"count":15
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":5
+					"count":15
 				}
 			],
 			"optionPerLevel":
@@ -825,18 +825,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":500
+					"count":1500
 				},
 				{
 					"refItemId":5, 
-					"count":5
+					"count":15
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":5
+					"count":15
 				}
 			]
 		}
@@ -1878,7 +1878,7 @@
 			[
 				{
 					"refItemId":11, 
-					"count":10
+					"count":7
 				}
 			],
 			"else_conds":
@@ -1950,7 +1950,7 @@
 			[
 				{
 					"refItemId":11, 
-					"count":10
+					"count":9
 				}
 			],
 			"else_conds":
@@ -2094,7 +2094,7 @@
 			[
 				{
 					"refItemId":11, 
-					"count":10
+					"count":8
 				}
 			],
 			"else_conds":
@@ -2145,18 +2145,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":15000
+					"count":20000
 				},
 				{
 					"refItemId":11, 
-					"count":1500
+					"count":2000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":150
+					"count":200
 				}
 			]
 		},
@@ -2166,14 +2166,14 @@
 			[
 				{
 					"refItemId":11, 
-					"count":10
+					"count":20
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":2
 				}
 			],
 			"optionPerLevel":
@@ -2216,18 +2216,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":7000
+					"count":12000
 				},
 				{
 					"refItemId":11, 
-					"count":700
+					"count":1200
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":70
+					"count":120
 				}
 			]
 		},
@@ -2237,7 +2237,7 @@
 			[
 				{
 					"refItemId":11, 
-					"count":10
+					"count":12
 				}
 			],
 			"else_conds":
@@ -2274,7 +2274,7 @@
 		"codeName":"Follower",
 		"type":"Follower",
 		"icon":"Sprites/FollowerPet",
-		"maxLevel":900,
+		"maxLevel":9,
 		"defaultLock":true,
 		"followerId":30007,		
 		"levelup":
@@ -2283,14 +2283,14 @@
 			[
 				{
 					"refItemId":11, 
-					"count":500
+					"count":1000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":30
+					"count":100
 				}
 			],
 			"optionPerLevel":
@@ -2347,7 +2347,7 @@
 			[
 				{
 					"refItemId":11, 
-					"count":10
+					"count":2
 				}
 			],
 			"else_conds":
@@ -2834,18 +2834,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":1000
+					"count":300
 				},
 				{
 					"refItemId":5, 
-					"count":100
+					"count":30
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":100
+					"count":30
 				}
 			]
 		},
@@ -2855,14 +2855,14 @@
 			[
 				{
 					"refItemId":1, 
-					"count":1000
+					"count":5000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":100
+					"count":500
 				}
 			],
 			"optionPerLevel":
