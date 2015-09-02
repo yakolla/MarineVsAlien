@@ -8,26 +8,52 @@ ModelImporter:
     100004: Object031
     100006: Object032
     100008: //RootNode
+    100010: Object043
+    100012: Object044
+    100014: Object045
+    100016: Object046
+    100018: Object064
     400000: Object013
     400002: Object016
     400004: Object031
     400006: Object032
     400008: //RootNode
+    400010: Object043
+    400012: Object044
+    400014: Object045
+    400016: Object046
+    400018: Object064
     2300000: Object013
     2300002: Object016
     2300004: Object031
     2300006: Object032
     2300008: //RootNode
+    2300010: Object043
+    2300012: Object044
+    2300014: Object045
+    2300016: Object046
+    2300018: Object064
     3300000: Object013
     3300002: Object016
     3300004: Object031
     3300006: Object032
     3300008: //RootNode
+    3300010: Object043
+    3300012: Object044
+    3300014: Object045
+    3300016: Object046
+    3300018: Object064
     4300000: Box005
     4300002: Object032
     4300004: Object031
     4300006: Object016
     4300008: Object013
+    4300010: Box122
+    4300012: Object046
+    4300014: Object045
+    4300016: Object044
+    4300018: Object043
+    4300020: Object064
     9500000: //RootNode
   materials:
     importMaterials: 1

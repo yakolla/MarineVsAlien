@@ -1127,7 +1127,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"scale":3,
+			"scale":1,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
