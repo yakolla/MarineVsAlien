@@ -1888,26 +1888,6 @@
 					"refItemId":8,
 					"count":1
 				}
-			],
-			"optionPerLevel":
-			[
-				{
-					"level":900,
-					"option":
-					{
-						"type":"Weapon",
-						"values":[131,3]
-					}
-				},
-				{
-					"level":1,
-					"levelPer":true,
-					"option":
-					{
-						"type":"Strength",
-						"values":[1]
-					}
-				}
 			]
 		}
 	},
@@ -1918,7 +1898,7 @@
 		"icon":"Sprites/FollowerFireMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.1,
+		"consumedSP":0.14,
 		"followerId":30002,
 		"weaponStat":
 		{
@@ -1930,18 +1910,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":9000
+					"count":14000
 				},
 				{
 					"refItemId":11, 
-					"count":900
+					"count":1400
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":90
+					"count":140
 				}
 			]
 		},
@@ -1951,7 +1931,7 @@
 			[
 				{
 					"refItemId":11, 
-					"count":9
+					"count":14
 				}
 			],
 			"else_conds":
@@ -1959,26 +1939,6 @@
 				{
 					"refItemId":8,
 					"count":1
-				}
-			],
-			"optionPerLevel":
-			[
-				{
-					"level":900,
-					"option":
-					{
-						"type":"Weapon",
-						"values":[135,3]
-					}
-				},
-				{
-					"level":1,
-					"levelPer":true,
-					"option":
-					{
-						"type":"Strength",
-						"values":[1]
-					}
 				}
 			]
 		}
@@ -1990,7 +1950,7 @@
 		"icon":"Sprites/FollowerLightningMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.2,
+		"consumedSP":0.21,
 		"followerId":30003,
 		"weaponStat":
 		{
@@ -2002,18 +1962,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10000
+					"count":21000
 				},
 				{
 					"refItemId":11, 
-					"count":1000
+					"count":21000
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":100
+					"count":2100
 				}
 			]
 		},
@@ -2023,34 +1983,14 @@
 			[
 				{
 					"refItemId":11, 
-					"count":10
+					"count":210
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
-				}
-			],
-			"optionPerLevel":
-			[
-				{
-					"level":900,
-					"option":
-					{
-						"type":"Weapon",
-						"values":[129,3]
-					}
-				},
-				{
-					"level":1,
-					"levelPer":true,
-					"option":
-					{
-						"type":"Strength",
-						"values":[1]
-					}
+					"count":21
 				}
 			]
 		}
@@ -2062,7 +2002,7 @@
 		"icon":"Sprites/FollowerRocketMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.3,
+		"consumedSP":0.28,
 		"followerId":30004,
 		"weaponStat":
 		{
@@ -2074,18 +2014,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":8000
+					"count":28000
 				},
 				{
 					"refItemId":11, 
-					"count":800
+					"count":2800
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":80
+					"count":280
 				}
 			]
 		},
@@ -2095,34 +2035,14 @@
 			[
 				{
 					"refItemId":11, 
-					"count":8
+					"count":28
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
-				}
-			],
-			"optionPerLevel":
-			[
-				{
-					"level":900,
-					"option":
-					{
-						"type":"Weapon",
-						"values":[132,3]
-					}
-				},
-				{
-					"level":1,
-					"levelPer":true,
-					"option":
-					{
-						"type":"Strength",
-						"values":[1]
-					}
+					"count":2
 				}
 			]
 		}
@@ -2134,7 +2054,7 @@
 		"icon":"Sprites/FollowerBoomerangMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.5,
+		"consumedSP":0.35,
 		"followerId":30005,
 		"weaponStat":
 		{
@@ -2146,18 +2066,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":20000
+					"count":35000
 				},
 				{
 					"refItemId":11, 
-					"count":2000
+					"count":3500
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":200
+					"count":350
 				}
 			]
 		},
@@ -2167,34 +2087,14 @@
 			[
 				{
 					"refItemId":11, 
-					"count":20
+					"count":35
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":2
-				}
-			],
-			"optionPerLevel":
-			[				
-				{
-					"level":900,
-					"option":
-					{
-						"type":"Weapon",
-						"values":[207,1]
-					}
-				},
-				{
-					"level":1,
-					"levelPer":true,
-					"option":
-					{
-						"type":"Strength",
-						"values":[1]
-					}
+					"count":3
 				}
 			]
 		}
@@ -2206,6 +2106,7 @@
 		"icon":"Sprites/FollowerGrenadeMarines",
 		"maxLevel":900,
 		"defaultLock":true,
+		"consumedSP":0.42,
 		"followerId":30006,
 		"weaponStat":
 		{
@@ -2217,18 +2118,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":12000
+					"count":42000
 				},
 				{
 					"refItemId":11, 
-					"count":1200
+					"count":4200
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":120
+					"count":420
 				}
 			]
 		},
@@ -2238,34 +2139,14 @@
 			[
 				{
 					"refItemId":11, 
-					"count":12
+					"count":42
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
-				}
-			],
-			"optionPerLevel":
-			[				
-				{
-					"level":900,
-					"option":
-					{
-						"type":"Weapon",
-						"values":[207,1]
-					}
-				},
-				{
-					"level":1,
-					"levelPer":true,
-					"option":
-					{
-						"type":"Strength",
-						"values":[1]
-					}
+					"count":4
 				}
 			]
 		}
@@ -2315,7 +2196,7 @@
 		"icon":"Sprites/FollowerMeleeMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.05,
+		"consumedSP":0.035,
 		"followerId":30008,
 		"weaponStat":
 		{
@@ -2327,18 +2208,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":2000
+					"count":3500
 				},
 				{
 					"refItemId":11, 
-					"count":200
+					"count":350
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":20
+					"count":35
 				}
 			]
 		},
@@ -2348,7 +2229,7 @@
 			[
 				{
 					"refItemId":11, 
-					"count":2
+					"count":3
 				}
 			],
 			"else_conds":
@@ -2356,26 +2237,6 @@
 				{
 					"refItemId":8,
 					"count":1
-				}
-			],
-			"optionPerLevel":
-			[
-				{
-					"level":900,
-					"option":
-					{
-						"type":"Weapon",
-						"values":[131,3]
-					}
-				},
-				{
-					"level":1,
-					"levelPer":true,
-					"option":
-					{
-						"type":"Strength",
-						"values":[1]
-					}
 				}
 			]
 		}
