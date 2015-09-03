@@ -1783,7 +1783,8 @@
 		"weaponStat":
 		{
 			"coolTime":3,
-			"range":5
+			"range":5,
+			"incBulletOnLevel":900
 		}
 	},
 	{

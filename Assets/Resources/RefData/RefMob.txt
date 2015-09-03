@@ -477,7 +477,7 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"122"
+					"refItemId":"110"
 				}
 			],
 			"mobAI":"Normal",
@@ -676,9 +676,6 @@
 			[
 				{
 					"refItemId":"128"
-				},
-				{
-					"refItemId":"110"					
 				},
 				{
 					"refItemId":"125"
@@ -956,7 +953,7 @@
 					{
 						"coolTime":4,
 						"range":7,
-						"summonRefMobId":31001
+						"summonRefMobId":31004
 					}	
 				}
 			],
@@ -964,7 +961,7 @@
 			"nearByChampOnSpawn":true,
 			"baseCreatureProperty":
 			{
-				"maxHP":2000,
+				"maxHP":1500,
 				"maxSP":100,
 				"physicalDamage":10,
 				"physicalDefence":50,
@@ -1008,7 +1005,7 @@
 			"nearByChampOnSpawn":true,
 			"baseCreatureProperty":
 			{
-				"maxHP":2500,
+				"maxHP":3000,
 				"maxSP":100,
 				"physicalDamage":10,
 				"physicalDefence":50,
@@ -1341,7 +1338,7 @@
 				"maxHP":100,
 				"maxSP":100,
 				"spRegen":1,
-				"physicalDamage":1,
+				"physicalDamage":0,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
