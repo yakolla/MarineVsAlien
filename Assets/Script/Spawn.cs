@@ -129,13 +129,15 @@ public class Spawn : MonoBehaviour {
 		public List<MobSpawnEffectType> spawnEffectType = new List<MobSpawnEffectType>();
 	}
 
-	void	buildSpawnMob(SpawnMobDescResult result, float progress, RefMobSpawnRatio.Desc spawnRatioDesc, RefMob[] mobs, bool monitoredDeath, bool boss)
+	void	buildSpawnMob(SpawnMobDescResult result, RefMobSpawnRatio.Desc spawnRatioDesc, RefMob[] mobs, bool monitoredDeath, bool boss)
 	{
 		if (spawnRatioDesc == null)
 			return;
 
 		if (spawnRatioDesc.chance < Random.Range(0f, 1f))
 			return;
+
+		float progress = ProgressStage();
 
 		int minIndex = 0;
 		int maxIndex = Mathf.Min((int)progress, mobs.Length-1);
@@ -175,9 +177,10 @@ public class Spawn : MonoBehaviour {
 		return wave/GetCurrentWave().mobSpawns.Length + 1;
 	}
 
-	IEnumerator spawnMobPerCore(RefMobSpawn mobSpawn, float waveProgress)
+	IEnumerator spawnMobPerCore(RefMobSpawn mobSpawn)
 	{
-		int mobSpawnRepeatCount = (int)(mobSpawn.repeatCount[0] * (1f-waveProgress*0.1f) + mobSpawn.repeatCount[1] * waveProgress * 0.1f);
+		int stage = Mathf.Min(SpawnMobLevel()-1, 100);
+		int mobSpawnRepeatCount = (int)(mobSpawn.repeatCount[0] * (1f-stage*0.01f) + mobSpawn.repeatCount[1] * stage * 0.01f);
 		for(int r = 0; r < mobSpawnRepeatCount; ++r)
 		{
 			yield return new WaitForSeconds (mobSpawn.interval);
@@ -189,13 +192,13 @@ public class Spawn : MonoBehaviour {
 			
 			SpawnMobDescResult spawnMobDescResult = new SpawnMobDescResult();
 			
-			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.melee, RefData.Instance.RefMeleeMobs, true, false);
-			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.range, RefData.Instance.RefRangeMobs, true, false);
-			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.boss, RefData.Instance.RefBossMobs, true, true);
-			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.itemPandora, RefData.Instance.RefItemPandoraMobs, false, false);
-			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.itemDummy, RefData.Instance.RefItemDummyMobs, false, false);
-			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.miniBoss, RefData.Instance.RefMiniBossMobs, true, false);
-			buildSpawnMob(spawnMobDescResult, waveProgress, mobSpawn.refMobIds.skilled, RefData.Instance.RefSkilledMobs, false, false);
+			buildSpawnMob(spawnMobDescResult, mobSpawn.refMobIds.melee, RefData.Instance.RefMeleeMobs, true, false);
+			buildSpawnMob(spawnMobDescResult, mobSpawn.refMobIds.range, RefData.Instance.RefRangeMobs, true, false);
+			buildSpawnMob(spawnMobDescResult, mobSpawn.refMobIds.boss, RefData.Instance.RefBossMobs, true, true);
+			buildSpawnMob(spawnMobDescResult, mobSpawn.refMobIds.itemPandora, RefData.Instance.RefItemPandoraMobs, false, false);
+			buildSpawnMob(spawnMobDescResult, mobSpawn.refMobIds.itemDummy, RefData.Instance.RefItemDummyMobs, false, false);
+			buildSpawnMob(spawnMobDescResult, mobSpawn.refMobIds.miniBoss, RefData.Instance.RefMiniBossMobs, true, false);
+			buildSpawnMob(spawnMobDescResult, mobSpawn.refMobIds.skilled, RefData.Instance.RefSkilledMobs, false, false);
 			
 
 			Vector3 cp = m_champ.transform.position;
@@ -301,12 +304,12 @@ public class Spawn : MonoBehaviour {
 					}
 				}
 
-				yield return StartCoroutine(spawnMobPerCore(mobSpawn, waveProgress));
+				yield return StartCoroutine(spawnMobPerCore(mobSpawn));
 
 				if (m_dropBuffItemTime < Time.time)
 				{
 					m_dropBuffItemTime = Time.time+180f;
-					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomSkillItemSpawns[m_wave%GetCurrentWave().randomSkillItemSpawns.Length], waveProgress));
+					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomSkillItemSpawns[m_wave%GetCurrentWave().randomSkillItemSpawns.Length]));
 				}
 
 				while(checkBossAlive())
@@ -316,9 +319,10 @@ public class Spawn : MonoBehaviour {
 
 				if (mobSpawn.boss == false)
 				{
-					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomMobSpawns[m_wave%GetCurrentWave().randomMobSpawns.Length], waveProgress));
-					yield return new WaitForSeconds(3f);
+					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomMobSpawns[m_wave%GetCurrentWave().randomMobSpawns.Length]));
 				}
+
+				yield return new WaitForSeconds(3f);
 
 				++m_relWave;
 

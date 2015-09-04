@@ -237,7 +237,7 @@
 			"mobAI":"Normal",
 			"baseCreatureProperty":
 			{
-				"maxHP":10,
+				"maxHP":2,
 				"physicalDamage":1,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
@@ -268,7 +268,7 @@
 			"mobAI":"Normal",
 			"baseCreatureProperty":
 			{
-				"maxHP":15,
+				"maxHP":3,
 				"physicalDamage":1,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
@@ -296,7 +296,7 @@
 			"mobAI":"Normal",
 			"baseCreatureProperty":
 			{
-				"maxHP":20,
+				"maxHP":4,
 				"physicalDamage":1,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
@@ -323,7 +323,7 @@
 			"mobAI":"Normal",
 			"baseCreatureProperty":
 			{
-				"maxHP":25,
+				"maxHP":5,
 				"physicalDamage":1,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
@@ -352,7 +352,7 @@
 			"mobAI":"Normal",
 			"baseCreatureProperty":
 			{
-				"maxHP":30,
+				"maxHP":6,
 				"physicalDamage":1,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
@@ -380,7 +380,7 @@
 			"mobAI":"Normal",			
 			"baseCreatureProperty":
 			{
-				"maxHP":35,
+				"maxHP":7,
 				"physicalDamage":1,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
@@ -631,12 +631,12 @@
 			{
 				"maxHP":100,
 				"physicalDamage":5,
-				"physicalDefence":30,
+				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":100,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":5,
+				"hpPerLevel":50,
 				"moveSpeed":1.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -658,12 +658,12 @@
 			{
 				"maxHP":200,
 				"physicalDamage":5,
-				"physicalDefence":30,
+				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":150,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":5,
+				"hpPerLevel":50,
 				"moveSpeed":1.7,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -691,12 +691,12 @@
 			{
 				"maxHP":500,
 				"physicalDamage":5,
-				"physicalDefence":30,
+				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":150,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":5,
+				"hpPerLevel":50,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -723,12 +723,12 @@
 			{
 				"maxHP":600,
 				"physicalDamage":5,
-				"physicalDefence":30,
+				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":200,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":5,
+				"hpPerLevel":50,
 				"moveSpeed":3,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -759,12 +759,12 @@
 			{
 				"maxHP":700,
 				"physicalDamage":5,
-				"physicalDefence":30,
+				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":250,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":5,
+				"hpPerLevel":50,
 				"moveSpeed":3,
 				"navMeshBaseOffset":2
 			}
@@ -787,12 +787,12 @@
 			{
 				"maxHP":800,
 				"physicalDamage":5,
-				"physicalDefence":30,
+				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":300,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":5,
+				"hpPerLevel":50,
 				"moveSpeed":3,
 				"navMeshBaseOffset":0
 			}

@@ -101,7 +101,7 @@
 								"spawnEffectType":"Falling"
 							}
 						},
-						"interval":1,
+						"interval":3,
 						"repeatCount":[3,3]
 					}
 				],
@@ -115,7 +115,7 @@
 								"chance":1
 							}
 						},
-						"interval":1,
+						"interval":3,
 						"repeatCount":[1,1]
 					}
 				],
