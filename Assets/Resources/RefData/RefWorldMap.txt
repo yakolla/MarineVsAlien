@@ -14,7 +14,7 @@
 								"count":[3,6]
 							}
 						},
-						"interval":3,
+						"interval":1,
 						"repeatCount":[4,4]
 					},
 					{
@@ -28,7 +28,7 @@
 								"count":[1,5]
 							}
 						},
-						"interval":3,
+						"interval":1,
 						"repeatCount":[3,5]
 					},
 					{
@@ -38,7 +38,7 @@
 								"count":[4,8]
 							}
 						},
-						"interval":3,
+						"interval":1,
 						"repeatCount":[4,4]
 					},
 					{
@@ -52,7 +52,7 @@
 								"count":[3,6]
 							}
 						},
-						"interval":3,
+						"interval":1,
 						"repeatCount":[3,5]
 					},
 					{
@@ -101,7 +101,7 @@
 								"spawnEffectType":"Falling"
 							}
 						},
-						"interval":3,
+						"interval":1,
 						"repeatCount":[3,3]
 					}
 				],
@@ -115,7 +115,7 @@
 								"chance":1
 							}
 						},
-						"interval":3,
+						"interval":1,
 						"repeatCount":[1,1]
 					}
 				],
@@ -201,7 +201,7 @@
 							"refDropItems":
 							[								
 								{
-									"refItemId":3002,
+									"refItemId":3004,
 									"minValue":1,
 									"maxValue":1,
 									"ratio":0.2,
@@ -225,9 +225,9 @@
 						{
 							"refMobId":50004,
 							"refDropItems":
-							[								
+							[	
 								{
-									"refItemId":3004,
+									"refItemId":3002,
 									"minValue":1,
 									"maxValue":1,
 									"ratio":0.05,

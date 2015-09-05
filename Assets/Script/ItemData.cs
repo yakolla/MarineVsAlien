@@ -32,8 +32,8 @@ public class ItemData {
 	
 	public enum Option
 	{
-		DamageMultiplier,
-		DamageReduction,
+		DmgMultiplier,
+		DmgReduction,
 		TapDamage,
 		MoveSpeed,
 		Weapon,
@@ -119,10 +119,10 @@ public class ItemData {
 			case Option.Weapon:
 				desc += head + RefData.Instance.RefItems[(int)optionValue].name + "</color>\n";
 				break;
-			case Option.DamageMultiplier:
+			case Option.DmgMultiplier:
 				desc += head + "Damage" + ":"+ "<color=yellow>"+(optionValue*100)+"</color>" + "%</color>\n";
 				break;
-			case Option.DamageReduction:						
+			case Option.DmgReduction:						
 			case Option.CriticalChance:
 			case Option.CriticalDamage:
 			case Option.GainExtraGold:
@@ -176,13 +176,13 @@ public class ItemData {
 
 			switch(op.option.type)
 			{
-			case Option.DamageMultiplier:
+			case Option.DmgMultiplier:
 				obj.m_creatureProperty.DamageRatio += optionValue;
 				break;
 			case Option.MoveSpeed:
 				obj.m_creatureProperty.AlphaMoveSpeed += optionValue;
 				break;
-			case Option.DamageReduction:
+			case Option.DmgReduction:
 				obj.m_creatureProperty.DamageReduction += optionValue;
 				break;
 			case Option.Weapon:

@@ -69,7 +69,7 @@ public class GuidedRocketLauncherBullet : RocketLauncherBullet {
 				handle1 += (transform.forward+transform.up)*(Vector3.Distance(transform.position, m_target.transform.position)*0.5f);
 				Vector3 handle2 = m_target.transform.position;
 				handle2.y = 3f;
-				m_bezier = new Bezier(gameObject, m_target.gameObject, handle1, handle2, 0.01f);
+				m_bezier = new Bezier(gameObject, m_target.gameObject, handle1, handle2, m_speed*0.01f);
 			}
 
 		}

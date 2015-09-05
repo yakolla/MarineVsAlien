@@ -16,6 +16,7 @@ public class GameOverGUI : MonoBehaviour {
 	Slider	m_waveSlider;
 	Text	m_waveText;
 	Text	m_continueText;
+	int		m_trySave = 0;
 
 	enum SaveWithType
 	{
@@ -70,6 +71,9 @@ public class GameOverGUI : MonoBehaviour {
 		m_admob.ShowInterstitial();
 		m_admob.ShowBanner(true);
 
+
+		Warehouse.Instance.NewGameStats.WaveIndex = 0;
+		OnClickContinue();
 	}
 
 
@@ -95,11 +99,18 @@ public class GameOverGUI : MonoBehaviour {
 		
 		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game) => {
 			if (status == SavedGameRequestStatus.Success) {
-				// handle reading or writing of saved game.
+
+
 			} else {
 				// handle error
+				++m_trySave;
+				if (m_trySave < 3)
+				{
+					SaveGame(type);
+					return;
+				}
 			}
-			
+
 			TimeEffector.Instance.StartTime();
 
 			switch(type)
