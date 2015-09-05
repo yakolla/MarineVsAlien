@@ -30,6 +30,8 @@ public class ChampSettingGUI : MonoBehaviour {
 	bool		m_cheat = true;
 	[SerializeField]
 	bool		m_eqipedAllItem = false;
+	[SerializeField]
+	int			m_cheatGem = 1000;
 
 	Champ		m_champ;
 
@@ -63,7 +65,7 @@ public class ChampSettingGUI : MonoBehaviour {
 			{
 				Warehouse.Instance.PushItem(new ItemGoldData(100000));
 				Warehouse.Instance.PushItem(new ItemGoldMedalData(1000));
-				Warehouse.Instance.PushItem(new ItemGemData(12000));
+				Warehouse.Instance.PushItem(new ItemGemData(m_cheatGem));
 				
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));				
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampLightningLauncherRefItemId));
@@ -446,6 +448,8 @@ public class ChampSettingGUI : MonoBehaviour {
 				{
 					m_champ.WeaponHolder.MainWeapon.LevelUp();
 					selectedItem.Item.Use(m_champ);
+					
+					Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
 				}
 				else if (selectedItem.Item.RefItem.type == ItemData.Type.Follower)
 				{
@@ -456,10 +460,6 @@ public class ChampSettingGUI : MonoBehaviour {
 				else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat)
 				{
 					selectedItem.Item.Use(m_champ);
-
-					if (selectedItem.Item.Level == 5)
-						Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
-
 				}
 
 				if (selectedItem.Item.Level == selectedItem.Item.RefItem.maxLevel)

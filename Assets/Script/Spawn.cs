@@ -269,6 +269,7 @@ public class Spawn : MonoBehaviour {
 
 	IEnumerator spawnMobPer()
 	{
+
 		while(true)
 		{
 			if (m_champ == null)
@@ -280,7 +281,7 @@ public class Spawn : MonoBehaviour {
 				
 				RefMobSpawn mobSpawn = GetCurrentWave().mobSpawns[m_wave%GetCurrentWave().mobSpawns.Length];
 
-				yield return new WaitForSeconds(mobSpawn.interval);
+
 
 				Warehouse.Instance.WaveIndex = m_wave;
 				m_waveText.Text.text = "Wave " + (m_wave+1);
@@ -304,13 +305,13 @@ public class Spawn : MonoBehaviour {
 					}
 				}
 
-				yield return StartCoroutine(spawnMobPerCore(mobSpawn));
-
 				if (m_dropBuffItemTime < Time.time)
 				{
 					m_dropBuffItemTime = Time.time+180f;
 					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomSkillItemSpawns[m_wave%GetCurrentWave().randomSkillItemSpawns.Length]));
 				}
+
+				yield return StartCoroutine(spawnMobPerCore(mobSpawn));
 
 				while(checkBossAlive())
 				{
@@ -341,6 +342,8 @@ public class Spawn : MonoBehaviour {
 					}
 				}
 
+				yield return new WaitForSeconds(mobSpawn.interval);
+
 				m_wave++;
 			}
 		}
@@ -362,7 +365,7 @@ public class Spawn : MonoBehaviour {
 
 		if (mob.Boss)
 		{
-			Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
+			Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
 
 			if (Warehouse.Instance.GameTutorial.m_unlockedFollowerTab == true)
 			{

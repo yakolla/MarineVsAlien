@@ -128,15 +128,10 @@ public class Weapon : MonoBehaviour {
 	virtual public void LevelUp()
 	{
 		++m_level;
-		if (m_level % WeaponStat.incBulletOnLevel == 0)
+		if (m_level > 1 && m_level % WeaponStat.incBulletOnLevel == 0)
 		{
 			MoreFire();
 		}
-		else
-		{
-
-		}
-
 	}
 
 	public RefItem RefItem

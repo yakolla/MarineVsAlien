@@ -553,6 +553,9 @@ public class Warehouse {
 					RefPriceCondition condLevel = obj.Item.RefItem.levelup;
 					if (condLevel != null)
 					{
+						if (condLevel.else_conds == null)
+							continue;
+
 						foreach(RefPrice refPrice in condLevel.else_conds)
 						{
 							if (refPrice.refItemId == Const.GemRefItemId)

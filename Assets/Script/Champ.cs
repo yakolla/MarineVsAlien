@@ -332,7 +332,10 @@ public class Champ : Creature {
 		{
 			m_idleTime += Time.deltaTime;
 			if (m_idleTime > 180f)
+			{
 				m_admob.ShowBanner(true);
+				m_idleTime = 0f;
+			}
 		}
 
 		TimeEffector.Instance.Update();
@@ -376,13 +379,14 @@ public class Champ : Creature {
 		Warehouse.Instance.GameDataContext.m_xp.Value = m_creatureProperty.Exp;
 		Warehouse.Instance.GameDataContext.m_sp.Value = m_creatureProperty.SP;
 
-		ShowGameOverGUI();
-
 		base.Death();
+
+		Const.GetSpawn().StartCoroutine(ShowGameOverGUI());
 	}
 
-	void	ShowGameOverGUI()
+	IEnumerator	ShowGameOverGUI()
 	{
+		yield return new WaitForSeconds(3f);
 		GameObject.Find("HudGUI/GameOverGUI").transform.Find("Panel").gameObject.SetActive(true);
 	}
 

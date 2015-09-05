@@ -435,7 +435,7 @@
 					"level":9,
 					"option":
 					{
-						"type":"DamageMultiplier",
+						"type":"DmgMultiplier",
 						"values":[3]
 					}
 				}
@@ -507,7 +507,7 @@
 					"level":9,
 					"option":
 					{
-						"type":"DamageMultiplier",
+						"type":"DmgMultiplier",
 						"values":[3]
 					}
 				}
@@ -696,7 +696,7 @@
 					"level":9,
 					"option":
 					{
-						"type":"DamageMultiplier",
+						"type":"DmgMultiplier",
 						"values":[3]
 					}
 				}
@@ -770,7 +770,7 @@
 		"type":"Weapon",
 		"icon":"Sprites/Gun",
 		"partName":"gun_a",
-		"defaultLock":true,
+		"defaultLock":true,		
 		"consumedSP":0.23,
 		"evolutionFiring":
 		{
@@ -781,6 +781,7 @@
 		{
 			"coolTime":0.7,
 			"range":4,
+			"incBulletOnLevel":1,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -813,7 +814,7 @@
 					"level":9,
 					"option":
 					{
-						"type":"DamageMultiplier",
+						"type":"DmgMultiplier",
 						"values":[3]
 					}
 				}
@@ -825,18 +826,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":1500
+					"count":500
 				},
 				{
 					"refItemId":5, 
-					"count":15
+					"count":5
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":15
+					"count":5
 				}
 			]
 		}
@@ -918,7 +919,7 @@
 					"level":9,
 					"option":
 					{
-						"type":"DamageMultiplier",
+						"type":"DmgMultiplier",
 						"values":[3]
 					}
 				}
@@ -1290,7 +1291,7 @@
 					"level":9,
 					"option":
 					{
-						"type":"DamageMultiplier",
+						"type":"DmgMultiplier",
 						"values":[3]
 					}
 				}
@@ -1966,7 +1967,7 @@
 				},
 				{
 					"refItemId":11, 
-					"count":21000
+					"count":2100
 				}
 			],
 			"else_conds":
@@ -2758,7 +2759,7 @@
 					"levelPer":true,
 					"option":
 					{
-						"type":"DamageReduction",						
+						"type":"DmgReduction",						
 						"values":[0.06]
 					}
 				}
@@ -2807,7 +2808,7 @@
 					"option":
 					{
 						"type":"RegenSp",
-						"values":[30]
+						"values":[10]
 					}
 				}
 			]
@@ -2831,7 +2832,7 @@
 					"option":
 					{
 						"type":"Strength",
-						"values":[10]
+						"values":[100]
 					}
 				}
 			]
