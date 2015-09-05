@@ -1211,7 +1211,7 @@
 		{
 			"id":30005,
 			"prefHead":"Follower",
-			"prefBody":"marine_skin",
+			"prefBody":"roboboomerang_skin",
 			"name":"Boomerang Marines",
 			"refWeaponItems":
 			[
