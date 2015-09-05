@@ -86,7 +86,7 @@ public class Follower : Creature {
 
 			if (m_owner.m_creatureProperty.SP > SP)
 			{
-				m_owner.m_creatureProperty.SP -= SP;
+				m_owner.ConsumeSP(SP);
 				m_updatable = true;
 			}
 			else

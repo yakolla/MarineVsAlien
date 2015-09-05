@@ -398,9 +398,9 @@ public class Spawn : MonoBehaviour {
 			++Warehouse.Instance.AlienEssence.Item.Count;
 			++Warehouse.Instance.UpdateGameStats.KilledMobs;
 
-			if (Warehouse.Instance.AlienEssence.Item.Count > 200)
-				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
 			if (Warehouse.Instance.AlienEssence.Item.Count > 500)
+				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
+			if (Warehouse.Instance.AlienEssence.Item.Count > 700)
 				Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
 
 		}

@@ -2156,6 +2156,8 @@
 		"id":1007,
 		"codeName":"Follower",
 		"type":"Follower",
+		"name":"Pet II-2",
+		"desc":"Thanks, I'll take my pick up any item",
 		"icon":"Sprites/FollowerPet",
 		"maxLevel":9,
 		"defaultLock":true,

@@ -178,7 +178,7 @@ public class Weapon : MonoBehaviour {
 
 	public void ConsumeSP()
 	{
-		m_creature.m_creatureProperty.SP -= SP;
+		m_creature.ConsumeSP(SP);
 	}
 
 	public Vector3 GunPointPos

@@ -29,7 +29,7 @@ public class LightningLauncher : Weapon {
 			m_accSp += SP * Time.deltaTime;
 			if (m_accSp >= 1)
 			{
-				m_creature.m_creatureProperty.SP -= (int)m_accSp;
+				m_creature.ConsumeSP((int)m_accSp);
 				m_accSp -= (int)m_accSp;
 			}
 		}

@@ -59,6 +59,7 @@ public class WarehouseData
 		PerSec	m_kills = new PerSec();
 		PerSec	m_dealDamages = new PerSec();
 		PerSec	m_takenDamages = new PerSec();
+		PerSec	m_consumedSP = new PerSec();
 
 		float	m_startPerSec;
 		
@@ -75,6 +76,7 @@ public class WarehouseData
 			m_kills.Reset();
 			m_dealDamages.Reset();
 			m_takenDamages.Reset();
+			m_consumedSP.Reset();
 			m_startPerSec = Time.time;
 		}
 		
@@ -105,6 +107,12 @@ public class WarehouseData
 			get{return m_takenDamages.amount;}
 		}
 
+		public int ConsumedSP
+		{
+			set{m_consumedSP.amount = value;}
+			get{return m_consumedSP.amount;}
+		}
+
 		public float KillPerSec
 		{
 			get{return m_kills.perSec;}
@@ -118,6 +126,11 @@ public class WarehouseData
 		public float TakenDamagePerSec
 		{
 			get{return m_takenDamages.perSec;}
+		}
+
+		public float ConsumedSPPerSec
+		{
+			get{return m_consumedSP.perSec;}
 		}
 
 		public float MaxKillPerSec
@@ -135,6 +148,11 @@ public class WarehouseData
 			get{return m_takenDamages.maxPerSec;}
 		}
 
+		public float MaxConsumedSPPerSec
+		{
+			get{return m_consumedSP.maxPerSec;}
+		}
+
 		public void Update()
 		{
 			float perDelta = Time.time - m_startPerSec;
@@ -143,7 +161,7 @@ public class WarehouseData
 				m_kills.Update(perDelta);
 				m_dealDamages.Update(perDelta);
 				m_takenDamages.Update(perDelta);
-
+				m_consumedSP.Update(perDelta);
 				m_startPerSec = Time.time;
 			}
 		}
@@ -151,7 +169,7 @@ public class WarehouseData
 	
 	public class Options
 	{
-		public float	m_sfxVolume = 1f;	
+		public float	m_sfxVolume = 1f;
 		public float	m_bgmVolume = 1f;
 		public bool		m_autoTarget = true;
 	}

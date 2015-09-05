@@ -341,6 +341,13 @@ public class Champ : Creature {
 		TimeEffector.Instance.Update();
 	}
 
+	override public void ConsumeSP(int sp)
+	{
+		base.ConsumeSP(sp);
+
+		Warehouse.Instance.UpdateGameStats.ConsumedSP += sp;
+	}
+
 	override public void GiveExp(int exp)
 	{
 		m_creatureProperty.giveExp(exp);

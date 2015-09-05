@@ -132,6 +132,7 @@ public class RefItem : RefBaseData
 	public 	ItemData.Type 		type;
 	public 	string 				codeName;
 	public 	string 				name;
+	public  string				desc;
 	public	string				icon;
 	public 	string				partName;
 	public	RefPriceCondition	levelup;
@@ -144,7 +145,7 @@ public class RefItem : RefBaseData
 	public 	int					followerId;
 	public 	bool				defaultLock = false;
 	public  int					maxLevel = Const.MaxItemLevel;
-	public 	float					consumedSP;
+	public 	float				consumedSP;
 }
 
 public class RefItemOptionSpawn
