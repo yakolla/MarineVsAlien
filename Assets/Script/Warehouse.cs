@@ -391,7 +391,10 @@ public class Warehouse {
 	public int WaveIndex
 	{
 		get {return m_warehouseData.m_waveIndex.Value;}
-		set {m_warehouseData.m_waveIndex.Value = value;}
+		set {
+			m_warehouseData.m_waveIndex.Value = value;
+			NewGameStats.WaveIndex = value;
+		}
 	}
 
 	public int AutoEarnGold

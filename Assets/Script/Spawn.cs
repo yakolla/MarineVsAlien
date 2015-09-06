@@ -286,6 +286,8 @@ public class Spawn : MonoBehaviour {
 				Warehouse.Instance.WaveIndex = m_wave;
 				m_waveText.Text.text = "Wave " + (m_wave+1);
 
+				Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
+
 				float waveProgress = ProgressStage();
 				Debug.Log("waveProgress:" + waveProgress + "," + m_wave);
 
