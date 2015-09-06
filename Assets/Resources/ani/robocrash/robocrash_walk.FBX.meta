@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: af453d95923e37f4995088a6863cc579
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Object030
+    100002: Object096
+    100004: Object097
+    100006: Object098
+    100008: Object099
+    100010: //RootNode
+    400000: Object030
+    400002: Object096
+    400004: Object097
+    400006: Object098
+    400008: Object099
+    400010: //RootNode
+    2300000: Object030
+    2300002: Object096
+    2300004: Object097
+    2300006: Object098
+    2300008: Object099
+    2300010: //RootNode
+    3300000: Object030
+    3300002: Object096
+    3300004: Object097
+    3300006: Object098
+    3300008: Object099
+    3300010: //RootNode
+    4300000: Box009
+    4300002: Object097
+    4300004: Object030
+    4300006: Object098
+    4300008: Object096
+    4300010: Object099
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Object030
+        weight: 1
+      - path: Object030/Object098
+        weight: 1
+      - path: Object096
+        weight: 1
+      - path: Object096/Object099
+        weight: 1
+      - path: Object097
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

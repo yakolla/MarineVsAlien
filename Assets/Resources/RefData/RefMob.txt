@@ -1180,7 +1180,7 @@
 		{
 			"id":30004,
 			"prefHead":"Follower",
-			"prefBody":"marine_skin",
+			"prefBody":"robocrash_skin",
 			"name":"Rocket Marines",
 			"refWeaponItems":
 			[
@@ -1241,7 +1241,7 @@
 		{
 			"id":30006,			
 			"prefHead":"Follower",
-			"prefBody":"marine_skin",
+			"prefBody":"robogrenade_skin",
 			"name":"Grenade Marines",
 			"refWeaponItems":
 			[
