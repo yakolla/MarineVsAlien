@@ -91,7 +91,7 @@ public class GameOverGUI : MonoBehaviour {
 
 	void SaveGame(SaveWithType type)
 	{
-		Const.ShowLoadingGUI("Loading...");
+		Const.ShowLoadingGUI("Retry...");
 
 		GPlusPlatform.Instance.ReportScore(Const.LEADERBOARD_KILLED_MOBS, Warehouse.Instance.NewGameStats.KilledMobs, (bool success) => {
 			// handle success or failure

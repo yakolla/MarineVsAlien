@@ -341,6 +341,13 @@ public class Champ : Creature {
 		TimeEffector.Instance.Update();
 	}
 
+	override public void ConsumeSP(int sp)
+	{
+		base.ConsumeSP(sp);
+
+		Warehouse.Instance.UpdateGameStats.ConsumedSP += sp;
+	}
+
 	override public void GiveExp(int exp)
 	{
 		m_creatureProperty.giveExp(exp);
@@ -368,7 +375,6 @@ public class Champ : Creature {
 
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Death", "Wave"+Warehouse.Instance.WaveIndex, 0);
 
-		Warehouse.Instance.NewGameStats.WaveIndex = Warehouse.Instance.WaveIndex;
 		Warehouse.Instance.NewGameStats.KilledMobs = Warehouse.Instance.AlienEssence.Item.Count;
 		Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
 

@@ -884,6 +884,11 @@ public class Creature : MonoBehaviour {
 		return dmg;
 	}
 
+	virtual public void ConsumeSP(int sp)
+	{
+		m_creatureProperty.SP -= sp;
+	}
+
 	virtual public void GiveExp(int exp)
 	{
 

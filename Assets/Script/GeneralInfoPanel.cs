@@ -16,7 +16,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 	YGUISystem.GUILable 	m_tapDamage;
 	YGUISystem.GUILable 	m_lifeSteal;
 
-	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[3];
+	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[5];
 
 	void Start()
 	{
@@ -69,6 +69,33 @@ public class GeneralInfoPanel : MonoBehaviour {
 				return 0 + " / " + 0;
 			
 			return System.String.Format("{0:F2} / {1:F2}",Warehouse.Instance.UpdateGameStats.KillPerSec, Warehouse.Instance.UpdateGameStats.MaxKillPerSec); 
+		}
+		);
+
+		m_guages[3] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsConsumedSPPS/Guage/Guage").gameObject, 
+		                                      ()=>{
+			if (Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec == 0)
+				return 0f;
+			return Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec/Warehouse.Instance.UpdateGameStats.MaxConsumedSPPerSec;
+		}, 
+		()=>{
+			if (Warehouse.Instance.UpdateGameStats.MaxConsumedSPPerSec == 0)
+				return 0 + " / " + 0;
+			
+			return System.String.Format("{0:F2} / {1:F2}",Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec, Warehouse.Instance.UpdateGameStats.MaxConsumedSPPerSec); 
+		}
+		);
+
+		m_guages[4] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsWave/Guage/Guage").gameObject, 
+		                                      ()=>{
+			if (Warehouse.Instance.GameBestStats.WaveIndex == 0)
+				return 1f;
+			return (float)(Warehouse.Instance.NewGameStats.WaveIndex+1)/(Warehouse.Instance.GameBestStats.WaveIndex+1);
+		}, 
+		()=>{
+			if (Warehouse.Instance.GameBestStats.WaveIndex == 0)
+				return "1 / 1";
+			return (Warehouse.Instance.NewGameStats.WaveIndex+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString(); 
 		}
 		);
 	}
