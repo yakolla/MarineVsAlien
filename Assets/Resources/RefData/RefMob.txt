@@ -1284,7 +1284,7 @@
 			{
 				"maxHP":30,
 				"maxSP":100,
-				"physicalDamage":5,
+				"physicalDamage":0,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
@@ -1314,7 +1314,7 @@
 			{
 				"maxHP":15,
 				"maxSP":100,
-				"physicalDamage":1,
+				"physicalDamage":6,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,

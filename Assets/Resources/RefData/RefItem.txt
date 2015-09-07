@@ -1817,7 +1817,7 @@
 			"range":5,
 			"buffOnHitDesc":
 			{
-				"chance":1,
+				"chance":0,
 				"buffType":"Airborne"
 			}
 		}
@@ -2211,18 +2211,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":3500
+					"count":49000
 				},
 				{
 					"refItemId":11, 
-					"count":350
+					"count":4900
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":35
+					"count":49
 				}
 			]
 		},
@@ -2232,14 +2232,14 @@
 			[
 				{
 					"refItemId":11, 
-					"count":3
+					"count":49
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":5
 				}
 			]
 		}

@@ -74,13 +74,13 @@ public class ChampSettingGUI : MonoBehaviour {
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampRocketLauncherRefItemId));
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampBoomerangLauncherRefItemId));
 
-				//Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGunMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerFireMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerLightningMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerRocketMarineRefItemId));				
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerBoomerangMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGrenadeMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
 				
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
@@ -145,13 +145,14 @@ public class ChampSettingGUI : MonoBehaviour {
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampFiregunRefItemId));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGuidedRocketLauncherRefItemId));
 
-				//Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
+
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGunMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerFireMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerLightningMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerRocketMarineRefItemId));				
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerBoomerangMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGrenadeMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
 
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));

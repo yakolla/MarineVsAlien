@@ -29,7 +29,7 @@ public class ShieldPassiveLauncher : Weapon {
 
 	IEnumerator EffectShield()
 	{
-		DamageNumberSprite sprite = m_creature.DamageText("", Color.white, DamageNumberSprite.MovementType.FloatingUpAlways);		
+		DamageNumberSprite sprite = m_creature.DamageText("", Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUpAlways);		
 		Vector3 scale = sprite.gameObject.transform.localScale;
 		scale *= 0.5f;
 		sprite.gameObject.transform.localScale = scale;
