@@ -669,7 +669,7 @@
 		{
 			"coolTime":1.5,
 			"range":5,
-			"incBulletOnLevel":1
+			"incBulletOnLevel":10
 		},		
 		"levelup":
 		{
@@ -715,7 +715,7 @@
 					"option":
 					{
 						"type":"DmgMultiplier",
-						"values":[3]
+						"values":[6]
 					}
 				},
 				{
@@ -723,7 +723,7 @@
 					"option":
 					{
 						"type":"DmgMultiplier",
-						"values":[3]
+						"values":[9]
 					}
 				}
 			]
@@ -807,7 +807,7 @@
 		{
 			"coolTime":0.7,
 			"range":4,
-			"incBulletOnLevel":1,
+			"incBulletOnLevel":10,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -854,7 +854,7 @@
 					"option":
 					{
 						"type":"DmgMultiplier",
-						"values":[3]
+						"values":[6]
 					}
 				},
 				{
@@ -862,7 +862,7 @@
 					"option":
 					{
 						"type":"DmgMultiplier",
-						"values":[3]
+						"values":[9]
 					}
 				}
 			]

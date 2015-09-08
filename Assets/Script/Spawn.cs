@@ -590,12 +590,7 @@ public class Spawn : MonoBehaviour {
 						break;
 					case ItemData.Type.GoldMedal:
 						{
-							item = new ItemGoldMedalData(Random.Range(desc.minValue, desc.maxValue));					
-							if (m_champ != null)
-							{
-								int extraCount = (int)(item.Count*m_champ.m_creatureProperty.GainExtraGold);
-								item.Count += extraCount;
-							}
+							item = new ItemGoldMedalData(Random.Range(desc.minValue, desc.maxValue));
 						}
 						break;
 					case ItemData.Type.Skill:
