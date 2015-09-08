@@ -832,6 +832,7 @@ public class Creature : MonoBehaviour {
 			{
 				strDamage = dmg.ToString();
 				color = Color.red;
+				damageTextScale *= 1.1f;
 			}
 			else if (damageDesc.DamageBuffType == DamageDesc.BuffType.Poison)
 			{
@@ -845,7 +846,7 @@ public class Creature : MonoBehaviour {
 					switch(offender.RefMob.id)
 					{
 					case 30001:
-						color = Color.white;
+						color = Color.clear;
 						break;
 					case 30002:
 						color = Color.red;

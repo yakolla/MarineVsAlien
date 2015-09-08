@@ -91,6 +91,11 @@ public class Follower : Creature {
 			}
 			else
 			{
+				float ori = m_creatureProperty.BetaMoveSpeed;
+				m_creatureProperty.BetaMoveSpeed -= 1f;
+				yield return new WaitForSeconds(3f);
+
+				m_creatureProperty.BetaMoveSpeed += 1f;
 				m_updatable = false;
 			}
 		}		

@@ -4,7 +4,8 @@ using Newtonsoft.Json;
 
 public class ItemWeaponData : ItemData{
 
-
+	Creature m_owner;
+	Weapon	m_weapon;
 	public ItemWeaponData(int refItemId) : base(refItemId, 1)
 	{
 
@@ -25,8 +26,17 @@ public class ItemWeaponData : ItemData{
 	override public void Equip(Creature obj)
 	{
 		obj.EquipWeapon(this, null);
-
 		base.Equip(obj);
+
+		m_owner = obj;
+		for(int i = 0; i < m_owner.WeaponHolder.Weapons.Count; ++i)
+		{
+			if (m_owner.WeaponHolder.Weapons[i].RefItem.id == RefItem.id)
+			{
+				m_weapon = m_owner.WeaponHolder.Weapons[i];
+				break;
+			}
+		}
 	}
 
 	override public void Use(Creature obj)
@@ -34,7 +44,15 @@ public class ItemWeaponData : ItemData{
 		ApplyOptions(obj, true);
 	}
 
-
+	override public string Description()
+	{
+		string desc = base.Description();
+		
+		if (m_weapon != null)
+			desc += "Dmg:" + m_weapon.Damage;
+		
+		return desc;
+	}
 
 	override public bool Compare(ItemData item)
 	{

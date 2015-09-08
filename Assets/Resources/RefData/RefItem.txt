@@ -659,7 +659,7 @@
 		"type":"Weapon",
 		"icon":"Sprites/RocketLauncher",
 		"defaultLock":true,
-		"consumedSP":3,
+		"maxLevel":900,
 		"evolutionFiring":
 		{
 			"angle":3,
@@ -668,7 +668,8 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":5
+			"range":5,
+			"incBulletOnLevel":1
 		},		
 		"levelup":
 		{
@@ -676,24 +677,49 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10000
+					"count":10
 				},
 				{
 					"refItemId":5, 
-					"count":100
+					"count":1
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":100
+					"count":1
 				}
 			],
 			"optionPerLevel":
 			[
 				{
-					"level":9,
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"Strength",
+						"values":[1]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":900,
 					"option":
 					{
 						"type":"DmgMultiplier",
@@ -770,8 +796,8 @@
 		"type":"Weapon",
 		"icon":"Sprites/Gun",
 		"partName":"gun_a",
-		"defaultLock":true,		
-		"consumedSP":0.23,
+		"defaultLock":true,
+		"maxLevel":900,
 		"evolutionFiring":
 		{
 			"angle":1,
@@ -794,24 +820,45 @@
 			[
 				{
 					"refItemId":1, 
-					"count":1500
-				},
-				{
-					"refItemId":5, 
-					"count":15
+					"count":10
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":8,
-					"count":15
+					"refItemId":8, 
+					"count":1
 				}
 			],
 			"optionPerLevel":
 			[				
 				{
-					"level":9,
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"Strength",
+						"values":[1]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":900,
 					"option":
 					{
 						"type":"DmgMultiplier",
@@ -1783,7 +1830,7 @@
 		},
 		"weaponStat":
 		{
-			"coolTime":3,
+			"coolTime":5,
 			"range":5,
 			"incBulletOnLevel":900
 		}
@@ -1847,7 +1894,7 @@
 		"icon":"Sprites/FollowerGunMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.07,
+		"consumedSP":0.7,
 		"followerId":30001,
 		"weaponStat":
 		{
@@ -1899,7 +1946,7 @@
 		"icon":"Sprites/FollowerFireMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.14,
+		"consumedSP":1.4,
 		"followerId":30002,
 		"weaponStat":
 		{
@@ -1951,7 +1998,7 @@
 		"icon":"Sprites/FollowerLightningMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.21,
+		"consumedSP":2.1,
 		"followerId":30003,
 		"weaponStat":
 		{
@@ -2003,7 +2050,7 @@
 		"icon":"Sprites/FollowerRocketMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.28,
+		"consumedSP":2.8,
 		"followerId":30004,
 		"weaponStat":
 		{
@@ -2055,7 +2102,7 @@
 		"icon":"Sprites/FollowerBoomerangMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.35,
+		"consumedSP":3.5,
 		"followerId":30005,
 		"weaponStat":
 		{
@@ -2107,7 +2154,7 @@
 		"icon":"Sprites/FollowerGrenadeMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.42,
+		"consumedSP":4.2,
 		"followerId":30006,
 		"weaponStat":
 		{
@@ -2199,7 +2246,7 @@
 		"icon":"Sprites/FollowerMeleeMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.035,
+		"consumedSP":4.9,
 		"followerId":30008,
 		"weaponStat":
 		{

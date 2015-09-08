@@ -1338,7 +1338,7 @@
 				"maxHP":100,
 				"maxSP":100,
 				"spRegen":1,
-				"physicalDamage":1,
+				"physicalDamage":0,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
