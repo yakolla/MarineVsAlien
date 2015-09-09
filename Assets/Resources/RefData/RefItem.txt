@@ -707,7 +707,7 @@
 					"option":
 					{
 						"type":"DmgMultiplier",
-						"values":[3]
+						"values":[1]
 					}
 				},
 				{
@@ -715,7 +715,7 @@
 					"option":
 					{
 						"type":"DmgMultiplier",
-						"values":[6]
+						"values":[3]
 					}
 				},
 				{
@@ -846,7 +846,7 @@
 					"option":
 					{
 						"type":"DmgMultiplier",
-						"values":[3]
+						"values":[1]
 					}
 				},
 				{
@@ -854,7 +854,7 @@
 					"option":
 					{
 						"type":"DmgMultiplier",
-						"values":[6]
+						"values":[3]
 					}
 				},
 				{
@@ -2746,18 +2746,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":300
+					"count":100
 				},
 				{
 					"refItemId":5, 
-					"count":30
+					"count":10
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":30
+					"count":10
 				}
 			]
 		},
@@ -2767,14 +2767,14 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":100
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":500
+					"count":10
 				}
 			],
 			"optionPerLevel":

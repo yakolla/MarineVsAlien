@@ -160,8 +160,16 @@ public class ItemData {
 			float optionValue = 0f;
 			if (op.levelPer == false)
 			{
-				if (Level == op.level)
-					optionValue = op.option.values[0];
+				if (levelup == false)
+				{
+					if (Level >= op.level)
+						optionValue = op.option.values[0];
+				}
+				else
+				{
+					if (Level == op.level)
+						optionValue = op.option.values[0];
+				}
 			}
 			else
 			{
