@@ -488,7 +488,7 @@ public class Creature : MonoBehaviour {
 	IEnumerator EffectAirborne()
 	{	
 		
-		DamageText(CrowdControlType.Airborne.ToString(), Color.white, DamageNumberSprite.MovementType.FloatingUp);
+		DamageText(CrowdControlType.Airborne.ToString(), Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
 		CrowdControl(CrowdControlType.Airborne, true);
 		Parabola parabola = new Parabola(gameObject, 8, 0f, 90*Mathf.Deg2Rad, 1);
 		while(parabola.Update())
@@ -503,7 +503,7 @@ public class Creature : MonoBehaviour {
 
 	IEnumerator EffectStun()
 	{		
-		DamageText(CrowdControlType.Stun.ToString(), Color.white, DamageNumberSprite.MovementType.FloatingUp);
+		DamageText(CrowdControlType.Stun.ToString(), Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
 		CrowdControl(CrowdControlType.Stun, true);
 		float ori = m_creatureProperty.BetaMoveSpeed;
 		m_creatureProperty.BetaMoveSpeed = 0f;
@@ -517,7 +517,7 @@ public class Creature : MonoBehaviour {
 	IEnumerator EffectSlow(float time)
 	{		
 		
-		DamageText(DamageDesc.BuffType.Slow.ToString(), Color.white, DamageNumberSprite.MovementType.FloatingUp);
+		DamageText(DamageDesc.BuffType.Slow.ToString(), Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
 		float ori = m_creatureProperty.BetaMoveSpeed / 2f;
 		m_creatureProperty.BetaMoveSpeed -= ori;
 		yield return new WaitForSeconds(time);
@@ -630,7 +630,7 @@ public class Creature : MonoBehaviour {
 		{
 			int heal = (int)(m_creatureProperty.MaxHP*damageRatio);
 			Heal(heal);
-			DamageText(heal + "HP", Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(heal + "HP", Vector3.one, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
 			yield return new WaitForSeconds(1f);
 		}
 		
@@ -716,17 +716,17 @@ public class Creature : MonoBehaviour {
 		{
 		case ItemData.Type.Gold:
 			{
-			DamageText(strDamage + "G", Color.yellow, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(strDamage + "G", Vector3.one, Color.yellow, DamageNumberSprite.MovementType.ParabolaAlpha);
 			}
 			break;
 		case ItemData.Type.HealPosion:
 			{
-			DamageText(strDamage+ "HP", Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(strDamage+ "HP", Vector3.one, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
 			}
 			break;
 		case ItemData.Type.XPPotion:
 			{
-			DamageText(strDamage + "XP", Color.blue, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(strDamage + "XP", Vector3.one, Color.blue, DamageNumberSprite.MovementType.ParabolaAlpha);
 			}
 			break;
 		}
@@ -763,12 +763,12 @@ public class Creature : MonoBehaviour {
 		return true;
 	}
 
-	public DamageNumberSprite DamageText(string damage, Color color, DamageNumberSprite.MovementType movementType)
+	public DamageNumberSprite DamageText(string damage, Vector3 scale, Color color, DamageNumberSprite.MovementType movementType)
 	{
 		GameObject gui = (GameObject)GameObjectPool.Instance.Alloc(m_prefDamageSprite, m_aimpoint.transform.position, m_prefDamageSprite.transform.localRotation);
 		DamageNumberSprite sprite = gui.GetComponent<DamageNumberSprite>();
 		sprite.Init(this, damage, color, movementType);
-
+		sprite.transform.localScale = scale;
 		return sprite;
 	}
 	
@@ -779,13 +779,13 @@ public class Creature : MonoBehaviour {
 
 		if (m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run == true)
 		{
-			DamageText("Blocked", Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText("Blocked", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 
 		if (m_buffEffects[(int)DamageDesc.BuffType.Dash].m_run == true)
 		{
-			DamageText("Blocked", Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText("Blocked", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 
@@ -811,7 +811,7 @@ public class Creature : MonoBehaviour {
 		if (dmg > 0 && m_creatureProperty.Shield > 0)
 		{
 			--m_creatureProperty.Shield;
-			DamageText("Shielded", Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText("Shielded", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 
@@ -819,25 +819,58 @@ public class Creature : MonoBehaviour {
 		if (dmg == 0)
 		{
 			strDamage = "Blocked";
-			DamageText(strDamage, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(strDamage, Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 		
 		if (m_ingTakenDamageEffect < Const.MaxShowDamageNumber)
 		{
+			Vector3 damageTextScale = Vector3.one;
 			++m_ingTakenDamageEffect;
 			Color color = Color.white;
 			if (critical == true)
 			{
 				strDamage = dmg.ToString();
 				color = Color.red;
+				damageTextScale *= 1.1f;
 			}
 			else if (damageDesc.DamageBuffType == DamageDesc.BuffType.Poison)
 			{
 				color = Color.magenta;
 			}
+			else
+			{
+				if (offender != null && offender.RefMob.mobAI == MobAIType.Follow)
+				{
+					damageTextScale *= 0.8f;
+					switch(offender.RefMob.id)
+					{
+					case 30001:
+						color = Color.clear;
+						break;
+					case 30002:
+						color = Color.red;
+						break;
+					case 30003:
+						color = Color.blue;
+						break;
+					case 30004:
+						color = Color.cyan;
+						break;
+					case 30005:
+						color = Color.yellow;
+						break;
+					case 30006:
+						color = Color.magenta;
+						break;
+					case 30007:
+						color = Color.grey;
+						break;
+					}
+				}
+			}
 
-			DamageText(strDamage, color, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(strDamage, damageTextScale, color, DamageNumberSprite.MovementType.ParabolaAlpha);
 
 			StartCoroutine(BodyRedColoredOnTakenDamage());
 
@@ -864,7 +897,7 @@ public class Creature : MonoBehaviour {
 				int lifeSteal = (int)(offender.m_creatureProperty.LifeSteal*dmg);
 				if (lifeSteal > 0)
 				{
-					offender.DamageText(lifeSteal.ToString() + "L", Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
+					offender.DamageText(lifeSteal.ToString() + "L", Vector3.one, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
 					offender.Heal(lifeSteal);
 				}
 				Const.GetSpawn().SharePotinsChamps(offender, ItemData.Type.XPPotion, m_creatureProperty.RewardExp, false);

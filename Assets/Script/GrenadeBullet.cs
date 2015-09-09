@@ -15,6 +15,9 @@ public class GrenadeBullet : Bullet {
 	[SerializeField]
 	protected int				m_bouncing = 1;
 
+	[SerializeField]
+	float[]					m_yangles = {55f,85f};
+
 	protected Parabola	m_parabola;
 	// Use this for initialization
 	void Start () {
@@ -35,7 +38,7 @@ public class GrenadeBullet : Bullet {
 
 	protected virtual void createParabola(float targetAngle)
 	{
-		m_parabola = new Parabola(gameObject, m_speed, -(transform.rotation.eulerAngles.y + targetAngle) * Mathf.Deg2Rad, Random.Range(55f,85f) * Mathf.Deg2Rad, m_bouncing);
+		m_parabola = new Parabola(gameObject, m_speed, -(transform.rotation.eulerAngles.y + targetAngle) * Mathf.Deg2Rad, Random.Range(m_yangles[0],m_yangles[1]) * Mathf.Deg2Rad, m_bouncing);
 	}
 
 	// Update is called once per frame

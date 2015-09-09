@@ -659,7 +659,7 @@
 		"type":"Weapon",
 		"icon":"Sprites/RocketLauncher",
 		"defaultLock":true,
-		"consumedSP":3,
+		"maxLevel":900,
 		"evolutionFiring":
 		{
 			"angle":3,
@@ -668,7 +668,8 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":5
+			"range":5,
+			"incBulletOnLevel":10
 		},		
 		"levelup":
 		{
@@ -676,28 +677,53 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10000
+					"count":10
 				},
 				{
 					"refItemId":5, 
-					"count":100
+					"count":1
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":100
+					"count":1
 				}
 			],
 			"optionPerLevel":
 			[
 				{
-					"level":9,
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"Strength",
+						"values":[1]
+					}
+				},
+				{
+					"level":100,
 					"option":
 					{
 						"type":"DmgMultiplier",
 						"values":[3]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
 					}
 				}
 			]
@@ -770,8 +796,8 @@
 		"type":"Weapon",
 		"icon":"Sprites/Gun",
 		"partName":"gun_a",
-		"defaultLock":true,		
-		"consumedSP":0.23,
+		"defaultLock":true,
+		"maxLevel":900,
 		"evolutionFiring":
 		{
 			"angle":1,
@@ -781,7 +807,7 @@
 		{
 			"coolTime":0.7,
 			"range":4,
-			"incBulletOnLevel":1,
+			"incBulletOnLevel":10,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -794,28 +820,49 @@
 			[
 				{
 					"refItemId":1, 
-					"count":1500
-				},
-				{
-					"refItemId":5, 
-					"count":15
+					"count":10
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":8,
-					"count":15
+					"refItemId":8, 
+					"count":1
 				}
 			],
 			"optionPerLevel":
 			[				
 				{
-					"level":9,
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"Strength",
+						"values":[1]
+					}
+				},
+				{
+					"level":100,
 					"option":
 					{
 						"type":"DmgMultiplier",
 						"values":[3]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
 					}
 				}
 			]
@@ -1680,7 +1727,7 @@
 		{
 			"coolTime":1,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1714,7 +1761,7 @@
 		{
 			"coolTime":1,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 		
 	},
@@ -1733,7 +1780,7 @@
 		{
 			"coolTime":1,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1751,7 +1798,7 @@
 		{
 			"coolTime":2,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1768,7 +1815,7 @@
 		{
 			"coolTime":0.5,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1783,7 +1830,7 @@
 		},
 		"weaponStat":
 		{
-			"coolTime":3,
+			"coolTime":5,
 			"range":5,
 			"incBulletOnLevel":900
 		}
@@ -1802,7 +1849,7 @@
 		{
 			"coolTime":4,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1817,7 +1864,7 @@
 			"range":5,
 			"buffOnHitDesc":
 			{
-				"chance":1,
+				"chance":0,
 				"buffType":"Airborne"
 			}
 		}
@@ -1847,7 +1894,7 @@
 		"icon":"Sprites/FollowerGunMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.07,
+		"consumedSP":0.7,
 		"followerId":30001,
 		"weaponStat":
 		{
@@ -1899,7 +1946,7 @@
 		"icon":"Sprites/FollowerFireMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.14,
+		"consumedSP":1.4,
 		"followerId":30002,
 		"weaponStat":
 		{
@@ -1951,7 +1998,7 @@
 		"icon":"Sprites/FollowerLightningMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.21,
+		"consumedSP":2.1,
 		"followerId":30003,
 		"weaponStat":
 		{
@@ -2003,7 +2050,7 @@
 		"icon":"Sprites/FollowerRocketMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.28,
+		"consumedSP":2.8,
 		"followerId":30004,
 		"weaponStat":
 		{
@@ -2055,7 +2102,7 @@
 		"icon":"Sprites/FollowerBoomerangMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.35,
+		"consumedSP":3.5,
 		"followerId":30005,
 		"weaponStat":
 		{
@@ -2107,7 +2154,7 @@
 		"icon":"Sprites/FollowerGrenadeMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.42,
+		"consumedSP":4.2,
 		"followerId":30006,
 		"weaponStat":
 		{
@@ -2199,7 +2246,7 @@
 		"icon":"Sprites/FollowerMeleeMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.035,
+		"consumedSP":4.9,
 		"followerId":30008,
 		"weaponStat":
 		{
@@ -2211,18 +2258,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":3500
+					"count":49000
 				},
 				{
 					"refItemId":11, 
-					"count":350
+					"count":4900
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":35
+					"count":49
 				}
 			]
 		},
@@ -2232,14 +2279,14 @@
 			[
 				{
 					"refItemId":11, 
-					"count":3
+					"count":49
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":5
 				}
 			]
 		}
@@ -2754,6 +2801,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":3000
+				},
+				{
+					"refItemId":5, 
+					"count":300
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":300
+				}
+			],
 			"optionPerLevel":
 			[
 				{
@@ -2778,6 +2843,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":5000
+				},
+				{
+					"refItemId":5, 
+					"count":500
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":500
+				}
+			],
 			"optionPerLevel":
 			[				
 				{
@@ -2802,6 +2885,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":6000
+				},
+				{
+					"refItemId":5, 
+					"count":600
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":600
+				}
+			],
 			"optionPerLevel":
 			[				
 				{
@@ -2826,6 +2927,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":7000
+				},
+				{
+					"refItemId":5, 
+					"count":700
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":700
+				}
+			],
 			"optionPerLevel":
 			[				
 				{
@@ -2850,6 +2969,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":8000
+				},
+				{
+					"refItemId":5, 
+					"count":800
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":800
+				}
+			],
 			"optionPerLevel":
 			[
 				{

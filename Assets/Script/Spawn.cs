@@ -589,7 +589,9 @@ public class Spawn : MonoBehaviour {
 						item = new ItemAccessoryData(desc.refItem.id);					
 						break;
 					case ItemData.Type.GoldMedal:
-						item = new ItemGoldMedalData(Random.Range(desc.minValue, desc.maxValue));					
+						{
+							item = new ItemGoldMedalData(Random.Range(desc.minValue, desc.maxValue));
+						}
 						break;
 					case ItemData.Type.Skill:
 						item = new ItemSkillData(Random.Range(desc.minValue, desc.maxValue+1));	
