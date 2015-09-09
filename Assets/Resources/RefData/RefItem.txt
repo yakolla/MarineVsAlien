@@ -1727,7 +1727,7 @@
 		{
 			"coolTime":1,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1761,7 +1761,7 @@
 		{
 			"coolTime":1,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 		
 	},
@@ -1780,7 +1780,7 @@
 		{
 			"coolTime":1,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1798,7 +1798,7 @@
 		{
 			"coolTime":2,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1815,7 +1815,7 @@
 		{
 			"coolTime":0.5,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1849,7 +1849,7 @@
 		{
 			"coolTime":4,
 			"range":4,
-			"incBulletOnLevel":90
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -2801,6 +2801,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":3000
+				},
+				{
+					"refItemId":5, 
+					"count":300
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":300
+				}
+			],
 			"optionPerLevel":
 			[
 				{
@@ -2825,6 +2843,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":5000
+				},
+				{
+					"refItemId":5, 
+					"count":500
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":500
+				}
+			],
 			"optionPerLevel":
 			[				
 				{
@@ -2849,6 +2885,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":6000
+				},
+				{
+					"refItemId":5, 
+					"count":600
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":600
+				}
+			],
 			"optionPerLevel":
 			[				
 				{
@@ -2873,6 +2927,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":7000
+				},
+				{
+					"refItemId":5, 
+					"count":700
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":700
+				}
+			],
 			"optionPerLevel":
 			[				
 				{
@@ -2897,6 +2969,24 @@
 		"defaultLock":true,
 		"levelup":
 		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":8000
+				},
+				{
+					"refItemId":5, 
+					"count":800
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":800
+				}
+			],
 			"optionPerLevel":
 			[
 				{
