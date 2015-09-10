@@ -291,6 +291,24 @@ public class Spawn : MonoBehaviour {
 				float waveProgress = ProgressStage();
 				Debug.Log("waveProgress:" + waveProgress + "," + m_wave);
 
+
+				
+				if (m_wave == 0)
+				{
+					++m_relWave;
+					NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
+					if (m_relWave/m_goalPoints.Length%2==0)
+						m_goalPointIndex = m_relWave%m_goalPoints.Length;
+					else
+						m_goalPointIndex = m_goalPoints.Length-m_relWave%m_goalPoints.Length-1;
+					nav.SetDestination(m_goalPoints[m_goalPointIndex].transform.position);
+					m_champ.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
+					while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)
+					{
+						yield return null;
+					}
+				}
+
 				if (mobSpawn.boss == true)
 				{
 					StartCoroutine(EffectWaveText("Boss", 3));

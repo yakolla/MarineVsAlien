@@ -402,7 +402,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":4,
+			"range":5,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -474,7 +474,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":4,
+			"range":5,
 			"buffOnHitDesc":
 			{
 				"chance":0,
@@ -591,7 +591,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.9,
-			"range":4
+			"range":5
 		},
 		"unlock":
 		{
@@ -623,7 +623,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":4
+			"range":5
 		},
 		"evolutionFiring":
 		{
@@ -668,7 +668,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":5,
+			"range":6,
 			"incBulletOnLevel":10
 		},		
 		"levelup":
@@ -806,7 +806,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.7,
-			"range":4,
+			"range":5,
 			"incBulletOnLevel":10,
 			"buffOnHitDesc":
 			{
@@ -938,7 +938,7 @@
 		"weaponStat":
 		{
 			"coolTime":1.5,
-			"range":5
+			"range":6
 		},		
 		"levelup":
 		{
@@ -1021,7 +1021,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":4,
+			"range":5,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1044,7 +1044,7 @@
 		"weaponStat":
 		{
 			"coolTime":1,
-			"range":5,			
+			"range":6,			
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1105,7 +1105,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.5,
-			"range":4,
+			"range":5,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1191,7 +1191,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":4
+			"range":5
 		},
 		"unlock":
 		{
@@ -1223,7 +1223,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.5,
-			"range":4
+			"range":5
 		},
 		"levelup":
 		{
@@ -1551,7 +1551,7 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":4
+			"range":5
 		}
 	},
 	{
@@ -1562,7 +1562,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":4,
+			"range":5,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1609,7 +1609,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":4
+			"range":5
 		}
 	},
 	{
@@ -1726,7 +1726,7 @@
 		"weaponStat":
 		{
 			"coolTime":1,
-			"range":4,
+			"range":5,
 			"incBulletOnLevel":10
 		}
 	},
@@ -1743,7 +1743,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.3,
-			"range":5,
+			"range":6,
 			"incBulletOnLevel":900
 		}
 	},
@@ -1760,7 +1760,7 @@
 		"weaponStat":
 		{
 			"coolTime":1,
-			"range":4,
+			"range":5,
 			"incBulletOnLevel":10
 		}
 		
@@ -1779,7 +1779,7 @@
 		"weaponStat":
 		{
 			"coolTime":1,
-			"range":4,
+			"range":5,
 			"incBulletOnLevel":10
 		}
 	},
@@ -1797,7 +1797,7 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":4,
+			"range":5,
 			"incBulletOnLevel":10
 		}
 	},
@@ -1814,7 +1814,7 @@
 		"weaponStat":
 		{
 			"coolTime":0.5,
-			"range":4,
+			"range":5,
 			"incBulletOnLevel":10
 		}
 	},
@@ -1831,7 +1831,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":5,
+			"range":6,
 			"incBulletOnLevel":900
 		}
 	},
@@ -1848,7 +1848,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":4,
+			"range":5,
 			"incBulletOnLevel":10
 		}
 	},
@@ -1861,7 +1861,7 @@
 		"weaponStat":
 		{
 			"coolTime":3,
-			"range":5,
+			"range":6,
 			"buffOnHitDesc":
 			{
 				"chance":0,
