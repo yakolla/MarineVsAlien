@@ -68,7 +68,7 @@ public class GameOverGUI : MonoBehaviour {
 		);
 
 
-		m_admob.ShowInterstitial();
+		//m_admob.ShowInterstitial();
 		m_admob.ShowBanner(true);
 
 
