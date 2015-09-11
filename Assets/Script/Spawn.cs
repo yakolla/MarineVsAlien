@@ -70,7 +70,11 @@ public class Spawn : MonoBehaviour {
 		m_stageText = new YGUISystem.GUILable(GameObject.Find("HudGUI/StatusGUI/Stage").gameObject);
 		m_waveText = new YGUISystem.GUILable(GameObject.Find("HudGUI/StatusGUI/Wave").gameObject);
 
-		m_goalPoints = transform.Find("GoalPoint").transform.GetComponentsInChildren<Transform>();
+		Transform[] goals = transform.Find("GoalPoint").transform.GetComponentsInChildren<Transform>();
+		m_goalPoints = new Transform[goals.Length-1];
+		for(int i = 0; i < goals.Length-1; ++i)
+			m_goalPoints[i] = goals[i+1];
+
 	}
 
 	IEnumerator EffectWaveText(string msg, float alpha)
@@ -141,7 +145,7 @@ public class Spawn : MonoBehaviour {
 
 		int minIndex = 0;
 		int maxIndex = Mathf.Min((int)progress, mobs.Length-1);
-		Debug.Log("min:" + minIndex + ", max:" + maxIndex + ", progress:" + progress);
+		//Debug.Log("min:" + minIndex + ", max:" + maxIndex + ", progress:" + progress);
 		minIndex = Mathf.Clamp(minIndex, 0, mobs.Length-1);
 
 		int mobCount = (int)(spawnRatioDesc.count[0]);
@@ -216,13 +220,13 @@ public class Spawn : MonoBehaviour {
 					float length = 8f;
 					switch(m_goalPointIndex)
 					{
-					case 1:
+					case 0:
 						angle = 0f;
 						length = 16;
 						if (m_champ != null)
 							m_champ.m_creatureProperty.AttackRange=2;
 						break;
-					case 7:
+					case 5:
 						angle = 3.14f;
 						length = 16;
 						if (m_champ != null)
@@ -289,25 +293,9 @@ public class Spawn : MonoBehaviour {
 				Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
 
 				float waveProgress = ProgressStage();
-				Debug.Log("waveProgress:" + waveProgress + "," + m_wave);
+				//Debug.Log("waveProgress:" + waveProgress + "," + m_wave);
+				yield return StartCoroutine(MoveChamp());
 
-
-				
-				if (m_wave == 0)
-				{
-					++m_relWave;
-					NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
-					if (m_relWave/m_goalPoints.Length%2==0)
-						m_goalPointIndex = m_relWave%m_goalPoints.Length;
-					else
-						m_goalPointIndex = m_goalPoints.Length-m_relWave%m_goalPoints.Length-1;
-					nav.SetDestination(m_goalPoints[m_goalPointIndex].transform.position);
-					m_champ.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
-					while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)
-					{
-						yield return null;
-					}
-				}
 
 				if (mobSpawn.boss == true)
 				{
@@ -345,28 +333,35 @@ public class Spawn : MonoBehaviour {
 
 				yield return new WaitForSeconds(3f);
 
-				++m_relWave;
-
-				if (m_champ != null)
-				{
-					NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
-					if (m_relWave/m_goalPoints.Length%2==0)
-						m_goalPointIndex = m_relWave%m_goalPoints.Length;
-					else
-						m_goalPointIndex = m_goalPoints.Length-m_relWave%m_goalPoints.Length-1;
-					nav.SetDestination(m_goalPoints[m_goalPointIndex].transform.position);
-					m_champ.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
-					while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)
-					{
-						yield return null;
-					}
-				}
 
 				yield return new WaitForSeconds(mobSpawn.interval);
 
 				m_wave++;
 			}
 		}
+	}
+
+	IEnumerator MoveChamp()
+	{
+		if (m_champ != null)
+		{
+			NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
+			if ((m_relWave/m_goalPoints.Length)%2==0)
+				m_goalPointIndex = m_relWave%m_goalPoints.Length;
+			else
+				m_goalPointIndex = m_goalPoints.Length-m_relWave%m_goalPoints.Length-1;
+
+			nav.SetDestination(m_goalPoints[m_goalPointIndex].transform.position);
+			m_champ.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
+
+			while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)
+			{
+				yield return null;
+			}
+		}
+		Debug.Log("m_goalPointIndex:"+m_goalPointIndex+" m_relWave:"+m_relWave);
+		++m_relWave;
+		yield return null;
 	}
 
 	public int SpawnMobLevel()
@@ -542,7 +537,7 @@ public class Spawn : MonoBehaviour {
 
 		enemy.SetTarget(m_champ);
 
-		Debug.Log(refMob.prefBody + ", Lv : " + mobLevel + ", HP: " + enemy.m_creatureProperty.HP + ", PA:" + enemy.m_creatureProperty.PhysicalAttackDamage + ", PD:" + enemy.m_creatureProperty.PhysicalDefencePoint + ", scale:" + refMob.scale + " pos:" + enemyPos);
+		//Debug.Log(refMob.prefBody + ", Lv : " + mobLevel + ", HP: " + enemy.m_creatureProperty.HP + ", PA:" + enemy.m_creatureProperty.PhysicalAttackDamage + ", PD:" + enemy.m_creatureProperty.PhysicalDefencePoint + ", scale:" + refMob.scale + " pos:" + enemyPos);
 
 	
 		if (monitoredDeath == true)
@@ -571,7 +566,7 @@ public class Spawn : MonoBehaviour {
 				if (desc.refItem.type == ItemData.Type.WeaponParts)
 				{
 					ratio += Mathf.Min(m_wave, 100)*0.001f;
-					Debug.Log("ItemData.Type.WeaponParts:" + ratio);
+					//Debug.Log("ItemData.Type.WeaponParts:" + ratio);
 				}
 
 				if (ratio <= desc.ratio)
