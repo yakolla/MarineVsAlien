@@ -359,7 +359,6 @@ public class Spawn : MonoBehaviour {
 				yield return null;
 			}
 		}
-		Debug.Log("m_goalPointIndex:"+m_goalPointIndex+" m_relWave:"+m_relWave);
 		++m_relWave;
 		yield return null;
 	}

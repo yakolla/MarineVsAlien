@@ -21,7 +21,7 @@ public class ChampSettingGUI : MonoBehaviour {
 	GameObject	m_skillPanel;
 	GeneralInfoPanel	m_generalInfoPanel;
 
-	YGUISystem.GUIButton[]	m_tabs = new YGUISystem.GUIButton[4];
+	YGUISystem.GUIButton[]	m_tabs = new YGUISystem.GUIButton[3];
 
 	[SerializeField]
 	Transform		m_spawnChamp;
@@ -117,7 +117,7 @@ public class ChampSettingGUI : MonoBehaviour {
 					Warehouse.Instance.FindItem(3004).Item.Lock = false;
 					Warehouse.Instance.FindItem(3004).Item.Level = 9;
 					Warehouse.Instance.FindItem(3005).Item.Lock = false;
-					Warehouse.Instance.FindItem(3005).Item.Level = 9;
+					Warehouse.Instance.FindItem(3005).Item.Level = 900;
 				}
 
 
@@ -196,13 +196,14 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		m_start = new YGUISystem.GUIButton(transform.Find("StartButton").gameObject, ()=>{return m_equipedWeapon != null;});
 
-		m_tabs[0] = new YGUISystem.GUIButton(transform.Find("StatTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedStatTab && m_champ != null && m_champ.gameObject.activeSelf;});
-		m_tabs[1] = new YGUISystem.GUIButton(transform.Find("WeaponTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedWeaponTab && m_champ != null && m_champ.gameObject.activeSelf;});
-		m_tabs[2] = new YGUISystem.GUIButton(transform.Find("SkillTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedSkillTab && m_champ != null && m_champ.gameObject.activeSelf;});
-		m_tabs[3] = new YGUISystem.GUIButton(transform.Find("FollowerTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedFollowerTab && m_champ != null && m_champ.gameObject.activeSelf;});
+
+		m_tabs[0] = new YGUISystem.GUIButton(transform.Find("WeaponTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedWeaponTab && m_champ != null && m_champ.gameObject.activeSelf;});
+		m_tabs[1] = new YGUISystem.GUIButton(transform.Find("SkillTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedSkillTab && m_champ != null && m_champ.gameObject.activeSelf;});
+		m_tabs[2] = new YGUISystem.GUIButton(transform.Find("FollowerTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedFollowerTab && m_champ != null && m_champ.gameObject.activeSelf;});
+		//m_tabs[3] = new YGUISystem.GUIButton(transform.Find("StatTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedStatTab && m_champ != null && m_champ.gameObject.activeSelf;});
 
 		m_weaponPanel = settingItemList("WeaponPanel", new ItemData.Type[]{ItemData.Type.Weapon, ItemData.Type.WeaponParts});
-		m_statPanel = settingItemList("StatPanel", new ItemData.Type[]{ItemData.Type.Stat});
+		//m_statPanel = settingItemList("StatPanel", new ItemData.Type[]{ItemData.Type.Stat});
 		m_followerPanel = settingItemList("FollowerPanel", new ItemData.Type[]{ItemData.Type.Follower});
 		m_skillPanel = settingItemList("SkillPanel", new ItemData.Type[]{ItemData.Type.Skill});
 		m_generalInfoPanel = transform.Find("GeneralInfoPanel").gameObject.GetComponent<GeneralInfoPanel>();
@@ -453,7 +454,8 @@ public class ChampSettingGUI : MonoBehaviour {
 					itemFollowerData.m_follower.LevelUp();
 					itemFollowerData.Use(itemFollowerData.m_follower);
 				}
-				else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat)
+				else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat
+				         || selectedItem.Item.RefItem.type == ItemData.Type.WeaponParts)
 				{
 					selectedItem.Item.Use(m_champ);
 				}
@@ -684,7 +686,7 @@ public class ChampSettingGUI : MonoBehaviour {
 	public void OnClickInventory()
 	{
 		m_weaponPanel.SetActive(true);
-		m_statPanel.SetActive(false);
+		//m_statPanel.SetActive(false);
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(false);
 		m_generalInfoPanel.gameObject.SetActive(false);
@@ -693,7 +695,7 @@ public class ChampSettingGUI : MonoBehaviour {
 	public void OnClickStat()
 	{
 		m_weaponPanel.SetActive(false);
-		m_statPanel.SetActive(true);
+		//m_statPanel.SetActive(true);
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(false);
 		m_generalInfoPanel.gameObject.SetActive(false);
@@ -702,7 +704,7 @@ public class ChampSettingGUI : MonoBehaviour {
 	public void OnClickFollower()
 	{
 		m_weaponPanel.SetActive(false);
-		m_statPanel.SetActive(false);
+		//m_statPanel.SetActive(false);
 		m_followerPanel.SetActive(true);
 		m_skillPanel.SetActive(false);
 		m_generalInfoPanel.gameObject.SetActive(false);
@@ -711,7 +713,7 @@ public class ChampSettingGUI : MonoBehaviour {
 	public void OnClickSkill()
 	{
 		m_weaponPanel.SetActive(false);
-		m_statPanel.SetActive(false);
+		//m_statPanel.SetActive(false);
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(true);
 		m_generalInfoPanel.gameObject.SetActive(false);
@@ -720,7 +722,7 @@ public class ChampSettingGUI : MonoBehaviour {
 	public void OnClickGeneralInfo()
 	{
 		m_weaponPanel.SetActive(false);
-		m_statPanel.SetActive(false);
+		//m_statPanel.SetActive(false);
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(false);
 		m_generalInfoPanel.gameObject.SetActive(true);

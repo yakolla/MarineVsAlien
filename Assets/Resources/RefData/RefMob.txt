@@ -1179,7 +1179,7 @@
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"209"
+					"refItemId":"211"
 					
 				}
 			],
@@ -1196,9 +1196,9 @@
 				"phyDamagePerLevel":10,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
-				"moveSpeed":1.5,
+				"moveSpeed":3,
 				"aniSpeedRatio":0.5,
-				"navMeshBaseOffset":0,
+				"navMeshBaseOffset":3,
 				"backwardOnDamage":false
 			}
 		},
@@ -1331,7 +1331,7 @@
 			{
 				"maxHP":100,
 				"maxSP":100,
-				"spRegen":1,
+				"spRegen":0,
 				"physicalDamage":0,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
@@ -1339,7 +1339,7 @@
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0,
 				"hpPerLevel":0,
-				"moveSpeed":2.2,				
+				"moveSpeed":2.2,
 				"aniSpeedRatio":1,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false

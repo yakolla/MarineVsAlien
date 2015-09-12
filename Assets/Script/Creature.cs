@@ -592,7 +592,7 @@ public class Creature : MonoBehaviour {
 		m_creatureProperty.BulletLength += 1f;
 		m_creatureProperty.AlphaAttackCoolTime -= 0.5f;
 
-		Vector3 scale = transform.localScale*0.5f;
+		Vector3 scale = transform.localScale*0.3f;
 		transform.localScale += scale;
 		
 		yield return new WaitForSeconds(time);

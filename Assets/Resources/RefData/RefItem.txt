@@ -1888,6 +1888,23 @@
 		}
 	},
 	{
+		"id":211,
+		"codeName":"FollowerRedLightningLauncher",
+		"type":"Weapon",
+		"icon":"Sprites/Lightning",		
+		"evolutionFiring":
+		{
+			"angle":30,
+			"delay":0
+		},
+		"weaponStat":
+		{
+			"coolTime":4,
+			"range":5,
+			"incBulletOnLevel":10
+		}
+	},
+	{
 		"id":1001,
 		"codeName":"Follower",
 		"type":"Follower",
@@ -2799,24 +2816,21 @@
 		"icon":"Sprites/ChestSuitB",
 		"partName":"body_b",
 		"defaultLock":true,
+		"maxLevel":900,
 		"levelup":
 		{
 			"conds":
 			[
 				{
 					"refItemId":1, 
-					"count":3000
-				},
-				{
-					"refItemId":5, 
-					"count":300
+					"count":100
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":300
+					"count":10
 				}
 			],
 			"optionPerLevel":
@@ -2826,8 +2840,32 @@
 					"levelPer":true,
 					"option":
 					{
+						"type":"MaxHP",
+						"values":[1]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
 						"type":"DmgReduction",						
-						"values":[0.06]
+						"values":[0.1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgReduction",						
+						"values":[0.2]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgReduction",						
+						"values":[0.3]
 					}
 				}
 			]
@@ -2841,24 +2879,21 @@
 		"icon":"Sprites/HeLmetSuitB",
 		"partName":"head_b",
 		"defaultLock":true,
+		"maxLevel":900,
 		"levelup":
 		{
 			"conds":
 			[
 				{
 					"refItemId":1, 
-					"count":5000
-				},
-				{
-					"refItemId":5, 
-					"count":500
+					"count":200
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":500
+					"count":20
 				}
 			],
 			"optionPerLevel":
@@ -2868,8 +2903,32 @@
 					"levelPer":true,
 					"option":
 					{
-						"type":"CriticalChance",
+						"type":"CriticalDamage",
 						"values":[0.1]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"CriticalChance",						
+						"values":[0.1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"CriticalChance",						
+						"values":[0.3]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"CriticalChance",
+						"values":[0.5]
 					}
 				}
 			]
@@ -2883,24 +2942,21 @@
 		"icon":"Sprites/BootsSuitB",
 		"partName":"leg_b",
 		"defaultLock":true,
+		"maxLevel":900,
 		"levelup":
 		{
 			"conds":
 			[
 				{
 					"refItemId":1, 
-					"count":6000
-				},
-				{
-					"refItemId":5, 
-					"count":600
+					"count":300
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":600
+					"count":30
 				}
 			],
 			"optionPerLevel":
@@ -2911,7 +2967,31 @@
 					"option":
 					{
 						"type":"RegenSp",
-						"values":[10]
+						"values":[1]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"MaxSP",						
+						"values":[100]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"MaxSP",						
+						"values":[300]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"MaxSP",
+						"values":[900]
 					}
 				}
 			]
@@ -2925,24 +3005,21 @@
 		"icon":"Sprites/HandsSuitB",
 		"partName":"hand_b",
 		"defaultLock":true,
+		"maxLevel":900,
 		"levelup":
 		{
 			"conds":
 			[
 				{
 					"refItemId":1, 
-					"count":7000
-				},
-				{
-					"refItemId":5, 
-					"count":700
+					"count":400
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":700
+					"count":40
 				}
 			],
 			"optionPerLevel":
@@ -2953,7 +3030,7 @@
 					"option":
 					{
 						"type":"Strength",
-						"values":[100]
+						"values":[10]
 					}
 				}
 			]
@@ -2967,24 +3044,25 @@
 		"icon":"Sprites/WingSuitB",
 		"partName":"booster_b",
 		"defaultLock":true,
+		"maxLevel":900,
 		"levelup":
 		{
 			"conds":
 			[
 				{
 					"refItemId":1, 
-					"count":8000
+					"count":10
 				},
 				{
 					"refItemId":5, 
-					"count":800
+					"count":1
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":800
+					"count":1
 				}
 			],
 			"optionPerLevel":
@@ -2994,8 +3072,32 @@
 					"levelPer":true,
 					"option":
 					{
+						"type":"MoveSpeed",
+						"values":[0.01]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
 						"type":"LifeSteal",						
 						"values":[0.03]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"LifeSteal",						
+						"values":[0.06]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"LifeSteal",
+						"values":[0.09]
 					}
 				}
 			]

@@ -109,20 +109,34 @@ public class ItemData {
 			}
 			else
 			{
-				//head = "per Lv" + op.level + ":" + op.option.type.ToString() + ":";
-				head = op.option.type.ToString() + ":";
 				optionValue = op.option.values[0]*(Level/op.level);
 			}
 
 			switch(op.option.type)
 			{
-			case Option.Weapon:
-				desc += head + RefData.Instance.RefItems[(int)optionValue].name + "</color>\n";
+			case Option.Weapon: 
+				head += RefData.Instance.RefItems[(int)optionValue].name;
+				break;
+			case Option.DmgReduction:
+				head += "Defence:";
 				break;
 			case Option.DmgMultiplier:
-				desc += head + "Damage" + ":"+ "<color=yellow>"+(optionValue*100)+"</color>" + "%</color>\n";
+				head += "Damage:";
 				break;
-			case Option.DmgReduction:						
+			default:
+				head += op.option.type.ToString() + ":";
+				break;
+			}
+
+
+
+			switch(op.option.type)
+			{
+			case Option.Weapon:
+				desc += head + "</color>\n";
+				break;
+			case Option.DmgMultiplier:
+			case Option.DmgReduction:
 			case Option.CriticalChance:
 			case Option.CriticalDamage:
 			case Option.GainExtraGold:
@@ -186,6 +200,7 @@ public class ItemData {
 			{
 			case Option.DmgMultiplier:
 				obj.m_creatureProperty.DamageRatio += optionValue;
+
 				break;
 			case Option.MoveSpeed:
 				obj.m_creatureProperty.AlphaMoveSpeed += optionValue;
