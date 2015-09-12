@@ -1911,7 +1911,7 @@
 		"icon":"Sprites/FollowerGunMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":0.7,
+		"consumedSP":0.07,
 		"followerId":30001,
 		"weaponStat":
 		{
@@ -1943,8 +1943,8 @@
 			"conds":
 			[
 				{
-					"refItemId":11, 
-					"count":7
+					"refItemId":1, 
+					"count":10
 				}
 			],
 			"else_conds":
@@ -1963,7 +1963,7 @@
 		"icon":"Sprites/FollowerFireMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":1.4,
+		"consumedSP":0.14,
 		"followerId":30002,
 		"weaponStat":
 		{
@@ -1995,15 +1995,15 @@
 			"conds":
 			[
 				{
-					"refItemId":11, 
-					"count":14
+					"refItemId":1, 
+					"count":20
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":2
 				}
 			]
 		}
@@ -2015,7 +2015,7 @@
 		"icon":"Sprites/FollowerLightningMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":2.1,
+		"consumedSP":0.21,
 		"followerId":30003,
 		"weaponStat":
 		{
@@ -2047,15 +2047,15 @@
 			"conds":
 			[
 				{
-					"refItemId":11, 
-					"count":210
+					"refItemId":1, 
+					"count":30
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":21
+					"count":3
 				}
 			]
 		}
@@ -2067,7 +2067,7 @@
 		"icon":"Sprites/FollowerRocketMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":2.8,
+		"consumedSP":0.28,
 		"followerId":30004,
 		"weaponStat":
 		{
@@ -2099,15 +2099,19 @@
 			"conds":
 			[
 				{
+					"refItemId":1, 
+					"count":40
+				},
+				{
 					"refItemId":11, 
-					"count":28
+					"count":4
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":2
+					"count":4
 				}
 			]
 		}
@@ -2119,7 +2123,7 @@
 		"icon":"Sprites/FollowerBoomerangMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":3.5,
+		"consumedSP":0.35,
 		"followerId":30005,
 		"weaponStat":
 		{
@@ -2151,15 +2155,19 @@
 			"conds":
 			[
 				{
+					"refItemId":1, 
+					"count":50
+				},
+				{
 					"refItemId":11, 
-					"count":35
+					"count":5
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":3
+					"count":5
 				}
 			]
 		}
@@ -2171,7 +2179,7 @@
 		"icon":"Sprites/FollowerGrenadeMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":4.2,
+		"consumedSP":0.42,
 		"followerId":30006,
 		"weaponStat":
 		{
@@ -2203,15 +2211,15 @@
 			"conds":
 			[
 				{
-					"refItemId":11, 
-					"count":42
+					"refItemId":1, 
+					"count":60
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":4
+					"count":6
 				}
 			]
 		}
@@ -2263,7 +2271,7 @@
 		"icon":"Sprites/FollowerMeleeMarines",
 		"maxLevel":900,
 		"defaultLock":true,
-		"consumedSP":4.9,
+		"consumedSP":0.49,
 		"followerId":30008,
 		"weaponStat":
 		{
@@ -2296,14 +2304,18 @@
 			[
 				{
 					"refItemId":11, 
-					"count":49
+					"count":70
+				},
+				{
+					"refItemId":11, 
+					"count":7
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":5
+					"count":7
 				}
 			]
 		}

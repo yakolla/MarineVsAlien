@@ -111,6 +111,7 @@ public class GUIInventorySlot : MonoBehaviour {
 		m_item.Update();
 		m_priceButton0.Update();
 		m_priceButton1.Update();
+
 	}
 
 	public void Check(bool check)
