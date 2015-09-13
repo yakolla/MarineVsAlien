@@ -407,11 +407,9 @@ public class Champ : Creature {
 		{		
 		case DamageDesc.BuffType.LevelUp:
 			DamageText(type.ToString(), Vector3.one, Color.cyan, DamageNumberSprite.MovementType.RisingUp);
-			GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "ChampLevelUp", "ChampLV:" + m_creatureProperty.Level, 0);
 			break;
 		case DamageDesc.BuffType.Macho:
 			DamageText(type.ToString(), Vector3.one, Color.cyan, DamageNumberSprite.MovementType.RisingUp);
-			GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Combo", "Combo100", 0);
 			break;		
 		}
 		return true;

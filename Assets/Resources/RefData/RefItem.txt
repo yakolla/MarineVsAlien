@@ -1943,10 +1943,6 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
 					"refItemId":11, 
 					"count":1
 				}
@@ -1955,7 +1951,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":1
 				}
 			]
 		}
@@ -1999,10 +1995,6 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":200
-				},
-				{
 					"refItemId":11, 
 					"count":2
 				}
@@ -2011,7 +2003,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":20
+					"count":2
 				}
 			]
 		}
@@ -2055,10 +2047,6 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":300
-				},
-				{
 					"refItemId":11, 
 					"count":3
 				}
@@ -2067,7 +2055,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":30
+					"count":3
 				}
 			]
 		}
@@ -2112,7 +2100,7 @@
 			[
 				{
 					"refItemId":1, 
-					"count":400
+					"count":40
 				},
 				{
 					"refItemId":11, 
@@ -2123,7 +2111,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":40
+					"count":4
 				}
 			]
 		}
@@ -2168,7 +2156,7 @@
 			[
 				{
 					"refItemId":1, 
-					"count":500
+					"count":50
 				},
 				{
 					"refItemId":11, 
@@ -2224,7 +2212,7 @@
 			[
 				{
 					"refItemId":1, 
-					"count":600
+					"count":60
 				},
 				{
 					"refItemId":11, 
@@ -2320,7 +2308,7 @@
 			[
 				{
 					"refItemId":11, 
-					"count":700
+					"count":70
 				},
 				{
 					"refItemId":11, 
@@ -2989,37 +2977,14 @@
 			],
 			"optionPerLevel":
 			[				
+						
 				{
 					"level":1,
 					"levelPer":true,
 					"option":
 					{
-						"type":"RegenSp",
-						"values":[1]
-					}
-				},
-				{
-					"level":100,
-					"option":
-					{
-						"type":"MaxSP",						
-						"values":[100]
-					}
-				},
-				{
-					"level":300,
-					"option":
-					{
-						"type":"MaxSP",						
-						"values":[300]
-					}
-				},
-				{
-					"level":900,
-					"option":
-					{
-						"type":"MaxSP",
-						"values":[900]
+						"type":"Strength",
+						"values":[10]
 					}
 				}
 			]
@@ -3051,14 +3016,38 @@
 				}
 			],
 			"optionPerLevel":
-			[				
+			[		
 				{
 					"level":1,
 					"levelPer":true,
 					"option":
 					{
-						"type":"Strength",
-						"values":[10]
+						"type":"RegenSp",
+						"values":[1]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"MaxSP",
+						"values":[100]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"MaxSP",						
+						"values":[300]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"MaxSP",
+						"values":[900]
 					}
 				}
 			]

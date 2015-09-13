@@ -140,5 +140,10 @@ public class DamageNumberSprite : MonoBehaviour {
 	{
 		GameObjectPool.Instance.Free(gameObject);
 	}
+
+	public float Duration
+	{
+		set{m_duration = value;}
+	}
 }
 

@@ -93,6 +93,7 @@ public class Follower : Creature {
 			{
 				float ori = m_creatureProperty.BetaMoveSpeed;
 				m_creatureProperty.BetaMoveSpeed -= 1f;
+				ApplyZzz(5f);
 				yield return new WaitForSeconds(5f);
 
 				m_creatureProperty.BetaMoveSpeed += 1f;

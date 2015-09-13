@@ -27,6 +27,7 @@ public class DamageDesc {
 		Dash,
 		DamageMultiply,
 		Healing,
+		Zzz,
 		Count,
 	}
 

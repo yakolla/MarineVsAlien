@@ -756,7 +756,6 @@ public class ChampAbilityGUI : MonoBehaviour {
 		Ability ability = m_abilitySlots[slot];
 
 		ability.m_functor();
-		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Ability", ability.m_name, 0);
 		RandomAbility(true);
 	
 	}

@@ -82,7 +82,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGrenadeMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
-				
+				/*
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
 				//Warehouse.Instance.PushItem(new ItemStatData(2001));
@@ -93,7 +93,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2008));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
 				Warehouse.Instance.PushItem(new ItemStatData(2007));
-
+*/
 
 				Warehouse.Instance.PushItem(new ItemSkillData(21));
 				Warehouse.Instance.PushItem(new ItemSkillData(22));
@@ -101,9 +101,9 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemSkillData(24));
 
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3001));
-				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3002));
-				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3003));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3004));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3003));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3002));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3005));
 
 				if (m_eqipedAllItem == true)
@@ -154,7 +154,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGrenadeMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
-
+				/*
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
 				//Warehouse.Instance.PushItem(new ItemStatData(2001));
@@ -165,7 +165,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2008));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
 				Warehouse.Instance.PushItem(new ItemStatData(2007));
-
+*/
 
 				Warehouse.Instance.PushItem(new ItemSkillData(21));
 				Warehouse.Instance.PushItem(new ItemSkillData(22));
@@ -173,9 +173,9 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemSkillData(24));
 
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3001));
-				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3002));
-				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3003));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3004));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3003));
+				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3002));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3005));
 			}
 		}
@@ -390,7 +390,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_generalInfoPanel.SetChamp(m_champ);
 		m_spawn.StartWave(Warehouse.Instance.WaveIndex, champ);
 
-		GPlusPlatform.Instance.AnalyticsTrackEvent("Start", "Setting", "Stage:"+Warehouse.Instance.WaveIndex, 0);
+		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Play", "Retry:"+Warehouse.Instance.RetryCount, 0);
 		
 		champObj.SetActive(false);
 

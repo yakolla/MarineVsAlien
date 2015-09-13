@@ -633,6 +633,19 @@ public class Creature : MonoBehaviour {
 
 	}
 
+	IEnumerator EffectZzz(float time)
+	{
+		float timeout = Time.time+time;
+		while(Time.time < timeout)
+		{
+			DamageNumberSprite sprite = DamageText("Zzz...", Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
+			sprite.Duration = time;
+			yield return new WaitForSeconds(time);
+		}
+		
+		m_buffEffects[(int)DamageDesc.BuffType.Zzz].m_run = false;
+	}
+
 	void ApplyDamageEffect(DamageDesc.Type type, GameObject prefEffect)
 	{
 		if (prefEffect == null)
@@ -691,6 +704,9 @@ public class Creature : MonoBehaviour {
 		case DamageDesc.BuffType.Healing:
 			StartCoroutine(EffectHealing(time, damageDesc.DamageRatio));
 			break;
+		case DamageDesc.BuffType.Zzz:
+			StartCoroutine(EffectZzz(time));
+			break;
 		}
 
 		return true;
@@ -732,6 +748,15 @@ public class Creature : MonoBehaviour {
 			return false;
 		
 		ApplyBuff(null, DamageDesc.BuffType.Macho, 5f, null);
+		return true;
+	}
+
+	public bool ApplyZzz(float time)
+	{
+		if (m_buffEffects[(int)DamageDesc.BuffType.Zzz].m_run == true)
+			return false;
+		
+		ApplyBuff(null, DamageDesc.BuffType.Zzz, time, null);
 		return true;
 	}
 	
