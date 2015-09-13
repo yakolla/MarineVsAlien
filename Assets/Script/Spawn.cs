@@ -52,7 +52,8 @@ public class Spawn : MonoBehaviour {
 		m_dropShip = transform.parent.Find("dropship").GetComponent<DropShip>();
 		m_edgeRect = transform.Find("EdgeRect").GetComponent<BoxCollider>();
 
-		m_followingCamera = Camera.main.GetComponent<FollowingCamera>();
+		m_followingCamera = Camera.main.GetComponentInChildren<FollowingCamera>();
+		m_followingCamera.SetMainTarget(m_dropShip.gameObject);
 
 		m_dungeon = transform.parent.GetComponent<Dungeon>();
 		int dungeonId = m_dungeon.DungeonId;

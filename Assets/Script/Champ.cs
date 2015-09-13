@@ -40,7 +40,6 @@ public class Champ : Creature {
 
 		ApplyGameOptions();
 
-		SetFollowingCamera(null);
 		FollowingCamera followingCamera = Camera.main.GetComponentInChildren<FollowingCamera>();
 		followingCamera.SetMainTarget(gameObject);
 

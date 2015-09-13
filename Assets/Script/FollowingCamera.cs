@@ -32,6 +32,7 @@ public class FollowingCamera : MonoBehaviour
 	public void SetMainTarget(GameObject mainTarget)
 	{
 		m_mainTarget = mainTarget;
+		SetTarget(m_mainTarget, null);
 	}
 
 	void Start()
@@ -56,7 +57,7 @@ public class FollowingCamera : MonoBehaviour
 			return;
 		}
 
-		m_elapsedTime += Time.deltaTime;
+		m_elapsedTime += Time.deltaTime*0.6f;
 
 		Vector3 myCharacterPosition = Vector3.Lerp(m_from, m_target.transform.position-m_cameraOffset, Mathf.Min(1f, m_elapsedTime));
 		myCharacterPosition.x = Mathf.Clamp(myCharacterPosition.x, m_cameraEdge.x, m_cameraEdge.width);

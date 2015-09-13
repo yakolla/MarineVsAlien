@@ -9,7 +9,6 @@ public class OptionGUI : MonoBehaviour {
 	ADMob					m_admob;
 	Slider					m_sfxVolume;
 	Slider					m_bgmVolume;
-	Toggle					m_autoTarget;
 
 	void Start () {
 
@@ -17,11 +16,9 @@ public class OptionGUI : MonoBehaviour {
 
 		m_sfxVolume = transform.Find("SFXGUI/Slider").gameObject.GetComponent<Slider>();
 		m_bgmVolume = transform.Find("BGMGUI/Slider").gameObject.GetComponent<Slider>();
-		m_autoTarget = transform.Find("Auto Target").gameObject.GetComponent<Toggle>();
 
 		m_sfxVolume.value = Warehouse.Instance.GameOptions.m_sfxVolume;
 		m_bgmVolume.value = Warehouse.Instance.GameOptions.m_bgmVolume;
-		m_autoTarget.isOn = Warehouse.Instance.GameOptions.m_autoTarget;
 
 	}
 
@@ -49,14 +46,6 @@ public class OptionGUI : MonoBehaviour {
 		AudioListener.volume = m_sfxVolume.value;
 		Warehouse.Instance.GameOptions.m_sfxVolume = m_sfxVolume.value;
 	}
-
-	public void OnToggleAutoTarget()
-	{
-		Warehouse.Instance.GameOptions.m_autoTarget = m_autoTarget.isOn;
-		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Options", "Autotarget"+m_autoTarget.isOn, 0);
-	}
-
-
 
 	public void OnClickOk()
 	{
