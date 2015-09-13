@@ -41,8 +41,8 @@ public class ItemData {
 		MaxHp,
 		MaxSp,
 		RegenSp,
-		CriticalChance,
-		CriticalDamage,
+		Critical,
+		CriticalDmg,
 		GainExtraGold,
 		LifeSteal,
 		Count
@@ -137,8 +137,8 @@ public class ItemData {
 				break;
 			case Option.DmgMultiplier:
 			case Option.DmgReduction:
-			case Option.CriticalChance:
-			case Option.CriticalDamage:
+			case Option.Critical:
+			case Option.CriticalDmg:
 			case Option.GainExtraGold:
 			case Option.LifeSteal:
 				desc += head + "<color=yellow>"+(optionValue*100)+"</color>" + "%</color>\n";
@@ -240,10 +240,10 @@ public class ItemData {
 			case Option.TapDamage:
 				obj.m_creatureProperty.TapDamage += (int)optionValue;
 				break;
-			case Option.CriticalChance:
+			case Option.Critical:
 				obj.m_creatureProperty.AlphaCriticalChance += optionValue;
 				break;
-			case Option.CriticalDamage:
+			case Option.CriticalDmg:
 				obj.m_creatureProperty.AlphaCriticalDamage += optionValue;
 				break;
 			case Option.LifeSteal:

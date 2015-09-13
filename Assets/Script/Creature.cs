@@ -192,8 +192,9 @@ public class Creature : MonoBehaviour {
 		*/
 		Vector3 gunPoint = transform.position;
 		float targetHorAngle = Mathf.Atan2(pos.z-gunPoint.z, pos.x-gunPoint.x) * Mathf.Rad2Deg;
-		transform.eulerAngles = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, -targetHorAngle, 0)), m_creatureProperty.RotationSpeedRatio*Time.deltaTime).eulerAngles;
-
+		//transform.eulerAngles = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, -targetHorAngle, 0)), m_creatureProperty.RotationSpeedRatio*Time.deltaTime).eulerAngles;
+		transform.eulerAngles = Quaternion.Euler(new Vector3(0, -targetHorAngle, 0)).eulerAngles;
+		Debug.Log(transform.eulerAngles);
 		return targetHorAngle;
 	}
 

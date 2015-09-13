@@ -291,6 +291,9 @@ public class Champ : Creature {
 			foreach(RaycastHit hit in hits )
 			{
 				Creature target = hit.transform.GetComponent<Creature>();
+				if (null == WeaponHolder.MainWeapon && target != null)
+					RotateToTarget(target.transform.position);
+
 				if (target != null && IsEnemy(target, this))
 				{
 					target.TakeDamage(this, new DamageDesc(m_creatureProperty.TapDamage, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));

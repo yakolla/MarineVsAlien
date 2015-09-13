@@ -677,7 +677,7 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":1000
 				},
 				{
 					"refItemId":5, 
@@ -735,18 +735,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10000
+					"count":30000
 				},
 				{
 					"refItemId":5, 
-					"count":100
+					"count":300
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":100
+					"count":300
 				}
 			]
 		}
@@ -1922,8 +1922,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":7000
+					"refItemId":5,
+					"count":70
 				},
 				{
 					"refItemId":11, 
@@ -1944,14 +1944,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":10
+					"count":100
+				},
+				{
+					"refItemId":11, 
+					"count":1
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":1
+					"count":10
 				}
 			]
 		}
@@ -1974,8 +1978,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":14000
+					"refItemId":5,
+					"count":140
 				},
 				{
 					"refItemId":11, 
@@ -1996,14 +2000,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":20
+					"count":200
+				},
+				{
+					"refItemId":11, 
+					"count":2
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":2
+					"count":20
 				}
 			]
 		}
@@ -2026,8 +2034,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":21000
+					"refItemId":5,
+					"count":210
 				},
 				{
 					"refItemId":11, 
@@ -2038,7 +2046,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":2100
+					"count":210
 				}
 			]
 		},
@@ -2048,14 +2056,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":30
+					"count":300
+				},
+				{
+					"refItemId":11, 
+					"count":3
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":3
+					"count":30
 				}
 			]
 		}
@@ -2078,8 +2090,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":28000
+					"refItemId":5,
+					"count":280
 				},
 				{
 					"refItemId":11, 
@@ -2100,7 +2112,7 @@
 			[
 				{
 					"refItemId":1, 
-					"count":40
+					"count":400
 				},
 				{
 					"refItemId":11, 
@@ -2111,7 +2123,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":4
+					"count":40
 				}
 			]
 		}
@@ -2134,8 +2146,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":35000
+					"refItemId":5,
+					"count":350
 				},
 				{
 					"refItemId":11, 
@@ -2156,7 +2168,7 @@
 			[
 				{
 					"refItemId":1, 
-					"count":50
+					"count":500
 				},
 				{
 					"refItemId":11, 
@@ -2167,7 +2179,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":5
+					"count":50
 				}
 			]
 		}
@@ -2190,8 +2202,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":42000
+					"refItemId":5,
+					"count":420
 				},
 				{
 					"refItemId":11, 
@@ -2212,14 +2224,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":60
+					"count":600
+				},
+				{
+					"refItemId":11, 
+					"count":6
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":6
+					"count":60
 				}
 			]
 		}
@@ -2282,8 +2298,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":49000
+					"refItemId":5,
+					"count":490
 				},
 				{
 					"refItemId":11, 
@@ -2294,7 +2310,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":49
+					"count":490
 				}
 			]
 		},
@@ -2304,7 +2320,7 @@
 			[
 				{
 					"refItemId":11, 
-					"count":70
+					"count":700
 				},
 				{
 					"refItemId":11, 
@@ -2315,7 +2331,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":7
+					"count":70
 				}
 			]
 		}
@@ -2472,7 +2488,7 @@
 		"id":2003,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/StatCriticalChance",
+		"icon":"Sprites/StatCritical",
 		"maxLevel":100,
 		"defaultLock":true,
 		"unlock":
@@ -2519,7 +2535,7 @@
 					"levelPer":true,
 					"option":
 					{
-						"type":"CriticalChance",
+						"type":"Critical",
 						"values":[0.01]
 					}
 				}
@@ -2588,7 +2604,7 @@
 		"id":2005,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/StatCriticalDamage",
+		"icon":"Sprites/StatCriticalDmg",
 		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":
@@ -2635,7 +2651,7 @@
 					"levelPer":true,
 					"option":
 					{
-						"type":"CriticalDamage",
+						"type":"CriticalDmg",
 						"values":[0.1]
 					}
 				}
@@ -2915,7 +2931,7 @@
 					"levelPer":true,
 					"option":
 					{
-						"type":"CriticalDamage",
+						"type":"CriticalDmg",
 						"values":[0.1]
 					}
 				},
@@ -2923,7 +2939,7 @@
 					"level":100,
 					"option":
 					{
-						"type":"CriticalChance",						
+						"type":"Critical",						
 						"values":[0.1]
 					}
 				},
@@ -2931,7 +2947,7 @@
 					"level":300,
 					"option":
 					{
-						"type":"CriticalChance",						
+						"type":"Critical",						
 						"values":[0.3]
 					}
 				},
@@ -2939,7 +2955,7 @@
 					"level":900,
 					"option":
 					{
-						"type":"CriticalChance",
+						"type":"Critical",
 						"values":[0.5]
 					}
 				}

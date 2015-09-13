@@ -593,7 +593,13 @@ public class Spawn : MonoBehaviour {
 						break;
 					case ItemData.Type.WeaponParts:
 						if (m_champ != null && m_champ.WeaponHolder.MainWeapon != null)
-							item = new ItemWeaponPartsData(desc.refItemId);					
+						{
+							ItemObject hasItem = Warehouse.Instance.FindItem(desc.refItemId);
+							if (hasItem == null)
+								item = new ItemWeaponPartsData(desc.refItemId);
+							else if (hasItem != null && hasItem.Item.Level < hasItem.Item.RefItem.maxLevel)
+								item = new ItemWeaponPartsData(desc.refItemId);
+						}
 						break;					
 					case ItemData.Type.WeaponDNA:
 						item = new ItemWeaponDNAData(desc.refItem.id);					
