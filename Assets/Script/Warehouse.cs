@@ -14,6 +14,7 @@ public class WarehouseData
 	public Dictionary<ItemData.Type, List<ItemObject>>	m_items = new Dictionary<ItemData.Type, List<ItemObject>>();
 	
 	public SecuredType.XInt	m_waveIndex = 0;
+	public SecuredType.XInt	m_retryCount = 0;
 	public SecuredType.XInt	m_alienEssence = 0;
 	public SecuredType.XInt	m_gold = 0;
 	public SecuredType.XInt	m_goldMedal = 0;
@@ -395,6 +396,12 @@ public class Warehouse {
 			m_warehouseData.m_waveIndex.Value = value;
 			NewGameStats.WaveIndex = value;
 		}
+	}
+
+	public int RetryCount
+	{
+		get {return m_warehouseData.m_retryCount.Value;}
+		set{m_warehouseData.m_retryCount.Value = value;}
 	}
 
 	public int AutoEarnGold
