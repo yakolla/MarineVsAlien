@@ -49,7 +49,7 @@ public class ItemWeaponData : ItemData{
 		string desc = base.Description();
 		
 		if (m_weapon != null)
-			desc += "Dmg:" + m_weapon.Damage;
+			desc += RefData.Instance.RefTexts(MultiLang.ID.Damage) + ":" + m_weapon.Damage;
 		
 		return desc;
 	}
