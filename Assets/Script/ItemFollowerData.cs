@@ -58,7 +58,7 @@ public class ItemFollowerData : ItemData{
 	
 	override protected string itemName()
 	{
-		return RefData.Instance.RefMobs[RefItem.followerId].name;
+		return RefData.Instance.RefTexts(RefData.Instance.RefMobs[RefItem.followerId].name);
 	}
 
 	override public string Description()
@@ -66,7 +66,7 @@ public class ItemFollowerData : ItemData{
 		string desc = base.Description();
 
 		if (m_follower != null)
-			desc += "Dmg:" + m_follower.WeaponHolder.MainWeapon.Damage;
+			desc += RefData.Instance.RefTexts(MultiLang.ID.Damage) + ":" + m_follower.WeaponHolder.MainWeapon.Damage;
 
 		return desc;
 	}

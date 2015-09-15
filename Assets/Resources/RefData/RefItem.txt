@@ -26,7 +26,6 @@
 	{
 		"id":5,
 		"codeName":"GoldMedal",
-		"name":"Gold Medal",
 		"type":"GoldMedal",
 		"icon":"Sprites/GoldMedal"
 	},
@@ -70,13 +69,13 @@
 	{
 		"id":11,
 		"codeName":"AlienEssence",		
-		"name":"Alien Essence",
 		"type":"AlienEssence",
 		"icon":"Sprites/Kill"
 	},
 	{
 		"id":21,
 		"codeName":"NuclearSkill",
+		"name":"NuclearSkill",
 		"type":"Skill",
 		"icon":"Sprites/dash-skill",
 		"defaultLock":true,
@@ -132,6 +131,7 @@
 		"id":22,
 		"codeName":"MachoSkill",
 		"type":"Skill",
+		"name":"MachoSkill",
 		"icon":"Sprites/ComboSkill",
 		"defaultLock":true,
 		"weaponStat":
@@ -185,6 +185,7 @@
 		"id":23,
 		"codeName":"HealSkill",
 		"type":"Skill",
+		"name":"HealSkill",
 		"icon":"Sprites/LevelUp",
 		"defaultLock":true,
 		"weaponStat":
@@ -237,6 +238,7 @@
 	{
 		"id":24,
 		"codeName":"DamageMultiplySkill",
+		"name":"DamageMultiplySkill",
 		"type":"Skill",
 		"icon":"Sprites/LevelUp",
 		"defaultLock":true,
@@ -389,7 +391,6 @@
 	{
 		"id":101,
 		"codeName":"ChampFiregun",
-		"name":"Flamethrower",
 		"type":"Weapon",
 		"icon":"Sprites/Firegun",
 		"defaultLock":true,
@@ -466,7 +467,6 @@
 	{
 		"id":102,
 		"codeName":"ChampLightningLauncher",
-		"name":"Lightning Gun",
 		"type":"Weapon",
 		"icon":"Sprites/LightningBolt",
 		"defaultLock":true,
@@ -655,7 +655,7 @@
 	{
 		"id":106,
 		"codeName":"ChampGuidedRocketLauncher",
-		"name":"Missile Launcher",
+		"name":"MissileLauncher",
 		"type":"Weapon",
 		"icon":"Sprites/RocketLauncher",
 		"defaultLock":true,
@@ -792,7 +792,7 @@
 	{
 		"id":108,
 		"codeName":"ChampGun",
-		"name":"Machine Gun",
+		"name":"MachineGun",
 		"type":"Weapon",
 		"icon":"Sprites/Gun",
 		"partName":"gun_a",
@@ -925,7 +925,6 @@
 	{
 		"id":111,
 		"codeName":"ChampRocketLauncher",
-		"name":"Rocket Launcher",
 		"type":"Weapon",
 		"icon":"Sprites/RocketLauncher",
 		"defaultLock":true,
@@ -998,7 +997,6 @@
 	{
 		"id":112,
 		"codeName":"MineLauncher",
-		"name":"Mine",
 		"type":"Weapon",
 		"icon":"Sprites/swordoftruth",
 		"weaponStat":
@@ -1033,7 +1031,6 @@
 	{
 		"id":114,
 		"codeName":"ChampTornadoLauncher",
-		"name":"Tornado Launcher",
 		"type":"Weapon",
 		"icon":"Sprites/Tornado",
 		"evolutionFiring":
@@ -1293,7 +1290,6 @@
 	{
 		"id":120,
 		"codeName":"ChampBoomerangLauncher",
-		"name":"Boomerang Launcher",
 		"type":"Weapon",
 		"icon":"Sprites/Boomerang",
 		"defaultLock":true,
@@ -1574,7 +1570,7 @@
 	{
 		"id":129,
 		"codeName":"ExplosionPassiveLauncher",
-		"name":"Shock Wave",
+		"name":"ShockWave",
 		"type":"Weapon",
 		"icon":"Sprites/Explosion",		
 		"weaponStat":
@@ -1603,7 +1599,6 @@
 	{
 		"id":131,
 		"codeName":"ChampGrenadeLauncher",
-		"name":"Grenade",
 		"type":"Weapon",
 		"icon":"Sprites/Grenade",
 		"weaponStat":
@@ -1615,7 +1610,6 @@
 	{
 		"id":132,
 		"codeName":"MineLauncher",
-		"name":"Embers",
 		"type":"Weapon",
 		"icon":"Sprites/swordoftruth",
 		"weaponStat":
@@ -1627,7 +1621,7 @@
 	{
 		"id":133,
 		"codeName":"NuclearLauncher",
-		"name":"Nuclear",
+		"name":"NuclearSkill",
 		"type":"Weapon",
 		"icon":"Sprites/Grenade",		
 		"weaponStat":
@@ -1644,7 +1638,7 @@
 	{
 		"id":134,
 		"codeName":"SummonMobLauncher",
-		"name":"Auto tracking Drone",
+		"name":"AutoTrackingDrone",
 		"type":"Weapon",
 		"icon":"Sprites/SummonMob",		
 		"evolutionFiring":
@@ -1662,7 +1656,7 @@
 	{
 		"id":135,
 		"codeName":"BurningAgonyLauncher",
-		"name":"Burning Aura",
+		"name":"BurningAura",
 		"type":"Weapon",
 		"icon":"Sprites/BurningAgony",		
 		"weaponStat":
@@ -2232,7 +2226,7 @@
 		"id":1007,
 		"codeName":"Follower",
 		"type":"Follower",
-		"name":"Pet II-2",
+		"name":"PetII",
 		"desc":"Thanks, I'll take my pick up any item",
 		"icon":"Sprites/FollowerPet",
 		"maxLevel":9,
@@ -2827,7 +2821,7 @@
 	{
 		"id":3001,
 		"codeName":"WeaponParts",
-		"name":"Chest Suit B",
+		"name":"ChestSuitB",
 		"type":"WeaponParts",
 		"icon":"Sprites/ChestSuitB",
 		"partName":"body_b",
@@ -2890,7 +2884,7 @@
 	{
 		"id":3002,
 		"codeName":"WeaponParts",
-		"name":"Helmet Suit B",
+		"name":"HelmetSuitB",
 		"type":"WeaponParts",
 		"icon":"Sprites/HeLmetSuitB",
 		"partName":"head_b",
@@ -2953,7 +2947,7 @@
 	{
 		"id":3003,
 		"codeName":"WeaponParts",
-		"name":"Boots Suit B",
+		"name":"BootsSuitB",
 		"type":"WeaponParts",
 		"icon":"Sprites/BootsSuitB",
 		"partName":"leg_b",
@@ -2993,7 +2987,7 @@
 	{
 		"id":3004,
 		"codeName":"WeaponParts",
-		"name":"Hands Suit B",
+		"name":"HandsSuitB",
 		"type":"WeaponParts",
 		"icon":"Sprites/HandsSuitB",
 		"partName":"hand_b",
@@ -3056,7 +3050,7 @@
 	{
 		"id":3005,
 		"codeName":"WeaponParts",
-		"name":"Wing Suit B",
+		"name":"WingSuitB",
 		"type":"WeaponParts",
 		"icon":"Sprites/WingSuitB",
 		"partName":"booster_b",

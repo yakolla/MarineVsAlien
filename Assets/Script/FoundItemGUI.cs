@@ -20,7 +20,7 @@ public class FoundItemGUI : MonoBehaviour {
 		m_name = new YGUISystem.GUILable(transform.Find("Text").gameObject);
 
 		m_button.Icon.Image = m_itemObj.ItemIcon;
-		m_button.Lable.Text.text = m_itemObj.Item.RefItem.name;
+		m_button.Lable.Text.text = RefData.Instance.RefTexts(m_itemObj.Item.RefItem.name);
 		m_name.Text.text = m_itemObj.Item.RefItem.desc;
 	}
 
@@ -42,7 +42,7 @@ public class FoundItemGUI : MonoBehaviour {
 		if (m_button != null)
 		{
 			m_button.Icon.Image = m_itemObj.ItemIcon;
-			m_button.Lable.Text.text = m_itemObj.Item.RefItem.name;
+			m_button.Lable.Text.text = RefData.Instance.RefTexts(m_itemObj.Item.RefItem.name);
 			m_name.Text.text = m_itemObj.Item.RefItem.desc;
 		}
 	}

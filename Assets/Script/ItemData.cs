@@ -72,7 +72,7 @@ public class ItemData {
 	virtual protected string itemName()
 	{
 		if (RefItem.name != null)
-			return RefItem.name;
+			return RefData.Instance.RefTexts(RefItem.name);
 
 		return RefItem.codeName;
 	}
@@ -115,13 +115,43 @@ public class ItemData {
 			switch(op.option.type)
 			{
 			case Option.Weapon: 
-				head += RefData.Instance.RefItems[(int)optionValue].name;
+				head += RefData.Instance.RefTexts(RefData.Instance.RefItems[(int)optionValue].name);
 				break;
 			case Option.DmgReduction:
-				head += "Defence:";
+				head += RefData.Instance.RefTexts(MultiLang.ID.Deffence) + ":";
 				break;
 			case Option.DmgMultiplier:
-				head += "Damage:";
+				head += RefData.Instance.RefTexts(MultiLang.ID.DamageMultiplier) + ":";
+				break;
+			case Option.Critical:
+				head += RefData.Instance.RefTexts(MultiLang.ID.CriticalChance) + ":";
+				break;
+			case Option.CriticalDmg:
+				head += RefData.Instance.RefTexts(MultiLang.ID.CriticalDamage) + ":";
+				break;
+			case Option.GainExtraGold:
+				head += RefData.Instance.RefTexts(MultiLang.ID.GainExtraGold) + ":";
+				break;
+			case Option.LifeSteal:
+				head += RefData.Instance.RefTexts(MultiLang.ID.LifeSteal) + ":";
+				break;
+			case Option.MaxHp:
+				head += RefData.Instance.RefTexts(MultiLang.ID.MaxHP) + ":";
+				break;
+			case Option.MaxSp:
+				head += RefData.Instance.RefTexts(MultiLang.ID.MaxSP) + ":";
+				break;
+			case Option.MoveSpeed:
+				head += RefData.Instance.RefTexts(MultiLang.ID.MoveSpeed) + ":";
+				break;
+			case Option.RegenSp:
+				head += RefData.Instance.RefTexts(MultiLang.ID.RegenSP) + ":";
+				break;
+			case Option.Strength:
+				head += RefData.Instance.RefTexts(MultiLang.ID.Strength) + ":";
+				break;
+			case Option.TapDamage:
+				head += RefData.Instance.RefTexts(MultiLang.ID.TapDamage) + ":";
 				break;
 			default:
 				head += op.option.type.ToString() + ":";

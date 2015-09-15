@@ -1076,7 +1076,7 @@
 			"id":30001,
 			"prefHead":"Follower",
 			"prefBody":"robogun_skin",
-			"name":"Gun Marine",
+			"name":"GunMarine",
 			"refWeaponItems":
 			[
 				{
@@ -1110,7 +1110,7 @@
 			"id":30002,
 			"prefHead":"Follower",
 			"prefBody":"robofire_skin",
-			"name":"Fire Marines",
+			"name":"FireMarine",
 			"refWeaponItems":
 			[
 				{
@@ -1141,7 +1141,7 @@
 			"id":30003,			
 			"prefHead":"Follower",
 			"prefBody":"thunder_skin",
-			"name":"Bat Marines",
+			"name":"BatMarine",
 			"refWeaponItems":
 			[
 				{
@@ -1175,7 +1175,7 @@
 			"id":30004,
 			"prefHead":"Follower",
 			"prefBody":"robocrash_skin",
-			"name":"Rocket Marines",
+			"name":"RocketMarine",
 			"refWeaponItems":
 			[
 				{
@@ -1206,7 +1206,7 @@
 			"id":30005,
 			"prefHead":"Follower",
 			"prefBody":"roboboomerang_skin",
-			"name":"Boomerang Marines",
+			"name":"BoomerangMarine",
 			"refWeaponItems":
 			[
 				{
@@ -1236,7 +1236,7 @@
 			"id":30006,			
 			"prefHead":"Follower",
 			"prefBody":"robogrenade_skin",
-			"name":"Grenade Marines",
+			"name":"GrenadeMarine",
 			"refWeaponItems":
 			[
 				{
@@ -1295,7 +1295,7 @@
 			"id":30008,			
 			"prefHead":"Follower",
 			"prefBody":"marine_skin",
-			"name":"Sword Marines",
+			"name":"SwordMarine",
 			"refWeaponItems":
 			[
 				{

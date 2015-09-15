@@ -198,8 +198,11 @@ public class ChampSettingGUI : MonoBehaviour {
 
 
 		m_tabs[0] = new YGUISystem.GUIButton(transform.Find("WeaponTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedWeaponTab && m_champ != null && m_champ.gameObject.activeSelf;});
+		m_tabs[0].Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Weapon);
 		m_tabs[1] = new YGUISystem.GUIButton(transform.Find("SkillTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedSkillTab && m_champ != null && m_champ.gameObject.activeSelf;});
+		m_tabs[1].Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Skill);
 		m_tabs[2] = new YGUISystem.GUIButton(transform.Find("FollowerTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedFollowerTab && m_champ != null && m_champ.gameObject.activeSelf;});
+		m_tabs[2].Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Follower);
 		//m_tabs[3] = new YGUISystem.GUIButton(transform.Find("StatTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedStatTab && m_champ != null && m_champ.gameObject.activeSelf;});
 
 		m_weaponPanel = settingItemList("WeaponPanel", new ItemData.Type[]{ItemData.Type.Weapon, ItemData.Type.WeaponParts});

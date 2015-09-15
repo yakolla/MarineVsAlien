@@ -19,7 +19,7 @@ public class ItemWeaponData : ItemData{
 
 	public string WeaponName
 	{
-		get{return RefItem.name;}
+		get{return RefData.Instance.RefTexts(RefItem.name);}
 	}
 
 

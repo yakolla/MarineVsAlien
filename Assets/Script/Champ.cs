@@ -285,6 +285,9 @@ public class Champ : Creature {
 		bool hitted = false;
 		for (int i = 0; i < touchedCount; ++i) 
 		{
+
+			StartCoroutine(EffectTouch(Camera.main.ScreenToWorldPoint(touchPos[i])));
+
 			Ray ray = Camera.main.ScreenPointToRay( touchPos[i] );
 			RaycastHit[] hits;
 			hits = Physics.RaycastAll(ray, Mathf.Infinity, 1<<9 | 1<<10 | 1<<11);
@@ -364,7 +367,19 @@ public class Champ : Creature {
 		return dmg;
 	}
 
+	IEnumerator EffectTouch(Vector3 pos)
+	{
+		GameObject ef = Resources.Load("Pref/ef_touch") as GameObject;
+		pos.z = transform.position.z;
+		pos.y -= 1.5f;
+		GameObject obj = GameObjectPool.Instance.Alloc(ef, pos, ef.transform.rotation);
+		while(obj.particleSystem.isPlaying)
+		{
+			yield return null;
+		}
+		GameObjectPool.Instance.Free(obj);
 
+	}
 
 	override public void Death()
 	{

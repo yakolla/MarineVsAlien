@@ -131,7 +131,8 @@ public class RefItem : RefBaseData
 	[JsonProperty (ItemConverterType = typeof(StringEnumConverter))]
 	public 	ItemData.Type 		type;
 	public 	string 				codeName;
-	public 	string 				name;
+	[JsonProperty (ItemConverterType = typeof(StringEnumConverter))]
+	public 	MultiLang.ID		name;
 	public  string				desc;
 	public	string				icon;
 	public 	string				partName;
@@ -218,7 +219,8 @@ public class RefMob : RefBaseData
 	}
 	public string				prefHead = "mob";
 	public string				prefBody;
-	public string				name;
+	[JsonProperty (ItemConverterType = typeof(StringEnumConverter))]
+	public 	MultiLang.ID		name;
 	public WeaponDesc[]			refWeaponItems;
 	public bool					nearByChampOnSpawn;
 	public RefEggMob			eggMob;
@@ -336,7 +338,7 @@ public class RefData {
 
 	void Load()
 	{
-		Deserialize(ref m_texts, "en/MultiLang");
+		Deserialize(ref m_texts, "ko/MultiLang");
 
 		DeserializeArray(m_refWorldMaps, "RefWorldMap");
 		Deserialize(ref m_refMobClass, "RefMob");
@@ -500,10 +502,9 @@ public class RefData {
 		get {return m_refMobClass.skilled;}
 	}
 
-	public string[] RefTexts
+	public string RefTexts(MultiLang.ID id)
 	{
-		get {
-			return m_texts;
-		}
+		return m_texts[(int)id];
+
 	}
 }
