@@ -182,7 +182,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 		}
 		));
 */
-		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefItems[Const.EmbersRefItemId].name, 
+		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefTexts(RefData.Instance.RefItems[Const.EmbersRefItemId].name), 
 		                            ()=>{
 			Weapon weapon = m_champ.WeaponHolder.MainWeapon.GetSubWeapon();
 			int backup = 1;
@@ -268,7 +268,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 		}
 
 
-		skillAbili.Add(new Ability(0.3f, "Fill " + (m_champ.WeaponHolder.MainWeapon.WeaponStat.skillId > 0 ? RefData.Instance.RefItems[m_champ.WeaponHolder.MainWeapon.WeaponStat.skillId].name : ""), 
+		skillAbili.Add(new Ability(0.3f, "Fill " + (m_champ.WeaponHolder.MainWeapon.WeaponStat.skillId > 0 ? RefData.Instance.RefTexts(RefData.Instance.RefItems[m_champ.WeaponHolder.MainWeapon.WeaponStat.skillId].name) : ""), 
 		                           ()=>{
 			int backup = m_champ.NuclearSkillStack+3;
 			return (m_champ.NuclearSkillStack) + " -> " + "<color=yellow>" + (backup) + "</color>";
@@ -292,7 +292,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 			--m_champ.RemainStatPoint;
 		}));
 
-		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefItems[131].name, 
+		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefTexts(RefData.Instance.RefItems[131].name), 
 		                            ()=>{
 			Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(131);
 			int backup = 1;
@@ -342,7 +342,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 		}
 		));
 
-		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefItems[134].name, 
+		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefTexts(RefData.Instance.RefItems[134].name), 
 		                           ()=>{
 			Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(134);
 			int backup = 1;
@@ -391,7 +391,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 		}
 		));
 
-		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefItems[129].name, 
+		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefTexts(RefData.Instance.RefItems[129].name), 
 		                           ()=>{
 			Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(129);
 			int backup = 1;
@@ -441,7 +441,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 		}
 		));
 
-		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefItems[135].name, 
+		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefTexts(RefData.Instance.RefItems[135].name), 
 		                           ()=>{
 			Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(135);
 			int backup = 1;

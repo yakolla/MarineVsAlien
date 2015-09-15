@@ -17,20 +17,67 @@ public class GeneralInfoPanel : MonoBehaviour {
 	YGUISystem.GUILable 	m_lifeSteal;
 
 	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[5];
-
+	enum DirIndex
+	{
+		Strength,
+		RegenSP,
+		GainExtraGold,
+		DamageReduction,
+		DamageMultiplier,
+		CriticalChance,
+		CriticalDamage,
+		TapDamage,
+		LifeSteal,
+		StatisticsDealDmgPS,
+		StatisticsTakenDmgPS,
+		StatisticsKillPS,
+		StatisticsConsumedSPPS,
+		StatisticsWave,
+	}
 	void Start()
 	{
-		m_strength =  new YGUISystem.GUILable(transform.Find("ScrollView/Contents/Strength/Text").gameObject);
-		m_regenSP = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/RegenSP/Text").gameObject);
-		m_gainExtraGold = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/GainExtraGold/Text").gameObject);
-		m_damageReduction = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/DamageReduction/Text").gameObject);
-		m_damageMultiplier = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/DamageMultiplier/Text").gameObject);
-		m_criticalChance = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/CriticalChance/Text").gameObject);
-		m_criticalDamage = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/CriticalDamage/Text").gameObject);
-		m_tapDamage = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/TapDamage/Text").gameObject);
-		m_lifeSteal = new YGUISystem.GUILable(transform.Find("ScrollView/Contents/LifeSteal/Text").gameObject);
 
-		m_guages[0] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsDealDmgPS/Guage/Guage").gameObject, 
+		string[] dir = {"ScrollView/Contents/Strength", 
+						"ScrollView/Contents/RegenSP", 
+						"ScrollView/Contents/GainExtraGold", 
+						"ScrollView/Contents/DamageReduction",
+						"ScrollView/Contents/DamageMultiplier",
+						"ScrollView/Contents/CriticalChance",
+						"ScrollView/Contents/CriticalDamage",
+						"ScrollView/Contents/TapDamage",
+						"ScrollView/Contents/LifeSteal",
+			"ScrollView/Contents/StatisticsDealDmgPS",
+			"ScrollView/Contents/StatisticsTakenDmgPS",
+			"ScrollView/Contents/StatisticsKillPS",
+			"ScrollView/Contents/StatisticsConsumedSPPS",
+			"ScrollView/Contents/StatisticsWave",
+					};
+		transform.Find(dir[(int)DirIndex.Strength]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.Strength) + ":";
+		transform.Find(dir[(int)DirIndex.RegenSP]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.RegenSP) + ":";
+		transform.Find(dir[(int)DirIndex.GainExtraGold]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.GainExtraGold) + ":";
+		transform.Find(dir[(int)DirIndex.DamageReduction]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.DamageReduction) + ":";
+		transform.Find(dir[(int)DirIndex.DamageMultiplier]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.DamageMultiplier) + ":";
+		transform.Find(dir[(int)DirIndex.CriticalChance]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.CriticalChance) + ":";
+		transform.Find(dir[(int)DirIndex.CriticalDamage]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.CriticalDamage) + ":";
+		transform.Find(dir[(int)DirIndex.TapDamage]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.TapDamage) + ":";
+		transform.Find(dir[(int)DirIndex.LifeSteal]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.LifeSteal) + ":";
+		transform.Find(dir[(int)DirIndex.StatisticsDealDmgPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.DealDmgPerSec) + ":";
+		transform.Find(dir[(int)DirIndex.StatisticsTakenDmgPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.TakenDmgPerSec) + ":";
+		transform.Find(dir[(int)DirIndex.StatisticsKillPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.KillPerSec) + ":";
+		transform.Find(dir[(int)DirIndex.StatisticsConsumedSPPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.ConsumeSPPerSec) + ":";
+		transform.Find(dir[(int)DirIndex.StatisticsWave]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.Wave) + ":";
+
+		m_strength =  new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.Strength]+"/Text").gameObject);
+		m_regenSP = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.RegenSP]+"/Text").gameObject);
+		m_gainExtraGold = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.GainExtraGold]+"/Text").gameObject);
+		m_damageReduction = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.DamageReduction]+"/Text").gameObject);
+		m_damageMultiplier = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.DamageMultiplier]+"/Text").gameObject);
+		m_criticalChance = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.CriticalChance]+"/Text").gameObject);
+		m_criticalDamage = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.CriticalDamage]+"/Text").gameObject);
+		m_tapDamage = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.TapDamage]+"/Text").gameObject);
+		m_lifeSteal = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.LifeSteal]+"/Text").gameObject);
+
+		m_guages[0] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsDealDmgPS]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
 			if (Warehouse.Instance.UpdateGameStats.DealDamagePerSec == 0)
 				return 0f;
@@ -44,7 +91,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		}
 		);
 
-		m_guages[1] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsTakenDmgPS/Guage/Guage").gameObject, 
+		m_guages[1] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsTakenDmgPS]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
 			if (Warehouse.Instance.UpdateGameStats.TakenDamagePerSec == 0)
 				return 0f;
@@ -58,7 +105,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		}
 		);
 
-		m_guages[2] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsKillPS/Guage/Guage").gameObject, 
+		m_guages[2] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsKillPS]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
 			if (Warehouse.Instance.UpdateGameStats.KillPerSec == 0)
 				return 0f;
@@ -72,7 +119,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		}
 		);
 
-		m_guages[3] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsConsumedSPPS/Guage/Guage").gameObject, 
+		m_guages[3] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsConsumedSPPS]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
 			if (Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec == 0)
 				return 0f;
@@ -86,7 +133,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		}
 		);
 
-		m_guages[4] = new YGUISystem.GUIGuage(transform.Find("ScrollView/Contents/StatisticsWave/Guage/Guage").gameObject, 
+		m_guages[4] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsWave]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
 			if (Warehouse.Instance.GameBestStats.WaveIndex == 0)
 				return 1f;
