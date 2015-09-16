@@ -79,7 +79,7 @@ public class GUIInventorySlot : MonoBehaviour {
 		m_item = new YGUISystem.GUIButton(transform.Find("PictureButton").gameObject, m_priceButton0.EnableChecker);
 		m_item.Icon.Lable.Text.text = itemObj.Item.Description();
 		m_item.Icon.Image = itemObj.ItemIcon;
-
+		m_item.Lable.Text.text = RefData.Instance.RefTexts(itemObj.Item.RefItem.desc);
 		m_checkImage = transform.Find("PictureButton/Check").gameObject;
 	}
 

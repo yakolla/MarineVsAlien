@@ -3,7 +3,7 @@ public class MultiLang{
 
 	public enum ID
 	{
-		Start,
+		Nothing,
 		Gold,
 		Strength,
 		CriticalChance,
@@ -53,5 +53,7 @@ public class MultiLang{
 		Pet,
 		SwordMarine,
 		Damage,
+		IWillTakeMyPickupAnyItem,
+		ItDropFromBoss,
 	}
 }

@@ -184,8 +184,8 @@ public class Spawn : MonoBehaviour {
 
 	IEnumerator spawnMobPerCore(RefMobSpawn mobSpawn)
 	{
-		int stage = Mathf.Min(SpawnMobLevel()-1, 100);
-		int mobSpawnRepeatCount = (int)(mobSpawn.repeatCount[0] * (1f-stage*0.01f) + mobSpawn.repeatCount[1] * stage * 0.01f);
+		float stage = Mathf.Min(SpawnMobLevel()-1, 100)*0.01f;
+		int mobSpawnRepeatCount = (int)(mobSpawn.repeatCount[0] * (1f-stage) + mobSpawn.repeatCount[1] * stage);
 		for(int r = 0; r < mobSpawnRepeatCount; ++r)
 		{
 			yield return new WaitForSeconds (mobSpawn.interval);
@@ -293,8 +293,6 @@ public class Spawn : MonoBehaviour {
 
 				Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
 
-				float waveProgress = ProgressStage();
-				//Debug.Log("waveProgress:" + waveProgress + "," + m_wave);
 				yield return StartCoroutine(MoveChamp());
 
 

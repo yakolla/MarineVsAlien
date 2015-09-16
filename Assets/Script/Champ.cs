@@ -203,7 +203,6 @@ public class Champ : Creature {
 		Const.GetSpawn().audio.ignoreListenerVolume = true;
 
 		AudioListener.volume = Warehouse.Instance.GameOptions.m_sfxVolume;
-		m_enableAutoTarget = Warehouse.Instance.GameOptions.m_autoTarget;
 
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 	}
@@ -370,7 +369,7 @@ public class Champ : Creature {
 	IEnumerator EffectTouch(Vector3 pos)
 	{
 		GameObject ef = Resources.Load("Pref/ef_touch") as GameObject;
-		pos.z = transform.position.z;
+		pos.z = transform.position.z-2;
 		pos.y -= 1.5f;
 		GameObject obj = GameObjectPool.Instance.Alloc(ef, pos, ef.transform.rotation);
 		while(obj.particleSystem.isPlaying)
