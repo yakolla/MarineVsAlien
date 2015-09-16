@@ -133,7 +133,8 @@ public class RefItem : RefBaseData
 	public 	string 				codeName;
 	[JsonProperty (ItemConverterType = typeof(StringEnumConverter))]
 	public 	MultiLang.ID		name;
-	public  string				desc;
+	[JsonProperty (ItemConverterType = typeof(StringEnumConverter))]
+	public  MultiLang.ID		desc;
 	public	string				icon;
 	public 	string				partName;
 	public	RefPriceCondition	levelup;

@@ -141,9 +141,13 @@ public class LightningBullet : Bullet
 						createChanningParticle(transform.position, oldAimpoint, 0, perParticles);
 						for(int i = 1; i < hittedTargetCount; ++i)
 						{
-							Vector3 aimpoint = targets[i].transform.Find("Body/Aimpoint").position;
-							createChanningParticle(oldAimpoint, aimpoint, perParticles*(i), perParticles*(i)+perParticles);
-							oldAimpoint = aimpoint;
+							Transform t  = targets[i].transform.Find("Body/Aimpoint");
+							if (t != null)
+							{
+								Vector3 aimpoint = t.position;
+								createChanningParticle(oldAimpoint, aimpoint, perParticles*(i), perParticles*(i)+perParticles);
+								oldAimpoint = aimpoint;
+							}
 						}
 					}
 					

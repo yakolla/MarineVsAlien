@@ -1,5 +1,5 @@
 [
-	"Start", 
+	"", 
 	"Gold",
 	"Strength",
 	"Critical",
@@ -49,4 +49,6 @@
 	"Pet",
 	"Sword Marine",
 	"Dmg",
+	"I'll take my pick up any item",
+	"It is dropped from a boss",
 ]
