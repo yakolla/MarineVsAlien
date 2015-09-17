@@ -42,8 +42,6 @@ public class FollowingCamera : MonoBehaviour
 		m_cameraEdge.y = edge.transform.position.z-edge.center.z;
 		m_cameraEdge.width = m_cameraEdge.x+edge.size.x;
 		m_cameraEdge.height = m_cameraEdge.y+edge.size.z;
-
-		Debug.Log("m_cameraEdge:" + m_cameraEdge);
 	}
 	
 	void Update()
