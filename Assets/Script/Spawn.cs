@@ -357,6 +357,11 @@ public class Spawn : MonoBehaviour {
 			{
 				yield return null;
 			}
+
+			if (m_goalPointIndex == 0)
+				m_champ.RotateToTarget(0f);
+			else if (m_goalPointIndex == m_goalPoints.Length-1)
+				m_champ.RotateToTarget(180f);
 		}
 		++m_relWave;
 		yield return null;
@@ -526,7 +531,6 @@ public class Spawn : MonoBehaviour {
 
 		Mob enemy = enemyObj.GetComponent<Mob>();
 		enemy.Init(refMob, mobLevel, refDropItems, boss);
-		enemy.m_creatureProperty.AlphaMaxHP=(int)(enemy.m_creatureProperty.MaxHP*ProgressStage()*0.1f);
 		enemy.m_creatureProperty.HP = enemy.m_creatureProperty.MaxHP;
 		enemy.m_creatureProperty.SP = enemy.m_creatureProperty.MaxSP;
 
@@ -535,7 +539,7 @@ public class Spawn : MonoBehaviour {
 
 		enemy.SetTarget(m_champ);
 
-		//Debug.Log(refMob.prefBody + ", Lv : " + mobLevel + ", HP: " + enemy.m_creatureProperty.HP + ", PA:" + enemy.m_creatureProperty.PhysicalAttackDamage + ", PD:" + enemy.m_creatureProperty.PhysicalDefencePoint + ", scale:" + refMob.scale + " pos:" + enemyPos);
+		Debug.Log(refMob.prefBody + ", Lv : " + mobLevel + ", HP: " + enemy.m_creatureProperty.HP + ", PA:" + enemy.m_creatureProperty.PhysicalAttackDamage + ", PD:" + enemy.m_creatureProperty.PhysicalDefencePoint + ", scale:" + refMob.scale + " pos:" + enemyPos);
 
 	
 		if (monitoredDeath == true)
