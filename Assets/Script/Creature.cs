@@ -50,6 +50,7 @@ public class Creature : MonoBehaviour {
 	int						m_ingTakenDamageEffect = 0;
 
 	protected GameObject	m_aimpoint;
+	protected GameObject	m_hppoint;
 	RefMob					m_refMob;
 
 
@@ -74,6 +75,12 @@ public class Creature : MonoBehaviour {
 
 	protected void Start () {
 		m_aimpoint = transform.Find("Body/Aimpoint").gameObject;
+		m_hppoint = m_aimpoint;
+
+		if (transform.Find("Body/HPPoint"))
+		{
+			m_hppoint = transform.Find("Body/HPPoint").gameObject;
+		}
 		m_animator = transform.Find("Body").GetComponent<Animator>();
 
 		m_prefDamageSprite = Resources.Load<GameObject>("Pref/DamageNumberSprite");
@@ -89,8 +96,13 @@ public class Creature : MonoBehaviour {
 		m_pushbackSpeedOnDamage = 0;
 		m_behaviourType = BehaviourType.ALive;
 
-		m_weaponHolder = this.transform.Find("WeaponHolder").gameObject.GetComponent<WeaponHolder>();
+		m_weaponHolder = transform.Find("WeaponHolder").gameObject.GetComponent<WeaponHolder>();
 		m_weaponHolder.Init();
+
+		if (transform.Find("Body/WeaponPoint") != null)
+		{
+			m_weaponHolder.transform.position = transform.Find("Body/WeaponPoint").transform.position;
+		}
 
 		damagedTexture = Resources.Load<Texture>("ani/damage monster");
 		normalTexture = Resources.Load<Texture>("ani/monster");
@@ -162,9 +174,9 @@ public class Creature : MonoBehaviour {
 		weapon.SetSubWeapon(subWeapon);
 	}
 
-	public Vector3	AimpointLocalPos
+	public Vector3	HPPointLocalPos
 	{
-		get {return m_aimpoint.transform.localPosition;}
+		get {return m_hppoint.transform.localPosition;}
 	}
 
 	public Creature	Targetting
@@ -194,7 +206,6 @@ public class Creature : MonoBehaviour {
 		float targetHorAngle = Mathf.Atan2(pos.z-gunPoint.z, pos.x-gunPoint.x) * Mathf.Rad2Deg;
 		//transform.eulerAngles = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, -targetHorAngle, 0)), m_creatureProperty.RotationSpeedRatio*Time.deltaTime).eulerAngles;
 		transform.eulerAngles = Quaternion.Euler(new Vector3(0, -targetHorAngle, 0)).eulerAngles;
-		Debug.Log(transform.eulerAngles);
 		return targetHorAngle;
 	}
 
