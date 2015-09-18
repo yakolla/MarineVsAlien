@@ -244,7 +244,7 @@
 		"defaultLock":true,
 		"weaponStat":
 		{
-			"coolTime":600
+			"coolTime":120
 		},
 		"levelup":
 		{
@@ -694,15 +694,6 @@
 			"optionPerLevel":
 			[
 				{
-					"level":1,
-					"levelPer":true,
-					"option":
-					{
-						"type":"Strength",
-						"values":[1]
-					}
-				},
-				{
 					"level":100,
 					"option":
 					{
@@ -832,15 +823,6 @@
 			],
 			"optionPerLevel":
 			[				
-				{
-					"level":1,
-					"levelPer":true,
-					"option":
-					{
-						"type":"Strength",
-						"values":[1]
-					}
-				},
 				{
 					"level":100,
 					"option":
@@ -1938,14 +1920,14 @@
 			[
 				{
 					"refItemId":11, 
-					"count":1
+					"count":7
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":8,
-					"count":1
+					"refItemId":1,
+					"count":70
 				}
 			]
 		}
@@ -1989,15 +1971,15 @@
 			"conds":
 			[
 				{
-					"refItemId":11, 
-					"count":2
+					"refItemId":11,
+					"count":14
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":8,
-					"count":2
+					"refItemId":1, 
+					"count":140
 				}
 			]
 		}
@@ -2011,58 +1993,6 @@
 		"defaultLock":true,
 		"consumedSP":0.21,
 		"followerId":30003,
-		"weaponStat":
-		{
-			"coolTime":90
-		},
-		"unlock":
-		{
-			"conds":
-			[
-				{
-					"refItemId":5,
-					"count":210
-				},
-				{
-					"refItemId":11, 
-					"count":2100
-				}
-			],
-			"else_conds":
-			[
-				{
-					"refItemId":8,
-					"count":210
-				}
-			]
-		},
-		"levelup":
-		{
-			"conds":
-			[
-				{
-					"refItemId":11, 
-					"count":3
-				}
-			],
-			"else_conds":
-			[
-				{
-					"refItemId":8,
-					"count":3
-				}
-			]
-		}
-	},
-	{
-		"id":1004,
-		"codeName":"Follower",
-		"type":"Follower",
-		"icon":"Sprites/FollowerRocketMarines",
-		"maxLevel":900,
-		"defaultLock":true,
-		"consumedSP":0.28,
-		"followerId":30004,
 		"weaponStat":
 		{
 			"coolTime":90
@@ -2093,19 +2023,67 @@
 			"conds":
 			[
 				{
+					"refItemId":11,
+					"count":28
+				}
+			],
+			"else_conds":
+			[
+				{
 					"refItemId":1, 
-					"count":40
+					"count":280
+				}
+			]
+		}
+	},
+	{
+		"id":1004,
+		"codeName":"Follower",
+		"type":"Follower",
+		"icon":"Sprites/FollowerRocketMarines",
+		"maxLevel":900,
+		"defaultLock":true,
+		"consumedSP":0.28,
+		"followerId":30004,
+		"weaponStat":
+		{
+			"coolTime":90
+		},
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":5,
+					"count":560
 				},
 				{
 					"refItemId":11, 
-					"count":4
+					"count":5600
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":4
+					"count":560
+				}
+			]
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11,
+					"count":56
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":1, 
+					"count":560
 				}
 			]
 		}
@@ -2129,18 +2107,18 @@
 			[
 				{
 					"refItemId":5,
-					"count":350
+					"count":1120
 				},
 				{
 					"refItemId":11, 
-					"count":3500
+					"count":11200
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":350
+					"count":1120
 				}
 			]
 		},
@@ -2149,19 +2127,15 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":50
-				},
-				{
-					"refItemId":11, 
-					"count":5
+					"refItemId":11,
+					"count":112
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":8,
-					"count":50
+					"refItemId":1, 
+					"count":1120
 				}
 			]
 		}
@@ -2185,18 +2159,18 @@
 			[
 				{
 					"refItemId":5,
-					"count":420
+					"count":2240
 				},
 				{
 					"refItemId":11, 
-					"count":4200
+					"count":22400
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":420
+					"count":2240
 				}
 			]
 		},
@@ -2205,19 +2179,15 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":60
-				},
-				{
-					"refItemId":11, 
-					"count":6
+					"refItemId":11,
+					"count":224
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":8,
-					"count":60
+					"refItemId":1, 
+					"count":2240
 				}
 			]
 		}
@@ -2281,18 +2251,18 @@
 			[
 				{
 					"refItemId":5,
-					"count":490
+					"count":4480
 				},
 				{
 					"refItemId":11, 
-					"count":4900
+					"count":44800
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":490
+					"count":4480
 				}
 			]
 		},
@@ -2301,19 +2271,15 @@
 			"conds":
 			[
 				{
-					"refItemId":11, 
-					"count":70
-				},
-				{
-					"refItemId":11, 
-					"count":7
+					"refItemId":11,
+					"count":448
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":8,
-					"count":70
+					"refItemId":1, 
+					"count":4480
 				}
 			]
 		}
@@ -2915,32 +2881,32 @@
 					"levelPer":true,
 					"option":
 					{
-						"type":"CriticalDmg",
-						"values":[0.1]
+						"type":"Strength",
+						"values":[10]
 					}
 				},
 				{
 					"level":100,
 					"option":
 					{
-						"type":"Critical",						
-						"values":[0.1]
+						"type":"DmgMultiplier",						
+						"values":[1]
 					}
 				},
 				{
 					"level":300,
 					"option":
 					{
-						"type":"Critical",						
-						"values":[0.3]
+						"type":"DmgMultiplier",						
+						"values":[3]
 					}
 				},
 				{
 					"level":900,
 					"option":
 					{
-						"type":"Critical",
-						"values":[0.5]
+						"type":"DmgMultiplier",
+						"values":[6]
 					}
 				}
 			]
@@ -2973,15 +2939,38 @@
 				}
 			],
 			"optionPerLevel":
-			[				
-						
+			[	
 				{
 					"level":1,
 					"levelPer":true,
 					"option":
 					{
-						"type":"Strength",
-						"values":[10]
+						"type":"MoveSpeed",
+						"values":[0.01]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"LifeSteal",						
+						"values":[0.03]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"LifeSteal",						
+						"values":[0.06]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"LifeSteal",
+						"values":[0.09]
 					}
 				}
 			]
@@ -3083,37 +3072,38 @@
 			],
 			"optionPerLevel":
 			[
+				
 				{
 					"level":1,
 					"levelPer":true,
 					"option":
 					{
-						"type":"MoveSpeed",
-						"values":[0.01]
+						"type":"CriticalDmg",
+						"values":[0.1]
 					}
 				},
 				{
 					"level":100,
 					"option":
 					{
-						"type":"LifeSteal",						
-						"values":[0.03]
+						"type":"Critical",						
+						"values":[0.1]
 					}
 				},
 				{
 					"level":300,
 					"option":
 					{
-						"type":"LifeSteal",						
-						"values":[0.06]
+						"type":"Critical",						
+						"values":[0.2]
 					}
 				},
 				{
 					"level":900,
 					"option":
 					{
-						"type":"LifeSteal",
-						"values":[0.09]
+						"type":"Critical",
+						"values":[0.4]
 					}
 				}
 			]

@@ -106,7 +106,7 @@ public class Worldmap : MonoBehaviour {
 				// handle success or failure
 
 				
-				if (success == true)
+				//if (success == true)
 				{
 					log = "Login success";
 
@@ -129,16 +129,8 @@ public class Worldmap : MonoBehaviour {
 					}
 
 				}
-				else
-				{
-					log = "Login failed";
-					Login (loginWith);
-				}
-			});
-		}
-		else
-		{
 
+			});
 		}
 	}
 

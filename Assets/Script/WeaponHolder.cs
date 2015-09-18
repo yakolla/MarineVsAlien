@@ -129,11 +129,12 @@ public class WeaponHolder : MonoBehaviour {
 		}
 	}
 
-	public void LevelUp()
+	public void LevelUp(int refWeaponID)
 	{
 		foreach(Weapon weapon in m_weapons)
 		{
-			weapon.LevelUp();
+			if (refWeaponID > 0 && refWeaponID == weapon.RefItem.id)
+				weapon.LevelUp();
 		}
 	}
 

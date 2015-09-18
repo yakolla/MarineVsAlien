@@ -151,7 +151,7 @@ public class Weapon : MonoBehaviour {
 
 	public int GetDamage(CreatureProperty pro)
 	{
-		return (int)(pro.PhysicalAttackDamage*m_damageRatio);
+		return (int)((pro.PhysicalAttackDamage+Level)*m_damageRatio);
 	}
 
 	protected void playGunPointEffect()

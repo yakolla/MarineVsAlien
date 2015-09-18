@@ -15,7 +15,7 @@
 							}
 						},
 						"interval":1,
-						"repeatCount":[4,8]
+						"repeatCount":[4,16]
 					},
 					{
 						"refMobIds":{
@@ -39,7 +39,7 @@
 							}
 						},
 						"interval":1,
-						"repeatCount":[4,8]
+						"repeatCount":[4,16]
 					},
 					{
 						"refMobIds":{

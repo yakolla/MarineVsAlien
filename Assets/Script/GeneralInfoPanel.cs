@@ -160,12 +160,12 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_strength.Text.text = m_champ.m_creatureProperty.Strength.ToString();
 		m_regenSP.Text.text = m_champ.m_creatureProperty.SPRegen.ToString();
 		m_tapDamage.Text.text = m_champ.m_creatureProperty.TapDamage.ToString();
-		m_gainExtraGold.Text.text = (m_champ.m_creatureProperty.GainExtraGold*100f).ToString() + "%";
-		m_damageReduction.Text.text = (m_champ.m_creatureProperty.DamageReduction*100f).ToString() + "%";
-		m_damageMultiplier.Text.text = (m_champ.m_creatureProperty.DamageRatio*100f).ToString() + "%";
-		m_criticalChance.Text.text = (m_champ.m_creatureProperty.CriticalChance*100f).ToString() + "%";
-		m_criticalDamage.Text.text = (m_champ.m_creatureProperty.CriticalDamage*100f).ToString() + "%";
-		m_lifeSteal.Text.text = (m_champ.m_creatureProperty.LifeSteal*100f).ToString() + "%";
+		m_gainExtraGold.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.GainExtraGold*100f);
+		m_damageReduction.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.DamageReduction*100f);
+		m_damageMultiplier.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.DamageRatio*100f);
+		m_criticalChance.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.CriticalChance*100f);
+		m_criticalDamage.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.CriticalDamage*100f);
+		m_lifeSteal.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.LifeSteal*100f);
 
 
 		Warehouse.Instance.UpdateGameStats.Update();

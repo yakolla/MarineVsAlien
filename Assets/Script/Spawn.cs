@@ -535,7 +535,7 @@ public class Spawn : MonoBehaviour {
 		enemy.m_creatureProperty.SP = enemy.m_creatureProperty.MaxSP;
 
 		for(int i = 1; i < mobLevel; ++i)
-			enemy.WeaponHolder.LevelUp();
+			enemy.WeaponHolder.LevelUp(0);
 
 		enemy.SetTarget(m_champ);
 
