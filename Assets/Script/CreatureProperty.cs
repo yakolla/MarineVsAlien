@@ -54,6 +54,8 @@ public class CreatureProperty {
 
 	SecuredType.XInt	m_tabDamage = 10;
 
+	SecuredType.XFloat	m_dodge = 0f;
+
 	SecuredType.XFloat	m_damageMultiPlier = 0;
 
 	public void 	init(Creature owner, RefCreatureBaseProperty baseProperty, int level)
@@ -177,6 +179,12 @@ public class CreatureProperty {
 	{
 		get{return m_damageMultiPlier.Value;}
 		set{m_damageMultiPlier.Value = value;}
+	}
+
+	public float	Dodge
+	{
+		get{return m_dodge.Value;}
+		set{m_dodge.Value = value;}
 	}
 
 	public int Strength

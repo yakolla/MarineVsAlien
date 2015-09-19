@@ -56,7 +56,7 @@ public class Const {
 	public const int FollowerMeleeRefItemId = 1008;
 
 
-	public const string LEADERBOARD_KILLED_MOBS = "CgkI4IXrjtcPEAIQBg";
+	public const string LEADERBOARD_KILLED_MOBS = "CgkI4IXrjtcPEAIQBw";
 
 	public const string DisabledStringColor = "<color=silver>";
 	public const string EnabledStringColor = "<color=white>";

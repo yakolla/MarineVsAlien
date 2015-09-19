@@ -15,6 +15,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 	YGUISystem.GUILable 	m_criticalDamage;
 	YGUISystem.GUILable 	m_tapDamage;
 	YGUISystem.GUILable 	m_lifeSteal;
+	YGUISystem.GUILable 	m_dodge;
 
 	YGUISystem.GUIGuage[] 	m_guages = new YGUISystem.GUIGuage[5];
 	enum DirIndex
@@ -28,6 +29,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		CriticalDamage,
 		TapDamage,
 		LifeSteal,
+		Dodge,
 		StatisticsDealDmgPS,
 		StatisticsTakenDmgPS,
 		StatisticsKillPS,
@@ -46,6 +48,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 						"ScrollView/Contents/CriticalDamage",
 						"ScrollView/Contents/TapDamage",
 						"ScrollView/Contents/LifeSteal",
+			"ScrollView/Contents/Dodge",
 			"ScrollView/Contents/StatisticsDealDmgPS",
 			"ScrollView/Contents/StatisticsTakenDmgPS",
 			"ScrollView/Contents/StatisticsKillPS",
@@ -61,6 +64,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		transform.Find(dir[(int)DirIndex.CriticalDamage]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.CriticalDamage) + ":";
 		transform.Find(dir[(int)DirIndex.TapDamage]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.TapDamage) + ":";
 		transform.Find(dir[(int)DirIndex.LifeSteal]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.LifeSteal) + ":";
+		transform.Find(dir[(int)DirIndex.Dodge]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.Dodge) + ":";
 		transform.Find(dir[(int)DirIndex.StatisticsDealDmgPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.DealDmgPerSec) + ":";
 		transform.Find(dir[(int)DirIndex.StatisticsTakenDmgPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.TakenDmgPerSec) + ":";
 		transform.Find(dir[(int)DirIndex.StatisticsKillPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.KillPerSec) + ":";
@@ -76,6 +80,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_criticalDamage = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.CriticalDamage]+"/Text").gameObject);
 		m_tapDamage = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.TapDamage]+"/Text").gameObject);
 		m_lifeSteal = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.LifeSteal]+"/Text").gameObject);
+		m_dodge = new YGUISystem.GUILable(transform.Find(dir[(int)DirIndex.Dodge]+"/Text").gameObject);
 
 		m_guages[0] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsDealDmgPS]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
@@ -165,7 +170,8 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_damageMultiplier.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.DamageMultiPlier*100f);
 		m_criticalChance.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.CriticalChance*100f);
 		m_criticalDamage.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.CriticalDamage*100f);
-		m_lifeSteal.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.LifeSteal*100f);
+		m_lifeSteal.Text.text = System.String.Format("{0}",m_champ.m_creatureProperty.LifeSteal);
+		m_dodge.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.Dodge*100f);
 
 
 		Warehouse.Instance.UpdateGameStats.Update();

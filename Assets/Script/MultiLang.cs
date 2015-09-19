@@ -55,5 +55,6 @@ public class MultiLang{
 		IWillTakeMyPickupAnyItem,
 		ItDropFromBoss,
 		Stat,
+		Dodge,
 	}
 }

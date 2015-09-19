@@ -51,4 +51,5 @@
 	"I'll take my pick up any item",
 	"It is dropped from a boss",
 	"Stat",
+	"Dodge",
 ]

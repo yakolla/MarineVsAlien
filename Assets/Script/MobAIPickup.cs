@@ -57,6 +57,9 @@ public class MobAIPickup : MobAI {
 
 	void PickupItem(GameObject obj) {
 		ItemBox itemBox = obj.GetComponent<ItemBox>();
+		if (itemBox.ItemType == ItemData.Type.Skill)
+			return;
+
 		itemBox.StartPickupEffect(m_owner);
 	}
 }

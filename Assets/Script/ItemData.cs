@@ -45,6 +45,7 @@ public class ItemData {
 		CriticalDmg,
 		GainExtraGold,
 		LifeSteal,
+		Dodge,
 		Count
 	}
 
@@ -153,6 +154,9 @@ public class ItemData {
 			case Option.TapDamage:
 				head += RefData.Instance.RefTexts(MultiLang.ID.TapDamage) + ":";
 				break;
+			case Option.Dodge:
+				head += RefData.Instance.RefTexts(MultiLang.ID.Dodge) + ":";
+				break;
 			default:
 				head += op.option.type.ToString() + ":";
 				break;
@@ -170,7 +174,7 @@ public class ItemData {
 			case Option.Critical:
 			case Option.CriticalDmg:
 			case Option.GainExtraGold:
-			case Option.LifeSteal:
+			case Option.Dodge:
 				desc += head + "<color=yellow>"+(optionValue*100)+"</color>" + "%</color>\n";
 				break;
 			default:
@@ -278,6 +282,9 @@ public class ItemData {
 				break;
 			case Option.LifeSteal:
 				obj.m_creatureProperty.AlphaLifeSteal += optionValue;
+				break;
+			case Option.Dodge:
+				obj.m_creatureProperty.Dodge += optionValue;
 				break;
 			case Option.GainExtraGold:
 				obj.m_creatureProperty.GainExtraGold += optionValue;

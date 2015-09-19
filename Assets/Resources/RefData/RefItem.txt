@@ -2853,32 +2853,32 @@
 					"levelPer":true,
 					"option":
 					{
-						"type":"Strength",
-						"values":[10]
+						"type":"CriticalDmg",
+						"values":[0.1]
 					}
 				},
 				{
 					"level":100,
 					"option":
 					{
-						"type":"DmgMultiplier",						
-						"values":[1]
+						"type":"Critical",						
+						"values":[0.05]
 					}
 				},
 				{
 					"level":300,
 					"option":
 					{
-						"type":"DmgMultiplier",						
-						"values":[3]
+						"type":"Critical",						
+						"values":[0.15]
 					}
 				},
 				{
 					"level":900,
 					"option":
 					{
-						"type":"DmgMultiplier",
-						"values":[9]
+						"type":"Critical",
+						"values":[0.2]
 					}
 				}
 			]
@@ -2925,24 +2925,24 @@
 					"level":100,
 					"option":
 					{
-						"type":"LifeSteal",						
-						"values":[0.03]
+						"type":"Dodge",						
+						"values":[0.05]
 					}
 				},
 				{
 					"level":300,
 					"option":
 					{
-						"type":"LifeSteal",						
-						"values":[0.06]
+						"type":"Dodge",						
+						"values":[0.15]
 					}
 				},
 				{
 					"level":900,
 					"option":
 					{
-						"type":"LifeSteal",
-						"values":[0.09]
+						"type":"Dodge",
+						"values":[0.2]
 					}
 				}
 			]
@@ -3055,27 +3055,11 @@
 					}
 				},
 				{
-					"level":100,
-					"option":
-					{
-						"type":"Critical",						
-						"values":[0.05]
-					}
-				},
-				{
-					"level":300,
-					"option":
-					{
-						"type":"Critical",						
-						"values":[0.15]
-					}
-				},
-				{
 					"level":900,
 					"option":
 					{
-						"type":"Critical",
-						"values":[0.2]
+						"type":"LifeSteal",						
+						"values":[1]
 					}
 				}
 			]

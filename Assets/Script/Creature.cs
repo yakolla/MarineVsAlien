@@ -838,11 +838,21 @@ public class Creature : MonoBehaviour {
 			dmg = Random.Range(0, 2);
 		}
 
-		if (dmg > 0 && m_creatureProperty.Shield > 0)
+		if (dmg > 0)
 		{
-			--m_creatureProperty.Shield;
-			DamageText("Shielded", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
-			return 0;
+			if (m_creatureProperty.Shield > 0)
+			{
+				--m_creatureProperty.Shield;
+				DamageText("Shielded", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+				return 0;
+			}
+
+			if (Random.Range(0f, 1f) < m_creatureProperty.Dodge)
+			{
+				DamageText("Dodge", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+				return 0;
+			}
+
 		}
 
 		string strDamage = dmg.ToString();
@@ -909,30 +919,33 @@ public class Creature : MonoBehaviour {
 
 		if (true == m_creatureProperty.BackwardOnDamage && damageDesc.PushbackOnDamage && m_pushbackSpeedOnDamage <= 0f)
 		{
-			m_pushbackSpeedOnDamage = 10f / rigidbody.mass;
-			rigidbody.AddForce(transform.right*-2f, ForceMode.Impulse);
-			rigidbody.AddTorque(transform.forward*2f, ForceMode.Impulse);
-			rigidbody.maxAngularVelocity = 2f;
+			if (Random.Range(0, 2) == 0)
+			{
+				m_pushbackSpeedOnDamage = 10f / rigidbody.mass;
+				rigidbody.AddForce(transform.right*-2f, ForceMode.Impulse);
+				rigidbody.AddTorque(transform.forward*2f, ForceMode.Impulse);
+				rigidbody.maxAngularVelocity = 2f;
 		
-			EnableNavmeshUpdatePos(false);
+				EnableNavmeshUpdatePos(false);
+			}
 		}
 
 		ApplyBuff(offender, damageDesc.DamageBuffType, 2f, damageDesc);
 
+		if (offender != null)
+		{
+			int lifeSteal = (int)(offender.m_creatureProperty.LifeSteal);
+			if (lifeSteal > 0)
+			{
+				offender.DamageText(lifeSteal.ToString() + "L", Vector3.one, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
+				offender.Heal(lifeSteal);
+			}
+		}
+
 		m_creatureProperty.HP-=dmg;
 		if (m_creatureProperty.HP == 0)
-		{
-			if (offender != null)
-			{
-				int lifeSteal = (int)(offender.m_creatureProperty.LifeSteal*dmg);
-				if (lifeSteal > 0)
-				{
-					offender.DamageText(lifeSteal.ToString() + "L", Vector3.one, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
-					offender.Heal(lifeSteal);
-				}
-				Const.GetSpawn().SharePotinsChamps(offender, ItemData.Type.XPPotion, m_creatureProperty.RewardExp, false);
-			}
-
+		{			
+			Const.GetSpawn().SharePotinsChamps(offender, ItemData.Type.XPPotion, m_creatureProperty.RewardExp, false);
 			Death();
 		}
 		if (offender != null && (offender.CreatureType & Type.Champ) > 0)

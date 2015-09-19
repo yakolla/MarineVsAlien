@@ -94,7 +94,7 @@ public class GameOverGUI : MonoBehaviour {
 		++Warehouse.Instance.RetryCount;
 		Const.ShowLoadingGUI(Warehouse.Instance.RetryCount + " Retry...");
 
-		GPlusPlatform.Instance.ReportScore(Const.LEADERBOARD_KILLED_MOBS, Warehouse.Instance.NewGameStats.KilledMobs, (bool success) => {
+		GPlusPlatform.Instance.ReportScore(Const.LEADERBOARD_KILLED_MOBS, Warehouse.Instance.GameBestStats.WaveIndex, (bool success) => {
 			// handle success or failure
 		});
 		

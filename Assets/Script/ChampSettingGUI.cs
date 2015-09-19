@@ -109,13 +109,13 @@ public class ChampSettingGUI : MonoBehaviour {
 				if (m_eqipedAllItem == true)
 				{
 					Warehouse.Instance.FindItem(3001).Item.Lock = false;
-					Warehouse.Instance.FindItem(3001).Item.Level = 9;
+					Warehouse.Instance.FindItem(3001).Item.Level = 99;
 					Warehouse.Instance.FindItem(3002).Item.Lock = false;
-					Warehouse.Instance.FindItem(3002).Item.Level = 9;
+					Warehouse.Instance.FindItem(3002).Item.Level = 99;
 					Warehouse.Instance.FindItem(3003).Item.Lock = false;
-					Warehouse.Instance.FindItem(3003).Item.Level = 9;
+					Warehouse.Instance.FindItem(3003).Item.Level = 99;
 					Warehouse.Instance.FindItem(3004).Item.Lock = false;
-					Warehouse.Instance.FindItem(3004).Item.Level = 9;
+					Warehouse.Instance.FindItem(3004).Item.Level = 99;
 					Warehouse.Instance.FindItem(3005).Item.Lock = false;
 					Warehouse.Instance.FindItem(3005).Item.Level = 900;
 				}
