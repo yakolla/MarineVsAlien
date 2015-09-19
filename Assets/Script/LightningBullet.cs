@@ -93,24 +93,25 @@ public class LightningBullet : Bullet
 			Vector3 fwd = transform.TransformDirection(Vector3.right);
 			Vector3 pos = transform.position;
 			pos.y=0;
-			if (Physics.Raycast(pos, fwd, out hit, BulletLength(), 1<<9))
-				creature = hit.transform.GetComponent<Creature>();
+//			if (Physics.Raycast(pos, fwd, out hit, BulletLength(), 1<<9))
+//				creature = hit.transform.GetComponent<Creature>();
 
-/*
+
 			if (m_ownerCreature.Targetting == null)
 			{
+
 				Creature[] hitted = Bullet.SearchTarget(transform.position, m_ownerCreature.GetMyEnemyType(), BulletLength());
 				if (hitted != null)
 				{
 					creature = hitted[0];
+					m_ownerCreature.SetTarget(creature);
 				}
-				Debug.Log("Lightning NULL");
+
 			}
 			else
 			{
 				creature = m_ownerCreature.Targetting;
-				Debug.Log("Lightning Not NULL");
-			}*/
+			}
 
 			if (creature != null)
 			{

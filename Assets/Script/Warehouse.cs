@@ -182,7 +182,7 @@ public class WarehouseData
 
 	public class GameDataContext
 	{
-		public SecuredType.XInt	m_hp = 100;
+		public SecuredType.XInt	m_hp = 10;
 		public SecuredType.XInt	m_xp = 0;
 		public SecuredType.XInt	m_sp = 0;
 		public SecuredType.XInt	m_level = 1;

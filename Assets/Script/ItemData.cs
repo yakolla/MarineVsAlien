@@ -229,7 +229,7 @@ public class ItemData {
 			switch(op.option.type)
 			{
 			case Option.DmgMultiplier:
-				obj.m_creatureProperty.DamageRatio += optionValue;
+				obj.m_creatureProperty.DamageMultiPlier += optionValue;
 
 				break;
 			case Option.MoveSpeed:

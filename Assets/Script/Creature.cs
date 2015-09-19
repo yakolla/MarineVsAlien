@@ -277,7 +277,7 @@ public class Creature : MonoBehaviour {
 		{
 			if (m_pushbackSpeedOnDamage > 0)
 			{
-				m_pushbackSpeedOnDamage -= 2f;
+				m_pushbackSpeedOnDamage -= 2.8f;
 				EnableNavmeshUpdatePos(false);
 			}
 			else
@@ -618,12 +618,12 @@ public class Creature : MonoBehaviour {
 		effect.transform.localPosition = pref.transform.position;
 		effect.transform.localRotation = pref.transform.rotation;
 		
-		m_creatureProperty.DamageRatio += damageRatio;
+		m_creatureProperty.DamageMultiPlier += damageRatio;
 		
 		yield return new WaitForSeconds(time);
 		
 		m_buffEffects[(int)DamageDesc.BuffType.DamageMultiply].m_run = false;
-		m_creatureProperty.DamageRatio -= damageRatio;
+		m_creatureProperty.DamageMultiPlier -= damageRatio;
 		
 		DestroyObject(effect);
 	}
@@ -907,7 +907,7 @@ public class Creature : MonoBehaviour {
 			ApplyDamageEffect(damageDesc.DamageType, damageDesc.PrefEffect);
 		}
 
-		if (true == m_creatureProperty.BackwardOnDamage && damageDesc.PushbackOnDamage && m_pushbackSpeedOnDamage == 0f)
+		if (true == m_creatureProperty.BackwardOnDamage && damageDesc.PushbackOnDamage && m_pushbackSpeedOnDamage <= 0f)
 		{
 			m_pushbackSpeedOnDamage = 10f / rigidbody.mass;
 			rigidbody.AddForce(transform.right*-2f, ForceMode.Impulse);

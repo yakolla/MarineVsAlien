@@ -536,7 +536,7 @@
 		},
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":1,
 			"delay":0.3
 		},
 	},
@@ -547,7 +547,7 @@
 		"icon":"Sprites/Gun",
 		"evolutionFiring":
 		{
-			"angle":5,
+			"angle":1,
 			"delay":0.3
 		},
 		"weaponStat":
@@ -585,7 +585,7 @@
 		
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":1,
 			"delay":0.3
 		},
 		"weaponStat":
@@ -627,7 +627,7 @@
 		},
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":3,
 			"delay":0.3
 		},
 		"unlock":
@@ -995,7 +995,7 @@
 		
 		"evolutionFiring":
 		{
-			"angle":10,
+			"angle":3,
 			"delay":0.3
 		},
 		"weaponStat":
@@ -1017,7 +1017,7 @@
 		"icon":"Sprites/Tornado",
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":3,
 			"delay":0.3
 		},
 		"weaponStat":
@@ -1078,7 +1078,7 @@
 		
 		"evolutionFiring":
 		{
-			"angle":10,
+			"angle":3,
 			"delay":0.3
 		},
 		"weaponStat":
@@ -1121,7 +1121,7 @@
 		
 		"evolutionFiring":
 		{
-			"angle":10,
+			"angle":3,
 			"delay":3
 		},
 		"weaponStat":
@@ -1164,7 +1164,7 @@
 		
 		"evolutionFiring":
 		{
-			"angle":10,
+			"angle":3,
 			"delay":1
 		},
 		"weaponStat":
@@ -1249,7 +1249,7 @@
 		},
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":3,
 			"delay":0
 		},
 	},
@@ -1260,7 +1260,7 @@
 		"icon":"Sprites/Gun",
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":3,
 			"delay":0.3
 		},
 		"weaponStat":
@@ -1277,7 +1277,7 @@
 		"defaultLock":true,
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":3,
 			"delay":0.3
 		},
 		"weaponStat":
@@ -1417,7 +1417,7 @@
 		},		
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":3,
 			"delay":0.3
 		},
 	},
@@ -1486,7 +1486,7 @@
 		
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":10,
 			"delay":0
 		},
 		"weaponStat":
@@ -1523,7 +1523,7 @@
 		"icon":"Sprites/Gun",
 		"evolutionFiring":
 		{
-			"angle":5,
+			"angle":1,
 			"delay":0.3
 		},
 		"weaponStat":
@@ -1625,7 +1625,7 @@
 		"icon":"Sprites/SummonMob",		
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":10,
 			"delay":1
 		},
 		"weaponStat":
@@ -1713,7 +1713,7 @@
 		"icon":"Sprites/Firegun",		
 		"evolutionFiring":
 		{
-			"angle":5,
+			"angle":1,
 			"delay":0.3
 		},
 		"weaponStat":
@@ -1818,7 +1818,7 @@
 		"icon":"Sprites/Lightning",		
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":3,
 			"delay":0
 		},
 		"weaponStat":
@@ -1870,7 +1870,7 @@
 		"icon":"Sprites/Lightning",		
 		"evolutionFiring":
 		{
-			"angle":30,
+			"angle":3,
 			"delay":0
 		},
 		"weaponStat":
@@ -2328,12 +2328,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
+					"refItemId":4, 
 					"count":10
-				},
-				{
-					"refItemId":5, 
-					"count":1
 				}
 			],
 			"else_conds":
@@ -2349,7 +2345,7 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
+					"refItemId":4, 
 					"count":10
 				}
 			],
@@ -2368,7 +2364,7 @@
 					"option":
 					{
 						"type":"Strength",
-						"values":[1]
+						"values":[10]
 					}
 				}
 			]
@@ -2386,12 +2382,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
+					"refItemId":4, 
 					"count":10
-				},
-				{
-					"refItemId":5, 
-					"count":1
 				}
 			],
 			"else_conds":
@@ -2407,7 +2399,7 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
+					"refItemId":4, 
 					"count":10
 				}
 			],
@@ -2560,12 +2552,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":1000
-				},
-				{
-					"refItemId":5, 
-					"count":100
+					"refItemId":4, 
+					"count":10
 				}
 			],
 			"else_conds":
@@ -2581,15 +2569,15 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":1000
+					"refItemId":4, 
+					"count":10
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":100
+					"count":1
 				}
 			],
 			"optionPerLevel":
@@ -2618,12 +2606,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
+					"refItemId":4, 
 					"count":10
-				},
-				{
-					"refItemId":5, 
-					"count":1
 				}
 			],
 			"else_conds":
@@ -2639,7 +2623,7 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
+					"refItemId":4, 
 					"count":10
 				}
 			],
@@ -2676,12 +2660,8 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
+					"refItemId":4, 
 					"count":10
-				},
-				{
-					"refItemId":5, 
-					"count":1
 				}
 			],
 			"else_conds":
@@ -2697,11 +2677,7 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
-					"refItemId":5, 
+					"refItemId":4, 
 					"count":10
 				}
 			],
@@ -2709,7 +2685,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":1
 				}
 			],
 			"optionPerLevel":
@@ -2738,11 +2714,7 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
-				},
-				{
-					"refItemId":5, 
+					"refItemId":4, 
 					"count":10
 				}
 			],
@@ -2750,7 +2722,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":1
 				}
 			]
 		},
@@ -2759,15 +2731,15 @@
 			"conds":
 			[
 				{
-					"refItemId":1, 
-					"count":100
+					"refItemId":4, 
+					"count":10
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":1
 				}
 			],
 			"optionPerLevel":
@@ -2818,7 +2790,7 @@
 					"option":
 					{
 						"type":"MaxHP",
-						"values":[10]
+						"values":[1]
 					}
 				},
 				{
@@ -2826,7 +2798,7 @@
 					"option":
 					{
 						"type":"DmgReduction",						
-						"values":[0.1]
+						"values":[0.05]
 					}
 				},
 				{
@@ -2834,7 +2806,7 @@
 					"option":
 					{
 						"type":"DmgReduction",						
-						"values":[0.2]
+						"values":[0.15]
 					}
 				},
 				{
@@ -2842,7 +2814,7 @@
 					"option":
 					{
 						"type":"DmgReduction",						
-						"values":[0.3]
+						"values":[0.2]
 					}
 				}
 			]
@@ -2906,7 +2878,7 @@
 					"option":
 					{
 						"type":"DmgMultiplier",
-						"values":[6]
+						"values":[9]
 					}
 				}
 			]
@@ -3087,7 +3059,7 @@
 					"option":
 					{
 						"type":"Critical",						
-						"values":[0.1]
+						"values":[0.05]
 					}
 				},
 				{
@@ -3095,7 +3067,7 @@
 					"option":
 					{
 						"type":"Critical",						
-						"values":[0.2]
+						"values":[0.15]
 					}
 				},
 				{
@@ -3103,7 +3075,7 @@
 					"option":
 					{
 						"type":"Critical",
-						"values":[0.4]
+						"values":[0.2]
 					}
 				}
 			]

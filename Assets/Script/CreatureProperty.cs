@@ -54,7 +54,7 @@ public class CreatureProperty {
 
 	SecuredType.XInt	m_tabDamage = 10;
 
-	SecuredType.XFloat	m_damageRatio = 0;
+	SecuredType.XFloat	m_damageMultiPlier = 0;
 
 	public void 	init(Creature owner, RefCreatureBaseProperty baseProperty, int level)
 	{
@@ -173,10 +173,10 @@ public class CreatureProperty {
 		}
 	}
 
-	public float	DamageRatio
+	public float	DamageMultiPlier
 	{
-		get{return m_damageRatio.Value;}
-		set{m_damageRatio.Value = value;}
+		get{return m_damageMultiPlier.Value;}
+		set{m_damageMultiPlier.Value = value;}
 	}
 
 	public int Strength
@@ -190,8 +190,7 @@ public class CreatureProperty {
 	public int	PhysicalAttackDamage
 	{
 		get {
-			int damage = Strength;
-			return damage + (int)(damage*DamageRatio);
+			return Strength;
 		}
 	}
 
@@ -383,6 +382,6 @@ public class CreatureProperty {
 		other.m_sp = m_sp;
 		other.m_alphaSPRegen = m_alphaSPRegen;
 		other.m_callableFollowers = m_callableFollowers;
-		other.m_damageRatio = m_damageRatio;
+		other.m_damageMultiPlier = m_damageMultiPlier;
 	}
 }

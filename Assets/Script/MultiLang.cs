@@ -34,7 +34,6 @@ public class MultiLang{
 		MaxSP,
 		MoveSpeed,
 		Retry,
-		DamageReduction,
 		ShockWave,
 		Shield,
 		NuclearSkill,
@@ -55,5 +54,6 @@ public class MultiLang{
 		Damage,
 		IWillTakeMyPickupAnyItem,
 		ItDropFromBoss,
+		Stat,
 	}
 }

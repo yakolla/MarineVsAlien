@@ -55,7 +55,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		transform.Find(dir[(int)DirIndex.Strength]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.Strength) + ":";
 		transform.Find(dir[(int)DirIndex.RegenSP]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.RegenSP) + ":";
 		transform.Find(dir[(int)DirIndex.GainExtraGold]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.GainExtraGold) + ":";
-		transform.Find(dir[(int)DirIndex.DamageReduction]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.DamageReduction) + ":";
+		transform.Find(dir[(int)DirIndex.DamageReduction]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.Deffence) + ":";
 		transform.Find(dir[(int)DirIndex.DamageMultiplier]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.DamageMultiplier) + ":";
 		transform.Find(dir[(int)DirIndex.CriticalChance]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.CriticalChance) + ":";
 		transform.Find(dir[(int)DirIndex.CriticalDamage]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.CriticalDamage) + ":";
@@ -162,7 +162,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_tapDamage.Text.text = m_champ.m_creatureProperty.TapDamage.ToString();
 		m_gainExtraGold.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.GainExtraGold*100f);
 		m_damageReduction.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.DamageReduction*100f);
-		m_damageMultiplier.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.DamageRatio*100f);
+		m_damageMultiplier.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.DamageMultiPlier*100f);
 		m_criticalChance.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.CriticalChance*100f);
 		m_criticalDamage.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.CriticalDamage*100f);
 		m_lifeSteal.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.LifeSteal*100f);

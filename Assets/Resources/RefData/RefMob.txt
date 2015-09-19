@@ -126,7 +126,7 @@
 			"baseCreatureProperty":
 			{
 				"maxHP":160,
-				"physicalDamage":3,
+				"physicalDamage":30,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":50,
@@ -144,14 +144,14 @@
 			"refWeaponItems":
 			[				
 				{
-					"refItemId":"112"
+					"refItemId":"110"
 				}
 			],
 			"mobAI":"Normal",			
 			"baseCreatureProperty":
 			{
 				"maxHP":320,
-				"physicalDamage":3,
+				"physicalDamage":30,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":10,
@@ -1197,7 +1197,7 @@
 			"prefBody":"multi body character",
 			"baseCreatureProperty":
 			{
-				"maxHP":100,
+				"maxHP":10,
 				"maxSP":100,
 				"spRegen":0,
 				"physicalDamage":0,
@@ -1207,7 +1207,7 @@
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0,
 				"hpPerLevel":0,
-				"moveSpeed":2.2,
+				"moveSpeed":2,
 				"aniSpeedRatio":1,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false

@@ -30,7 +30,6 @@
 	"MaxSP",
 	"MoveSpeed",
 	"Retry",
-	"Dmg Reduction",
 	"Shock Wave",
 	"Shield",
 	"Nuclear Skill",
@@ -51,4 +50,5 @@
 	"Dmg",
 	"I'll take my pick up any item",
 	"It is dropped from a boss",
+	"Stat",
 ]

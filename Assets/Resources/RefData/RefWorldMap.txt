@@ -307,6 +307,13 @@
 							"maxValue":1,
 							"ratio":0.5,
 							"count":10
+						},
+						{
+							"refItemId":4,
+							"minValue":1,
+							"maxValue":1,
+							"ratio":0.5,
+							"count":10
 						}
 					]
 				}

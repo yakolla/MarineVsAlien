@@ -314,7 +314,7 @@ public class Spawn : MonoBehaviour {
 
 				if (m_dropBuffItemTime < Time.time)
 				{
-					m_dropBuffItemTime = Time.time+180f;
+					m_dropBuffItemTime = Time.time+120f;
 					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomSkillItemSpawns[m_wave%GetCurrentWave().randomSkillItemSpawns.Length]));
 				}
 
@@ -567,8 +567,12 @@ public class Spawn : MonoBehaviour {
 				float ratio = Random.Range(0f, 1f);
 				if (desc.refItem.type == ItemData.Type.WeaponParts)
 				{
-					ratio += Mathf.Min(m_wave, 100)*0.001f;
-					//Debug.Log("ItemData.Type.WeaponParts:" + ratio);
+					ratio += Mathf.Min(m_wave, Const.MaxWave)*0.001f;
+				}
+				else if (desc.refItem.type == ItemData.Type.WeaponDNA)
+				{
+					if (m_wave < Const.MaxWave)
+						ratio = 0f;
 				}
 
 				if (ratio <= desc.ratio)
@@ -633,6 +637,11 @@ public class Spawn : MonoBehaviour {
 
 						GameObject itemBoxObj = (GameObject)Instantiate(m_prefItemBox, pos, Quaternion.Euler(0f, 0f, 0f));
 						GameObject itemSkinObj = (GameObject)Instantiate(m_prefItemBoxSkins[(int)desc.refItem.type], pos, Quaternion.Euler(0f, 0f, 0f));
+						if (desc.refItem.type == ItemData.Type.Skill)
+						{
+							itemSkinObj.transform.Find(item.RefItem.codeName).gameObject.SetActive(true);
+						}
+
 						itemSkinObj.transform.parent = itemBoxObj.transform;
 						itemSkinObj.transform.localPosition = Vector3.zero;
 						itemSkinObj.transform.localRotation = m_prefItemBoxSkins[(int)desc.refItem.type].transform.rotation;

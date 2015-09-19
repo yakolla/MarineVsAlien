@@ -17,6 +17,7 @@ public class Const {
 		MainMenu,
 	}
 
+	public const int MaxWave = 100;
 	public const int MaxItemLevel = 9;
 	public const int MaxShowDamageNumber = 3;
 	public const int SpecialButtons = 4;
