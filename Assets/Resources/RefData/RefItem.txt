@@ -2772,14 +2772,14 @@
 			[
 				{
 					"refItemId":1, 
-					"count":100
+					"count":10
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":10
+					"count":1
 				}
 			],
 			"optionPerLevel":

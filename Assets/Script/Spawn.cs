@@ -571,7 +571,7 @@ public class Spawn : MonoBehaviour {
 				}
 				else if (desc.refItem.type == ItemData.Type.WeaponDNA)
 				{
-					if (m_wave < Const.MaxWave)
+					if (GetCurrentWave().mobSpawns.Length < GetStage(m_wave))
 						ratio = 0f;
 				}
 
