@@ -267,7 +267,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 			));
 		}
 
-
+		/*
 		skillAbili.Add(new Ability(0.3f, "Fill " + (m_champ.WeaponHolder.MainWeapon.WeaponStat.skillId > 0 ? RefData.Instance.RefTexts(RefData.Instance.RefItems[m_champ.WeaponHolder.MainWeapon.WeaponStat.skillId].name) : ""), 
 		                           ()=>{
 			int backup = m_champ.NuclearSkillStack+3;
@@ -291,7 +291,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 			m_champ.MachoSkillStack += 3;
 			--m_champ.RemainStatPoint;
 		}));
-
+*/
 		skillAbili.Add(new Ability(0.3f, RefData.Instance.RefTexts(RefData.Instance.RefItems[131].name), 
 		                            ()=>{
 			Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(131);

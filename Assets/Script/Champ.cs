@@ -16,8 +16,7 @@ public class Champ : Creature {
 
 	SecuredType.XInt			m_mobKills;
 
-	int			m_machoSkillStacks = 0;
-	int			m_nuclearSkillStacks = 0;
+	int[]			m_skillStacks	= new int[9];
 
 	ItemObject[]	m_accessoryItems = new ItemObject[Const.AccessoriesSlots];
 
@@ -54,8 +53,6 @@ public class Champ : Creature {
 	{
 		base.Init(refMob, level);
 
-		m_machoSkillStacks = 0;
-		m_remainStatPoint = 0;
 		m_lastLevelupTime = Time.time;
 	}
 
@@ -178,16 +175,10 @@ public class Champ : Creature {
 		get {return m_moveDir;}
 	}
 
-	public int MachoSkillStack
+	public int[] SkillStacks
 	{
-		get {return m_machoSkillStacks;}
-		set {m_machoSkillStacks = value;}
-	}
-
-	public int NuclearSkillStack
-	{
-		get {return m_nuclearSkillStacks;}
-		set {m_nuclearSkillStacks = value;}
+		get {return m_skillStacks;}
+		set {m_skillStacks = value;}
 	}
 
 	public ItemObject[]	AccessoryItems
@@ -382,12 +373,6 @@ public class Champ : Creature {
 
 	override public void Death()
 	{
-		if (MachoSkillStack > 0)
-		{
-			m_creatureProperty.HP = 1;
-			ApplyMachoSkill();
-			return;
-		}
 
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Death", "Wave"+Warehouse.Instance.WaveIndex, 0);
 

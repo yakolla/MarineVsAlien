@@ -452,8 +452,6 @@ public class ChampSettingGUI : MonoBehaviour {
 				{
 					m_champ.WeaponHolder.LevelUp(selectedItem.Item.RefItem.id);
 					selectedItem.Item.Use(m_champ);
-					
-					Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
 				}
 				else if (selectedItem.Item.RefItem.type == ItemData.Type.Follower)
 				{

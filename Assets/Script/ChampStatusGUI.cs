@@ -37,22 +37,22 @@ public class ChampStatusGUI : MonoBehaviour {
 		});
 
 
-		assignSkillButton(0, Warehouse.Instance.FindItem(23), 1, 1, ()=>{
-			Warehouse.Instance.FindItem(23).Item.Use(m_champ);
-			return true;
-		});
-
-		assignSkillButton(1, Warehouse.Instance.FindItem(22), 1, 1, ()=>{
-			Warehouse.Instance.FindItem(22).Item.Use(m_champ);
-			return true;
-		});
-
-		assignSkillButton(2, Warehouse.Instance.FindItem(21), 3, 3, ()=>{			
+		assignSkillButton(0, Warehouse.Instance.FindItem(21), ()=>{
 			Warehouse.Instance.FindItem(21).Item.Use(m_champ);
 			return true;
 		});
 
-		assignSkillButton(3, Warehouse.Instance.FindItem(24), 3, 3, ()=>{	
+		assignSkillButton(1, Warehouse.Instance.FindItem(22), ()=>{
+			Warehouse.Instance.FindItem(22).Item.Use(m_champ);
+			return true;
+		});
+
+		assignSkillButton(2, Warehouse.Instance.FindItem(23), ()=>{			
+			Warehouse.Instance.FindItem(23).Item.Use(m_champ);
+			return true;
+		});
+
+		assignSkillButton(3, Warehouse.Instance.FindItem(24), ()=>{	
 			Warehouse.Instance.FindItem(24).Item.Use(m_champ);
 			return true;
 		});
@@ -83,7 +83,7 @@ public class ChampStatusGUI : MonoBehaviour {
 		);
 	}
 
-	void assignSkillButton(int slot, ItemObject itemObj, int maxChargingPoint, int chargingPoint, System.Func<bool> doFunctor)
+	void assignSkillButton(int slot, ItemObject itemObj, System.Func<bool> doFunctor)
 	{
 		m_specialButtons[slot] = new YGUISystem.GUIChargeButton(transform.Find("Special/Button"+slot).gameObject, ()=>{
 			if (m_specialButtons[slot].MaxChargingPoint != itemObj.Item.Level)
@@ -91,7 +91,7 @@ public class ChampStatusGUI : MonoBehaviour {
 				m_specialButtons[slot].MaxChargingPoint = itemObj.Item.Level;
 				m_specialButtons[slot].ChargingPoint++;
 			}
-			return itemObj.Item.Level > 0;
+			return itemObj.Item.Level > 0 || m_champ.SkillStacks[itemObj.Item.RefItem.id-21] > 0 ;
 		});
 		
 		m_specialButtons[slot].Icon.Image = itemObj.ItemIcon;
@@ -125,6 +125,14 @@ public class ChampStatusGUI : MonoBehaviour {
 
 	public void OnClickSkill(int slot)
 	{
+		if (m_champ.SkillStacks[slot] > 0)
+		{
+			if (m_specialButtons[slot].DoFunctor.Invoke() == false)
+				return;
+
+			--m_champ.SkillStacks[slot];
+			return;
+		}
 		if (m_specialButtons[slot].ChargingPoint == 0)
 			return;
 

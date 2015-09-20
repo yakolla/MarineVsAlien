@@ -16,7 +16,11 @@ public class ItemSkillData : ItemData{
 
 	override public void Pickup(Creature obj)
 	{
-		Use (obj);
+		Champ champ = obj as Champ;
+		if (champ == null)
+			return;
+
+		champ.SkillStacks[RefItem.id-21]=1;
 	}
 
 	override public void Use(Creature obj)

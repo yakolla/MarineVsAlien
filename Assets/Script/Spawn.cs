@@ -571,11 +571,11 @@ public class Spawn : MonoBehaviour {
 				}
 				else if (desc.refItem.type == ItemData.Type.WeaponDNA)
 				{
-					if (GetCurrentWave().mobSpawns.Length < GetStage(m_wave))
+					if (GetStage(m_wave) < GetCurrentWave().mobSpawns.Length)
 						ratio = 0f;
 				}
 
-				if (ratio <= desc.ratio)
+				if (ratio > 0 && ratio <= desc.ratio)
 				{
 					float scale = 1f;
 					ItemData item = null;
@@ -608,7 +608,8 @@ public class Spawn : MonoBehaviour {
 						}
 						break;					
 					case ItemData.Type.WeaponDNA:
-						item = new ItemWeaponDNAData(desc.refItem.id);					
+						item = new ItemWeaponDNAData(desc.refItem.id);
+						Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
 						break;
 					case ItemData.Type.Accessory:
 						item = new ItemAccessoryData(desc.refItem.id);					
