@@ -186,7 +186,7 @@
 		"codeName":"HealSkill",
 		"type":"Skill",
 		"name":"HealSkill",
-		"icon":"Sprites/LevelUp",
+		"icon":"Sprites/HealSkill",
 		"defaultLock":true,
 		"weaponStat":
 		{
