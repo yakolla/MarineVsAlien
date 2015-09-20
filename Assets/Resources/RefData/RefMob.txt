@@ -1162,7 +1162,7 @@
 		{
 			"id":30008,			
 			"prefHead":"Follower",
-			"prefBody":"marine_skin",
+			"prefBody":"robochain_skin",
 			"name":"SwordMarine",
 			"refWeaponItems":
 			[
