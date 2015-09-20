@@ -320,7 +320,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 			System.DateTime now = new System.DateTime (1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc).AddMilliseconds(double.Parse(www.text));
 
-			Warehouse.Instance.AutoEarnGold = (int)now.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5;
+			Warehouse.Instance.AutoEarnGold = (int)now.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5*Warehouse.Instance.GameBestStats.WaveIndex;
 			Warehouse.Instance.LastModifiedFileTime = now;
 		}
 		/*
