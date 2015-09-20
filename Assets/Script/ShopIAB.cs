@@ -98,23 +98,26 @@ public class ShopIAB : MonoBehaviour
 	void Init()
 	{
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Shop", "OpenShop", 0);
-		m_paidItems.Add("gem.1000", new PaidItem(1000));
-		m_paidItems.Add("gem.3000", new PaidItem(3500));
-		m_paidItems.Add("gem.5000", new PaidItem(6000));
+		m_paidItems.Add("gem.1000", new PaidItem(100000));
+		m_paidItems.Add("gem.3000", new PaidItem(350000));
+		m_paidItems.Add("gem.5000", new PaidItem(600000));
 
 		m_closeButton = new YGUISystem.GUIButton(transform.Find("CloseButton").gameObject, ()=>{return true;});
 
 		m_piadItemButtons[0] = new YGUISystem.GUIButton(transform.Find("PaidItemButton0").gameObject, ()=>{
 			return _isInitialized && m_progressing == false;
 		});
+		m_piadItemButtons[0].Lable.Text.text = m_paidItems["gem.1000"].Gem.ToString();
 
 		m_piadItemButtons[1] = new YGUISystem.GUIButton(transform.Find("PaidItemButton1").gameObject, ()=>{
 			return _isInitialized && m_progressing == false;
 		});
+		m_piadItemButtons[1].Lable.Text.text = m_paidItems["gem.3000"].Gem.ToString();
 
 		m_piadItemButtons[2] = new YGUISystem.GUIButton(transform.Find("PaidItemButton2").gameObject, ()=>{
 			return _isInitialized && m_progressing == false;
 		});
+		m_piadItemButtons[2].Lable.Text.text = m_paidItems["gem.5000"].Gem.ToString();
 
 		foreach(KeyValuePair<string, PaidItem> pair in m_paidItems)
 		{

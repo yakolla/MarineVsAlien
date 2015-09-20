@@ -104,7 +104,10 @@ public class LightningBullet : Bullet
 				if (hitted != null)
 				{
 					creature = hitted[0];
-					m_ownerCreature.SetTarget(creature);
+					if (m_ownerCreature.inAttackRange(creature, 0))
+					{
+						m_ownerCreature.SetTarget(creature);
+					}
 				}
 
 			}

@@ -133,7 +133,7 @@ public class WeaponHolder : MonoBehaviour {
 	{
 		foreach(Weapon weapon in m_weapons)
 		{
-			if (refWeaponID > 0 && refWeaponID == weapon.RefItem.id)
+			if (refWeaponID == 0 || refWeaponID == weapon.RefItem.id)
 				weapon.LevelUp();
 		}
 	}

@@ -470,8 +470,6 @@ public class ChampSettingGUI : MonoBehaviour {
 				if (selectedItem.Item.Level == selectedItem.Item.RefItem.maxLevel)
 				{
 					priceGemButton.SetPrices(null, null);
-
-
 				}
 
 				priceGemButton.m_priceButton.NormalWorth = Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup);

@@ -27,7 +27,7 @@ public class ItemBox : MonoBehaviour {
 		m_parabola = new Parabola(gameObject, Random.Range(5f, 8f), Random.Range(-3.14f, 3.14f), Random.Range(1.3f, 1.57f), 2);
 		m_parabola.GroundY = 0.5f;
 		m_parabola.TimeScale = 1.5f;
-		m_timeToDeath = Time.time + m_lifeTime;
+		LifeTime = m_lifeTime;
 	}
 
 	void SetTarget(Creature target)
@@ -38,6 +38,11 @@ public class ItemBox : MonoBehaviour {
 		Vector3 handle2 = target.transform.position;
 		handle2.y = 3f;
 		m_bezier = new Bezier(gameObject, target.gameObject, handle1, handle2, 0.06f);
+	}
+
+	public float LifeTime
+	{
+		set {m_timeToDeath = Time.time + m_lifeTime;}
 	}
 
 	public void StartPickupEffect(Creature obj)

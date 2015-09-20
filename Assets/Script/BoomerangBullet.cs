@@ -50,7 +50,7 @@ public class BoomerangBullet : Bullet {
 				m_start = m_goal;
 
 				if (m_ownerCreature)
-					m_goal = m_ownerCreature.transform.position;
+					m_goal = m_ownerCreature.WeaponHolder.transform.position;
 			}
 
 		}
@@ -58,7 +58,7 @@ public class BoomerangBullet : Bullet {
 		if (m_returnPhase == true)
 		{
 			if (m_ownerCreature)
-				m_goal = m_ownerCreature.transform.position;
+				m_goal = m_ownerCreature.WeaponHolder.transform.position;
 		}
 	}
 

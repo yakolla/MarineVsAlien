@@ -1919,15 +1919,42 @@
 			"conds":
 			[
 				{
-					"refItemId":11, 
-					"count":7
+					"refItemId":1,
+					"count":70
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":1,
-					"count":70
+					"refItemId":8, 
+					"count":7
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
+					}
 				}
 			]
 		}
@@ -1971,15 +1998,42 @@
 			"conds":
 			[
 				{
-					"refItemId":11,
-					"count":14
+					"refItemId":1, 
+					"count":140
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":1, 
-					"count":140
+					"refItemId":8,
+					"count":14
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
+					}
 				}
 			]
 		}
@@ -2023,15 +2077,42 @@
 			"conds":
 			[
 				{
-					"refItemId":11,
-					"count":28
+					"refItemId":1, 
+					"count":280
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":1, 
-					"count":280
+					"refItemId":8,
+					"count":28
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
+					}
 				}
 			]
 		}
@@ -2075,15 +2156,42 @@
 			"conds":
 			[
 				{
-					"refItemId":11,
-					"count":56
+					"refItemId":1, 
+					"count":560
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":1, 
-					"count":560
+					"refItemId":8,
+					"count":56
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
+					}
 				}
 			]
 		}
@@ -2127,15 +2235,42 @@
 			"conds":
 			[
 				{
-					"refItemId":11,
-					"count":112
+					"refItemId":1, 
+					"count":1120
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":1, 
-					"count":1120
+					"refItemId":8,
+					"count":112
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
+					}
 				}
 			]
 		}
@@ -2179,15 +2314,42 @@
 			"conds":
 			[
 				{
-					"refItemId":11,
-					"count":224
+					"refItemId":1, 
+					"count":2240
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":1, 
-					"count":2240
+					"refItemId":8,
+					"count":224
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
+					}
 				}
 			]
 		}
@@ -2271,15 +2433,42 @@
 			"conds":
 			[
 				{
-					"refItemId":11,
-					"count":448
+					"refItemId":1, 
+					"count":4480
 				}
 			],
 			"else_conds":
 			[
 				{
-					"refItemId":1, 
-					"count":4480
+					"refItemId":8,
+					"count":448
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
+					}
 				}
 			]
 		}
@@ -2853,32 +3042,32 @@
 					"levelPer":true,
 					"option":
 					{
-						"type":"CriticalDmg",
-						"values":[0.1]
+						"type":"Critical",
+						"values":[0.0005]
 					}
 				},
 				{
 					"level":100,
 					"option":
 					{
-						"type":"Critical",						
-						"values":[0.05]
+						"type":"CriticalDmg",						
+						"values":[3]
 					}
 				},
 				{
 					"level":300,
 					"option":
 					{
-						"type":"Critical",						
-						"values":[0.15]
+						"type":"CriticalDmg",						
+						"values":[6]
 					}
 				},
 				{
 					"level":900,
 					"option":
 					{
-						"type":"Critical",
-						"values":[0.2]
+						"type":"CriticalDmg",
+						"values":[9]
 					}
 				}
 			]

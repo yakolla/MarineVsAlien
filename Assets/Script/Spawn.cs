@@ -633,13 +633,21 @@ public class Spawn : MonoBehaviour {
 					
 					if (item != null)
 					{
+
 						++spawnedItemCount;
 
 						GameObject itemBoxObj = (GameObject)Instantiate(m_prefItemBox, pos, Quaternion.Euler(0f, 0f, 0f));
+						ItemBox itemBox = itemBoxObj.GetComponent<ItemBox>();
+						itemBox.Item = item;
+						itemBox.PickupCallback = (Creature obj)=>{
+							
+						};
+
 						GameObject itemSkinObj = (GameObject)Instantiate(m_prefItemBoxSkins[(int)desc.refItem.type], pos, Quaternion.Euler(0f, 0f, 0f));
 						if (desc.refItem.type == ItemData.Type.Skill)
 						{
 							itemSkinObj.transform.Find(item.RefItem.codeName).gameObject.SetActive(true);
+							itemBox.LifeTime = 60f;
 						}
 
 						itemSkinObj.transform.parent = itemBoxObj.transform;
@@ -647,12 +655,6 @@ public class Spawn : MonoBehaviour {
 						itemSkinObj.transform.localRotation = m_prefItemBoxSkins[(int)desc.refItem.type].transform.rotation;
 						itemBoxObj.transform.localScale = Vector3.one * scale;
 						itemBoxObj.SetActive(false);
-						
-						ItemBox itemBox = itemBoxObj.GetComponent<ItemBox>();
-						itemBox.Item = item;
-						itemBox.PickupCallback = (Creature obj)=>{
-
-						};
 
 						StartCoroutine(EffectSpawnItemBox(itemBox, 0.15f*spawnedItemCount));
 					}

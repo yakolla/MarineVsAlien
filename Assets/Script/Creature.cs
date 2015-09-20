@@ -315,7 +315,7 @@ public class Creature : MonoBehaviour {
 		get {return m_weaponHolder;}
 	}
 
-	protected bool inAttackRange(Creature targeting, float overrideRange)
+	public bool inAttackRange(Creature targeting, float overrideRange)
 	{
 		float dist = Vector3.Distance(transform.position, targeting.transform.position);
 
@@ -919,7 +919,7 @@ public class Creature : MonoBehaviour {
 
 		if (true == m_creatureProperty.BackwardOnDamage && damageDesc.PushbackOnDamage && m_pushbackSpeedOnDamage <= 0f)
 		{
-			if (Random.Range(0, 2) == 0)
+			if (Random.Range(0, 10) == 0)
 			{
 				m_pushbackSpeedOnDamage = 10f / rigidbody.mass;
 				rigidbody.AddForce(transform.right*-2f, ForceMode.Impulse);

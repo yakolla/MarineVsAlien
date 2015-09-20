@@ -18,8 +18,14 @@ public class GUIInventorySlot : MonoBehaviour {
 			m_gemButton = new YGUISystem.GUIPriceButton(transform.Find(buttonPath + "/GemButton").gameObject, Const.StartPosYOfGemPriceButtonImage, enableChecker);
 		}
 
-		public void Update()
+		public void Update(ItemObject itemObj)
 		{
+			if (itemObj.Item.Lock == false)
+			{
+				m_priceButton.NormalWorth = Const.GetItemLevelupWorth(itemObj.Item.Level, itemObj.Item.RefItem.levelup);
+				m_gemButton.NormalWorth = Const.GetItemLevelupWorth(itemObj.Item.Level, itemObj.Item.RefItem.levelup);
+			}
+
 			m_priceButton.Update();
 			m_gemButton.Update();
 		}
@@ -109,8 +115,8 @@ public class GUIInventorySlot : MonoBehaviour {
 	{
 		ItemDesc = m_itemObjOfWarehouse.Item.Description();
 		m_item.Update();
-		m_priceButton0.Update();
-		m_priceButton1.Update();
+		m_priceButton0.Update(m_itemObjOfWarehouse);
+		m_priceButton1.Update(m_itemObjOfWarehouse);
 
 	}
 
