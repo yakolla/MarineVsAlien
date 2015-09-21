@@ -1928,7 +1928,7 @@
 	},
 	{
 		"id":210,
-		"codeName":"FollowerMelee",
+		"codeName":"FollowerChainSaw",
 		"type":"Weapon",
 		"icon":"Sprites/swordoftruth",
 		
