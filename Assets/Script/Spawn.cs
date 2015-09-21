@@ -240,7 +240,7 @@ public class Spawn : MonoBehaviour {
 						break;
 					}							
 
-					if (refMob.baseCreatureProperty.moveSpeed > 0f)
+					if (refMob.baseCreatureProperty.moveSpeed > 0f && refMob.nearByChampOnSpawn == false)
 					{
 						enemyPos.x += Mathf.Cos(angle) * length;
 						enemyPos.z += Mathf.Sin(angle) * length;							
@@ -314,7 +314,7 @@ public class Spawn : MonoBehaviour {
 
 				if (m_dropBuffItemTime < Time.time)
 				{
-					m_dropBuffItemTime = Time.time+120f;
+					m_dropBuffItemTime = Time.time+Random.Range(90f, 150f);
 					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomSkillItemSpawns[m_wave%GetCurrentWave().randomSkillItemSpawns.Length]));
 				}
 
@@ -420,6 +420,8 @@ public class Spawn : MonoBehaviour {
 				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
 			if (Warehouse.Instance.AlienEssence.Item.Count > 700)
 				Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
+			if (Warehouse.Instance.AlienEssence.Item.Count > 1000)
+				Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
 
 		}
 	}
@@ -609,7 +611,6 @@ public class Spawn : MonoBehaviour {
 						break;					
 					case ItemData.Type.WeaponDNA:
 						item = new ItemWeaponDNAData(desc.refItem.id);
-						Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
 						break;
 					case ItemData.Type.Accessory:
 						item = new ItemAccessoryData(desc.refItem.id);					

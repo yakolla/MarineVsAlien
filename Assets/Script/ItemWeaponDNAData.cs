@@ -9,5 +9,14 @@ public class ItemWeaponDNAData : ItemData{
 
 	}
 
+	override public void Pickup(Creature obj){
+		Warehouse.Instance.WeaponDNA.Item.Count += Count;
+	}
 
+	override public string Description()
+	{
+		string desc = "Count:" + "<color=yellow>" + Count + "</color>";		
+
+		return desc;
+	}
 }

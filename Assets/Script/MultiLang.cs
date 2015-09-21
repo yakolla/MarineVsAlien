@@ -56,5 +56,6 @@ public class MultiLang{
 		ItDropFromBoss,
 		Stat,
 		Dodge,
+		ItWillDropAfter30waves,
 	}
 }

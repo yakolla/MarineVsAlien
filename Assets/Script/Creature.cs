@@ -134,7 +134,7 @@ public class Creature : MonoBehaviour {
 		return weapon;
 	}
 
-	virtual public void EquipWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	public virtual Weapon EquipWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
 	{		
 		Weapon weapon = instanceWeapon(weaponData, weaponStat);
 
@@ -151,6 +151,8 @@ public class Creature : MonoBehaviour {
 		{
 			EquipActiveSkillWeapon(new ItemWeaponData(weapon.WeaponStat.skillId), null);
 		}
+
+		return weapon;
 	}
 
 	public void EquipPassiveSkillWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)

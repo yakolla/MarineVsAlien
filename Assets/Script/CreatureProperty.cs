@@ -52,7 +52,7 @@ public class CreatureProperty {
 	SecuredType.XInt	m_bombRange = 0;
 	SecuredType.XInt	m_attackRange = 0;
 
-	SecuredType.XInt	m_tabDamage = 10;
+	SecuredType.XInt	m_tabDamage = 0;
 
 	SecuredType.XFloat	m_dodge = 0f;
 

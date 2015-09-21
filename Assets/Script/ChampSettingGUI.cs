@@ -66,7 +66,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemGoldData(100000));
 				Warehouse.Instance.PushItem(new ItemGoldMedalData(1000));
 				Warehouse.Instance.PushItem(new ItemGemData(m_cheatGem));
-				
+				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampTapRefItemId));	
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));				
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampLightningLauncherRefItemId));
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampFiregunRefItemId));
@@ -91,8 +91,8 @@ public class ChampSettingGUI : MonoBehaviour {
 				//Warehouse.Instance.PushItem(new ItemStatData(2004));
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
 				Warehouse.Instance.PushItem(new ItemStatData(2008));
-				Warehouse.Instance.PushItem(new ItemStatData(2005));
-				Warehouse.Instance.PushItem(new ItemStatData(2007));
+				Warehouse.Instance.PushItem(new ItemStatData(2005));				
+				Warehouse.Instance.PushItem(new ItemWeaponDNAData(0));
 
 
 				Warehouse.Instance.PushItem(new ItemSkillData(21));
@@ -140,6 +140,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemGoldMedalData(0));
 				Warehouse.Instance.PushItem(new ItemGemData(0));
 
+				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampTapRefItemId));	
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampLightningLauncherRefItemId));
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampFiregunRefItemId));
@@ -164,7 +165,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemStatData(2006));
 				Warehouse.Instance.PushItem(new ItemStatData(2008));
 				Warehouse.Instance.PushItem(new ItemStatData(2005));
-				Warehouse.Instance.PushItem(new ItemStatData(2007));
+				Warehouse.Instance.PushItem(new ItemWeaponDNAData(0));
 
 
 				Warehouse.Instance.PushItem(new ItemSkillData(21));
@@ -207,7 +208,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_tabs[3].Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Stat);
 
 		m_weaponPanel = settingItemList("WeaponPanel", new ItemData.Type[]{ItemData.Type.Weapon, ItemData.Type.WeaponParts});
-		m_statPanel = settingItemList("StatPanel", new ItemData.Type[]{ItemData.Type.Stat});
+		m_statPanel = settingItemList("StatPanel", new ItemData.Type[]{ItemData.Type.Stat, ItemData.Type.WeaponDNA});
 		m_followerPanel = settingItemList("FollowerPanel", new ItemData.Type[]{ItemData.Type.Follower});
 		m_skillPanel = settingItemList("SkillPanel", new ItemData.Type[]{ItemData.Type.Skill});
 		m_generalInfoPanel = transform.Find("GeneralInfoPanel").gameObject.GetComponent<GeneralInfoPanel>();
@@ -265,9 +266,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				return item.Item.RefItem.levelup.conds != null && item.Item.Lock == false && item.Item.Level < item.Item.RefItem.maxLevel;};
 				
 				priceGemButton.SetPrices(item.Item.RefItem.levelup.conds, item.Item.RefItem.levelup.else_conds);
-				priceGemButton.m_priceButton.NormalWorth = Const.GetItemLevelupWorth(item.Item.Level, item.Item.RefItem.levelup);
-				priceGemButton.m_gemButton.NormalWorth = Const.GetItemLevelupWorth(item.Item.Level, item.Item.RefItem.levelup);
-
+				
 				priceGemButton.AddListener(() => OnClickLevelup(invSlot, priceGemButton, priceGemButton.m_priceButton, item), () => OnClickLevelup(invSlot, priceGemButton, priceGemButton.m_gemButton, item) );
 				priceGemButton.SetLable("Levelup");
 			}
@@ -470,9 +469,6 @@ public class ChampSettingGUI : MonoBehaviour {
 					priceGemButton.SetPrices(null, null);
 				}
 
-				priceGemButton.m_priceButton.NormalWorth = Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup);
-				priceGemButton.m_gemButton.NormalWorth = Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup);
-
 				invSlot.ItemDesc = selectedItem.Item.Description();
 
 
@@ -500,11 +496,6 @@ public class ChampSettingGUI : MonoBehaviour {
 				invSlot.ItemDesc = selectedItem.Item.Description();
 
 				SetButtonRole(ButtonRole.Equip, invSlot, priceGemButton, selectedItem);
-
-
-				invSlot.PriceButton1.m_priceButton.NormalWorth = Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup);
-				invSlot.PriceButton1.m_gemButton.NormalWorth = Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup);
-
 				switch(selectedItem.Item.RefItem.type)
 				{
 				case ItemData.Type.Follower:

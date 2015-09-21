@@ -690,7 +690,7 @@
 				}
 			],
 			"mobAI":"Normal",		
-			"nearByChampOnSpawn":true,
+			
 			"baseCreatureProperty":
 			{
 				"maxHP":500,
@@ -732,7 +732,7 @@
 				}
 			],
 			"mobAI":"Normal",		
-			"nearByChampOnSpawn":true,
+			
 			"baseCreatureProperty":
 			{
 				"maxHP":1000,
@@ -778,7 +778,7 @@
 				}
 			],
 			"mobAI":"Normal",		
-			"nearByChampOnSpawn":true,
+			
 			"baseCreatureProperty":
 			{
 				"maxHP":2000,
@@ -820,7 +820,7 @@
 				}
 			],
 			"mobAI":"Normal",		
-			"nearByChampOnSpawn":true,
+			
 			"baseCreatureProperty":
 			{
 				"maxHP":4000,
@@ -864,7 +864,7 @@
 				
 			],
 			"mobAI":"Normal",		
-			"nearByChampOnSpawn":true,
+			
 			"baseCreatureProperty":
 			{
 				"maxHP":8000,
@@ -1277,7 +1277,7 @@
 		{
 			"id":5001,
 			"prefHead":"buffBox",
-			"prefBody":"drumtong_skin",
+			"prefBody":"item ufo _skin",
 			"refWeaponItems":
 			[
 				{
@@ -1285,6 +1285,7 @@
 				}
 			],
 			"mobAI":"FlyingAround",
+			"nearByChampOnSpawn":true,
 			"baseCreatureProperty":
 			{
 				"maxHP":1,
@@ -1295,8 +1296,8 @@
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0,
 				"hpPerLevel":1,
-				"moveSpeed":0,
-				"navMeshBaseOffset":4,
+				"moveSpeed":2,
+				"navMeshBaseOffset":6,
 				"backwardOnDamage":false
 			}
 		}

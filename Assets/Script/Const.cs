@@ -40,6 +40,7 @@ public class Const {
 	public const int ChampGuidedRocketLauncherRefItemId = 106;
 	public const int ChampRocketLauncherRefItemId = 111;
 	public const int ChampBoomerangLauncherRefItemId = 120;
+	public const int ChampTapRefItemId = 137;
 	public const int BootsRefItemId = 10;
 	public const int NuclearSkillRefItemId = 21;
 	public const int GemRefItemId = 8;

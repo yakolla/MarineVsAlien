@@ -18,6 +18,7 @@ public class WarehouseData
 	public SecuredType.XInt	m_alienEssence = 0;
 	public SecuredType.XInt	m_gold = 0;
 	public SecuredType.XInt	m_goldMedal = 0;
+	public SecuredType.XInt	m_weaponDNA = 0;
 	public SecuredType.XInt	m_gem = 0;
 	public SecuredType.XInt	m_autoEarnGold = 0;
 	public System.DateTime			m_lastModifiedTime = System.DateTime.UtcNow;
@@ -204,6 +205,7 @@ public class Warehouse {
 
 	ItemObject			m_gold;
 	ItemObject			m_goldMedal;
+	ItemObject			m_weaponDNA;
 	ItemObject			m_gem;
 	ItemObject			m_alienEssence;
 
@@ -310,7 +312,7 @@ public class Warehouse {
 		case ItemData.Type.Gold:
 			return m_gold;
 		case ItemData.Type.GoldMedal:
-			return m_goldMedal;
+			return m_goldMedal;		
 		case ItemData.Type.Gem:
 			return m_gem;
 		case ItemData.Type.AlienEssence:
@@ -341,6 +343,11 @@ public class Warehouse {
 	public ItemObject GoldMedal
 	{
 		get { return m_goldMedal; }
+	}
+
+	public ItemObject	WeaponDNA
+	{
+		get { return m_weaponDNA;}
 	}
 	
 	public ItemObject Gem
@@ -451,6 +458,7 @@ public class Warehouse {
 		m_goldMedal = new ItemObject(new ItemGoldMedalData(0));
 		m_gem = new ItemObject(new ItemGoldMedalData(0));
 		m_alienEssence = new ItemObject(new ItemAlienEssenceData(0));
+		m_weaponDNA = new ItemObject(new ItemWeaponDNAData(0));
 	}
 
 	public byte[] Serialize()
@@ -477,6 +485,7 @@ public class Warehouse {
 		m_warehouseData.m_gold = m_gold.Item.Count;
 		m_warehouseData.m_goldMedal = m_goldMedal.Item.Count;
 		m_warehouseData.m_gem = m_gem.Item.Count;
+		m_warehouseData.m_weaponDNA = m_weaponDNA.Item.Count;
 		m_warehouseData.m_alienEssence = m_alienEssence.Item.Count;
 		writer.Write(JsonConvert.SerializeObject(m_warehouseData));
 		
@@ -550,6 +559,7 @@ public class Warehouse {
 
 		m_gold.Item.Count = m_warehouseData.m_gold.Value;
 		m_goldMedal.Item.Count = m_warehouseData.m_goldMedal.Value;
+		m_weaponDNA.Item.Count = m_warehouseData.m_weaponDNA.Value;
 		m_gem.Item.Count = m_warehouseData.m_gem.Value;
 		m_alienEssence.Item.Count = m_warehouseData.m_alienEssence.Value;
 

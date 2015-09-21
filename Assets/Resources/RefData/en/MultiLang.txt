@@ -52,4 +52,5 @@
 	"It is dropped from a boss",
 	"Stat",
 	"Dodge",
+	"It Will be dropped, After 30 waves",
 ]

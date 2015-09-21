@@ -31,6 +31,8 @@ public class Champ : Creature {
 	ADMob					m_admob;
 	float		m_idleTime;
 
+	Weapon		m_tapWeapon;
+
 	new void Start () {
 
 		base.Start();
@@ -204,11 +206,16 @@ public class Champ : Creature {
 	}
 */
 
-	override public void EquipWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	override public Weapon EquipWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
 	{
-		base.EquipWeapon(weaponData, weaponStat);
+		Weapon weapon = base.EquipWeapon(weaponData, weaponStat);
 		if (weaponData.RefItem.partName != null)
 			transform.Find("Body/"+weaponData.RefItem.partName).gameObject.SetActive(true);
+
+		if (weapon.RefItem.id == Const.ChampTapRefItemId)
+			m_tapWeapon = weapon;
+
+		return weapon;
 	}
 	// Update is called once per frame
 	new void Update () {
@@ -289,7 +296,7 @@ public class Champ : Creature {
 
 				if (target != null && IsEnemy(target, this))
 				{
-					target.TakeDamage(this, new DamageDesc(m_creatureProperty.TapDamage, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
+					target.TakeDamage(this, new DamageDesc(m_tapWeapon.GetDamage(m_creatureProperty), DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
 					hitted = true;
 				}
 				else if (hit.transform.tag.CompareTo("ItemBox") == 0)
@@ -309,7 +316,7 @@ public class Champ : Creature {
 				length = Mathf.Min(touchedCount, targets.Length);
 			for(int i = 0; i < length; ++i)
 			{
-				targets[i].TakeDamage(this, new DamageDesc(m_creatureProperty.TapDamage, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
+				targets[i].TakeDamage(this, new DamageDesc(m_tapWeapon.GetDamage(m_creatureProperty), DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
 			}
 		}
 

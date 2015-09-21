@@ -123,7 +123,7 @@ public class ItemData {
 				break;
 			case Option.DmgMultiplier:
 				head += RefData.Instance.RefTexts(MultiLang.ID.DamageMultiplier) + ":";
-				break;
+				break;		
 			case Option.Critical:
 				head += RefData.Instance.RefTexts(MultiLang.ID.CriticalChance) + ":";
 				break;
@@ -241,7 +241,7 @@ public class ItemData {
 				break;
 			case Option.DmgReduction:
 				obj.m_creatureProperty.DamageReduction += optionValue;
-				break;
+				break;			
 			case Option.Weapon:
 				int weaponRefItemId = (int)optionValue;
 				if (weaponRefItemId == 0)

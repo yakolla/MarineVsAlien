@@ -20,7 +20,7 @@ public class GUIInventorySlot : MonoBehaviour {
 
 		public void Update(ItemObject itemObj)
 		{
-			if (itemObj.Item.Lock == false)
+			if (itemObj.Item.Lock == false && itemObj.Item.RefItem.levelup != null)
 			{
 				m_priceButton.NormalWorth = Const.GetItemLevelupWorth(itemObj.Item.Level, itemObj.Item.RefItem.levelup);
 				m_gemButton.NormalWorth = Const.GetItemLevelupWorth(itemObj.Item.Level, itemObj.Item.RefItem.levelup);
