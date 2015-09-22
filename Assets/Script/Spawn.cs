@@ -312,7 +312,7 @@ public class Spawn : MonoBehaviour {
 					}
 				}
 
-				if (m_dropBuffItemTime < Time.time)
+				//if (m_dropBuffItemTime < Time.time)
 				{
 					m_dropBuffItemTime = Time.time+Random.Range(90f, 150f);
 					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomSkillItemSpawns[m_wave%GetCurrentWave().randomSkillItemSpawns.Length]));

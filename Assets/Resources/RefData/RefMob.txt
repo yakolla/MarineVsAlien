@@ -1277,7 +1277,7 @@
 		{
 			"id":5001,
 			"prefHead":"buffBox",
-			"prefBody":"item ufo _skin",
+			"prefBody":"item ufo_skin",
 			"refWeaponItems":
 			[
 				{
