@@ -651,7 +651,7 @@ public class Creature : MonoBehaviour {
 		float timeout = Time.time+time;
 		while(Time.time < timeout)
 		{
-			DamageNumberSprite sprite = DamageText("Zzz...", Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
+			DamageNumberSprite sprite = DamageText("SP...", Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
 			sprite.Duration = time;
 			yield return new WaitForSeconds(time);
 		}
@@ -851,7 +851,7 @@ public class Creature : MonoBehaviour {
 
 			if (Random.Range(0f, 1f) < m_creatureProperty.Dodge)
 			{
-				DamageText("Dodge", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+				DamageText(RefData.Instance.RefTexts(MultiLang.ID.Dodge), Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 				return 0;
 			}
 

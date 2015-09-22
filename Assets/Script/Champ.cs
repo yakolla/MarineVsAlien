@@ -415,7 +415,7 @@ public class Champ : Creature {
 			DamageText(type.ToString(), Vector3.one, Color.cyan, DamageNumberSprite.MovementType.RisingUp);
 			break;
 		case DamageDesc.BuffType.Macho:
-			DamageText(type.ToString(), Vector3.one, Color.cyan, DamageNumberSprite.MovementType.RisingUp);
+			DamageText(RefData.Instance.RefTexts(MultiLang.ID.MachoSkill), Vector3.one, Color.cyan, DamageNumberSprite.MovementType.RisingUp);
 			break;		
 		}
 		return true;

@@ -4,7 +4,7 @@
 		
 		{
 			"id":10001,
-			"prefBody":"small bug_skin",
+			"prefBody":"item ufo_skin",
 			"refWeaponItems":
 			[				
 				{
