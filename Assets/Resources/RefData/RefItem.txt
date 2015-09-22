@@ -2478,7 +2478,7 @@
 		"id":1008,
 		"codeName":"Follower",
 		"type":"Follower",
-		"icon":"Sprites/FollowerMeleeMarines",
+		"icon":"Sprites/FollowerChainSawMarines",
 		"maxLevel":900,
 		"defaultLock":true,
 		"consumedSP":0.49,
@@ -2861,7 +2861,7 @@
 		"id":2005,
 		"codeName":"Boots",
 		"type":"Stat",
-		"icon":"Sprites/StatCriticalDmg",
+		"icon":"Sprites/StatCriticalDamage",
 		"maxLevel":900,
 		"defaultLock":true,
 		"unlock":

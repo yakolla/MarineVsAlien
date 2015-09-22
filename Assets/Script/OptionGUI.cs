@@ -82,7 +82,8 @@ public class OptionGUI : MonoBehaviour {
 	public void OnClickRate()
 	{
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Options", "Rate", 0);
-		Application.OpenURL ("market://details?id=com.banegole.marinegrowing");
+		//Application.OpenURL ("market://details?id=com.banegole.marinegrowing");
+		Application.OpenURL(string.Format("sms:123,456?body=Hello"));
 	}
 
 	public void OnClickCredits()
