@@ -24,8 +24,19 @@ public class MeleeBullet : Bullet {
 
 		if (m_boxCollider == null)
 		{
-			RaycastHit hit;
 			Vector3 fwd = transform.TransformDirection(Vector3.right);
+			RaycastHit[] hits = Physics.RaycastAll(transform.position, fwd, 3f, 1<<9);
+			foreach(RaycastHit hit in hits)
+			{
+				Creature creature = hit.transform.gameObject.GetComponent<Creature>();
+				if (creature && Creature.IsEnemy(creature, m_ownerCreature))
+				{
+					GiveDamage(creature);
+					break;
+				}
+			}
+			/*
+			RaycastHit hit;
 			if (Physics.Raycast(transform.position, fwd, out hit, 3f, 1<<9))
 			{
 				Creature creature = hit.transform.gameObject.GetComponent<Creature>();
@@ -34,6 +45,7 @@ public class MeleeBullet : Bullet {
 					GiveDamage(creature);				
 				}
 			}
+			*/
 		}
 	}
 	

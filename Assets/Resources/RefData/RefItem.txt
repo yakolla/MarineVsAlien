@@ -2442,7 +2442,7 @@
 		"desc":"IWillTakeMyPickupAnyItem",
 		"icon":"Sprites/FollowerPet",
 		"maxLevel":9,
-		"defaultLock":true,
+		"defaultLock":false,
 		"followerId":30007,		
 		"levelup":
 		{
@@ -2462,6 +2462,15 @@
 			],
 			"optionPerLevel":
 			[
+				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"MoveSpeed",
+						"values":[1]
+					}
+				},
 				{
 					"level":1,
 					"levelPer":true,
