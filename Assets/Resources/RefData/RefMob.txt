@@ -4,7 +4,7 @@
 		
 		{
 			"id":10001,
-			"prefBody":"item ufo_skin",
+			"prefBody":"small bug_skin",
 			"refWeaponItems":
 			[				
 				{
@@ -1153,7 +1153,7 @@
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
-				"moveSpeed":5,
+				"moveSpeed":1,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false

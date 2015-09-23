@@ -53,4 +53,8 @@
 	"Stat",
 	"Dodge",
 	"It Will be dropped, After 30 waves",
+	"Go to the Main Title",
+	"Yes",
+	"No",
+	"Exit the game",
 ]

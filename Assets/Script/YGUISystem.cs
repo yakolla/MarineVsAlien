@@ -104,7 +104,7 @@ public class YGUISystem {
 			m_text.text = coolDownTime.ToString();
 		}
 
-		void Done()
+		public void Done()
 		{
 			m_startCoolDownTime = 0;
 			m_text.text = "";
@@ -143,7 +143,8 @@ public class YGUISystem {
 			: base(obj, ()=>{return enableChecker();})
 		{
 			m_guiCoolDown = new GUICoolDown(obj.transform.Find("Cooldown").gameObject, ()=>{
-				++ChargingPoint;
+				if (ChargingPoint < MaxChargingPoint)
+					++ChargingPoint;	
 			});
 
 			m_chargingText = obj.transform.Find("Cooldown/ChargingPoint").gameObject.GetComponent<Text>();
@@ -168,17 +169,22 @@ public class YGUISystem {
 			get {return m_charge;}
 			set {
 
-				m_charge = Mathf.Min(value, m_maxCharge);
-				m_chargingText.text = m_charge.ToString();
+				m_charge = value;
+				m_chargingText.text = m_charge.ToString() + "/" + m_maxCharge.ToString();
 
 				if (m_charge < m_maxCharge)
 					m_guiCoolDown.StartCoolDownTime(m_coolDownTime);
+				else
+					m_guiCoolDown.Done();
 			}
 		}
 
 		public int MaxChargingPoint
 		{
-			set {m_maxCharge = value;}
+			set {
+				m_maxCharge = value;
+				m_chargingText.text = m_charge.ToString() + "/" + m_maxCharge.ToString();
+			}
 			get {return m_maxCharge;}
 		}
 

@@ -91,7 +91,13 @@ public class ChampStatusGUI : MonoBehaviour {
 				m_specialButtons[slot].MaxChargingPoint = itemObj.Item.Level;
 				m_specialButtons[slot].ChargingPoint++;
 			}
-			return itemObj.Item.Level > 0 || m_champ.SkillStacks[itemObj.Item.RefItem.id-21] > 0 ;
+
+			if (m_champ.SkillStacks[itemObj.Item.RefItem.id-21] > 0)
+			{
+				m_specialButtons[slot].ChargingPoint++;
+				m_champ.SkillStacks[itemObj.Item.RefItem.id-21] = 0;
+			}
+			return itemObj.Item.Level > 0 || m_specialButtons[slot].ChargingPoint > 0;
 		});
 		
 		m_specialButtons[slot].Icon.Image = itemObj.ItemIcon;

@@ -57,5 +57,9 @@ public class MultiLang{
 		Stat,
 		Dodge,
 		ItWillDropAfter30waves,
+		GoToTheMainTitle,
+		Yes,
+		No,
+		ExitTheGame,
 	}
 }
