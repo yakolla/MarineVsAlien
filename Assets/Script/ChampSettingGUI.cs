@@ -472,7 +472,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				invSlot.ItemDesc = selectedItem.Item.Description();
 
 
-				GPlusPlatform.Instance.AnalyticsTrackEvent("Weapon", "Levelup", selectedItem.Item.RefItem.codeName + "_Lv:" + selectedItem.Item.Level, 0);
+				GPlusPlatform.Instance.AnalyticsTrackEvent("Weapon", "Levelup", selectedItem.Item.RefItem.name + "_Lv:" + selectedItem.Item.Level, 0);
 			}
 			else
 			{

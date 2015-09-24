@@ -61,5 +61,10 @@ public class MultiLang{
 		Yes,
 		No,
 		ExitTheGame,
+		Muscle,
+		Bone,
+		EyeSight,
+		Concentration,
+		Mental,
 	}
 }

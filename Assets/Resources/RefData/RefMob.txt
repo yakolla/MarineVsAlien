@@ -151,7 +151,7 @@
 			"baseCreatureProperty":
 			{
 				"maxHP":320,
-				"physicalDamage":3,
+				"physicalDamage":30,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":320,
@@ -596,7 +596,7 @@
 			"baseCreatureProperty":
 			{
 				"maxHP":400,
-				"physicalDamage":5,
+				"physicalDamage":50,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":400,
@@ -687,7 +687,7 @@
 			"baseCreatureProperty":
 			{
 				"maxHP":3200,
-				"physicalDamage":30,
+				"physicalDamage":50,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.3,
 				"exp":3200,

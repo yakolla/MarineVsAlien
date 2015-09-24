@@ -83,7 +83,17 @@ public class OptionGUI : MonoBehaviour {
 	{
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Options", "Rate", 0);
 		//Application.OpenURL ("market://details?id=com.banegole.marinegrowing");
-		Application.OpenURL(string.Format("sms:123,456?body=Hello"));
+
+
+		AndroidJavaClass intentClass = new AndroidJavaClass ("android.content.Intent");
+		AndroidJavaObject intentObject = new AndroidJavaObject ("android.content.Intent");
+		intentObject.Call<AndroidJavaObject> ("setAction", intentClass.GetStatic<string> ("ACTION_SEND"));
+		intentObject.Call<AndroidJavaObject> ("setType", "text/plain");
+		intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_SUBJECT"), "SUBJECT");
+		intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), "https://play.google.com/store/apps/details?id=com.banegole.marinegrowing");
+		AndroidJavaClass unity = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
+		AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject> ("currentActivity");
+		currentActivity.Call ("startActivity", intentObject);
 	}
 
 	public void OnClickCredits()

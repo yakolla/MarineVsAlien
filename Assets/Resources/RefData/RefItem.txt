@@ -145,18 +145,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":10000
 				},
 				{
 					"refItemId":5, 
-					"count":50
+					"count":100
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":100
 				}
 			]
 		},		
@@ -199,18 +199,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":20000
 				},
 				{
 					"refItemId":5,
-					"count":50
+					"count":200
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":200
 				}
 			]
 		},		
@@ -253,18 +253,18 @@
 			[
 				{
 					"refItemId":1, 
-					"count":5000
+					"count":50000
 				},
 				{
 					"refItemId":5, 
-					"count":50
+					"count":500
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":50
+					"count":500
 				}
 			]
 		},		
@@ -2597,6 +2597,7 @@
 	{
 		"id":2001,
 		"codeName":"Boots",
+		"name":"Muscle",
 		"type":"Stat",
 		"icon":"Sprites/StatStrength",
 		"maxLevel":900,
@@ -2675,6 +2676,7 @@
 	{
 		"id":2002,
 		"codeName":"Boots",
+		"name":"Bone",
 		"type":"Stat",
 		"icon":"Sprites/StatMaxHP",
 		"maxLevel":900,
@@ -2869,6 +2871,7 @@
 	{
 		"id":2005,
 		"codeName":"Boots",
+		"name":"EyeSight",
 		"type":"Stat",
 		"icon":"Sprites/StatCriticalDamage",
 		"maxLevel":900,
@@ -2947,6 +2950,7 @@
 	{
 		"id":2006,
 		"codeName":"Boots",
+		"name":"Mental",
 		"type":"Stat",
 		"icon":"Sprites/StatMaxSP",
 		"maxLevel":900,
@@ -3025,6 +3029,7 @@
 	{
 		"id":2008,
 		"codeName":"Boots",
+		"name":"Concentration",
 		"type":"Stat",
 		"icon":"Sprites/StatRegenSP",
 		"maxLevel":900,
