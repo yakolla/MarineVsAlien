@@ -602,7 +602,7 @@
 				"exp":400,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":20,
+				"hpPerLevel":40,
 				"moveSpeed":1.7,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -628,7 +628,7 @@
 				"exp":800,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":20,
+				"hpPerLevel":80,
 				"moveSpeed":1.7,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -661,7 +661,7 @@
 				"exp":1600,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":40,
+				"hpPerLevel":160,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -693,7 +693,7 @@
 				"exp":3200,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":80,
+				"hpPerLevel":320,
 				"moveSpeed":3,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -732,7 +732,7 @@
 				"exp":6400,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":160,
+				"hpPerLevel":640,
 				"moveSpeed":3,
 				"navMeshBaseOffset":1
 			}
@@ -740,6 +740,7 @@
 		{
 			"id":40008,
 			"prefBody":"spider_green_skin",
+			"scale":2,
 			"refWeaponItems":
 			[
 				{
@@ -760,7 +761,32 @@
 				"exp":12800,
 				"phyDamagePerLevel":1,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":320,
+				"hpPerLevel":1280,
+				"moveSpeed":3,
+				"navMeshBaseOffset":0
+			}
+		},		
+		{
+			"id":40009,
+			"prefBody":"mon_boomber_skin",
+			"scale":2,
+			"refWeaponItems":
+			[
+				{
+					"refItemId":"110"
+				}
+			],
+			"mobAI":"Normal",
+			"baseCreatureProperty":
+			{
+				"maxHP":25600,
+				"physicalDamage":50,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.3,
+				"exp":25600,
+				"phyDamagePerLevel":1,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":2560,
 				"moveSpeed":3,
 				"navMeshBaseOffset":0
 			}
