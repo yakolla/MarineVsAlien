@@ -383,8 +383,7 @@ public class Champ : Creature {
 
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Death", "Wave"+Warehouse.Instance.WaveIndex, 0);
 
-		Warehouse.Instance.NewGameStats.KilledMobs = Warehouse.Instance.AlienEssence.Item.Count;
-		Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
+
 
 		m_creatureProperty.Level = 1;
 		m_creatureProperty.Exp = 0;

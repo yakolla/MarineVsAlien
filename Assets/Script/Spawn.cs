@@ -291,6 +291,7 @@ public class Spawn : MonoBehaviour {
 				Warehouse.Instance.WaveIndex = m_wave;
 				m_waveText.Text.text = "Wave " + (m_wave+1);
 
+
 				Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
 
 				yield return StartCoroutine(MoveChamp());
@@ -325,8 +326,13 @@ public class Spawn : MonoBehaviour {
 					yield return new WaitForSeconds(0.5f);
 				}
 
-				if (mobSpawn.boss == false)
+				if (mobSpawn.boss == true)
 				{
+					Const.SaveGame((SavedGameRequestStatus, ISavedGameMetadata)=>{});
+
+				}
+				else
+				{					
 					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomMobSpawns[m_wave%GetCurrentWave().randomMobSpawns.Length]));
 				}
 
@@ -402,7 +408,6 @@ public class Spawn : MonoBehaviour {
 
 			SpawnItemBox(GetCurrentWave().itemSpawn.bossDefaultItem, mob.transform.position);
 			TimeEffector.Instance.BulletTime(0.005f);
-			Const.SaveGame((SavedGameRequestStatus, ISavedGameMetadata)=>{});
 
 		}
 
@@ -415,6 +420,7 @@ public class Spawn : MonoBehaviour {
 		{
 			++Warehouse.Instance.AlienEssence.Item.Count;
 			++Warehouse.Instance.UpdateGameStats.KilledMobs;
+			Warehouse.Instance.NewGameStats.KilledMobs = Warehouse.Instance.AlienEssence.Item.Count;
 
 			if (Warehouse.Instance.AlienEssence.Item.Count > 500)
 				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;

@@ -75,10 +75,7 @@ public class WarehouseData
 		{
 			KilledMobs = 0;
 			WaveIndex = 0;
-			m_kills.Reset();
-			m_dealDamages.Reset();
-			m_takenDamages.Reset();
-			m_consumedSP.Reset();
+
 			m_startPerSec = Time.time;
 		}
 		
