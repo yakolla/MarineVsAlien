@@ -11,6 +11,8 @@ public class Worldmap : MonoBehaviour {
 
 	string		log = "log";
 	GameObject	m_selectedMap;
+	YGUISystem.GUILable		m_start;
+	YGUISystem.GUILable		m_leadderBoard;
 
 	enum LoginWith
 	{
@@ -21,6 +23,12 @@ public class Worldmap : MonoBehaviour {
 
 	void Start()
 	{
+		m_start = new YGUISystem.GUILable(transform.Find("MainPanel/ButtonStart/Text").gameObject);
+		m_leadderBoard = new YGUISystem.GUILable(transform.Find("MainPanel/ButtonLeaderBoard/Text").gameObject);
+
+		m_start.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Start);
+		m_leadderBoard.Text.text = RefData.Instance.RefTexts(MultiLang.ID.LeaderBoard);
+
 		Const.HideLoadingGUI();
 	}
 

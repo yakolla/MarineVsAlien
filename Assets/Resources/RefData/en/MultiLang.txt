@@ -62,4 +62,6 @@
 	"EyeSight",
 	"Concentration",
 	"Mental",
+	"Start",
+	"LeaderBoard",
 ]

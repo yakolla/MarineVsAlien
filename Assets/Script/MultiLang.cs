@@ -66,5 +66,7 @@ public class MultiLang{
 		EyeSight,
 		Concentration,
 		Mental,
+		Start,
+		LeaderBoard,
 	}
 }

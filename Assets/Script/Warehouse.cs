@@ -317,6 +317,8 @@ public class Warehouse {
 			return m_gem;
 		case ItemData.Type.AlienEssence:
 			return m_alienEssence;
+		case ItemData.Type.WeaponDNA:
+			return m_weaponDNA;
 		}
 
 		foreach(ItemObject obj in m_warehouseData.m_items[RefData.Instance.RefItems[refItemId].type])

@@ -263,7 +263,7 @@
 						}
 					],
 					"defaultItem":
-					[						
+					[
 						{
 							"refItemId":1,
 							"minValue":1,
