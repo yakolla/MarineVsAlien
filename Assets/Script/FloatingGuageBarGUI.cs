@@ -24,9 +24,10 @@ public class FloatingGuageBarGUI : MonoBehaviour {
 		}
 
 
-		Vector3 pos = m_creature.HPPointLocalPos;
+		Vector3 pos = m_creature.HPPointTransform.localPosition;
 		pos.y += 1.5f;
 		m_guage.RectTransform.transform.localPosition = pos;
+		m_guage.RectTransform.transform.localScale = m_creature.HPPointTransform.localScale;
 	}
 
 	// Update is called once per frame

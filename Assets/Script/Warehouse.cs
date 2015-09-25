@@ -457,7 +457,7 @@ public class Warehouse {
 
 		m_gold = new ItemObject(new ItemGoldData(0));
 		m_goldMedal = new ItemObject(new ItemGoldMedalData(0));
-		m_gem = new ItemObject(new ItemGoldMedalData(0));
+		m_gem = new ItemObject(new ItemGemData(0));
 		m_alienEssence = new ItemObject(new ItemAlienEssenceData(0));
 		m_weaponDNA = new ItemObject(new ItemWeaponDNAData(0));
 

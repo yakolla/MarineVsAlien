@@ -247,6 +247,13 @@ public class ChampStatusGUI : MonoBehaviour {
 			m_dna.shake = 2f;
 			m_dna.Text = Warehouse.Instance.WeaponDNA.Item.Count.ToString();
 		}
+		if (m_oldGem != Warehouse.Instance.Gem.Item.Count)
+		{
+			m_oldGem = Warehouse.Instance.Gem.Item.Count;
+			m_gem.enabled = true;
+			m_gem.shake = 2f;
+			m_gem.Text = Warehouse.Instance.Gem.Item.Count.ToString();
+		}
 
 		foreach(YGUISystem.GUIButton button in m_specialButtons)
 		{

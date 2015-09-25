@@ -176,9 +176,9 @@ public class Creature : MonoBehaviour {
 		weapon.SetSubWeapon(subWeapon);
 	}
 
-	public Vector3	HPPointLocalPos
+	public Transform	HPPointTransform
 	{
-		get {return m_hppoint.transform.localPosition;}
+		get {return m_hppoint.transform;}
 	}
 
 	public Creature	Targetting

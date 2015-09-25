@@ -470,7 +470,7 @@
 		},
 		{
 			"id":31004,
-			"prefHead":"mon_big_Worm",
+			//"prefHead":"mon_big_Worm",
 			"prefBody":"big_Worm_skin",
 			"refWeaponItems":
 			[
@@ -796,7 +796,7 @@
 	[			
 		{
 			"id":50001,
-			"prefHead":"gidra",
+			//"prefHead":"gidra",
 			"prefBody":"gidra_skin",
 			"refWeaponItems":
 			[				
@@ -877,7 +877,7 @@
 		},
 		{
 			"id":50003,
-			"prefHead":"eye_brain",
+			//"prefHead":"eye_brain",
 			"prefBody":"eye_brain_skin",
 			"refWeaponItems":
 			[
@@ -924,7 +924,7 @@
 		},
 		{
 			"id":50004,
-			"prefHead":"mon_big_Worm",
+			//"prefHead":"mon_big_Worm",
 			"prefBody":"big_Worm_skin",
 			"refWeaponItems":
 			[	
@@ -965,7 +965,7 @@
 		},
 		{
 			"id":50005,
-			"prefHead":"mon_kingbug",
+			//"prefHead":"mon_kingbug",
 			"prefBody":"mon_kingbug_skin",
 			"refWeaponItems":
 			[

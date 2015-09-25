@@ -39,7 +39,7 @@ public class DamageNumberSprite : MonoBehaviour {
 	{
 		m_movementType = movementType;
 		m_target = obj;
-		m_targetPos = obj.transform.position+m_target.HPPointLocalPos;
+		m_targetPos = obj.transform.position+m_target.HPPointTransform.localPosition;
 		m_targetPos.y += 1;
 		transform.position = m_targetPos;
 		m_startTime = Time.time;
@@ -77,7 +77,7 @@ public class DamageNumberSprite : MonoBehaviour {
 		case MovementType.RisingUp:
 			if (m_target)
 			{
-				m_targetPos = m_target.transform.position+m_target.HPPointLocalPos;
+				m_targetPos = m_target.transform.position+m_target.HPPointTransform.localPosition;
 			}
 			m_posY += 2f*Time.deltaTime;
 
@@ -101,7 +101,7 @@ public class DamageNumberSprite : MonoBehaviour {
 		case MovementType.FloatingUp:
 			if (m_target)
 			{
-				m_targetPos = m_target.transform.position+m_target.HPPointLocalPos;
+				m_targetPos = m_target.transform.position+m_target.HPPointTransform.localPosition;
 				m_targetPos.y += 3f;
 			}
 
@@ -116,7 +116,7 @@ public class DamageNumberSprite : MonoBehaviour {
 		case MovementType.FloatingUpAlways:
 			if (m_target)
 			{
-				m_targetPos = m_target.transform.position+m_target.HPPointLocalPos;
+				m_targetPos = m_target.transform.position+m_target.HPPointTransform.localPosition;
 				m_targetPos.y += 3f;
 			}
 			
