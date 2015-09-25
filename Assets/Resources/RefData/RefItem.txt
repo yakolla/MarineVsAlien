@@ -2599,6 +2599,7 @@
 		"id":2001,
 		"codeName":"Boots",
 		"name":"Muscle",
+		"desc":"DamageAsAStrengthIncrease",
 		"type":"Stat",
 		"icon":"Sprites/StatStrength",
 		"maxLevel":900,
@@ -2609,7 +2610,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":
@@ -2626,7 +2627,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":
@@ -2688,7 +2689,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":
@@ -2705,7 +2706,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":
@@ -2883,7 +2884,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":
@@ -2900,7 +2901,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":
@@ -2962,7 +2963,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":
@@ -2979,7 +2980,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":
@@ -3041,7 +3042,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":
@@ -3058,7 +3059,7 @@
 			[
 				{
 					"refItemId":4, 
-					"count":10
+					"count":1
 				}
 			],
 			"else_conds":

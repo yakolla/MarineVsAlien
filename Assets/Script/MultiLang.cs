@@ -68,5 +68,6 @@ public class MultiLang{
 		Mental,
 		Start,
 		LeaderBoard,
+		DamageAsAStrengthIncrease,
 	}
 }

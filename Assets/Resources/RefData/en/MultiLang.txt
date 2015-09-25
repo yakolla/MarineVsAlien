@@ -63,5 +63,6 @@
 	"Concentration",
 	"Mental",
 	"Start",
-	"LeaderBoard",
+	"Leader Board",
+	"Damage as a strength increase"
 ]

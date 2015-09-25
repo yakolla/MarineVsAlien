@@ -15,8 +15,6 @@ public class ItemWeaponDNAData : ItemData{
 
 	override public string Description()
 	{
-		string desc = "Count:" + "<color=yellow>" + Count + "</color>";		
-
-		return desc;
+		return "";
 	}
 }

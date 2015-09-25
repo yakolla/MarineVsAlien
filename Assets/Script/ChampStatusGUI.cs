@@ -9,6 +9,8 @@ public class ChampStatusGUI : MonoBehaviour {
 	int			m_oldMobKills;
 	int			m_oldGold;
 	int			m_oldGoldMedal;
+	int			m_oldGem;
+	int			m_oldDNA;
 
 	GameObject		m_accessoryBoard;
 
@@ -21,6 +23,8 @@ public class ChampStatusGUI : MonoBehaviour {
 	ComboGUIShake	m_gold;
 	ComboGUIShake	m_mobKills;
 	ComboGUIShake	m_goldMedal;
+	ComboGUIShake	m_gem;
+	ComboGUIShake	m_dna;
 
 	void Start () {
 
@@ -28,6 +32,8 @@ public class ChampStatusGUI : MonoBehaviour {
 		m_gold = transform.Find("Gold/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 		m_goldMedal = transform.Find("GoldMedal/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 		m_mobKills = transform.Find("Kills/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
+		m_gem = transform.Find("Gem/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
+		m_dna = transform.Find("DNA/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 
 		m_accessoryBoard = transform.Find("Accessory").gameObject;
 
@@ -187,6 +193,8 @@ public class ChampStatusGUI : MonoBehaviour {
 		transform.Find("Gold").gameObject.SetActive(active);
 		transform.Find("GoldMedal").gameObject.SetActive(active);
 		transform.Find("Kills").gameObject.SetActive(active);
+		transform.Find("Gem").gameObject.SetActive(active);
+		transform.Find("DNA").gameObject.SetActive(active);
 		transform.Find("Level").gameObject.SetActive(active);
 	}
 
@@ -231,6 +239,13 @@ public class ChampStatusGUI : MonoBehaviour {
 			m_goldMedal.enabled = true;
 			m_goldMedal.shake = 2f;
 			m_goldMedal.Text = Warehouse.Instance.GoldMedal.Item.Count.ToString();
+		}
+		if (m_oldDNA != Warehouse.Instance.WeaponDNA.Item.Count)
+		{
+			m_oldDNA = Warehouse.Instance.WeaponDNA.Item.Count;
+			m_dna.enabled = true;
+			m_dna.shake = 2f;
+			m_dna.Text = Warehouse.Instance.WeaponDNA.Item.Count.ToString();
 		}
 
 		foreach(YGUISystem.GUIButton button in m_specialButtons)
