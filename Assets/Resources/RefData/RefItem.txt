@@ -2443,7 +2443,7 @@
 		"desc":"IWillTakeMyPickupAnyItem",
 		"icon":"Sprites/FollowerPet",
 		"maxLevel":9,
-		"defaultLock":false,
+		"defaultLock":true,
 		"followerId":30007,		
 		"levelup":
 		{
@@ -3109,7 +3109,7 @@
 	},
 	{
 		"id":3001,
-		"codeName":"WeaponParts",
+		"codeName":"ChestSuitB",
 		"name":"ChestSuitB",
 		"desc":"ItDropFromBoss",
 		"type":"WeaponParts",
@@ -3173,7 +3173,7 @@
 	},
 	{
 		"id":3002,
-		"codeName":"WeaponParts",
+		"codeName":"HelmetSuitB",
 		"name":"HelmetSuitB",
 		"desc":"ItDropFromBoss",
 		"type":"WeaponParts",
@@ -3237,7 +3237,7 @@
 	},
 	{
 		"id":3003,
-		"codeName":"WeaponParts",
+		"codeName":"BootsSuitB",
 		"name":"BootsSuitB",
 		"desc":"ItDropFromBoss",
 		"type":"WeaponParts",
@@ -3301,7 +3301,7 @@
 	},
 	{
 		"id":3004,
-		"codeName":"WeaponParts",
+		"codeName":"HandsSuitB",
 		"name":"HandsSuitB",
 		"desc":"ItDropFromBoss",
 		"type":"WeaponParts",
@@ -3365,7 +3365,7 @@
 	},
 	{
 		"id":3005,
-		"codeName":"WeaponParts",
+		"codeName":"WingSuitB",
 		"name":"WingSuitB",
 		"desc":"ItDropFromBoss",
 		"type":"WeaponParts",

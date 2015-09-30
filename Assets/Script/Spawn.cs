@@ -150,7 +150,7 @@ public class Spawn : MonoBehaviour {
 		minIndex = Mathf.Clamp(minIndex, 0, mobs.Length-1);
 
 		int mobCount = (int)(spawnRatioDesc.count[0]);
-		int stage = GetStage(m_wave)-1;
+		int stage = GetStage()-1;
 		if (boss == true)
 		{
 			if (stage < RefData.Instance.RefBossMobs.Length)
@@ -177,9 +177,9 @@ public class Spawn : MonoBehaviour {
 		result.spawnEffectType.Add(spawnRatioDesc.spawnEffectType);
 	}
 
-	public int GetStage(int wave)
+	public int GetStage()
 	{
-		return wave/GetCurrentWave().mobSpawns.Length + 1;
+		return m_wave/GetCurrentWave().mobSpawns.Length + 1;
 	}
 
 	IEnumerator spawnMobPerCore(RefMobSpawn mobSpawn)
@@ -444,10 +444,12 @@ public class Spawn : MonoBehaviour {
 	{		
 
 		Vector3 enemyPos = pos;
-		enemyPos.y = m_prefSpawnEffect.transform.position.y;
+
 
 		if (m_prefSpawnEffect != null)
 		{
+			enemyPos.y = m_prefSpawnEffect.transform.position.y;
+
 			GameObject spawnEffect = GameObjectPool.Instance.Alloc(m_prefSpawnEffect, enemyPos, m_prefSpawnEffect.transform.rotation) as GameObject;
 			ParticleSystem particle = spawnEffect.GetComponentInChildren<ParticleSystem>();
 			
@@ -579,7 +581,7 @@ public class Spawn : MonoBehaviour {
 				}
 				else if (desc.refItem.type == ItemData.Type.WeaponDNA)
 				{
-					if (GetStage(m_wave) < GetCurrentWave().mobSpawns.Length)
+					if (GetStage() < GetCurrentWave().mobSpawns.Length)
 						ratio = 0f;
 				}
 
@@ -656,6 +658,10 @@ public class Spawn : MonoBehaviour {
 						{
 							itemSkinObj.transform.Find(item.RefItem.codeName).gameObject.SetActive(true);
 							itemBox.LifeTime = 60f;
+						}
+						else if (desc.refItem.type == ItemData.Type.WeaponParts)
+						{
+							itemSkinObj.transform.Find(item.RefItem.codeName).gameObject.SetActive(true);
 						}
 
 						itemSkinObj.transform.parent = itemBoxObj.transform;

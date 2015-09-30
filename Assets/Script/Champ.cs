@@ -6,9 +6,6 @@ using System.Collections.Generic;
 public class Champ : Creature {
 
 
-	Joypad		m_leftJoypad;
-	Joypad		m_rightJoypad;
-
 	[SerializeField]
 	bool	m_enableAutoTarget = true;
 
@@ -44,8 +41,6 @@ public class Champ : Creature {
 		FollowingCamera followingCamera = Camera.main.GetComponentInChildren<FollowingCamera>();
 		followingCamera.SetMainTarget(gameObject);
 
-		m_leftJoypad = GameObject.Find("HudGUI/Joypad/LeftJoypad").GetComponent<Joypad>();
-		m_rightJoypad = GameObject.Find("HudGUI/Joypad/RightJoypad").GetComponent<Joypad>();
 
 		m_bloodWarningAnimator = GameObject.Find("HudGUI/Blood Warning").GetComponent<Animator>();
 
@@ -102,76 +97,6 @@ public class Champ : Creature {
 		return false;
 	}
 
-	void UpdateChampMovement()
-	{
-		m_moveDir = Vector3.zero;
-		if (HasCrowdControl())
-			return;
-
-		Vector3 pos = Vector3.zero;
-		float step = (1*m_creatureProperty.MoveSpeed)*Time.fixedDeltaTime;
-
-
-
-		if (Application.platform == RuntimePlatform.Android)
-		{
-			if (m_leftJoypad.Dragging)
-			{
-				pos.x = m_leftJoypad.Position.x*step;
-				pos.z = m_leftJoypad.Position.y*step;
-
-				transform.rigidbody.MovePosition(transform.position+pos);
-				
-				//m_navAgent.SetDestination(transform.position+pos);
-			}
-			else
-			{
-				if (Cheat.AutoMove)
-				{
-					if (m_autoMoveTime+5f < Time.time)
-					{
-						m_autoMoveTime = Time.time;
-						m_leftJoypad.transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 360));
-					}
-					
-					pos.x = Mathf.Cos(m_leftJoypad.transform.eulerAngles.z*Mathf.Deg2Rad)*step;
-					pos.z = Mathf.Sin(m_leftJoypad.transform.eulerAngles.z*Mathf.Deg2Rad)*step;
-					
-					transform.rigidbody.MovePosition(transform.position+pos);
-				}
-			}
-		}
-		else
-		{
-			if (m_leftJoypad.Dragging)
-			{
-				pos.x = m_leftJoypad.Position.x*step;
-				pos.z = m_leftJoypad.Position.y*step;
-
-				transform.rigidbody.MovePosition(transform.position+pos);
-				//m_navAgent.SetDestination(transform.position+pos);
-			}
-			else
-			{
-				if (Cheat.AutoMove)
-				{
-					if (m_autoMoveTime+5f < Time.time)
-					{
-						m_autoMoveTime = Time.time;
-						m_leftJoypad.transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 360));
-					}
-					
-					pos.x = Mathf.Cos(m_leftJoypad.transform.eulerAngles.z*Mathf.Deg2Rad)*step;
-					pos.z = Mathf.Sin(m_leftJoypad.transform.eulerAngles.z*Mathf.Deg2Rad)*step;
-					
-					transform.rigidbody.MovePosition(transform.position+pos);
-				}
-			}
-		}
-
-		m_moveDir = pos.normalized;
-	}
-
 	public Vector3 MoveDir
 	{
 		get {return m_moveDir;}
@@ -223,37 +148,12 @@ public class Champ : Creature {
 
 		if (m_enableAutoTarget)
 		{
-			if (m_rightJoypad.Dragging)
-			{
-				Vector3 pos = Vector3.zero;
-				pos.x = m_rightJoypad.Position.x*10;
-				pos.z = m_rightJoypad.Position.y*10;
-				m_weaponHolder.StartFiring(RotateToTarget(transform.position+pos));
-			}
-			else if (AutoAttack() == false)
+			if (AutoAttack() == false)
 			{
 				m_weaponHolder.StopFiring();
 			}
-
-			Vector3 ang = m_rightJoypad.transform.eulerAngles;
-			ang.z = -transform.eulerAngles.y;
-			m_rightJoypad.transform.eulerAngles = ang;
 		}
-		else
-		{
-			if (m_rightJoypad.Dragging)
-			{
-				Vector3 pos = Vector3.zero;
-				pos.x = m_rightJoypad.Position.x*10;
-				pos.z = m_rightJoypad.Position.y*10;
-				m_weaponHolder.StartFiring(RotateToTarget(transform.position+pos));
-			}
-			else
-			{
-				m_weaponHolder.StopFiring();
-			}
 
-		}
 
 		int touchedCount = 0;
 		Vector3[] touchPos = new Vector3[5];
