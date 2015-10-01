@@ -1323,10 +1323,10 @@
 			"prefBody":"multi body character",
 			"baseCreatureProperty":
 			{
-				"maxHP":30,
+				"maxHP":3000,
 				"maxSP":100,
 				"spRegen":0,
-				"physicalDamage":0,
+				"physicalDamage":100,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,

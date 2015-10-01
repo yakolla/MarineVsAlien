@@ -229,6 +229,12 @@ public class Champ : Creature {
 		{
 			m_idleTime = 0f;
 			m_admob.ShowBanner(false);
+
+			if (Warehouse.Instance.GameTutorial.m_unlockedTap == false)
+			{
+				Const.GetTutorialMgr().SetTutorial("Nothing");				
+				Warehouse.Instance.GameTutorial.m_unlockedTap = true;
+			}
 		}
 		else
 		{

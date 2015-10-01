@@ -390,6 +390,11 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_champ.m_creatureProperty.HP = Warehouse.Instance.GameDataContext.m_hp.Value;
 		m_champ.m_creatureProperty.SP = Warehouse.Instance.GameDataContext.m_sp.Value;
 
+		if (m_champ.m_creatureProperty.HP == 0)
+		{
+			m_champ.m_creatureProperty.HP = m_champ.m_creatureProperty.MaxHP;
+		}
+
 		m_generalInfoPanel.SetChamp(m_champ);
 		m_spawn.StartWave(Warehouse.Instance.WaveIndex, champ);
 
@@ -593,6 +598,8 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(false);
 		m_generalInfoPanel.gameObject.SetActive(false);
+
+		Const.GetTutorialMgr().SetTutorial("Nothing");
 	}
 
 	public void OnClickStat()
@@ -602,6 +609,8 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(false);
 		m_generalInfoPanel.gameObject.SetActive(false);
+
+		Const.GetTutorialMgr().SetTutorial("Nothing");
 	}
 
 	public void OnClickFollower()
@@ -611,6 +620,8 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_followerPanel.SetActive(true);
 		m_skillPanel.SetActive(false);
 		m_generalInfoPanel.gameObject.SetActive(false);
+
+		Const.GetTutorialMgr().SetTutorial("Nothing");
 	}
 
 	public void OnClickSkill()
@@ -620,6 +631,8 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_followerPanel.SetActive(false);
 		m_skillPanel.SetActive(true);
 		m_generalInfoPanel.gameObject.SetActive(false);
+
+		Const.GetTutorialMgr().SetTutorial("Nothing");
 	}
 
 	public void OnClickGeneralInfo()

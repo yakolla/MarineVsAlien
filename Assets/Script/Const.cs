@@ -236,4 +236,14 @@ public class Const {
 		}
 		return null;
 	}
+
+	static TutorialMgr tutorialMgr = null;
+	public static TutorialMgr GetTutorialMgr()
+	{
+		if (tutorialMgr == null)
+			tutorialMgr = GameObject.Find("HudGUI/TutorialGUI/Panel").gameObject.GetComponent<TutorialMgr>();
+
+		return tutorialMgr;
+
+	}
 }

@@ -180,7 +180,7 @@ public class WarehouseData
 
 	public class GameDataContext
 	{
-		public SecuredType.XInt	m_hp = 30;
+		public SecuredType.XInt	m_hp = 0;
 		public SecuredType.XInt	m_xp = 0;
 		public SecuredType.XInt	m_sp = 0;
 		public SecuredType.XInt	m_level = 1;
@@ -188,6 +188,7 @@ public class WarehouseData
 
 	public class Tutorial
 	{
+		public bool		m_unlockedTap;
 		public bool		m_unlockedWeaponTab;
 		public bool		m_unlockedStatTab;
 		public bool		m_unlockedSkillTab;

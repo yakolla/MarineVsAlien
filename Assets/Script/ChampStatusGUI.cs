@@ -26,6 +26,7 @@ public class ChampStatusGUI : MonoBehaviour {
 	ComboGUIShake	m_gem;
 	ComboGUIShake	m_dna;
 
+
 	void Start () {
 
 		m_level = new YGUISystem.GUILable(transform.Find("Level/Text").gameObject);
@@ -34,6 +35,7 @@ public class ChampStatusGUI : MonoBehaviour {
 		m_mobKills = transform.Find("Kills/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 		m_gem = transform.Find("Gem/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 		m_dna = transform.Find("DNA/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
+
 
 		m_accessoryBoard = transform.Find("Accessory").gameObject;
 

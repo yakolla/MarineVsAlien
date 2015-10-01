@@ -291,11 +291,14 @@ public class Spawn : MonoBehaviour {
 				Warehouse.Instance.WaveIndex = m_wave;
 				m_waveText.Text.text = "Wave " + (m_wave+1);
 
-
 				Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
 
 				yield return StartCoroutine(MoveChamp());
 
+				if (m_wave == 0 && Warehouse.Instance.GameTutorial.m_unlockedTap == false)
+				{
+					Const.GetTutorialMgr().SetTutorial("Tap");
+				}
 
 				if (mobSpawn.boss == true)
 				{
@@ -389,7 +392,11 @@ public class Spawn : MonoBehaviour {
 
 		if (mob.Boss)
 		{
-			Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
+			if (Warehouse.Instance.GameTutorial.m_unlockedWeaponTab == false)
+			{
+				Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
+				Const.GetTutorialMgr().SetTutorial("WeaponTab");
+			}
 
 			if (Warehouse.Instance.GameTutorial.m_unlockedFollowerTab == true)
 			{
@@ -423,11 +430,32 @@ public class Spawn : MonoBehaviour {
 			Warehouse.Instance.NewGameStats.KilledMobs = Warehouse.Instance.AlienEssence.Item.Count;
 
 			if (Warehouse.Instance.AlienEssence.Item.Count > 500)
-				Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
+			{
+				if (Warehouse.Instance.GameTutorial.m_unlockedSkillTab == false)
+				{
+					Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
+					Const.GetTutorialMgr().SetTutorial("SkillTab");
+				}
+
+			}
 			if (Warehouse.Instance.AlienEssence.Item.Count > 700)
-				Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
+			{
+				if (Warehouse.Instance.GameTutorial.m_unlockedFollowerTab == false)
+				{
+					Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
+					Const.GetTutorialMgr().SetTutorial("FollowerTab");
+				}
+
+			}
 			if (Warehouse.Instance.AlienEssence.Item.Count > 1000)
-				Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
+			{
+				if (Warehouse.Instance.GameTutorial.m_unlockedStatTab == false)
+				{
+					Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
+					Const.GetTutorialMgr().SetTutorial("StatTab");
+				}
+
+			}
 
 		}
 	}
