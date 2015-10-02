@@ -10,6 +10,10 @@ public class OptionGUI : MonoBehaviour {
 	Slider					m_sfxVolume;
 	Slider					m_bgmVolume;
 
+	YGUISystem.GUILable		m_close;
+	YGUISystem.GUILable		m_share;
+	YGUISystem.GUILable		m_credits;
+
 	void Start () {
 
 		m_admob = GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>();
@@ -19,6 +23,15 @@ public class OptionGUI : MonoBehaviour {
 
 		m_sfxVolume.value = Warehouse.Instance.GameOptions.m_sfxVolume;
 		m_bgmVolume.value = Warehouse.Instance.GameOptions.m_bgmVolume;
+
+		m_close = new YGUISystem.GUILable(transform.Find("CloseButton/Text").gameObject);
+		m_close.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Close);
+
+		m_share = new YGUISystem.GUILable(transform.Find("ShareButton/Text").gameObject);
+		m_share.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Share);
+
+		m_credits = new YGUISystem.GUILable(transform.Find("CreditsButton/Text").gameObject);
+		m_credits.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Credits);
 
 	}
 

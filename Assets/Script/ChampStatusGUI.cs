@@ -216,7 +216,7 @@ public class ChampStatusGUI : MonoBehaviour {
 			SetActiveGUI(true);
 		}
 
-		m_level.Text.text = (m_champ.m_creatureProperty.Level + m_champ.m_creatureProperty.GainExtraGold + Warehouse.Instance.WaveIndex).ToString();
+		m_level.Text.text = m_champ.GoldLevel.ToString();
 
 		if (m_oldMobKills != Warehouse.Instance.AlienEssence.Item.Count)
 		{

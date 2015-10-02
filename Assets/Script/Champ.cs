@@ -113,6 +113,13 @@ public class Champ : Creature {
 		get {return m_accessoryItems;}
 	}
 
+	public int GoldLevel
+	{
+		get{
+			return m_creatureProperty.Level + Warehouse.Instance.WaveIndex;
+		}
+	}
+
 	public void ApplyGameOptions()
 	{
 

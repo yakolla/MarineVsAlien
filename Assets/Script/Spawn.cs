@@ -620,10 +620,10 @@ public class Spawn : MonoBehaviour {
 					switch(desc.refItem.type)
 					{
 					case ItemData.Type.Gold:
-						item = new ItemGoldData(m_wave+1);
+						item = new ItemGoldData(1);
 						if (m_champ != null)
 						{
-							item.Count *= m_champ.m_creatureProperty.Level;
+							item.Count *= m_champ.GoldLevel;
 							int extraCount = (int)(item.Count*m_champ.m_creatureProperty.GainExtraGold);
 							item.Count += extraCount;
 						}

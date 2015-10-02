@@ -69,5 +69,8 @@ public class MultiLang{
 		Start,
 		LeaderBoard,
 		DamageAsAStrengthIncrease,
+		Close,
+		Share,
+		Credits,
 	}
 }

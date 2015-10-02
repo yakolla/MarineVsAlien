@@ -64,5 +64,8 @@
 	"Mental",
 	"Start",
 	"Leader Board",
-	"Damage as a strength increase"
+	"Damage as a strength increase",
+	"Close",
+	"Share",
+	"Credits",
 ]

@@ -38,7 +38,7 @@ public class WarehouseData
 
 		public void Update(float delta)
 		{
-			perSec = (perSec+(amount-prevAmount)/delta)/2f;
+			perSec = (perSec+(amount-prevAmount)/delta)*0.5f;
 			if (perSec > maxPerSec)
 				maxPerSec = perSec;
 			prevAmount = amount;
