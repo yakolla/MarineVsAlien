@@ -92,7 +92,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 			if (Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec == 0)
 				return 0 + " / " + 0;
 
-			return System.String.Format("{0:F2} / {1:F2}",Warehouse.Instance.UpdateGameStats.DealDamagePerSec, Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec); 
+			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.UpdateGameStats.DealDamagePerSec, Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec); 
 		}
 		);
 
@@ -106,7 +106,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 			if (Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec == 0)
 				return 0 + " / " + 0;
 			
-			return System.String.Format("{0:F2} / {1:F2}",Warehouse.Instance.UpdateGameStats.TakenDamagePerSec, Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec); 
+			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.UpdateGameStats.TakenDamagePerSec, Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec); 
 		}
 		);
 
@@ -120,7 +120,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 			if (Warehouse.Instance.UpdateGameStats.MaxKillPerSec == 0)
 				return 0 + " / " + 0;
 			
-			return System.String.Format("{0:F2} / {1:F2}",Warehouse.Instance.UpdateGameStats.KillPerSec, Warehouse.Instance.UpdateGameStats.MaxKillPerSec); 
+			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.UpdateGameStats.KillPerSec, Warehouse.Instance.UpdateGameStats.MaxKillPerSec); 
 		}
 		);
 
@@ -134,7 +134,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 			if (Warehouse.Instance.UpdateGameStats.MaxConsumedSPPerSec == 0)
 				return 0 + " / " + 0;
 			
-			return System.String.Format("{0:F2} / {1:F2}",Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec, Warehouse.Instance.UpdateGameStats.MaxConsumedSPPerSec); 
+			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec, Warehouse.Instance.UpdateGameStats.MaxConsumedSPPerSec); 
 		}
 		);
 
@@ -163,7 +163,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 			return;
 
 		m_strength.Text.text = m_champ.m_creatureProperty.Strength.ToString();
-		m_regenSP.Text.text = m_champ.m_creatureProperty.SPRegen.ToString();
+		m_regenSP.Text.text = (m_champ.m_creatureProperty.SPRegen - Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec).ToString();
 		m_tapDamage.Text.text = m_champ.m_creatureProperty.TapDamage.ToString();
 		m_gainExtraGold.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.GainExtraGold*100f);
 		m_damageReduction.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.DamageReduction*100f);

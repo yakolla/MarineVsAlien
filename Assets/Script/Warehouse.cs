@@ -31,25 +31,32 @@ public class WarehouseData
 
 	public class PerSec
 	{
-		public float	maxPerSec;
-		public int		amount;
-		int		prevAmount;
+		public int	maxAmount;
+		int		amount;
 		public float	perSec;
 
 		public void Update(float delta)
 		{
-			perSec = (perSec+(amount-prevAmount)/delta)*0.5f;
-			if (perSec > maxPerSec)
-				maxPerSec = perSec;
-			prevAmount = amount;
+			perSec = (perSec+amount/delta)*0.5f;
+
+			amount = 0;
 		}
 
 		public void Reset()
 		{
-			maxPerSec = 0;
 			amount = 0;
-			prevAmount = 0;
 			perSec = 0;
+		}
+
+		public int Amount
+		{
+			set{
+				amount = value;
+				if (maxAmount < amount)
+					maxAmount = amount;
+			}
+
+			get{return amount;}
 		}
 	}
 
@@ -76,6 +83,11 @@ public class WarehouseData
 			KilledMobs = 0;
 			WaveIndex = 0;
 
+			m_kills.Reset();
+			m_dealDamages.Reset();
+			m_takenDamages.Reset();
+			m_consumedSP.Reset();
+
 			m_startPerSec = Time.time;
 		}
 		
@@ -83,7 +95,7 @@ public class WarehouseData
 		{
 			set{
 				m_killedMobs.Value = value;
-				m_kills.amount = value;
+				m_kills.Amount = value;
 			}
 			get{return m_killedMobs.Value;}
 		}
@@ -96,20 +108,20 @@ public class WarehouseData
 
 		public int DealDamages
 		{
-			set{m_dealDamages.amount = value;}
-			get{return m_dealDamages.amount;}
+			set{m_dealDamages.Amount = value;}
+			get{return m_dealDamages.Amount;}
 		}
 
 		public int TakenDamages
 		{
-			set{m_takenDamages.amount = value;}
-			get{return m_takenDamages.amount;}
+			set{m_takenDamages.Amount = value;}
+			get{return m_takenDamages.Amount;}
 		}
 
 		public int ConsumedSP
 		{
-			set{m_consumedSP.amount = value;}
-			get{return m_consumedSP.amount;}
+			set{m_consumedSP.Amount = value;}
+			get{return m_consumedSP.Amount;}
 		}
 
 		public float KillPerSec
@@ -134,22 +146,22 @@ public class WarehouseData
 
 		public float MaxKillPerSec
 		{
-			get{return m_kills.maxPerSec;}
+			get{return m_kills.maxAmount;}
 		}
 
 		public float MaxDealDamagePerSec
 		{
-			get{return m_dealDamages.maxPerSec;}
+			get{return m_dealDamages.maxAmount;}
 		}
 
 		public float MaxTakenDamagePerSec
 		{
-			get{return m_takenDamages.maxPerSec;}
+			get{return m_takenDamages.maxAmount;}
 		}
 
 		public float MaxConsumedSPPerSec
 		{
-			get{return m_consumedSP.maxPerSec;}
+			get{return m_consumedSP.maxAmount;}
 		}
 
 		public void Update()
