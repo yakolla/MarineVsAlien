@@ -32,7 +32,7 @@ public class CreatureProperty {
 
 	SecuredType.XFloat	m_alphaAttackCoolTime = 0f;
 
-	SecuredType.XFloat 	m_bulletLength = 0f;
+	SecuredType.XFloat 	m_bulletAlphaLength = 0f;
 
 	SecuredType.XInt		m_shield = 0;
 
@@ -306,8 +306,13 @@ public class CreatureProperty {
 
 	public float BulletLength
 	{
-		get {return m_baseProperty.bulletLength+m_bulletLength.Value;}
-		set { m_bulletLength.Value = value; }
+		get {return m_baseProperty.bulletLength+m_bulletAlphaLength.Value;}
+	}
+
+	public float BulletAlphaLength
+	{
+		get {return m_bulletAlphaLength.Value;}
+		set { m_bulletAlphaLength.Value = value; }
 	}
 
 	public int Shield
@@ -380,7 +385,7 @@ public class CreatureProperty {
 		other.m_alphaAttackCoolTime = m_alphaAttackCoolTime;
 		other.m_level = m_level;
 		other.m_exp = m_exp;
-		other.m_bulletLength = m_bulletLength;
+		other.m_bulletAlphaLength = m_bulletAlphaLength;
 		other.m_tabDamage = m_tabDamage;
 
 		other.m_shield = m_shield;

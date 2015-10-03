@@ -565,12 +565,12 @@ public class ChampAbilityGUI : MonoBehaviour {
 		utilAbili.Add(new Ability(0.3f, "Flamethrower Length", 
 		                          ()=>{
 			
-			m_backup.BulletLength+=0.25f;
+			m_backup.BulletAlphaLength+=0.25f;
 			
 			return (m_champ.m_creatureProperty.BulletLength) + " -> " + "<color=yellow>" + (m_backup.BulletLength) + "m</color>";
 		},
 		()=>{
-			m_champ.m_creatureProperty.BulletLength+=0.25f;
+			m_champ.m_creatureProperty.BulletAlphaLength+=0.25f;
 			
 			--m_champ.RemainStatPoint;
 		},
