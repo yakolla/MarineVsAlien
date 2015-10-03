@@ -50,7 +50,7 @@ public class FireGunBullet : Bullet {
 
 	override public void Init(Creature ownerCreature, Weapon weapon, Weapon.FiringDesc targetAngle)
 	{
-		Vector3 scale = transform.localScale;
+		Vector3 scale = m_oriScale;
 		base.Init(ownerCreature, weapon, targetAngle);
 
 		m_weapon = weapon;

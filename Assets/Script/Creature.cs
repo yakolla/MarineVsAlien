@@ -73,6 +73,8 @@ public class Creature : MonoBehaviour {
 	Texture damagedTexture;
 	Texture normalTexture;
 
+	List<Creature>	m_followers = new List<Creature>();
+
 	protected void Start () {
 		m_aimpoint = transform.Find("Body/Aimpoint").gameObject;
 		m_hppoint = m_aimpoint;
@@ -189,6 +191,16 @@ public class Creature : MonoBehaviour {
 	public virtual void SetTarget(Creature target)
 	{
 		m_targeting = target;
+	}
+
+	public void AddFollower(Creature follower)
+	{
+		m_followers.Add(follower);
+	}
+
+	public List<Creature> Followers
+	{
+		get{return m_followers;}
 	}
 
 	public bool CheckOnDeath
@@ -543,14 +555,14 @@ public class Creature : MonoBehaviour {
 		effect.transform.localPosition = pref.transform.position;
 		effect.transform.localRotation = pref.transform.rotation;
 
-		m_creatureProperty.BulletLength += 1f;
+		m_creatureProperty.BulletAlphaLength += 1f;
 		m_creatureProperty.AlphaAttackCoolTime -= 0.5f;
 		m_creatureProperty.BetaMoveSpeed += 1f;
 
 		yield return new WaitForSeconds(time);
 		
 		m_buffEffects[(int)DamageDesc.BuffType.LevelUp].m_run = false;
-		m_creatureProperty.BulletLength -= 1f;
+		m_creatureProperty.BulletAlphaLength -= 1f;
 		m_creatureProperty.AlphaAttackCoolTime += 0.5f;
 		m_creatureProperty.BetaMoveSpeed -= 1f;
 
@@ -596,7 +608,7 @@ public class Creature : MonoBehaviour {
 		effect.transform.localRotation = pref.transform.rotation;
 
 		m_creatureProperty.SP = m_creatureProperty.MaxSP;
-		m_creatureProperty.BulletLength += 1f;
+		m_creatureProperty.BulletAlphaLength += 1f;
 		m_creatureProperty.AlphaAttackCoolTime -= 0.5f;
 
 		Vector3 scale = transform.localScale*0.3f;
@@ -606,7 +618,7 @@ public class Creature : MonoBehaviour {
 		
 		m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run = false;
 		m_creatureProperty.AlphaAttackCoolTime += 0.5f;
-		m_creatureProperty.BulletLength -= 1f;
+		m_creatureProperty.BulletAlphaLength -= 1f;
 		transform.localScale -= scale;
 
 		DestroyObject(effect);

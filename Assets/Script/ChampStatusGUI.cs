@@ -52,16 +52,23 @@ public class ChampStatusGUI : MonoBehaviour {
 
 		assignSkillButton(1, Warehouse.Instance.FindItem(22), ()=>{
 			Warehouse.Instance.FindItem(22).Item.Use(m_champ);
+			m_champ.Followers.ForEach((Creature follower)=>{
+				Warehouse.Instance.FindItem(22).Item.Use(follower);
+			});
 			return true;
 		});
 
 		assignSkillButton(2, Warehouse.Instance.FindItem(23), ()=>{			
 			Warehouse.Instance.FindItem(23).Item.Use(m_champ);
+
 			return true;
 		});
 
 		assignSkillButton(3, Warehouse.Instance.FindItem(24), ()=>{	
 			Warehouse.Instance.FindItem(24).Item.Use(m_champ);
+			m_champ.Followers.ForEach((Creature follower)=>{
+				Warehouse.Instance.FindItem(24).Item.Use(follower);
+			});
 			return true;
 		});
 

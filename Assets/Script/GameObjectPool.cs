@@ -73,4 +73,31 @@ public class GameObjectPool {
 			Debug.DebugBreak();
 		}
 	}
+
+	public void Clear()
+	{
+		Dictionary< GameObject, GameObject > copy = m_allocGameObject;
+		foreach(KeyValuePair<GameObject, GameObject> pair in copy)
+		{
+			if (pair.Key == null)
+				continue;
+
+			Free(pair.Key);
+		}
+
+		foreach(KeyValuePair<GameObject, List<GameObject>> pair in m_freeGameObject)
+		{
+			foreach(GameObject obj in pair.Value)
+			{
+				if (obj == null)
+					continue;
+
+				GameObject.DestroyImmediate(obj);
+			}
+		}
+
+		m_allocGameObject.Clear();
+		m_freeGameObject.Clear();
+	}
+
 }

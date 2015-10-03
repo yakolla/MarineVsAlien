@@ -49,6 +49,7 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	void Start()
 	{
+		GameObjectPool.Instance.Clear();
 		System.GC.Collect();
 		Const.HideLoadingGUI();
 

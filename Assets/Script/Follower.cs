@@ -108,6 +108,8 @@ public class Follower : Creature {
 		base.Init(refMob, level);
 
 		m_owner = owner;
+		m_owner.AddFollower(this);
+
 		CreatureType = m_owner.CreatureType;
 		m_consumedSP = refItem.consumedSP;
 
