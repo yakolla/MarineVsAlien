@@ -72,5 +72,8 @@ public class MultiLang{
 		Close,
 		Share,
 		Credits,
+		ShieldSkill,
+		Blocked,
+		Shielded,
 	}
 }

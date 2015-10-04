@@ -823,13 +823,13 @@ public class Creature : MonoBehaviour {
 
 		if (m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run == true)
 		{
-			DamageText("Blocked", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(RefData.Instance.RefTexts(MultiLang.ID.Blocked), Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 
 		if (m_buffEffects[(int)DamageDesc.BuffType.Dash].m_run == true)
 		{
-			DamageText("Blocked", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+			DamageText(RefData.Instance.RefTexts(MultiLang.ID.Blocked), Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}
 
@@ -857,7 +857,7 @@ public class Creature : MonoBehaviour {
 			if (m_creatureProperty.Shield > 0)
 			{
 				--m_creatureProperty.Shield;
-				DamageText("Shielded", Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+				DamageText(RefData.Instance.RefTexts(MultiLang.ID.Shielded), Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 				return 0;
 			}
 
@@ -872,7 +872,7 @@ public class Creature : MonoBehaviour {
 		string strDamage = dmg.ToString();
 		if (dmg == 0)
 		{
-			strDamage = "Blocked";
+			strDamage = RefData.Instance.RefTexts(MultiLang.ID.Blocked);
 			DamageText(strDamage, Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 			return 0;
 		}

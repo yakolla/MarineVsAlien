@@ -100,6 +100,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemSkillData(22));
 				Warehouse.Instance.PushItem(new ItemSkillData(23));
 				Warehouse.Instance.PushItem(new ItemSkillData(24));
+				Warehouse.Instance.PushItem(new ItemSkillData(25));
 
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3001));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3004));
@@ -173,6 +174,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemSkillData(22));
 				Warehouse.Instance.PushItem(new ItemSkillData(23));
 				Warehouse.Instance.PushItem(new ItemSkillData(24));
+				Warehouse.Instance.PushItem(new ItemSkillData(25));
 
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3001));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3004));

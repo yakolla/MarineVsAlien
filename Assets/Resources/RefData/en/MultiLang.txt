@@ -68,4 +68,7 @@
 	"Close",
 	"Share",
 	"Credits",
+	"Shield Skill",
+	"Blocked",
+	"Shielded",
 ]

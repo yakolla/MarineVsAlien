@@ -289,6 +289,60 @@
 				}
 			]
 		}	
+	},
+	{
+		"id":25,
+		"codeName":"ShieldSkill",
+		"name":"ShieldSkill",
+		"type":"Skill",
+		"icon":"Sprites/ShieldSkill",
+		"defaultLock":true,
+		"weaponStat":
+		{
+			"coolTime":120
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":70000
+				},
+				{
+					"refItemId":5, 
+					"count":700
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":700
+				}
+			]
+		},		
+		"unlock":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":7000
+				},
+				{
+					"refItemId":5, 
+					"count":70
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":70
+				}
+			]
+		}	
 	},	
 	{
 		"id":51,
@@ -711,6 +765,14 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
@@ -838,6 +900,14 @@
 					{
 						"type":"DmgMultiplier",
 						"values":[3]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
 					}
 				},
 				{
@@ -1760,6 +1830,14 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
@@ -2030,6 +2108,14 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
@@ -2106,6 +2192,14 @@
 					{
 						"type":"DmgMultiplier",
 						"values":[3]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
 					}
 				},
 				{
@@ -2188,6 +2282,14 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
@@ -2264,6 +2366,14 @@
 					{
 						"type":"DmgMultiplier",
 						"values":[3]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
 					}
 				},
 				{
@@ -2346,6 +2456,14 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
@@ -2422,6 +2540,14 @@
 					{
 						"type":"DmgMultiplier",
 						"values":[3]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
 					}
 				},
 				{
@@ -2553,6 +2679,14 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
@@ -2665,6 +2799,14 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"Strength",
+						"values":[6000]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
@@ -2741,6 +2883,14 @@
 					{
 						"type":"MaxHp",
 						"values":[3000]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"MaxHp",
+						"values":[6000]
 					}
 				},
 				{
@@ -2939,6 +3089,14 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"CriticalDmg",
+						"values":[600]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
@@ -3018,6 +3176,14 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"MaxSp",
+						"values":[6000]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
@@ -3094,6 +3260,14 @@
 					{
 						"type":"RegenSp",
 						"values":[300]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"RegenSp",
+						"values":[600]
 					}
 				},
 				{
@@ -3225,11 +3399,19 @@
 					}
 				},
 				{
+					"level":600,
+					"option":
+					{
+						"type":"CriticalDmg",						
+						"values":[9]
+					}
+				},
+				{
 					"level":900,
 					"option":
 					{
 						"type":"CriticalDmg",
-						"values":[9]
+						"values":[12]
 					}
 				}
 			]
@@ -3350,6 +3532,14 @@
 					{
 						"type":"MaxSP",						
 						"values":[300]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"MaxSP",						
+						"values":[600]
 					}
 				},
 				{

@@ -30,9 +30,7 @@ public class ShieldPassiveLauncher : Weapon {
 	IEnumerator EffectShield()
 	{
 		DamageNumberSprite sprite = m_creature.DamageText("", Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUpAlways);		
-		Vector3 scale = sprite.gameObject.transform.localScale;
-		scale *= 0.5f;
-		sprite.gameObject.transform.localScale = scale;
+
 
 		GameObject obj = Instantiate (m_prefChargingEffect, Vector3.zero, transform.rotation) as GameObject;		
 		obj.transform.parent = m_creature.transform;
@@ -45,7 +43,7 @@ public class ShieldPassiveLauncher : Weapon {
 			bool shield = m_creature.m_creatureProperty.Shield > 0;
 			if (shield == true)
 			{
-				sprite.Text = "Shield " + m_creature.m_creatureProperty.Shield;
+				sprite.Text = m_creature.m_creatureProperty.Shield.ToString();
 			}
 			
 			sprite.gameObject.SetActive(shield);

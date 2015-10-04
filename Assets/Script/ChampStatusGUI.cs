@@ -72,7 +72,15 @@ public class ChampStatusGUI : MonoBehaviour {
 			return true;
 		});
 
-		for(int i = 0; i < m_accessoryButtons.Length; ++i)
+		assignSkillButton(4, Warehouse.Instance.FindItem(25), ()=>{	
+			Warehouse.Instance.FindItem(25).Item.Use(m_champ);
+			m_champ.Followers.ForEach((Creature follower)=>{
+				Warehouse.Instance.FindItem(25).Item.Use(follower);
+			});
+			return true;
+		});
+
+			for(int i = 0; i < m_accessoryButtons.Length; ++i)
 		{
 			m_accessoryButtons[i] = new YGUISystem.GUIChargeButton(transform.Find("Accessory/Button"+i).gameObject, ()=>{
 				return true;

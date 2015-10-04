@@ -39,6 +39,17 @@ public class ItemSkillData : ItemData{
 		case 24:
 			obj.ApplyDamageMultiplySkill();
 			break;
+		case 25:
+			Weapon weapon = obj.WeaponHolder.GetPassiveSkillWeapon(130);
+			if (weapon != null)
+			{
+				weapon.LevelUp();
+			}
+			else
+			{
+				obj.EquipPassiveSkillWeapon(new ItemWeaponData(130), null);
+			}
+			break;
 		}
 	}
 
