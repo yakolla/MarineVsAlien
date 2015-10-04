@@ -962,15 +962,16 @@ public class Creature : MonoBehaviour {
 			Const.GetSpawn().SharePotinsChamps(offender, ItemData.Type.XPPotion, m_creatureProperty.RewardExp, false);
 			Death();
 		}
+
 		if (offender != null && (offender.CreatureType & Type.Champ) > 0)
 		{
 			Warehouse.Instance.UpdateGameStats.DealDamages += dmg;
 		}
-
-		if (CreatureType == Type.Champ)
+		else if (CreatureType == Type.Champ)
 		{
 			Warehouse.Instance.UpdateGameStats.TakenDamages += dmg;
 		}
+
 		return dmg;
 	}
 

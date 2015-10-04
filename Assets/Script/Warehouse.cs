@@ -63,7 +63,6 @@ public class WarehouseData
 	public class 	GameStatistics
 	{
 		public SecuredType.XInt		m_waveIndex = 0;
-		public SecuredType.XInt		m_killedMobs = 0;
 
 		PerSec	m_kills = new PerSec();
 		PerSec	m_dealDamages = new PerSec();
@@ -74,13 +73,11 @@ public class WarehouseData
 		
 		public void SetBestStats(GameStatistics newStats)
 		{
-			KilledMobs = Mathf.Max(KilledMobs, newStats.KilledMobs);
 			WaveIndex = Mathf.Max(WaveIndex, newStats.WaveIndex);
 		}
 
 		public void Reset()
 		{
-			KilledMobs = 0;
 			WaveIndex = 0;
 
 			m_kills.Reset();
@@ -94,10 +91,9 @@ public class WarehouseData
 		public int KilledMobs
 		{
 			set{
-				m_killedMobs.Value = value;
 				m_kills.Amount = value;
 			}
-			get{return m_killedMobs.Value;}
+			get{return m_kills.Amount;}
 		}
 		
 		public int WaveIndex
@@ -108,7 +104,9 @@ public class WarehouseData
 
 		public int DealDamages
 		{
-			set{m_dealDamages.Amount = value;}
+			set{
+				m_dealDamages.Amount = value;
+			}
 			get{return m_dealDamages.Amount;}
 		}
 

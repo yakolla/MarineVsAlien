@@ -427,7 +427,6 @@ public class Spawn : MonoBehaviour {
 		{
 			++Warehouse.Instance.AlienEssence.Item.Count;
 			++Warehouse.Instance.UpdateGameStats.KilledMobs;
-			Warehouse.Instance.NewGameStats.KilledMobs = Warehouse.Instance.AlienEssence.Item.Count;
 
 			if (Warehouse.Instance.AlienEssence.Item.Count > 500)
 			{
@@ -764,6 +763,9 @@ public class Spawn : MonoBehaviour {
 				m_champ = obj.GetComponent<Champ>();
 			}
 		}
+
+		Warehouse.Instance.UpdateGameStats.Update();
+
 	}
 
 }

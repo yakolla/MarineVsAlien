@@ -174,7 +174,6 @@ public class GeneralInfoPanel : MonoBehaviour {
 		m_dodge.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.Dodge*100f);
 
 
-		Warehouse.Instance.UpdateGameStats.Update();
 		foreach(YGUISystem.GUIGuage guage in m_guages)
 		{
 			guage.Update();
