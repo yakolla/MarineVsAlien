@@ -71,4 +71,5 @@
 	"Shield Skill",
 	"Blocked",
 	"Shielded",
+	"Dodged",
 ]

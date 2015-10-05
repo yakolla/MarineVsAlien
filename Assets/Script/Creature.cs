@@ -854,19 +854,18 @@ public class Creature : MonoBehaviour {
 
 		if (dmg > 0)
 		{
+			if (Random.Range(0f, 1f) < m_creatureProperty.Dodge)
+			{
+				DamageText(RefData.Instance.RefTexts(MultiLang.ID.Dodged), Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
+				return 0;
+			}
+
 			if (m_creatureProperty.Shield > 0)
 			{
 				--m_creatureProperty.Shield;
 				DamageText(RefData.Instance.RefTexts(MultiLang.ID.Shielded), Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
 				return 0;
 			}
-
-			if (Random.Range(0f, 1f) < m_creatureProperty.Dodge)
-			{
-				DamageText(RefData.Instance.RefTexts(MultiLang.ID.Dodge), Vector3.one, Color.white, DamageNumberSprite.MovementType.ParabolaAlpha);
-				return 0;
-			}
-
 		}
 
 		string strDamage = dmg.ToString();

@@ -1822,6 +1822,14 @@
 					}
 				},
 				{
+					"level":100,
+					"option":
+					{
+						"type":"LifeSteal",						
+						"values":[1]
+					}
+				},
+				{
 					"level":300,
 					"option":
 					{
@@ -1879,7 +1887,12 @@
 		{
 			"coolTime":0.3,
 			"range":6,
-			"incBulletOnLevel":900
+			"incBulletOnLevel":9000,
+			"buffOnHitDesc":
+			{
+				"chance":1,
+				"buffType":"Poison"
+			}
 		}
 	},
 	{

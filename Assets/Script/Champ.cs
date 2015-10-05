@@ -17,7 +17,6 @@ public class Champ : Creature {
 
 	ItemObject[]	m_accessoryItems = new ItemObject[Const.AccessoriesSlots];
 
-	Animator	m_bloodWarningAnimator;
 
 	Vector3		m_moveDir;
 	float		m_lastLevelupTime;
@@ -42,8 +41,7 @@ public class Champ : Creature {
 		followingCamera.SetMainTarget(gameObject);
 
 
-		m_bloodWarningAnimator = GameObject.Find("HudGUI/Blood Warning").GetComponent<Animator>();
-
+	
 	}
 
 	override public void Init(RefMob refMob, int level)

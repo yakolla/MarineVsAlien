@@ -12,11 +12,9 @@ public class ChampStatusGUI : MonoBehaviour {
 	int			m_oldGem;
 	int			m_oldDNA;
 
-	GameObject		m_accessoryBoard;
 
 
 	YGUISystem.GUIChargeButton[]	m_specialButtons = new YGUISystem.GUIChargeButton[Const.SpecialButtons];
-	YGUISystem.GUIChargeButton[]	m_accessoryButtons = new YGUISystem.GUIChargeButton[Const.AccessoriesSlots];
 	YGUISystem.GUIGuage[] m_guages = new YGUISystem.GUIGuage[Const.Guages];
 	YGUISystem.GUILable m_level;
 	YGUISystem.GUIButton			m_autoEarnButton;
@@ -36,8 +34,6 @@ public class ChampStatusGUI : MonoBehaviour {
 		m_gem = transform.Find("Gem/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 		m_dna = transform.Find("DNA/RawImage/Text").gameObject.GetComponent<ComboGUIShake>();
 
-
-		m_accessoryBoard = transform.Find("Accessory").gameObject;
 
 		m_autoEarnButton = new YGUISystem.GUIButton(transform.Find("Special/AutoEarnButton").gameObject, ()=>{
 			m_autoEarnButton.Lable.Text.text = Warehouse.Instance.AutoEarnGold.ToString();
@@ -74,18 +70,11 @@ public class ChampStatusGUI : MonoBehaviour {
 
 		assignSkillButton(4, Warehouse.Instance.FindItem(25), ()=>{	
 			Warehouse.Instance.FindItem(25).Item.Use(m_champ);
-			m_champ.Followers.ForEach((Creature follower)=>{
-				Warehouse.Instance.FindItem(25).Item.Use(follower);
-			});
+
 			return true;
 		});
 
-			for(int i = 0; i < m_accessoryButtons.Length; ++i)
-		{
-			m_accessoryButtons[i] = new YGUISystem.GUIChargeButton(transform.Find("Accessory/Button"+i).gameObject, ()=>{
-				return true;
-			});
-		}
+			
 
 		m_guages[0] = new YGUISystem.GUIGuage(transform.Find("Guage/HP").gameObject, 
 			()=>{return m_champ.m_creatureProperty.getHPRemainRatio();}, 
@@ -139,12 +128,11 @@ public class ChampStatusGUI : MonoBehaviour {
 		abilityGui.AutoAssigned = autoAssigned;
 		abilityGui.gameObject.SetActive(true);
 
-		m_accessoryBoard.GetComponent<Animator>().SetTrigger("SlidingDown");
 	}
 
 	public void SlidingNormalAccessoryBoard()
 	{
-		m_accessoryBoard.GetComponent<Animator>().SetTrigger("SlidingNormal");
+
 	}
 
 	public void OnClickOption()
@@ -186,13 +174,11 @@ public class ChampStatusGUI : MonoBehaviour {
 		if (m_champ.AccessoryItems[slot] == null)
 			return;
 
-		if (m_accessoryButtons[slot].ChargingPoint == 0)
-			return;
+
 
 		if (m_champ.AccessoryItems[slot].Item.Usable(m_champ) == false)
 			return;
 
-		--m_accessoryButtons[slot].ChargingPoint;
 
 		for(int i = 0; i < m_champ.m_creatureProperty.CallableFollowers; ++i)
 			m_champ.AccessoryItems[slot].Item.Use(m_champ);
@@ -204,7 +190,6 @@ public class ChampStatusGUI : MonoBehaviour {
 	void SetActiveGUI(bool active)
 	{
 		transform.Find("Guage").gameObject.SetActive(active);
-		transform.Find("Accessory").gameObject.SetActive(active);
 		transform.Find("Special").gameObject.SetActive(active);
 		transform.Find("Option").gameObject.SetActive(active);
 		transform.Find("Gold").gameObject.SetActive(active);
@@ -277,10 +262,7 @@ public class ChampStatusGUI : MonoBehaviour {
 			button.Update();
 		}
 
-		foreach(YGUISystem.GUIButton button in m_accessoryButtons)
-		{
-			button.Update();
-		}
+
 
 		foreach(YGUISystem.GUIGuage guage in m_guages)
 		{
