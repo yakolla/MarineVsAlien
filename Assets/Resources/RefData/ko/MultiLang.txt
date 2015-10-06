@@ -72,4 +72,5 @@
 	"Blocked",
 	"Shielded",
 	"Dodged",
+	"DNA",
 ]

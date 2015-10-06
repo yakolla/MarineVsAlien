@@ -329,22 +329,42 @@ public class Spawn : MonoBehaviour {
 					yield return new WaitForSeconds(0.5f);
 				}
 
-				if (mobSpawn.boss == true)
-				{
-					Const.SaveGame((SavedGameRequestStatus, ISavedGameMetadata)=>{});
-
-				}
-				else
-				{					
+				if (mobSpawn.boss == false)
+				{									
 					yield return StartCoroutine(spawnMobPerCore(GetCurrentWave().randomMobSpawns[m_wave%GetCurrentWave().randomMobSpawns.Length]));
 				}
 
 				yield return new WaitForSeconds(3f);
 
+				if (Warehouse.Instance.GameTutorial.m_unlockedWeaponTab == false)
+				{
+					Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
+					Const.GetTutorialMgr().SetTutorial("WeaponTab");
+				}
+				else if (Warehouse.Instance.GameTutorial.m_unlockedSkillTab == false)
+				{
+					Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
+					Const.GetTutorialMgr().SetTutorial("SkillTab");
+				}
+				else if (Warehouse.Instance.GameTutorial.m_unlockedFollowerTab == false)
+				{
+					Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
+					Const.GetTutorialMgr().SetTutorial("FollowerTab");
+				}
+				else if (Warehouse.Instance.GameTutorial.m_unlockedStatTab == false)
+				{
+					Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
+					Const.GetTutorialMgr().SetTutorial("StatTab");
+				}
 
 				yield return new WaitForSeconds(mobSpawn.interval);
 
 				m_wave++;
+
+				if (mobSpawn.boss == true)
+				{
+					Const.SaveGame((SavedGameRequestStatus, ISavedGameMetadata)=>{});					
+				}
 			}
 		}
 	}
@@ -392,12 +412,6 @@ public class Spawn : MonoBehaviour {
 
 		if (mob.Boss)
 		{
-			if (Warehouse.Instance.GameTutorial.m_unlockedWeaponTab == false)
-			{
-				Warehouse.Instance.GameTutorial.m_unlockedWeaponTab = true;
-				Const.GetTutorialMgr().SetTutorial("WeaponTab");
-			}
-
 			if (Warehouse.Instance.GameTutorial.m_unlockedFollowerTab == true)
 			{
 				ItemObject petObj = Warehouse.Instance.FindItem(Const.FollowerPetRefItemId);
@@ -427,35 +441,6 @@ public class Spawn : MonoBehaviour {
 		{
 			++Warehouse.Instance.AlienEssence.Item.Count;
 			++Warehouse.Instance.UpdateGameStats.KilledMobs;
-
-			if (Warehouse.Instance.AlienEssence.Item.Count > 500)
-			{
-				if (Warehouse.Instance.GameTutorial.m_unlockedSkillTab == false)
-				{
-					Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
-					Const.GetTutorialMgr().SetTutorial("SkillTab");
-				}
-
-			}
-			if (Warehouse.Instance.AlienEssence.Item.Count > 700)
-			{
-				if (Warehouse.Instance.GameTutorial.m_unlockedFollowerTab == false)
-				{
-					Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
-					Const.GetTutorialMgr().SetTutorial("FollowerTab");
-				}
-
-			}
-			if (Warehouse.Instance.AlienEssence.Item.Count > 1000)
-			{
-				if (Warehouse.Instance.GameTutorial.m_unlockedStatTab == false)
-				{
-					Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
-					Const.GetTutorialMgr().SetTutorial("StatTab");
-				}
-
-			}
-
 		}
 	}
 

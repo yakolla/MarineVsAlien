@@ -67,6 +67,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemGoldData(100000));
 				Warehouse.Instance.PushItem(new ItemGoldMedalData(1000));
 				Warehouse.Instance.PushItem(new ItemGemData(m_cheatGem));
+				Warehouse.Instance.PushItem(new ItemWeaponDNAData(0));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampTapRefItemId));	
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));				
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampLightningLauncherRefItemId));
@@ -141,7 +142,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemGoldData(0));
 				Warehouse.Instance.PushItem(new ItemGoldMedalData(0));
 				Warehouse.Instance.PushItem(new ItemGemData(0));
-
+				Warehouse.Instance.PushItem(new ItemWeaponDNAData(0));
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampTapRefItemId));	
 				Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampGunRefItemId));
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampLightningLauncherRefItemId));

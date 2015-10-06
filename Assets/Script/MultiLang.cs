@@ -76,5 +76,6 @@ public class MultiLang{
 		Blocked,
 		Shielded,
 		Dodged,
+		WeaponDNA,
 	}
 }

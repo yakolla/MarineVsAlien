@@ -20,6 +20,7 @@
 	{
 		"id":4,
 		"codeName":"WeaponDNA",
+		"name":"WeaponDNA",
 		"type":"WeaponDNA",
 		"icon":"Sprites/WeaponDNA",		
 		"desc":"ItWillDropAfter30waves"
@@ -1814,10 +1815,11 @@
 			"optionPerLevel":
 			[
 				{
-					"level":100,
+					"level":1,
+					"levelPer":true,
 					"option":
 					{
-						"type":"DmgMultiplier",
+						"type":"Strength",
 						"values":[1]
 					}
 				},
@@ -1826,6 +1828,14 @@
 					"option":
 					{
 						"type":"LifeSteal",						
+						"values":[1]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
 						"values":[1]
 					}
 				},
