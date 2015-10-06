@@ -317,8 +317,9 @@ public class YGUISystem {
 					}
 					hasCount = inventoryItemObj.Item.Count;
 				}
-				str += hasCount;
-				str += "/" + cost;
+				//str += hasCount;
+				//str += "/" + cost;
+				str += cost;
 				str += "</color>";
 				button.GUIImages[priceIndex].Lable.Text.text = str;
 				
