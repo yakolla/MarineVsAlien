@@ -282,7 +282,10 @@ public class Warehouse {
 		ItemObject itemObj = FindItem(item.RefItem.id);
 		if (itemObj == null)
 		{
-			m_warehouseData.m_items[item.RefItem.type].Add(new ItemObject(item));
+			ItemObject newItemObj = new ItemObject(item);
+			m_warehouseData.m_items[item.RefItem.type].Add(newItemObj);
+			if (item.RefItem.type == ItemData.Type.WeaponDNA)
+				m_weaponDNA = newItemObj;
 		}
 		else
 		{
@@ -324,9 +327,7 @@ public class Warehouse {
 		case ItemData.Type.Gem:
 			return m_gem;
 		case ItemData.Type.AlienEssence:
-			return m_alienEssence;
-		case ItemData.Type.WeaponDNA:
-			return m_weaponDNA;
+			return m_alienEssence;		
 		}
 
 		foreach(ItemObject obj in m_warehouseData.m_items[RefData.Instance.RefItems[refItemId].type])
@@ -467,7 +468,6 @@ public class Warehouse {
 		m_goldMedal = new ItemObject(new ItemGoldMedalData(0));
 		m_gem = new ItemObject(new ItemGemData(0));
 		m_alienEssence = new ItemObject(new ItemAlienEssenceData(0));
-		m_weaponDNA = new ItemObject(new ItemWeaponDNAData(0));
 
 
 	}

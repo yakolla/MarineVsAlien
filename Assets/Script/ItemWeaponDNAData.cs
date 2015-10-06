@@ -15,6 +15,6 @@ public class ItemWeaponDNAData : ItemData{
 
 	override public string Description()
 	{
-		return "";
+		return itemName();
 	}
 }

@@ -339,7 +339,10 @@ public class RefData {
 
 	void Load()
 	{
-		Deserialize(ref m_texts, "ko/MultiLang");
+		if (Application.systemLanguage == SystemLanguage.Korean)
+			Deserialize(ref m_texts, "ko/MultiLang");
+		else
+			Deserialize(ref m_texts, "en/MultiLang");
 
 		DeserializeArray(m_refWorldMaps, "RefWorldMap");
 		Deserialize(ref m_refMobClass, "RefMob");

@@ -126,7 +126,7 @@ public class Worldmap : MonoBehaviour {
 						OpenGame();
 						break;
 					case LoginWith.LeaderBoard:
-						GPlusPlatform.Instance.ShowLeaderboardUI();
+						GPlusPlatform.Instance.ShowLeaderboardUI(Const.LEADERBOARD_KILLED_MOBS);
 						Const.HideLoadingGUI();
 						break;
 					case LoginWith.Achievement:

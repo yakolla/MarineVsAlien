@@ -20,6 +20,7 @@
 	{
 		"id":4,
 		"codeName":"WeaponDNA",
+		"name":"WeaponDNA",
 		"type":"WeaponDNA",
 		"icon":"Sprites/WeaponDNA",		
 		"desc":"ItWillDropAfter30waves"
@@ -1814,6 +1815,23 @@
 			"optionPerLevel":
 			[
 				{
+					"level":1,
+					"levelPer":true,
+					"option":
+					{
+						"type":"Strength",
+						"values":[1]
+					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"LifeSteal",						
+						"values":[1]
+					}
+				},
+				{
 					"level":100,
 					"option":
 					{
@@ -1879,7 +1897,12 @@
 		{
 			"coolTime":0.3,
 			"range":6,
-			"incBulletOnLevel":900
+			"incBulletOnLevel":9000,
+			"buffOnHitDesc":
+			{
+				"chance":1,
+				"buffType":"Poison"
+			}
 		}
 	},
 	{
