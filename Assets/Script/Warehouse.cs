@@ -18,7 +18,6 @@ public class WarehouseData
 	public SecuredType.XInt	m_alienEssence = 0;
 	public SecuredType.XInt	m_gold = 0;
 	public SecuredType.XInt	m_goldMedal = 0;
-	public SecuredType.XInt	m_weaponDNA = 0;
 	public SecuredType.XInt	m_gem = 0;
 	public SecuredType.XInt	m_autoEarnGold = 0;
 	public System.DateTime			m_lastModifiedTime = System.DateTime.UtcNow;
@@ -496,7 +495,6 @@ public class Warehouse {
 		m_warehouseData.m_gold = m_gold.Item.Count;
 		m_warehouseData.m_goldMedal = m_goldMedal.Item.Count;
 		m_warehouseData.m_gem = m_gem.Item.Count;
-		m_warehouseData.m_weaponDNA = m_weaponDNA.Item.Count;
 		m_warehouseData.m_alienEssence = m_alienEssence.Item.Count;
 		writer.Write(JsonConvert.SerializeObject(m_warehouseData));
 		
@@ -529,8 +527,9 @@ public class Warehouse {
 				items[type].Add(new ItemObject(weaponData));
 				break;
 			case ItemData.Type.WeaponDNA:
-				ItemWeaponDNAData weaponDNAData = JsonConvert.DeserializeObject<ItemWeaponDNAData>(reader.ReadLine());
-				items[type].Add(new ItemObject(weaponDNAData));
+				ItemWeaponDNAData dnaData = JsonConvert.DeserializeObject<ItemWeaponDNAData>(reader.ReadLine());
+				m_weaponDNA = new ItemObject(dnaData);
+				items[type].Add(m_weaponDNA);
 				break;
 			case ItemData.Type.WeaponParts:
 				ItemWeaponPartsData weaponPartsData = JsonConvert.DeserializeObject<ItemWeaponPartsData>(reader.ReadLine());
@@ -556,7 +555,7 @@ public class Warehouse {
 				ItemStatData statData = JsonConvert.DeserializeObject<ItemStatData>(reader.ReadLine());
 				items[type].Add(new ItemObject(statData));
 				break;
-				
+			
 			default:
 				Debug.Log(type);
 				reader.ReadLine();
@@ -570,7 +569,6 @@ public class Warehouse {
 
 		m_gold.Item.Count = m_warehouseData.m_gold.Value;
 		m_goldMedal.Item.Count = m_warehouseData.m_goldMedal.Value;
-		m_weaponDNA.Item.Count = m_warehouseData.m_weaponDNA.Value;
 		m_gem.Item.Count = m_warehouseData.m_gem.Value;
 		m_alienEssence.Item.Count = m_warehouseData.m_alienEssence.Value;
 

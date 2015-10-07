@@ -39,21 +39,21 @@ public class GeneralInfoPanel : MonoBehaviour {
 	void Start()
 	{
 
-		string[] dir = {"ScrollView/Contents/Strength", 
-						"ScrollView/Contents/RegenSP", 
-						"ScrollView/Contents/GainExtraGold", 
-						"ScrollView/Contents/DamageReduction",
-						"ScrollView/Contents/DamageMultiplier",
-						"ScrollView/Contents/CriticalChance",
-						"ScrollView/Contents/CriticalDamage",
-						"ScrollView/Contents/TapDamage",
-						"ScrollView/Contents/LifeSteal",
-			"ScrollView/Contents/Dodge",
-			"ScrollView/Contents/StatisticsDealDmgPS",
-			"ScrollView/Contents/StatisticsTakenDmgPS",
-			"ScrollView/Contents/StatisticsKillPS",
-			"ScrollView/Contents/StatisticsConsumedSPPS",
-			"ScrollView/Contents/StatisticsWave",
+		string[] dir = {"Contents/Strength", 
+						"Contents/RegenSP", 
+						"Contents/GainExtraGold", 
+						"Contents/DamageReduction",
+						"Contents/DamageMultiplier",
+						"Contents/CriticalChance",
+						"Contents/CriticalDamage",
+						"Contents/TapDamage",
+						"Contents/LifeSteal",
+			"Contents/Dodge",
+			"Contents/StatisticsDealDmgPS",
+			"Contents/StatisticsTakenDmgPS",
+			"Contents/StatisticsKillPS",
+			"Contents/StatisticsConsumedSPPS",
+			"Contents/StatisticsWave",
 					};
 		transform.Find(dir[(int)DirIndex.Strength]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.Strength) + ":";
 		transform.Find(dir[(int)DirIndex.RegenSP]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.RegenSP) + ":";
