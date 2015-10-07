@@ -223,13 +223,13 @@ public class Spawn : MonoBehaviour {
 					{
 					case 0:
 						angle = 0f;
-						length = 16;
+						length = 12;
 						if (m_champ != null)
 							m_champ.m_creatureProperty.AttackRange=2;
 						break;
 					case 5:
 						angle = 3.14f;
-						length = 16;
+						length = 12;
 						if (m_champ != null)
 							m_champ.m_creatureProperty.AttackRange=2;
 						break;

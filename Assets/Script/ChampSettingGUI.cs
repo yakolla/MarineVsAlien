@@ -215,7 +215,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		m_statPanel = settingItemList("StatPanel", new ItemData.Type[]{ItemData.Type.Stat, ItemData.Type.WeaponDNA});
 		m_followerPanel = settingItemList("FollowerPanel", new ItemData.Type[]{ItemData.Type.Follower});
 		m_skillPanel = settingItemList("SkillPanel", new ItemData.Type[]{ItemData.Type.Skill});
-		m_generalInfoPanel = transform.Find("GeneralInfoPanel").gameObject.GetComponent<GeneralInfoPanel>();
+		m_generalInfoPanel = transform.Find("GeneralInfoPanel/ScrollView").gameObject.GetComponent<GeneralInfoPanel>();
 		OnClickStart();
 	}
 	enum ButtonRole
@@ -272,7 +272,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				priceGemButton.SetPrices(item.Item.RefItem.levelup.conds, item.Item.RefItem.levelup.else_conds);
 				
 				priceGemButton.AddListener(() => OnClickLevelup(invSlot, priceGemButton, priceGemButton.m_priceButton, item), () => OnClickLevelup(invSlot, priceGemButton, priceGemButton.m_gemButton, item) );
-				priceGemButton.SetLable("Levelup");
+			priceGemButton.SetLable(RefData.Instance.RefTexts(MultiLang.ID.LevelUp));
 			}
 			break;
 
@@ -285,7 +285,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				priceGemButton.SetPrices(item.Item.RefItem.unlock.conds, item.Item.RefItem.unlock.else_conds);
 
 				priceGemButton.AddListener(() => OnClickUnlock(invSlot, priceGemButton, priceGemButton.m_priceButton, item), () => OnClickUnlock(invSlot, priceGemButton, priceGemButton.m_gemButton, item) );
-				priceGemButton.SetLable("Unlock");
+				priceGemButton.SetLable(RefData.Instance.RefTexts(MultiLang.ID.Unlock));
 
 			}
 			break;
@@ -306,10 +306,10 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 			button.Update();
 		}
-
+		/*
 		if (m_champ == null)
 			OnClickGeneralInfo();
-
+*/
 	}
 
 	IEnumerator AutoGoldUpdate()

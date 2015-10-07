@@ -73,4 +73,5 @@
 	"Shielded",
 	"Dodged",
 	"DNA",
+	"LevelUp",
 ]

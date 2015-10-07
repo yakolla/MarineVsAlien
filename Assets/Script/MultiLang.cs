@@ -77,5 +77,6 @@ public class MultiLang{
 		Shielded,
 		Dodged,
 		WeaponDNA,
+		LevelUp,
 	}
 }
