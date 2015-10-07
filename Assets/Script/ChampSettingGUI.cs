@@ -306,10 +306,10 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 			button.Update();
 		}
-
+		/*
 		if (m_champ == null)
 			OnClickGeneralInfo();
-
+*/
 	}
 
 	IEnumerator AutoGoldUpdate()
