@@ -72,7 +72,7 @@ public class Const {
 	public static bool CheckAvailableItem(RefPrice[] conds, float itemWorth)
 	{
 		if (conds == null)
-			return true;
+			return false;
 
 		foreach(RefPrice price in conds)
 		{

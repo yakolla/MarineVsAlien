@@ -13,7 +13,7 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	YGUISystem.GUIButton	m_weapon;
 	YGUISystem.GUILockButton[]	m_accessories = new YGUISystem.GUILockButton[Const.AccessoriesSlots];
-	YGUISystem.GUIButton	m_start;
+
 
 	GameObject	m_weaponPanel;
 	GameObject	m_statPanel;
@@ -21,7 +21,26 @@ public class ChampSettingGUI : MonoBehaviour {
 	GameObject	m_skillPanel;
 	GeneralInfoPanel	m_generalInfoPanel;
 
-	YGUISystem.GUIButton[]	m_tabs = new YGUISystem.GUIButton[4];
+	class TabDesc
+	{
+		public YGUISystem.GUIButton m_tab;
+		public GameObject	m_checked;
+		public ItemData.Type[] m_itemTypes;
+
+		public TabDesc(MultiLang.ID name, ItemData.Type[] itemTypes, YGUISystem.GUIButton tab)
+		{
+			m_tab = tab;
+			m_checked = tab.Button.transform.Find("Checked").gameObject;
+			m_tab.Lable.Text.text = RefData.Instance.RefTexts(name);
+			m_itemTypes = itemTypes;
+		}
+
+		public void Update()
+		{
+			m_tab.Update();
+		}
+	}
+	TabDesc[]	m_tabs = new TabDesc[4];
 
 	[SerializeField]
 	Transform		m_spawnChamp;
@@ -199,22 +218,16 @@ public class ChampSettingGUI : MonoBehaviour {
 				m_accessories[i].Lock = false;
 		}
 
-		m_start = new YGUISystem.GUIButton(transform.Find("StartButton").gameObject, ()=>{return m_equipedWeapon != null;});
 
+		m_tabs[0] = new TabDesc(MultiLang.ID.Weapon, new ItemData.Type[]{ItemData.Type.Weapon, ItemData.Type.WeaponParts}, new YGUISystem.GUIButton(transform.Find("WeaponTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedWeaponTab && m_champ != null && m_champ.gameObject.activeSelf;}));
+		m_tabs[1] = new TabDesc(MultiLang.ID.Skill, new ItemData.Type[]{ItemData.Type.Skill}, new YGUISystem.GUIButton(transform.Find("SkillTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedSkillTab && m_champ != null && m_champ.gameObject.activeSelf;}));
+		m_tabs[2] = new TabDesc(MultiLang.ID.Follower, new ItemData.Type[]{ItemData.Type.Follower}, new YGUISystem.GUIButton(transform.Find("FollowerTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedFollowerTab && m_champ != null && m_champ.gameObject.activeSelf;}));
+		m_tabs[3] = new TabDesc(MultiLang.ID.Stat, new ItemData.Type[]{ItemData.Type.Stat, ItemData.Type.WeaponDNA}, new YGUISystem.GUIButton(transform.Find("StatTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedStatTab && m_champ != null && m_champ.gameObject.activeSelf;}));
 
-		m_tabs[0] = new YGUISystem.GUIButton(transform.Find("WeaponTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedWeaponTab && m_champ != null && m_champ.gameObject.activeSelf;});
-		m_tabs[0].Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Weapon);
-		m_tabs[1] = new YGUISystem.GUIButton(transform.Find("SkillTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedSkillTab && m_champ != null && m_champ.gameObject.activeSelf;});
-		m_tabs[1].Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Skill);
-		m_tabs[2] = new YGUISystem.GUIButton(transform.Find("FollowerTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedFollowerTab && m_champ != null && m_champ.gameObject.activeSelf;});
-		m_tabs[2].Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Follower);
-		m_tabs[3] = new YGUISystem.GUIButton(transform.Find("StatTab").gameObject, ()=>{return Warehouse.Instance.GameTutorial.m_unlockedStatTab && m_champ != null && m_champ.gameObject.activeSelf;});
-		m_tabs[3].Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Stat);
-
-		m_weaponPanel = settingItemList("WeaponPanel", new ItemData.Type[]{ItemData.Type.Weapon, ItemData.Type.WeaponParts});
-		m_statPanel = settingItemList("StatPanel", new ItemData.Type[]{ItemData.Type.Stat, ItemData.Type.WeaponDNA});
-		m_followerPanel = settingItemList("FollowerPanel", new ItemData.Type[]{ItemData.Type.Follower});
-		m_skillPanel = settingItemList("SkillPanel", new ItemData.Type[]{ItemData.Type.Skill});
+		m_weaponPanel = settingItemList(m_tabs[0], "WeaponPanel");
+		m_statPanel = settingItemList(m_tabs[3], "StatPanel");
+		m_followerPanel = settingItemList(m_tabs[2], "FollowerPanel");
+		m_skillPanel = settingItemList(m_tabs[1], "SkillPanel");
 		m_generalInfoPanel = transform.Find("GeneralInfoPanel/ScrollView").gameObject.GetComponent<GeneralInfoPanel>();
 		OnClickStart();
 	}
@@ -298,18 +311,17 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	}
 
+
+
 	void Update()
 	{
-		m_start.Update();
-
-		foreach(YGUISystem.GUIButton button in m_tabs)
+	
+		foreach(TabDesc tab in m_tabs)
 		{
-			button.Update();
+			tab.Update();
+			if (tab.m_tab.Button.interactable)
+				checkAvailableItem(tab);
 		}
-		/*
-		if (m_champ == null)
-			OnClickGeneralInfo();
-*/
 	}
 
 	IEnumerator AutoGoldUpdate()
@@ -428,10 +440,6 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 		case ItemData.Type.Weapon:
 		{
-			if (m_equipedWeapon.m_inventorySlot != null)
-			{
-				m_equipedWeapon.m_inventorySlot.Check(false);
-			}
 			m_equipedWeapon.m_itemObject = selectedItem;
 			m_equipedWeapon.m_inventorySlot = invSlot;
 			m_weapon.Icon.Image = selectedItem.ItemIcon;
@@ -526,8 +534,37 @@ public class ChampSettingGUI : MonoBehaviour {
 		}
 	}
 
+	bool checkAvailableItem(TabDesc tab)
+	{
+		bool check = false;
+		foreach(ItemData.Type itemType in tab.m_itemTypes)
+		{
+			foreach(ItemObject itemObj in Warehouse.Instance.Items[itemType])
+			{
+				if (itemObj.Item.Lock == true)
+				{
+					if (itemObj.Item.RefItem.unlock != null)
+						check = Const.CheckAvailableItem(itemObj.Item.RefItem.unlock.conds, 1f);
+				}
+				else
+				{
+					if (itemObj.Item.RefItem.levelup != null)
+						check = Const.CheckAvailableItem(itemObj.Item.RefItem.levelup.conds, Const.GetItemLevelupWorth(itemObj.Item.Level, itemObj.Item.RefItem.levelup));
+				}
+				
+				if (check == true)
+				{
+					tab.m_checked.SetActive(true);
+					return true;
+				}
+			}
+		}
 
-	GameObject settingItemList(string panel, ItemData.Type[] itemTypes)
+		tab.m_checked.SetActive(false);
+		return false;
+	}
+
+	GameObject settingItemList(TabDesc tab, string panel)
 	{
 		RectTransform rectScrollView = transform.Find(panel + "/ScrollView").gameObject.GetComponent<RectTransform>();
 		GameObject contentsObj = transform.Find(panel+ "/ScrollView/Contents").gameObject;
@@ -540,11 +577,11 @@ public class ChampSettingGUI : MonoBehaviour {
 		int itemAddedCount = 0;
 		int itemIndex = 0;
 		int maxCount = 0;
-		foreach(ItemData.Type itemType in itemTypes)
+		foreach(ItemData.Type itemType in tab.m_itemTypes)
 			maxCount += Warehouse.Instance.Items[itemType].Count;
 		int equipItemIndex = 0;
 
-		foreach(ItemData.Type itemType in itemTypes)
+		foreach(ItemData.Type itemType in tab.m_itemTypes)
 		{
 			foreach(ItemObject item in Warehouse.Instance.Items[itemType])
 			{
@@ -556,7 +593,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				obj.transform.localScale = prefGUIInventorySlot.transform.localScale;
 				obj.transform.localPosition = new Vector3(0f, rectGUIInventorySlot.rect.height/2*(maxCount-1)-rectGUIInventorySlot.rect.height*itemAddedCount, 0);
 				
-				invSlot.Init(item);
+				invSlot.Init(tab.m_tab.Button.gameObject, item);
 				invSlot.PriceButton0.EnableChecker = ()=>{return false;};
 				invSlot.PriceButton1.EnableChecker = ()=>{return false;};
 				

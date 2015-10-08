@@ -927,18 +927,14 @@
 			[
 				{
 					"refItemId":1, 
-					"count":500
-				},
-				{
-					"refItemId":5, 
-					"count":5
+					"count":10
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":5
+					"count":1
 				}
 			]
 		}

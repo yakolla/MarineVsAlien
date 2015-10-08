@@ -30,6 +30,11 @@ public class GUIInventorySlot : MonoBehaviour {
 			m_gemButton.Update();
 		}
 
+		public bool CheckAvailableItem()
+		{
+			return m_priceButton.CheckAvailableItem();
+		}
+
 		public void RemoveAllListeners()
 		{
 			m_priceButton.GUIImageButton.Button.onClick.RemoveAllListeners();
@@ -76,7 +81,8 @@ public class GUIInventorySlot : MonoBehaviour {
 	GUIPriceGemButton	m_priceButton0;
 	GUIPriceGemButton	m_priceButton1;
 	ItemObject 	m_itemObjOfWarehouse;
-	public void Init(ItemObject itemObj)
+
+	public void Init(GameObject tab, ItemObject itemObj)
 	{
 		m_itemObjOfWarehouse = itemObj;
 		m_priceButton0 = new GUIPriceGemButton(transform, "GUIPriceButton0", ()=>{return true;});
@@ -86,7 +92,7 @@ public class GUIInventorySlot : MonoBehaviour {
 		m_item.Icon.Lable.Text.text = itemObj.Item.Description();
 		m_item.Icon.Image = itemObj.ItemIcon;
 		m_item.Lable.Text.text = RefData.Instance.RefTexts(itemObj.Item.RefItem.desc);
-		m_checkImage = transform.Find("PictureButton/Check").gameObject;
+		m_checkImage = tab.transform.Find("Checked").gameObject;
 	}
 
 	public GUIPriceGemButton PriceButton0
@@ -97,6 +103,11 @@ public class GUIInventorySlot : MonoBehaviour {
 	public string ItemDesc
 	{
 		set{m_item.Icon.Lable.Text.text = value;}
+	}
+
+	public ItemObject ItemObj
+	{
+		get{return m_itemObjOfWarehouse;}
 	}
 
 	public GUIPriceGemButton PriceButton1
@@ -113,11 +124,11 @@ public class GUIInventorySlot : MonoBehaviour {
 
 	public void Update()
 	{
+
 		ItemDesc = m_itemObjOfWarehouse.Item.Description();
 		m_item.Update();
 		m_priceButton0.Update(m_itemObjOfWarehouse);
 		m_priceButton1.Update(m_itemObjOfWarehouse);
-
 	}
 
 	public void Check(bool check)

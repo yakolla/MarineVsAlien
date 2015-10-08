@@ -345,13 +345,18 @@ public class YGUISystem {
 
 		public bool TryToPay()
 		{
-			if (Const.CheckAvailableItem(m_prices, m_normalWorth))
+			if (CheckAvailableItem())
 			{
 				Const.PayPriceItem(m_prices, m_normalWorth);
 				return true;
 			}
 
 			return false;
+		}
+
+		public bool CheckAvailableItem()
+		{
+			return Const.CheckAvailableItem(m_prices, m_normalWorth);
 		}
 	}
 	
