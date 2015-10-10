@@ -114,7 +114,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		                                      ()=>{
 			if (Warehouse.Instance.GameBestStats.KilledMobs == 0)
 				return 0f;
-			return Warehouse.Instance.NewGameStats.KilledMobs/Warehouse.Instance.GameBestStats.KilledMobs;
+			return (float)(Warehouse.Instance.NewGameStats.KilledMobs)/Warehouse.Instance.GameBestStats.KilledMobs;
 		}, 
 		()=>{
 			if (Warehouse.Instance.GameBestStats.KilledMobs == 0)
