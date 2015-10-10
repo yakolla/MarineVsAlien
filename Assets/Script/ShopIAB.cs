@@ -103,6 +103,7 @@ public class ShopIAB : MonoBehaviour
 		m_paidItems.Add("gem.5000", new PaidItem(600000));
 
 		m_closeButton = new YGUISystem.GUIButton(transform.Find("CloseButton").gameObject, ()=>{return true;});
+		m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.CheckingYourInventory);
 
 		m_piadItemButtons[0] = new YGUISystem.GUIButton(transform.Find("PaidItemButton0").gameObject, ()=>{
 			return _isInitialized && m_progressing == false;
@@ -136,7 +137,7 @@ public class ShopIAB : MonoBehaviour
 		options.storeKeys = new Dictionary<string, string> { {OpenIAB_Android.STORE_GOOGLE, googlePublicKey} };
 		options.storeSearchStrategy = SearchStrategy.INSTALLER_THEN_BEST_FIT;
 
-		
+
 		m_progressing = true;
 		// Transmit options and start the service
 		OpenIAB.init(options);
@@ -144,7 +145,7 @@ public class ShopIAB : MonoBehaviour
 
 	public void OnClickClose()
 	{
-		m_closeButton.Lable.Text.text = "Close";
+		m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Close);
 		gameObject.SetActive(false);
 	}
 
@@ -155,13 +156,13 @@ public class ShopIAB : MonoBehaviour
 
 		if (m_needTotalGems - m_paidItems[sku].Gem <= -m_paidItems["gem.1000"].Gem)
 		{
-			m_closeButton.Lable.Text.text = "Plz, Buy as you need";
+			m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.PlzBuyasYouNeed);
 			return;
 		}
 
 		m_tryToSaveCount = 0;
 		m_progressing = true;
-		m_closeButton.Lable.Text.text = "It's purchasing";
+		m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.ItsPurchasing);
 		OpenIAB.purchaseProduct(sku, "ok marine");
 	}
 
@@ -181,7 +182,7 @@ public class ShopIAB : MonoBehaviour
 
     private void billingSupportedEvent()
     {
-		m_closeButton.Lable.Text.text = "Check Inventory";
+		m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.CheckingYourInventory);
 #if UNITY_EDITOR
 		queryInventorySucceededEvent(null);
 #else
@@ -193,7 +194,7 @@ public class ShopIAB : MonoBehaviour
     
 	private void billingNotSupportedEvent(string error)
     {
-		m_closeButton.Lable.Text.text = "Sorry, " + error;
+		m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Error) + ":" + error;
 		m_progressing = false;
     }
 
@@ -203,7 +204,7 @@ public class ShopIAB : MonoBehaviour
 
 		if (inventory != null)
         {           
-			m_closeButton.Lable.Text.text = "Check Purchased Items";
+			m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.CheckingYourInventory);
 			foreach(Purchase purchase in inventory.GetAllPurchases())
 			{
 				OpenIAB.consumeProduct(purchase);
@@ -213,13 +214,13 @@ public class ShopIAB : MonoBehaviour
 				return;
         }
 
-		m_closeButton.Lable.Text.text = "Close";
+		m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Close);
 		m_progressing = false;
     }
     
 	private void queryInventoryFailedEvent(string error)
     {
-		m_closeButton.Lable.Text.text = "Sorry, " + error;
+		m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Error) + ":" + error;
 		m_progressing = false;
     }
     
@@ -231,7 +232,7 @@ public class ShopIAB : MonoBehaviour
     }
 	private void purchaseFailedEvent(int errorCode, string error)
     {
-		m_closeButton.Lable.Text.text = "Sorry, " + error;
+		m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Error) + ":" + error;
 		
 		m_progressing = false;
     }
@@ -248,7 +249,7 @@ public class ShopIAB : MonoBehaviour
 
     private void consumePurchaseFailedEvent(string error)
     {
-		m_closeButton.Lable.Text.text = "Sorry, " + error;
+		m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Error) + ":" + error;
 		m_progressing = false;
     }
 
@@ -256,7 +257,7 @@ public class ShopIAB : MonoBehaviour
 	{
 		if (status == SavedGameRequestStatus.Success)
 		{
-			m_closeButton.Lable.Text.text = "Thanks for your purchase: " + m_paidItems[purchase.Sku].Gem;
+			m_closeButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.ThanksForYourPurchase) + m_paidItems[purchase.Sku].Gem;
 			
 			PaidItem paidItem = null;
 			if (true == m_paidItems.TryGetValue(purchase.Sku, out paidItem))

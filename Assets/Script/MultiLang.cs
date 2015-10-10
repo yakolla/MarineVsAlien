@@ -14,7 +14,7 @@ public class MultiLang{
 		LifeSteal,
 		DealDmgPerSec,
 		TakenDmgPerSec,
-		KillPerSec,
+		KillMobs,
 		ConsumeSPPerSec,
 		Wave,
 		GainExtraGold,
@@ -78,5 +78,11 @@ public class MultiLang{
 		Dodged,
 		WeaponDNA,
 		LevelUp,
+		PlzBuyasYouNeed,
+		ItsPurchasing,
+		CheckingYourInventory,
+		Error,
+		ThanksForYourPurchase,
+		Buy,
 	}
 }

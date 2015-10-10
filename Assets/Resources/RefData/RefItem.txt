@@ -298,31 +298,11 @@
 		"type":"Skill",
 		"icon":"Sprites/ShieldSkill",
 		"defaultLock":true,
+		"maxLevel":1,
 		"weaponStat":
 		{
 			"coolTime":120
 		},
-		"levelup":
-		{
-			"conds":
-			[
-				{
-					"refItemId":1, 
-					"count":70000
-				},
-				{
-					"refItemId":5, 
-					"count":700
-				}
-			],
-			"else_conds":
-			[
-				{
-					"refItemId":8,
-					"count":700
-				}
-			]
-		},		
 		"unlock":
 		{
 			"conds":
@@ -2879,38 +2859,6 @@
 						"type":"MaxHp",						
 						"values":[10]
 					}
-				},
-				{
-					"level":100,
-					"option":
-					{
-						"type":"MaxHp",
-						"values":[1000]
-					}
-				},
-				{
-					"level":300,
-					"option":
-					{
-						"type":"MaxHp",
-						"values":[3000]
-					}
-				},
-				{
-					"level":600,
-					"option":
-					{
-						"type":"MaxHp",
-						"values":[6000]
-					}
-				},
-				{
-					"level":900,
-					"option":
-					{
-						"type":"MaxHp",
-						"values":[9000]
-					}
 				}
 			]
 		}
@@ -3167,39 +3115,7 @@
 					"option":
 					{
 						"type":"MaxSp",						
-						"values":[10]
-					}
-				},
-				{
-					"level":100,
-					"option":
-					{
-						"type":"MaxSp",
-						"values":[1000]
-					}
-				},
-				{
-					"level":300,
-					"option":
-					{
-						"type":"MaxSp",
-						"values":[3000]
-					}
-				},
-				{
-					"level":600,
-					"option":
-					{
-						"type":"MaxSp",
-						"values":[6000]
-					}
-				},
-				{
-					"level":900,
-					"option":
-					{
-						"type":"MaxSp",
-						"values":[9000]
+						"values":[2]
 					}
 				}
 			]
@@ -3255,38 +3171,6 @@
 					{
 						"type":"RegenSp",
 						"values":[1]
-					}
-				},
-				{
-					"level":100,
-					"option":
-					{
-						"type":"RegenSp",
-						"values":[100]
-					}
-				},
-				{
-					"level":300,
-					"option":
-					{
-						"type":"RegenSp",
-						"values":[300]
-					}
-				},
-				{
-					"level":600,
-					"option":
-					{
-						"type":"RegenSp",
-						"values":[600]
-					}
-				},
-				{
-					"level":900,
-					"option":
-					{
-						"type":"RegenSp",
-						"values":[900]
 					}
 				}
 			]
@@ -3527,38 +3411,6 @@
 					{
 						"type":"RegenSp",
 						"values":[1]
-					}
-				},
-				{
-					"level":100,
-					"option":
-					{
-						"type":"MaxSP",
-						"values":[100]
-					}
-				},
-				{
-					"level":300,
-					"option":
-					{
-						"type":"MaxSP",						
-						"values":[300]
-					}
-				},
-				{
-					"level":600,
-					"option":
-					{
-						"type":"MaxSP",						
-						"values":[600]
-					}
-				},
-				{
-					"level":900,
-					"option":
-					{
-						"type":"MaxSP",
-						"values":[900]
 					}
 				}
 			]

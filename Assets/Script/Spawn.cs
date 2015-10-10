@@ -288,10 +288,9 @@ public class Spawn : MonoBehaviour {
 
 
 
-				Warehouse.Instance.WaveIndex = m_wave;
+				Warehouse.Instance.NewGameStats.WaveIndex = m_wave;
 				m_waveText.Text.text = "Wave " + (m_wave+1);
 
-				Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
 
 				yield return StartCoroutine(MoveChamp());
 
@@ -440,7 +439,7 @@ public class Spawn : MonoBehaviour {
 		if (m_champ)
 		{
 			++Warehouse.Instance.AlienEssence.Item.Count;
-			++Warehouse.Instance.UpdateGameStats.KilledMobs;
+			++Warehouse.Instance.NewGameStats.KilledMobs;
 		}
 	}
 
@@ -696,7 +695,7 @@ public class Spawn : MonoBehaviour {
 	public void SharePotinsChamps(Creature cre, ItemData.Type type, int xp, bool enableEffect)
 	{
 
-		if (cre.CreatureType != Creature.Type.Champ)
+		if ((int)(cre.CreatureType & Creature.Type.Champ) == 0)
 			return;
 
 		switch(type)
@@ -749,7 +748,8 @@ public class Spawn : MonoBehaviour {
 			}
 		}
 
-		Warehouse.Instance.UpdateGameStats.Update();
+		Warehouse.Instance.GameBestStats.SetBestStats(Warehouse.Instance.NewGameStats);	
+		Warehouse.Instance.NewGameStats.Update();
 
 	}
 

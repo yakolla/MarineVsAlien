@@ -11,8 +11,6 @@ using GooglePlayGames.BasicApi.SavedGame;
 public class ChampSettingGUI : MonoBehaviour {
 
 
-	YGUISystem.GUIButton	m_weapon;
-	YGUISystem.GUILockButton[]	m_accessories = new YGUISystem.GUILockButton[Const.AccessoriesSlots];
 
 
 	GameObject	m_weaponPanel;
@@ -128,16 +126,59 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3002));
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3005));
 
+
+				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Level = 900;
+
+				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Level = 900;
+				Warehouse.Instance.FindItem(Const.FollowerFireMarineRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.FollowerFireMarineRefItemId).Item.Level = 900;
+				Warehouse.Instance.FindItem(Const.FollowerLightningMarineRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.FollowerLightningMarineRefItemId).Item.Level = 900;
+				Warehouse.Instance.FindItem(Const.FollowerRocketMarineRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.FollowerRocketMarineRefItemId).Item.Level = 900;
+				Warehouse.Instance.FindItem(Const.FollowerBoomerangMarineRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.FollowerBoomerangMarineRefItemId).Item.Level = 900;
+				Warehouse.Instance.FindItem(Const.FollowerGrenadeMarineRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.FollowerGrenadeMarineRefItemId).Item.Level = 900;
+				Warehouse.Instance.FindItem(Const.FollowerMeleeRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.FollowerMeleeRefItemId).Item.Level = 900;
+				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Level = 9;
+
+				Warehouse.Instance.FindItem(21).Item.Lock = false;
+				Warehouse.Instance.FindItem(21).Item.Level = 9;
+				Warehouse.Instance.FindItem(22).Item.Lock = false;
+				Warehouse.Instance.FindItem(22).Item.Level = 9;
+				Warehouse.Instance.FindItem(23).Item.Lock = false;
+				Warehouse.Instance.FindItem(23).Item.Level = 9;
+				Warehouse.Instance.FindItem(24).Item.Lock = false;
+				Warehouse.Instance.FindItem(24).Item.Level = 9;
+				Warehouse.Instance.FindItem(25).Item.Lock = false;
+				Warehouse.Instance.FindItem(25).Item.Level = 1;
+
+				Warehouse.Instance.FindItem(2001).Item.Lock = false;
+				Warehouse.Instance.FindItem(2001).Item.Level = 900;
+				Warehouse.Instance.FindItem(2002).Item.Lock = false;
+				Warehouse.Instance.FindItem(2002).Item.Level = 900;
+				Warehouse.Instance.FindItem(2006).Item.Lock = false;
+				Warehouse.Instance.FindItem(2006).Item.Level = 900;
+				Warehouse.Instance.FindItem(2008).Item.Lock = false;
+				Warehouse.Instance.FindItem(2008).Item.Level = 900;
+				Warehouse.Instance.FindItem(2005).Item.Lock = false;
+				Warehouse.Instance.FindItem(2005).Item.Level = 900;
+
 				if (m_eqipedAllItem == true)
 				{
 					Warehouse.Instance.FindItem(3001).Item.Lock = false;
-					Warehouse.Instance.FindItem(3001).Item.Level = 99;
+					Warehouse.Instance.FindItem(3001).Item.Level = 900;
 					Warehouse.Instance.FindItem(3002).Item.Lock = false;
-					Warehouse.Instance.FindItem(3002).Item.Level = 99;
+					Warehouse.Instance.FindItem(3002).Item.Level = 900;
 					Warehouse.Instance.FindItem(3003).Item.Lock = false;
-					Warehouse.Instance.FindItem(3003).Item.Level = 99;
+					Warehouse.Instance.FindItem(3003).Item.Level = 900;
 					Warehouse.Instance.FindItem(3004).Item.Lock = false;
-					Warehouse.Instance.FindItem(3004).Item.Level = 99;
+					Warehouse.Instance.FindItem(3004).Item.Level = 900;
 					Warehouse.Instance.FindItem(3005).Item.Lock = false;
 					Warehouse.Instance.FindItem(3005).Item.Level = 900;
 				}
@@ -149,7 +190,6 @@ public class ChampSettingGUI : MonoBehaviour {
 			Warehouse.Instance.GameTutorial.m_unlockedStatTab = true;
 			Warehouse.Instance.GameTutorial.m_unlockedSkillTab = true;
 			Warehouse.Instance.GameTutorial.m_unlockedFollowerTab = true;
-
 #endif
 		}
 		else
@@ -207,15 +247,6 @@ public class ChampSettingGUI : MonoBehaviour {
 		for(int i = 0; i < m_equipedAccessories.Length; ++i)
 		{
 			m_equipedAccessories[i] = new EquippedContext();
-		}
-
-		m_weapon = new YGUISystem.GUIButton(transform.Find("WeaponButton").gameObject, ()=>{return true;});
-		for(int i = 0; i < m_accessories.Length; ++i)
-		{
-			m_accessories[i] = new YGUISystem.GUILockButton(transform.Find("AccessoryButton" + i).gameObject, ()=>{return true;});
-
-			if (i < Const.HalfAccessoriesSlots)
-				m_accessories[i].Lock = false;
 		}
 
 
@@ -311,17 +342,25 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	}
 
-
-
+	float checkTime = 0f;
+	int	checkIndex = 0;
 	void Update()
 	{
 	
 		foreach(TabDesc tab in m_tabs)
 		{
 			tab.Update();
-			if (tab.m_tab.Button.interactable)
-				checkAvailableItem(tab);
 		}
+
+		if (checkTime < Time.time)
+		{
+			if (m_tabs[checkIndex%m_tabs.Length].m_tab.Button.interactable)
+				checkAvailableItem(m_tabs[checkIndex%m_tabs.Length]);
+
+			checkTime = Time.time + 0.3f;
+			++checkIndex;
+		}
+
 	}
 
 	IEnumerator AutoGoldUpdate()
@@ -366,7 +405,7 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	public void OnClickStart()
 	{
-		Warehouse.Instance.UpdateGameStats.Reset();
+		Warehouse.Instance.NewGameStats.Reset();
 
 		GameObject champObj = Creature.InstanceCreature(Resources.Load<GameObject>("Pref/Champ"), Resources.Load<GameObject>("Pref/mon_skin/" + RefData.Instance.RefChamp.prefBody), m_spawnChamp.position, m_spawnChamp.localRotation);	
 		champObj.name = "Champ";		
@@ -412,7 +451,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		}
 
 		m_generalInfoPanel.SetChamp(m_champ);
-		m_spawn.StartWave(Warehouse.Instance.WaveIndex, champ);
+		m_spawn.StartWave(Warehouse.Instance.NewGameStats.WaveIndex, champ);
 
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Play", "Retry:"+Warehouse.Instance.RetryCount, 0);
 		
@@ -442,7 +481,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 			m_equipedWeapon.m_itemObject = selectedItem;
 			m_equipedWeapon.m_inventorySlot = invSlot;
-			m_weapon.Icon.Image = selectedItem.ItemIcon;
+
 			Warehouse.Instance.ChampEquipItems.m_weaponRefItemId = selectedItem.Item.RefItemID;
 			//invSlot.Check(true);
 			SetButtonRole(ButtonRole.Unequip, invSlot, priceGemButton, selectedItem);

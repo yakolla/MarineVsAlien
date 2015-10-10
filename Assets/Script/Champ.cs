@@ -114,7 +114,7 @@ public class Champ : Creature {
 	public int GoldLevel
 	{
 		get{
-			return m_creatureProperty.Level + Warehouse.Instance.WaveIndex;
+			return m_creatureProperty.Level + Warehouse.Instance.GameBestStats.WaveIndex;
 		}
 	}
 
@@ -258,7 +258,7 @@ public class Champ : Creature {
 	{
 		base.ConsumeSP(sp);
 
-		Warehouse.Instance.UpdateGameStats.ConsumedSP += sp;
+		Warehouse.Instance.NewGameStats.ConsumedSP += sp;
 	}
 
 	override public void GiveExp(int exp)
@@ -292,7 +292,7 @@ public class Champ : Creature {
 	override public void Death()
 	{
 
-		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Death", "Wave"+Warehouse.Instance.WaveIndex, 0);
+		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Death", "Wave"+Warehouse.Instance.NewGameStats.WaveIndex, 0);
 
 
 

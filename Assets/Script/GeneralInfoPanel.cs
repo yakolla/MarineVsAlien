@@ -67,7 +67,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 		transform.Find(dir[(int)DirIndex.Dodge]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.Dodge) + ":";
 		transform.Find(dir[(int)DirIndex.StatisticsDealDmgPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.DealDmgPerSec) + ":";
 		transform.Find(dir[(int)DirIndex.StatisticsTakenDmgPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.TakenDmgPerSec) + ":";
-		transform.Find(dir[(int)DirIndex.StatisticsKillPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.KillPerSec) + ":";
+		transform.Find(dir[(int)DirIndex.StatisticsKillPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.KillMobs) + ":";
 		transform.Find(dir[(int)DirIndex.StatisticsConsumedSPPS]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.ConsumeSPPerSec) + ":";
 		transform.Find(dir[(int)DirIndex.StatisticsWave]).GetComponent<Text>().text = RefData.Instance.RefTexts(MultiLang.ID.Wave) + ":";
 
@@ -84,57 +84,57 @@ public class GeneralInfoPanel : MonoBehaviour {
 
 		m_guages[0] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsDealDmgPS]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
-			if (Warehouse.Instance.UpdateGameStats.DealDamagePerSec == 0)
+			if (Warehouse.Instance.NewGameStats.DealDamagePerSec == 0)
 				return 0f;
-			return Warehouse.Instance.UpdateGameStats.DealDamagePerSec/Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec;
+			return Warehouse.Instance.NewGameStats.DealDamagePerSec/Warehouse.Instance.NewGameStats.MaxDealDamagePerSec;
 		}, 
 		()=>{
-			if (Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec == 0)
+			if (Warehouse.Instance.NewGameStats.MaxDealDamagePerSec == 0)
 				return 0 + " / " + 0;
 
-			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.UpdateGameStats.DealDamagePerSec, Warehouse.Instance.UpdateGameStats.MaxDealDamagePerSec); 
+			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.NewGameStats.DealDamagePerSec, Warehouse.Instance.NewGameStats.MaxDealDamagePerSec); 
 		}
 		);
 
 		m_guages[1] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsTakenDmgPS]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
-			if (Warehouse.Instance.UpdateGameStats.TakenDamagePerSec == 0)
+			if (Warehouse.Instance.NewGameStats.TakenDamagePerSec == 0)
 				return 0f;
-			return Warehouse.Instance.UpdateGameStats.TakenDamagePerSec/Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec;
+			return Warehouse.Instance.NewGameStats.TakenDamagePerSec/Warehouse.Instance.NewGameStats.MaxTakenDamagePerSec;
 		}, 
 		()=>{
-			if (Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec == 0)
+			if (Warehouse.Instance.NewGameStats.MaxTakenDamagePerSec == 0)
 				return 0 + " / " + 0;
 			
-			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.UpdateGameStats.TakenDamagePerSec, Warehouse.Instance.UpdateGameStats.MaxTakenDamagePerSec); 
+			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.NewGameStats.TakenDamagePerSec, Warehouse.Instance.NewGameStats.MaxTakenDamagePerSec); 
 		}
 		);
 
 		m_guages[2] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsKillPS]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
-			if (Warehouse.Instance.UpdateGameStats.KillPerSec == 0)
+			if (Warehouse.Instance.GameBestStats.KilledMobs == 0)
 				return 0f;
-			return Warehouse.Instance.UpdateGameStats.KillPerSec/Warehouse.Instance.UpdateGameStats.MaxKillPerSec;
+			return Warehouse.Instance.NewGameStats.KilledMobs/Warehouse.Instance.GameBestStats.KilledMobs;
 		}, 
 		()=>{
-			if (Warehouse.Instance.UpdateGameStats.MaxKillPerSec == 0)
+			if (Warehouse.Instance.GameBestStats.KilledMobs == 0)
 				return 0 + " / " + 0;
 			
-			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.UpdateGameStats.KillPerSec, Warehouse.Instance.UpdateGameStats.MaxKillPerSec); 
+			return System.String.Format("{0} / {1}",Warehouse.Instance.NewGameStats.KilledMobs, Warehouse.Instance.GameBestStats.KilledMobs); 
 		}
 		);
 
 		m_guages[3] = new YGUISystem.GUIGuage(transform.Find(dir[(int)DirIndex.StatisticsConsumedSPPS]+"/Guage/Guage").gameObject, 
 		                                      ()=>{
-			if (Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec == 0)
+			if (Warehouse.Instance.NewGameStats.ConsumedSPPerSec == 0)
 				return 0f;
-			return Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec/Warehouse.Instance.UpdateGameStats.MaxConsumedSPPerSec;
+			return Warehouse.Instance.NewGameStats.ConsumedSPPerSec/Warehouse.Instance.NewGameStats.MaxConsumedSPPerSec;
 		}, 
 		()=>{
-			if (Warehouse.Instance.UpdateGameStats.MaxConsumedSPPerSec == 0)
+			if (Warehouse.Instance.NewGameStats.MaxConsumedSPPerSec == 0)
 				return 0 + " / " + 0;
 			
-			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec, Warehouse.Instance.UpdateGameStats.MaxConsumedSPPerSec); 
+			return System.String.Format("{0:F2} / {1}",Warehouse.Instance.NewGameStats.ConsumedSPPerSec, Warehouse.Instance.NewGameStats.MaxConsumedSPPerSec); 
 		}
 		);
 
@@ -163,7 +163,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 			return;
 
 		m_strength.Text.text = m_champ.m_creatureProperty.Strength.ToString();
-		m_regenSP.Text.text = (m_champ.m_creatureProperty.SPRegen - Warehouse.Instance.UpdateGameStats.ConsumedSPPerSec).ToString();
+		m_regenSP.Text.text = (m_champ.m_creatureProperty.SPRegen - Warehouse.Instance.NewGameStats.ConsumedSPPerSec).ToString();
 		m_tapDamage.Text.text = m_champ.m_creatureProperty.TapDamage.ToString();
 		m_gainExtraGold.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.GainExtraGold*100f);
 		m_damageReduction.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.DamageReduction*100f);

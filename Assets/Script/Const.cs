@@ -148,7 +148,6 @@ public class Const {
 		}
 	}
 
-
 	static GameObject loadingGUI = null;
 	public static void ShowLoadingGUI(string name)
 	{

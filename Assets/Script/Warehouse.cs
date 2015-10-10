@@ -63,7 +63,7 @@ public class WarehouseData
 	{
 		public SecuredType.XInt		m_waveIndex = 0;
 
-		PerSec	m_kills = new PerSec();
+		public SecuredType.XInt	m_kills = 0;
 		PerSec	m_dealDamages = new PerSec();
 		PerSec	m_takenDamages = new PerSec();
 		PerSec	m_consumedSP = new PerSec();
@@ -73,13 +73,14 @@ public class WarehouseData
 		public void SetBestStats(GameStatistics newStats)
 		{
 			WaveIndex = Mathf.Max(WaveIndex, newStats.WaveIndex);
+			KilledMobs = Mathf.Max(KilledMobs, newStats.KilledMobs);
 		}
 
 		public void Reset()
 		{
 			WaveIndex = 0;
 
-			m_kills.Reset();
+			KilledMobs = 0;
 			m_dealDamages.Reset();
 			m_takenDamages.Reset();
 			m_consumedSP.Reset();
@@ -90,9 +91,9 @@ public class WarehouseData
 		public int KilledMobs
 		{
 			set{
-				m_kills.Amount = value;
+				m_kills.Value = value;
 			}
-			get{return m_kills.Amount;}
+			get{return m_kills.Value;}
 		}
 		
 		public int WaveIndex
@@ -121,11 +122,6 @@ public class WarehouseData
 			get{return m_consumedSP.Amount;}
 		}
 
-		public float KillPerSec
-		{
-			get{return m_kills.perSec;}
-		}
-
 		public float DealDamagePerSec
 		{
 			get{return m_dealDamages.perSec;}
@@ -139,11 +135,6 @@ public class WarehouseData
 		public float ConsumedSPPerSec
 		{
 			get{return m_consumedSP.perSec;}
-		}
-
-		public float MaxKillPerSec
-		{
-			get{return m_kills.maxAmount;}
 		}
 
 		public float MaxDealDamagePerSec
@@ -166,7 +157,6 @@ public class WarehouseData
 			float perDelta = Time.time - m_startPerSec;
 			if (perDelta >= 1f)
 			{
-				m_kills.Update(perDelta);
 				m_dealDamages.Update(perDelta);
 				m_takenDamages.Update(perDelta);
 				m_consumedSP.Update(perDelta);
@@ -270,7 +260,6 @@ public class Warehouse {
 
 	public void ResetNewGameStats()
 	{	
-		m_warehouseData.m_gameBestStats.SetBestStats(m_newGameStats);
 		m_newGameStats = new WarehouseData.GameStatistics();	
 		Warehouse.Instance.PlayTime = Time.time;
 		Warehouse.Instance.SaveTime = Time.time;
@@ -304,7 +293,7 @@ public class Warehouse {
 			itemObj.Item.Count -= count;
 			if (itemObj.Item.Count == 0)
 			{
-				RemoveItem(itemObj);
+				//RemoveItem(itemObj);
 			}
 		}
 
@@ -387,10 +376,6 @@ public class Warehouse {
 		get {return m_newGameStats;}
 	}
 
-	public WarehouseData.GameStatistics UpdateGameStats
-	{
-		get {return m_updateGameStats;}
-	}
 
 	public int InvenSize
 	{
@@ -402,15 +387,6 @@ public class Warehouse {
 			}
 			
 			return size;
-		}
-	}
-	
-	public int WaveIndex
-	{
-		get {return m_warehouseData.m_waveIndex.Value;}
-		set {
-			m_warehouseData.m_waveIndex.Value = value;
-			NewGameStats.WaveIndex = value;
 		}
 	}
 
@@ -519,7 +495,8 @@ public class Warehouse {
 		for(int i = 0; i < count; ++i)
 		{
 			ItemData.Type type = JsonConvert.DeserializeObject<ItemData.Type>(reader.ReadLine());
-			
+			UnityEngine.Debug.Log("Deserialize:" + type);
+
 			switch(type)
 			{			
 			case ItemData.Type.Weapon:

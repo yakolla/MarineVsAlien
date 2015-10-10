@@ -693,6 +693,7 @@ public class Creature : MonoBehaviour {
 		case DamageDesc.BuffType.Airborne:
 		case DamageDesc.BuffType.Stun:
 		case DamageDesc.BuffType.Slow:
+		case DamageDesc.BuffType.Poison:
 			if (m_buffEffects[(int)type].m_run == true)
 				return false;
 			break;
@@ -964,11 +965,11 @@ public class Creature : MonoBehaviour {
 
 		if (offender != null && (offender.CreatureType & Type.Champ) > 0)
 		{
-			Warehouse.Instance.UpdateGameStats.DealDamages += dmg;
+			Warehouse.Instance.NewGameStats.DealDamages += dmg;
 		}
 		else if (CreatureType == Type.Champ)
 		{
-			Warehouse.Instance.UpdateGameStats.TakenDamages += dmg;
+			Warehouse.Instance.NewGameStats.TakenDamages += dmg;
 		}
 
 		return dmg;

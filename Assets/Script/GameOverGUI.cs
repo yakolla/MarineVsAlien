@@ -161,7 +161,6 @@ public class GameOverGUI : MonoBehaviour {
 
 		m_admob.ShowBanner(false);
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Continue", 0);
-		Warehouse.Instance.WaveIndex = Warehouse.Instance.NewGameStats.WaveIndex;
 		SaveGame(SaveWithType.Continue);
 	}
 
