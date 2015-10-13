@@ -84,5 +84,6 @@ public class MultiLang{
 		Error,
 		ThanksForYourPurchase,
 		Buy,
+		RestartWave,
 	}
 }

@@ -14,6 +14,12 @@ public class OptionGUI : MonoBehaviour {
 	YGUISystem.GUILable		m_share;
 	YGUISystem.GUILable		m_credits;
 
+	YGUISystem.GUIGuage 	m_guages;
+	Slider	m_waveSlider;
+	Text	m_waveSliderText;
+
+	YGUISystem.GUILable		m_wave;
+
 	void Start () {
 
 		m_admob = GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>();
@@ -33,6 +39,18 @@ public class OptionGUI : MonoBehaviour {
 		m_credits = new YGUISystem.GUILable(transform.Find("CreditsButton/Text").gameObject);
 		m_credits.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Credits);
 
+		m_wave = new YGUISystem.GUILable(transform.Find("RestartWaveGUI/Slider/Lable").gameObject);
+		m_wave.Text.text = RefData.Instance.RefTexts(MultiLang.ID.RestartWave);
+		m_waveSliderText = transform.Find("RestartWaveGUI/Slider/Text").gameObject.GetComponent<Text>();
+		m_waveSlider = transform.Find("RestartWaveGUI/Slider").gameObject.GetComponent<Slider>();
+		m_waveSlider.minValue = 0;
+
+	}
+
+	void Update()
+	{
+		m_waveSliderText.text = (Warehouse.Instance.GameOptions.m_restartWaveIndex+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString();
+		m_waveSlider.maxValue = Warehouse.Instance.GameBestStats.WaveIndex+1;
 	}
 
 	void OnEnable() {
@@ -113,5 +131,12 @@ public class OptionGUI : MonoBehaviour {
 	{
 		transform.parent.Find("CreditsPanel").gameObject.SetActive(true);
 		
+	}
+
+	public void OnWaveSliderChanged(float value)
+	{
+		Debug.Log("OnWaveSliderChanged:" + m_waveSlider.value);
+		Warehouse.Instance.GameOptions.m_restartWaveIndex = Mathf.Min(Warehouse.Instance.GameBestStats.WaveIndex, (int)m_waveSlider.value);
+
 	}
 }
