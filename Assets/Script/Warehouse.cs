@@ -169,6 +169,7 @@ public class WarehouseData
 	{
 		public float	m_sfxVolume = 1f;
 		public float	m_bgmVolume = 1f;
+		public int		m_restartWaveIndex = 0;
 	}
 	
 	public class EquipItems

@@ -163,7 +163,7 @@ public class GeneralInfoPanel : MonoBehaviour {
 			return;
 
 		m_strength.Text.text = m_champ.m_creatureProperty.Strength.ToString();
-		m_regenSP.Text.text = (m_champ.m_creatureProperty.SPRegen - Warehouse.Instance.NewGameStats.ConsumedSPPerSec).ToString();
+		m_regenSP.Text.text = System.String.Format("{0:F2}%",(m_champ.m_creatureProperty.SPRegen - Warehouse.Instance.NewGameStats.ConsumedSPPerSec));
 		m_tapDamage.Text.text = m_champ.m_creatureProperty.TapDamage.ToString();
 		m_gainExtraGold.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.GainExtraGold*100f);
 		m_damageReduction.Text.text = System.String.Format("{0:F0}%",m_champ.m_creatureProperty.DamageReduction*100f);

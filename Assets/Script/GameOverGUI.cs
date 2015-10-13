@@ -99,18 +99,6 @@ public class GameOverGUI : MonoBehaviour {
 		});
 		
 		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game) => {
-			if (status == SavedGameRequestStatus.Success) {
-
-
-			} else {
-				// handle error
-				++m_trySave;
-				if (m_trySave < 3)
-				{
-					SaveGame(type);
-					return;
-				}
-			}
 
 			TimeEffector.Instance.StartTime();
 
@@ -158,7 +146,6 @@ public class GameOverGUI : MonoBehaviour {
 
 	public void OnClickContinue()
 	{
-
 		m_admob.ShowBanner(false);
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "GameOver", "Continue", 0);
 		SaveGame(SaveWithType.Continue);

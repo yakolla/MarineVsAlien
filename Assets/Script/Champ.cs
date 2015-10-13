@@ -266,15 +266,6 @@ public class Champ : Creature {
 		m_creatureProperty.giveExp(exp);
 	}
 
-	override public int TakeDamage(Creature offender, DamageDesc damageDesc)
-	{
-		int dmg = base.TakeDamage(offender, damageDesc);
-		//if (0 < dmg)
-		//	m_bloodWarningAnimator.SetTrigger("Warning");
-
-		return dmg;
-	}
-
 	IEnumerator EffectTouch(Vector3 pos)
 	{
 		GameObject ef = Resources.Load("Pref/ef_touch") as GameObject;
@@ -291,10 +282,7 @@ public class Champ : Creature {
 
 	override public void Death()
 	{
-
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Death", "Wave"+Warehouse.Instance.NewGameStats.WaveIndex, 0);
-
-
 
 		m_creatureProperty.Level = 1;
 		m_creatureProperty.Exp = 0;
