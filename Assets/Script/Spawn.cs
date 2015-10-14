@@ -386,10 +386,14 @@ public class Spawn : MonoBehaviour {
 				yield return null;
 			}
 
-			if (m_goalPointIndex == 0)
-				m_champ.RotateToTarget(0f);
-			else if (m_goalPointIndex == m_goalPoints.Length-1)
-				m_champ.RotateToTarget(180f);
+			float angle = 0f;
+			if (m_goalPointIndex == m_goalPoints.Length-1)
+				angle = 180f;
+
+			m_champ.RotateToTarget(angle);
+			m_champ.Followers.ForEach(follower=>{
+				follower.RotateToTarget(angle);
+			});
 		}
 		++m_relWave;
 		yield return null;

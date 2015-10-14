@@ -2586,7 +2586,7 @@
 					"option":
 					{
 						"type":"MoveSpeed",
-						"values":[1]
+						"values":[0.5]
 					}
 				},
 				{
