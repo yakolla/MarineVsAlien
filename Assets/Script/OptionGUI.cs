@@ -44,7 +44,7 @@ public class OptionGUI : MonoBehaviour {
 		m_waveSliderText = transform.Find("RestartWaveGUI/Slider/Text").gameObject.GetComponent<Text>();
 		m_waveSlider = transform.Find("RestartWaveGUI/Slider").gameObject.GetComponent<Slider>();
 		m_waveSlider.minValue = 0;
-
+		m_waveSlider.value = Warehouse.Instance.GameOptions.m_restartWaveIndex;
 	}
 
 	void Update()
