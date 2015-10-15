@@ -158,4 +158,11 @@ public class Follower : Creature {
 	}
 
 
+	void OnTriggerEnter(Collider other) {
+		if (other.tag.CompareTo("ItemBox") == 0)
+		{
+			m_ai.OnTriggerEnter(other);
+		};
+		
+	}
 }

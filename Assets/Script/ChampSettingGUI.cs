@@ -145,7 +145,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.FindItem(Const.FollowerMeleeRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerMeleeRefItemId).Item.Level = 900;
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Lock = false;
-				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Level = 9;
+				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Level = 1;
 
 				Warehouse.Instance.FindItem(21).Item.Lock = false;
 				Warehouse.Instance.FindItem(21).Item.Level = 9;

@@ -40,7 +40,6 @@ public class MobAIPickup : MobAI {
 			{
 				if (1f > Vector3.Distance(m_mob.transform.position, m_hitColliders[0].transform.position))
 				{
-					PickupItem(m_hitColliders[0]);
 					m_hitColliders.RemoveAt(0);
 				}
 				else
@@ -61,5 +60,16 @@ public class MobAIPickup : MobAI {
 			return;
 
 		itemBox.StartPickupEffect(m_owner);
+	}
+
+	override public void OnTriggerEnter(Collider other) {
+		if (other.tag.CompareTo("ItemBox") == 0)
+		{
+			if (3f > Vector3.Distance(m_mob.transform.position, other.transform.position))
+			{
+				PickupItem(other.gameObject);
+			}
+		};
+		
 	}
 }
