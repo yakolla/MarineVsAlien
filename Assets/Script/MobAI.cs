@@ -23,5 +23,7 @@ public class MobAI {
 
 	}
 
+	virtual public void OnTriggerEnter(Collider other) {
 
+	}
 }
