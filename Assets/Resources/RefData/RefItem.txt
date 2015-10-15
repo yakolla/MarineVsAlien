@@ -2859,6 +2859,38 @@
 						"type":"MaxHp",						
 						"values":[10]
 					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgReduction",						
+						"values":[0.05]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgReduction",						
+						"values":[0.15]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgReduction",						
+						"values":[0.2]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgReduction",						
+						"values":[0.3]
+					}
 				}
 			]
 		}
@@ -3117,6 +3149,38 @@
 						"type":"MaxSp",						
 						"values":[2]
 					}
+				},
+				{
+					"level":100,
+					"option":
+					{
+						"type":"Dodge",						
+						"values":[0.1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"Dodge",						
+						"values":[0.1]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"Dodge",						
+						"values":[0.1]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"Dodge",
+						"values":[0.15]
+					}
 				}
 			]
 		}
@@ -3212,30 +3276,6 @@
 						"type":"MaxHP",
 						"values":[1]
 					}
-				},
-				{
-					"level":100,
-					"option":
-					{
-						"type":"DmgReduction",						
-						"values":[0.05]
-					}
-				},
-				{
-					"level":300,
-					"option":
-					{
-						"type":"DmgReduction",						
-						"values":[0.15]
-					}
-				},
-				{
-					"level":900,
-					"option":
-					{
-						"type":"DmgReduction",						
-						"values":[0.2]
-					}
 				}
 			]
 		}
@@ -3276,38 +3316,6 @@
 						"type":"Critical",
 						"values":[0.0005]
 					}
-				},
-				{
-					"level":100,
-					"option":
-					{
-						"type":"CriticalDmg",						
-						"values":[3]
-					}
-				},
-				{
-					"level":300,
-					"option":
-					{
-						"type":"CriticalDmg",						
-						"values":[6]
-					}
-				},
-				{
-					"level":600,
-					"option":
-					{
-						"type":"CriticalDmg",						
-						"values":[9]
-					}
-				},
-				{
-					"level":900,
-					"option":
-					{
-						"type":"CriticalDmg",
-						"values":[12]
-					}
 				}
 			]
 		}
@@ -3347,30 +3355,6 @@
 					{
 						"type":"MoveSpeed",
 						"values":[0.01]
-					}
-				},
-				{
-					"level":100,
-					"option":
-					{
-						"type":"Dodge",						
-						"values":[0.05]
-					}
-				},
-				{
-					"level":300,
-					"option":
-					{
-						"type":"Dodge",						
-						"values":[0.15]
-					}
-				},
-				{
-					"level":900,
-					"option":
-					{
-						"type":"Dodge",
-						"values":[0.2]
 					}
 				}
 			]
