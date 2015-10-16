@@ -45,12 +45,12 @@ public class OptionGUI : MonoBehaviour {
 		m_waveSlider = transform.Find("RestartWaveGUI/Slider").gameObject.GetComponent<Slider>();
 		m_waveSlider.minValue = 0;
 		m_waveSlider.maxValue = Warehouse.Instance.GameBestStats.WaveIndex+1;
-		m_waveSlider.value = Warehouse.Instance.GameOptions.m_restartWaveIndex*Const.GetSpawn().GetCurrentWave().mobSpawns.Length;
+		m_waveSlider.value = Warehouse.Instance.GameOptions.m_restartWaveIndex;
 	}
 
 	void Update()
 	{
-		m_waveSliderText.text = (Warehouse.Instance.GameOptions.m_restartWaveIndex*Const.GetSpawn().GetCurrentWave().mobSpawns.Length+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString();
+		m_waveSliderText.text = (Warehouse.Instance.GameOptions.m_restartWaveIndex+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString();
 		m_waveSlider.maxValue = Warehouse.Instance.GameBestStats.WaveIndex+1;
 	}
 
@@ -59,7 +59,7 @@ public class OptionGUI : MonoBehaviour {
 			m_admob.ShowBanner(true);
 
 		if (m_waveSlider != null)
-			m_waveSlider.value = Warehouse.Instance.GameOptions.m_restartWaveIndex*Const.GetSpawn().GetCurrentWave().mobSpawns.Length;
+			m_waveSlider.value = Warehouse.Instance.GameOptions.m_restartWaveIndex;
 
 		TimeEffector.Instance.StopTime();
 	}
@@ -140,7 +140,7 @@ public class OptionGUI : MonoBehaviour {
 	public void OnWaveSliderChanged(float value)
 	{
 		Debug.Log("OnWaveSliderChanged:" + m_waveSlider.value);
-		Warehouse.Instance.GameOptions.m_restartWaveIndex = Mathf.Min(Warehouse.Instance.GameBestStats.WaveIndex, (int)m_waveSlider.value/Const.GetSpawn().GetCurrentWave().mobSpawns.Length);
+		Warehouse.Instance.GameOptions.m_restartWaveIndex = Mathf.Min(Warehouse.Instance.GameBestStats.WaveIndex, ((int)m_waveSlider.value/Const.GetSpawn().GetCurrentWave().mobSpawns.Length)*Const.GetSpawn().GetCurrentWave().mobSpawns.Length);
 
 	}
 }
