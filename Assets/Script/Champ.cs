@@ -114,7 +114,7 @@ public class Champ : Creature {
 	public int GoldLevel
 	{
 		get{
-			return m_creatureProperty.Level + Warehouse.Instance.GameBestStats.WaveIndex;
+			return m_creatureProperty.Level + Warehouse.Instance.NewGameStats.WaveIndex;
 		}
 	}
 

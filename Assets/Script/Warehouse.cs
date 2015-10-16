@@ -24,7 +24,6 @@ public class WarehouseData
 	
 	public GameStatistics			m_gameBestStats = new GameStatistics();
 	public Options					m_options = new Options();
-	public EquipItems				m_equipItems = new EquipItems();
 	public GameDataContext			m_gameDataContext = new GameDataContext();
 	public Tutorial					m_tutorial = new Tutorial();
 
@@ -171,12 +170,6 @@ public class WarehouseData
 		public float	m_bgmVolume = 1f;
 		public int		m_restartWaveIndex = 0;
 	}
-	
-	public class EquipItems
-	{
-		public int		m_weaponRefItemId = 0;
-		public int[]	m_accessoryRefItemId = new int[Const.AccessoriesSlots];
-	}
 
 	public class GameDataContext
 	{
@@ -184,6 +177,7 @@ public class WarehouseData
 		public SecuredType.XInt	m_xp = 0;
 		public SecuredType.XInt	m_sp = 0;
 		public SecuredType.XInt	m_level = 1;
+
 	}
 
 	public class Tutorial
@@ -414,10 +408,7 @@ public class Warehouse {
 		get {return m_warehouseData.m_options;}
 	}
 	
-	public WarehouseData.EquipItems ChampEquipItems
-	{
-		get {return m_warehouseData.m_equipItems;}
-	}
+
 
 	public WarehouseData.GameDataContext GameDataContext
 	{

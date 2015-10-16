@@ -111,9 +111,8 @@ public class ChampStatusGUI : MonoBehaviour {
 			}
 			return itemObj.Item.Level > 0 || m_specialButtons[slot].ChargingPoint > 0;
 		});
-		
+
 		m_specialButtons[slot].Icon.Image = itemObj.ItemIcon;
-		
 		m_specialButtons[slot].DoFunctor = doFunctor;
 		m_specialButtons[slot].CoolDownTime = itemObj.Item.RefItem.weaponStat.coolTime;
 

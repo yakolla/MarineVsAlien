@@ -2857,7 +2857,7 @@
 					"option":
 					{
 						"type":"MaxHp",						
-						"values":[10]
+						"values":[1]
 					}
 				},
 				{

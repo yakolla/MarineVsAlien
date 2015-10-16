@@ -482,7 +482,6 @@ public class ChampSettingGUI : MonoBehaviour {
 			m_equipedWeapon.m_itemObject = selectedItem;
 			m_equipedWeapon.m_inventorySlot = invSlot;
 
-			Warehouse.Instance.ChampEquipItems.m_weaponRefItemId = selectedItem.Item.RefItemID;
 			//invSlot.Check(true);
 			SetButtonRole(ButtonRole.Unequip, invSlot, priceGemButton, selectedItem);
 
