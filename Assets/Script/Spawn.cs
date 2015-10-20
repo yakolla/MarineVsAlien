@@ -373,13 +373,20 @@ public class Spawn : MonoBehaviour {
 		if (m_champ != null)
 		{
 			NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
+			bool leftToRight = false;
 			if ((m_relWave/m_goalPoints.Length)%2==0)
+			{
 				m_goalPointIndex = m_relWave%m_goalPoints.Length;
+				leftToRight = true;
+			}
 			else
 				m_goalPointIndex = m_goalPoints.Length-m_relWave%m_goalPoints.Length-1;
 
 			nav.SetDestination(m_goalPoints[m_goalPointIndex].transform.position);
 			m_champ.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
+			m_champ.Followers.ForEach(follower=>{
+				follower.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
+			});
 
 			while(nav.pathPending || nav.pathStatus != NavMeshPathStatus.PathComplete || nav.remainingDistance > 0)
 			{
@@ -387,8 +394,14 @@ public class Spawn : MonoBehaviour {
 			}
 
 			float angle = 0f;
+
+			if (leftToRight == false)
+				angle = 0f;
+
 			if (m_goalPointIndex == m_goalPoints.Length-1)
 				angle = 180f;
+			else if (m_goalPointIndex == 0)
+				angle = 0f;
 
 			m_champ.RotateToTarget(angle);
 			m_champ.Followers.ForEach(follower=>{

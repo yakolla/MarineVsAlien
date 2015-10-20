@@ -210,6 +210,7 @@ public class LightningBullet : Bullet
 			particleEmitter.particles = particles;
 
 			m_ownerCreature.SetTarget(null);
+			m_ownerCreature.WeaponHolder.StopFiring();
 		}
 
 		if (mobHitted == false)
