@@ -127,9 +127,9 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3005));
 
 
+				Warehouse.Instance.FindItem(Const.ChampTapRefItemId).Item.Level = 900;
 				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Level = 900;
-
 				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Level = 900;
 				Warehouse.Instance.FindItem(Const.FollowerFireMarineRefItemId).Item.Lock = false;

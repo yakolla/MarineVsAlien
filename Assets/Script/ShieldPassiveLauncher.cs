@@ -29,7 +29,7 @@ public class ShieldPassiveLauncher : Weapon {
 
 	IEnumerator EffectShield()
 	{
-		DamageNumberSprite sprite = m_creature.DamageText("", Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUpAlways);		
+		DamageNumberSprite sprite = m_creature.FoceDamageText("", Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUpAlways);		
 
 
 		GameObject obj = Instantiate (m_prefChargingEffect, Vector3.zero, transform.rotation) as GameObject;		

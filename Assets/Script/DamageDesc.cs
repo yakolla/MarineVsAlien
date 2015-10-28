@@ -33,6 +33,7 @@ public class DamageDesc {
 
 	int			m_damage;
 	float		m_damageRatio;
+	bool		m_lifeSteal;
 	Type		m_type;
 	GameObject	m_prefEffect;
 	BuffType	m_buffType;
@@ -84,5 +85,11 @@ public class DamageDesc {
 	{
 		get {return m_damageRatio;}
 		set {m_damageRatio = value;}
+	}
+
+	public bool LifeSteal
+	{
+		get {return m_lifeSteal;}
+		set {m_lifeSteal = value;}
 	}
 }

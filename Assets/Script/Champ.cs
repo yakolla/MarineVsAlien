@@ -49,6 +49,7 @@ public class Champ : Creature {
 		base.Init(refMob, level);
 
 		m_lastLevelupTime = Time.time;
+
 	}
 
 	public int RemainStatPoint
@@ -143,7 +144,9 @@ public class Champ : Creature {
 			transform.Find("Body/"+weaponData.RefItem.partName).gameObject.SetActive(true);
 
 		if (weapon.RefItem.id == Const.ChampTapRefItemId)
+		{
 			m_tapWeapon = weapon;
+		}
 
 		return weapon;
 	}
@@ -184,6 +187,9 @@ public class Champ : Creature {
 			touchedCount = aa;
 		}
 #endif
+
+
+
 		bool hitted = false;
 		for (int i = 0; i < touchedCount; ++i) 
 		{
@@ -201,10 +207,15 @@ public class Champ : Creature {
 
 				if (target != null && IsEnemy(target, this))
 				{
-					target.TakeDamage(this, new DamageDesc(m_tapWeapon.GetDamage(m_creatureProperty), DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
+					DamageDesc tapDamageDesc = new DamageDesc(m_tapWeapon.GetDamage(m_creatureProperty), DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+					tapDamageDesc.LifeSteal = true;
+
+					target.TakeDamage(this, tapDamageDesc);
 					hitted = true;
+					continue;
 				}
-				else if (hit.transform.tag.CompareTo("ItemBox") == 0)
+
+				if (hit.transform.tag.CompareTo("ItemBox") == 0)
 				{
 					ItemBox itemBox = hit.transform.gameObject.GetComponent<ItemBox>();
 					itemBox.StartPickupEffect(this);
@@ -221,7 +232,13 @@ public class Champ : Creature {
 				length = Mathf.Min(touchedCount, targets.Length);
 			for(int i = 0; i < length; ++i)
 			{
-				targets[i].TakeDamage(this, new DamageDesc(m_tapWeapon.GetDamage(m_creatureProperty), DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null));
+				if (targets[i] == null)
+					continue;
+
+				DamageDesc tapDamageDesc = new DamageDesc(m_tapWeapon.GetDamage(m_creatureProperty), DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
+				tapDamageDesc.LifeSteal = true;
+				
+				targets[i].TakeDamage(this, tapDamageDesc);
 			}
 		}
 
@@ -237,8 +254,12 @@ public class Champ : Creature {
 
 			if (Warehouse.Instance.GameTutorial.m_unlockedTap == false)
 			{
-				Const.GetTutorialMgr().SetTutorial("Nothing");				
-				Warehouse.Instance.GameTutorial.m_unlockedTap = true;
+				if (Const.GetTutorialMgr().TutorialName.CompareTo("Tap") == 0)
+				{
+					Const.GetTutorialMgr().SetTutorial("Nothing");				
+					Warehouse.Instance.GameTutorial.m_unlockedTap = true;
+				}
+
 			}
 		}
 		else

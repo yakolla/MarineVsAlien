@@ -712,7 +712,7 @@ public class Spawn : MonoBehaviour {
 	public void SharePotinsChamps(Creature cre, ItemData.Type type, int xp, bool enableEffect)
 	{
 
-		if ((int)(cre.CreatureType & Creature.Type.Champ) == 0)
+		if (cre == null || (int)(cre.CreatureType & Creature.Type.Champ) == 0)
 			return;
 
 		switch(type)

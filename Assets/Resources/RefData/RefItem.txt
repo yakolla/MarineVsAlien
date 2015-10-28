@@ -659,7 +659,8 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":5
+			"range":5,
+			"incBulletOnLevel":100
 		},
 		"evolutionFiring":
 		{
@@ -3440,14 +3441,6 @@
 					{
 						"type":"CriticalDmg",
 						"values":[0.1]
-					}
-				},
-				{
-					"level":900,
-					"option":
-					{
-						"type":"LifeSteal",						
-						"values":[1]
 					}
 				}
 			]

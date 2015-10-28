@@ -66,6 +66,7 @@ public class WarehouseData
 		PerSec	m_dealDamages = new PerSec();
 		PerSec	m_takenDamages = new PerSec();
 		PerSec	m_consumedSP = new PerSec();
+		PerSec	m_damageText = new PerSec();
 
 		float	m_startPerSec;
 		
@@ -121,6 +122,12 @@ public class WarehouseData
 			get{return m_consumedSP.Amount;}
 		}
 
+		public int DamageText
+		{
+			set{m_damageText.Amount = value;}
+			get{return m_damageText.Amount;}
+		}
+
 		public float DealDamagePerSec
 		{
 			get{return m_dealDamages.perSec;}
@@ -134,6 +141,11 @@ public class WarehouseData
 		public float ConsumedSPPerSec
 		{
 			get{return m_consumedSP.perSec;}
+		}
+
+		public float DamageTextPerSec
+		{
+			get{return m_damageText.perSec;}
 		}
 
 		public float MaxDealDamagePerSec
@@ -159,6 +171,7 @@ public class WarehouseData
 				m_dealDamages.Update(perDelta);
 				m_takenDamages.Update(perDelta);
 				m_consumedSP.Update(perDelta);
+				m_damageText.Update(perDelta);
 				m_startPerSec = Time.time;
 			}
 		}

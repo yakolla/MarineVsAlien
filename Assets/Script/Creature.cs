@@ -76,16 +76,7 @@ public class Creature : MonoBehaviour {
 	List<Creature>	m_followers = new List<Creature>();
 
 	protected void Start () {
-		m_aimpoint = transform.Find("Body/Aimpoint").gameObject;
-		m_hppoint = m_aimpoint;
 
-		if (transform.Find("Body/HPPoint"))
-		{
-			m_hppoint = transform.Find("Body/HPPoint").gameObject;
-		}
-		m_animator = transform.Find("Body").GetComponent<Animator>();
-
-		m_prefDamageSprite = Resources.Load<GameObject>("Pref/DamageNumberSprite");
 
 	}
 
@@ -114,6 +105,17 @@ public class Creature : MonoBehaviour {
 		m_creatureProperty.init(this, m_refMob.baseCreatureProperty, level);		
 		rigidbody.mass = refMob.mass;
 		m_navAgent.baseOffset = m_refMob.baseCreatureProperty.navMeshBaseOffset;
+
+		m_aimpoint = transform.Find("Body/Aimpoint").gameObject;
+		m_hppoint = m_aimpoint;
+		
+		if (transform.Find("Body/HPPoint"))
+		{
+			m_hppoint = transform.Find("Body/HPPoint").gameObject;
+		}
+		m_animator = transform.Find("Body").GetComponent<Animator>();
+		
+		m_prefDamageSprite = Resources.Load<GameObject>("Pref/DamageNumberSprite");
 	}
 
 	virtual public Creature GetOwner()
@@ -506,45 +508,51 @@ public class Creature : MonoBehaviour {
 
 	IEnumerator EffectAirborne()
 	{	
-		
-		DamageText(CrowdControlType.Airborne.ToString(), Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
-		CrowdControl(CrowdControlType.Airborne, true);
-		Parabola parabola = new Parabola(gameObject, 8, 0f, 90*Mathf.Deg2Rad, 1);
-		while(parabola.Update())
+		if (gameObject != null)
 		{
-			yield return null;
-		}
+			DamageText(CrowdControlType.Airborne.ToString(), Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
+			CrowdControl(CrowdControlType.Airborne, true);
+			Parabola parabola = new Parabola(gameObject, 8, 0f, 90*Mathf.Deg2Rad, 1);
+			while(parabola.Update())
+			{
+				yield return null;
+			}
 
-		m_buffEffects[(int)DamageDesc.BuffType.Airborne].m_run = false;
-		CrowdControl(CrowdControlType.Airborne, false);
+			m_buffEffects[(int)DamageDesc.BuffType.Airborne].m_run = false;
+			CrowdControl(CrowdControlType.Airborne, false);
+		}
 
 	}
 
 	IEnumerator EffectStun()
 	{		
-		DamageText(CrowdControlType.Stun.ToString(), Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
-		CrowdControl(CrowdControlType.Stun, true);
-		float ori = m_creatureProperty.BetaMoveSpeed;
-		m_creatureProperty.BetaMoveSpeed = 0f;
-		yield return new WaitForSeconds(2f);
+		if (gameObject != null)
+		{
+			DamageText(CrowdControlType.Stun.ToString(), Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
+			CrowdControl(CrowdControlType.Stun, true);
+			float ori = m_creatureProperty.BetaMoveSpeed;
+			m_creatureProperty.BetaMoveSpeed = 0f;
+			yield return new WaitForSeconds(2f);
 
-		m_creatureProperty.BetaMoveSpeed += ori;
-		m_buffEffects[(int)DamageDesc.BuffType.Stun].m_run = false;
-		CrowdControl(CrowdControlType.Stun, false);
+			m_creatureProperty.BetaMoveSpeed += ori;
+			m_buffEffects[(int)DamageDesc.BuffType.Stun].m_run = false;
+			CrowdControl(CrowdControlType.Stun, false);
+		}
 	}
 
 	IEnumerator EffectSlow(float time)
 	{		
-		
-		DamageText(DamageDesc.BuffType.Slow.ToString(), Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
-		float ori = m_creatureProperty.BetaMoveSpeed / 2f;
-		m_creatureProperty.BetaMoveSpeed -= ori;
-		yield return new WaitForSeconds(time);
-		
-		m_buffEffects[(int)DamageDesc.BuffType.Slow].m_run = false;
-		m_creatureProperty.BetaMoveSpeed += ori;
+		if (gameObject != null)
+		{
+			DamageText(DamageDesc.BuffType.Slow.ToString(), Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
+			float ori = m_creatureProperty.BetaMoveSpeed / 2f;
+			m_creatureProperty.BetaMoveSpeed -= ori;
+			yield return new WaitForSeconds(time);
+			
+			m_buffEffects[(int)DamageDesc.BuffType.Slow].m_run = false;
+			m_creatureProperty.BetaMoveSpeed += ori;
 
-
+		}
 	}
 
 	IEnumerator EffectSteamPack(float time)
@@ -611,15 +619,22 @@ public class Creature : MonoBehaviour {
 		m_creatureProperty.BulletAlphaLength += 1f;
 		m_creatureProperty.AlphaAttackCoolTime -= 0.5f;
 
+		bool scalable = false;
+		if (transform.localScale.y < 2f)
+			scalable = true;
+
 		Vector3 scale = transform.localScale*0.3f;
-		transform.localScale += scale;
-		
+		if (scalable == true)
+			transform.localScale += scale;
+
 		yield return new WaitForSeconds(time);
 		
 		m_buffEffects[(int)DamageDesc.BuffType.Macho].m_run = false;
 		m_creatureProperty.AlphaAttackCoolTime += 0.5f;
 		m_creatureProperty.BulletAlphaLength -= 1f;
-		transform.localScale -= scale;
+
+		if (scalable == true)
+			transform.localScale -= scale;
 
 		DestroyObject(effect);
 	}
@@ -647,9 +662,13 @@ public class Creature : MonoBehaviour {
 		float timeout = Time.time+time;
 		while(Time.time < timeout)
 		{
-			int heal = (int)(m_creatureProperty.MaxHP*damageRatio);
-			Heal(heal);
-			DamageText(heal + "HP", Vector3.one, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
+			if (gameObject != null)
+			{
+				int heal = (int)(m_creatureProperty.MaxHP*damageRatio);
+				Heal(heal);
+
+				DamageText(heal + "HP", Vector3.one, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
+			}
 			yield return new WaitForSeconds(1f);
 		}
 		
@@ -663,8 +682,11 @@ public class Creature : MonoBehaviour {
 		float timeout = Time.time+time;
 		while(Time.time < timeout)
 		{
-			DamageNumberSprite sprite = DamageText("SP...", Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
-			sprite.Duration = time;
+			if (gameObject != null)
+			{
+				DamageNumberSprite sprite = FoceDamageText("SP...", Vector3.one, Color.white, DamageNumberSprite.MovementType.FloatingUp);
+				sprite.Duration = time;
+			}
 			yield return new WaitForSeconds(time);
 		}
 		
@@ -810,6 +832,18 @@ public class Creature : MonoBehaviour {
 
 	public DamageNumberSprite DamageText(string damage, Vector3 scale, Color color, DamageNumberSprite.MovementType movementType)
 	{
+
+		if (Warehouse.Instance.NewGameStats.DamageTextPerSec > 10)
+			return null;
+
+		Warehouse.Instance.NewGameStats.DamageText+=1;
+
+		return FoceDamageText(damage, scale, color, movementType);
+	}
+
+	public DamageNumberSprite FoceDamageText(string damage, Vector3 scale, Color color, DamageNumberSprite.MovementType movementType)
+	{
+		
 		GameObject gui = (GameObject)GameObjectPool.Instance.Alloc(m_prefDamageSprite, m_aimpoint.transform.position, m_prefDamageSprite.transform.localRotation);
 		DamageNumberSprite sprite = gui.GetComponent<DamageNumberSprite>();
 		sprite.Init(this, damage, color, movementType);
@@ -946,7 +980,7 @@ public class Creature : MonoBehaviour {
 
 		ApplyBuff(offender, damageDesc.DamageBuffType, 2f, damageDesc);
 
-		if (offender != null)
+		if (offender != null && damageDesc.LifeSteal == true)
 		{
 			int lifeSteal = (int)(offender.m_creatureProperty.LifeSteal);
 			if (lifeSteal > 0)
