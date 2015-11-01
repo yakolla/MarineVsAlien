@@ -627,7 +627,8 @@
 		"weaponStat":
 		{
 			"coolTime":0.9,
-			"range":5
+			"range":5,
+			"incBulletOnLevel":10,
 		},
 		"unlock":
 		{
@@ -1051,6 +1052,7 @@
 		{
 			"coolTime":5,
 			"range":5,
+			"incBulletOnLevel":10,
 			"buffOnHitDesc":
 			{
 				"chance":1,
@@ -1251,7 +1253,8 @@
 		"weaponStat":
 		{
 			"coolTime":0.5,
-			"range":5
+			"range":5,
+			"incBulletOnLevel":900,
 		},
 		"levelup":
 		{
@@ -1541,7 +1544,8 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":3
+			"range":3,
+			"incBulletOnLevel":10
 		},
 		"unlock":
 		{
@@ -1578,7 +1582,8 @@
 		"weaponStat":
 		{
 			"coolTime":2,
-			"range":5
+			"range":5,
+			"incBulletOnLevel":10
 		}
 	},
 	{
@@ -1590,6 +1595,7 @@
 		{
 			"coolTime":5,
 			"range":5,
+			"incBulletOnLevel":10,
 			"buffOnHitDesc":
 			{
 				"chance":1,

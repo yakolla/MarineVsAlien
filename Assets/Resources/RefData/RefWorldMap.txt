@@ -249,6 +249,71 @@
 							]
 						},
 						{
+							"refMobId":50006,
+							"refDropItems":
+							[								
+								{
+									"refItemId":3001,
+									"minValue":1,
+									"maxValue":1,
+									"ratio":0.3,
+									"count":1
+								}
+							]
+						},
+						{
+							"refMobId":50007,
+							"refDropItems":
+							[								
+								{
+									"refItemId":3004,
+									"minValue":1,
+									"maxValue":1,
+									"ratio":0.2,
+									"count":1
+								}
+							]
+						},
+						{
+							"refMobId":50008,
+							"refDropItems":
+							[								
+								{
+									"refItemId":3003,
+									"minValue":1,
+									"maxValue":1,
+									"ratio":0.1,
+									"count":1
+								}
+							]
+						},
+						{
+							"refMobId":50009,
+							"refDropItems":
+							[	
+								{
+									"refItemId":3002,
+									"minValue":1,
+									"maxValue":1,
+									"ratio":0.05,
+									"count":1
+								}
+							]
+						},
+						{
+							"refMobId":50010,
+							"refDropItems":
+							[								
+								{
+									"refItemId":3005,
+									"minValue":1,
+									"maxValue":1,
+									"ratio":0,
+									"count":1
+								}
+							]
+						},
+						{
 							"refMobId":5001,
 							"refDropItems":
 							[								

@@ -42,36 +42,37 @@ public class ChampStatusGUI : MonoBehaviour {
 
 
 		assignSkillButton(0, Warehouse.Instance.FindItem(21), ()=>{
-			Warehouse.Instance.FindItem(21).Item.Use(m_champ);
-			return true;
+			return Warehouse.Instance.FindItem(21).Item.Use(m_champ);
 		});
 
 		assignSkillButton(1, Warehouse.Instance.FindItem(22), ()=>{
-			Warehouse.Instance.FindItem(22).Item.Use(m_champ);
-			m_champ.Followers.ForEach((Creature follower)=>{
-				Warehouse.Instance.FindItem(22).Item.Use(follower);
-			});
-			return true;
+			if (Warehouse.Instance.FindItem(22).Item.Use(m_champ))
+			{
+				m_champ.Followers.ForEach((Creature follower)=>{
+					Warehouse.Instance.FindItem(22).Item.Use(follower);
+				});
+				return true;
+			}
+			return false;
 		});
 
 		assignSkillButton(2, Warehouse.Instance.FindItem(23), ()=>{			
-			Warehouse.Instance.FindItem(23).Item.Use(m_champ);
-
-			return true;
+			return Warehouse.Instance.FindItem(23).Item.Use(m_champ);
 		});
 
 		assignSkillButton(3, Warehouse.Instance.FindItem(24), ()=>{	
-			Warehouse.Instance.FindItem(24).Item.Use(m_champ);
-			m_champ.Followers.ForEach((Creature follower)=>{
-				Warehouse.Instance.FindItem(24).Item.Use(follower);
-			});
-			return true;
+			if (Warehouse.Instance.FindItem(24).Item.Use(m_champ))
+			{
+				m_champ.Followers.ForEach((Creature follower)=>{
+					Warehouse.Instance.FindItem(24).Item.Use(follower);
+				});
+				return true;
+			}
+			return false;
 		});
 
 		assignSkillButton(4, Warehouse.Instance.FindItem(25), ()=>{	
-			Warehouse.Instance.FindItem(25).Item.Use(m_champ);
-
-			return true;
+			return Warehouse.Instance.FindItem(25).Item.Use(m_champ);
 		});
 
 			

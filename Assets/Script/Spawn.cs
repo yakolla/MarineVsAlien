@@ -150,6 +150,7 @@ public class Spawn : MonoBehaviour {
 		minIndex = Mathf.Clamp(minIndex, 0, mobs.Length-1);
 
 		int mobCount = (int)(spawnRatioDesc.count[0]);
+		int mobLength = spawnRatioDesc.count[1]-spawnRatioDesc.count[0];
 		int stage = GetStage()-1;
 		if (boss == true)
 		{
@@ -160,13 +161,14 @@ public class Spawn : MonoBehaviour {
 			else
 			{
 				result.spawnMobs.Add(mobs[Random.Range(minIndex, maxIndex+1)]);
-				mobCount += (int)((spawnRatioDesc.count[1]-spawnRatioDesc.count[0]) * Mathf.Min(1, stage/RefData.Instance.RefBossMobs.Length*(1/(float)RefData.Instance.RefBossMobs.Length)));
+
+				mobCount += Mathf.Min(mobLength, stage/(m_refWorldMap.waves.Length*RefData.Instance.RefBossMobs.Length));
 			}
 		}
 		else
 		{
 			result.spawnMobs.Add(mobs[Random.Range(minIndex, maxIndex+1)]);
-			mobCount += (int)((spawnRatioDesc.count[1]-spawnRatioDesc.count[0]) * Mathf.Min(1, stage/RefData.Instance.RefBossMobs.Length*(1/(float)RefData.Instance.RefBossMobs.Length)));
+			mobCount += Mathf.Min(mobLength, stage/(m_refWorldMap.waves.Length*RefData.Instance.RefBossMobs.Length));
 
 		}
 

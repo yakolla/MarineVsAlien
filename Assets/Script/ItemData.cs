@@ -190,7 +190,7 @@ public class ItemData {
 	virtual public void Equip(Creature obj){
 			ApplyOptions(obj, false);
 	}
-	virtual public void Use(Creature obj){}
+	virtual public bool Use(Creature obj){return true;}
 	virtual public bool Usable(Creature obj){return true;}
 	virtual public void NoUse(Creature obj){}
 	virtual public bool Compare(ItemData item)

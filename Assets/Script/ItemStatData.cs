@@ -10,9 +10,10 @@ public class ItemStatData : ItemData{
 
 	}
 
-	override public void Use(Creature obj)
+	override public bool Use(Creature obj)
 	{	
 		ApplyOptions(obj, true);
+		return true;
 	}
 
 

@@ -29,9 +29,10 @@ public class ItemWeaponPartsData : ItemData{
 		Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).SetActive(true);
 	}
 
-	override public void Use(Creature obj)
+	override public bool Use(Creature obj)
 	{	
 		ApplyOptions(obj, true);
+		return true;
 	}
 	
 	override public void Equip(Creature obj)

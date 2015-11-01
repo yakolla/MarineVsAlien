@@ -23,9 +23,10 @@ public class ItemFollowerData : ItemData{
 		base.Equip(m_follower);
 	}
 
-	override public void Use(Creature obj)
+	override public bool Use(Creature obj)
 	{
 		ApplyOptions(m_follower, true);
+		return true;
 	}
 
 	Follower	InstanceFollower(Creature obj)

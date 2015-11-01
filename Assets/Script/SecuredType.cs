@@ -36,6 +36,26 @@ namespace SecuredType
 		}
 	}
 
+	public struct XInt64
+	{
+		long m_value;
+		public XInt64(long d)
+		{
+			m_value = d ^ Util.key;
+		}
+		
+		public static implicit operator XInt64(long d)  // implicit digit to byte conversion operator
+		{
+			return new XInt64(d);
+		}
+		
+		public long Value
+		{
+			get{return m_value ^ Util.key;}
+			set{m_value = value ^ Util.key;}
+		}
+	}
+
 	public struct XFloat
 	{
 		int m_value;

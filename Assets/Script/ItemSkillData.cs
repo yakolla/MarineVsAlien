@@ -23,7 +23,7 @@ public class ItemSkillData : ItemData{
 		champ.SkillStacks[RefItem.id-21]=1;
 	}
 
-	override public void Use(Creature obj)
+	override public bool Use(Creature obj)
 	{
 		switch(RefItemID)
 		{
@@ -31,13 +31,13 @@ public class ItemSkillData : ItemData{
 			obj.WeaponHolder.ActiveWeaponSkillFire(Const.NuclearRefItemId, obj.transform.eulerAngles.y);
 			break;
 		case 22:
-			obj.ApplyMachoSkill();
+			return obj.ApplyMachoSkill();
 			break;
 		case 23:
-			obj.ApplyHealingSkill();
+			return obj.ApplyHealingSkill();
 			break;
 		case 24:
-			obj.ApplyDamageMultiplySkill();
+			return obj.ApplyDamageMultiplySkill();
 			break;
 		case 25:
 			Weapon weapon = obj.WeaponHolder.GetPassiveSkillWeapon(130);
@@ -51,6 +51,7 @@ public class ItemSkillData : ItemData{
 			}
 			break;
 		}
+		return true;
 	}
 
 	override public void NoUse(Creature obj)

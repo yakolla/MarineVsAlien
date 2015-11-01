@@ -664,7 +664,7 @@ public class Creature : MonoBehaviour {
 		{
 			if (gameObject != null)
 			{
-				int heal = (int)(m_creatureProperty.MaxHP*damageRatio);
+				long heal = (long)(m_creatureProperty.MaxHP*damageRatio);
 				Heal(heal);
 
 				DamageText(heal + "HP", Vector3.one, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
@@ -697,6 +697,11 @@ public class Creature : MonoBehaviour {
 	{
 		if (prefEffect == null)
 			return;
+
+		if (Warehouse.Instance.NewGameStats.DamageEffectPerSec > 10)
+			return;
+		
+		Warehouse.Instance.NewGameStats.DamageEffect+=1;
 
 		GameObject dmgEffect = (GameObject)Instantiate(prefEffect, Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
 		dmgEffect.transform.parent = m_aimpoint.transform;
@@ -821,9 +826,6 @@ public class Creature : MonoBehaviour {
 	
 	public bool ApplyDamageMultiplySkill()
 	{
-		if (m_buffEffects[(int)DamageDesc.BuffType.DamageMultiply].m_run == true)
-			return false;
-		
 		DamageDesc desc = new DamageDesc(0, DamageDesc.Type.Normal, DamageDesc.BuffType.Nothing, null);
 		desc.DamageRatio = 10f;
 		ApplyBuff(null, DamageDesc.BuffType.DamageMultiply, 20f, desc);
@@ -851,7 +853,7 @@ public class Creature : MonoBehaviour {
 		return sprite;
 	}
 	
-	virtual public int TakeDamage(Creature offender, DamageDesc damageDesc)
+	virtual public long TakeDamage(Creature offender, DamageDesc damageDesc)
 	{
 		if (m_behaviourType == BehaviourType.Death)
 			return 0;
@@ -879,10 +881,10 @@ public class Creature : MonoBehaviour {
 			}
 		}
 
-		int dmg = (int)(damageDesc.Damage*criticalDamage);
-		dmg -= (int)(dmg*m_creatureProperty.DamageReduction);
-		dmg = Mathf.Max(0, dmg-m_creatureProperty.PhysicalDefencePoint);
-		if (dmg == 0)
+		long dmg = (long)(damageDesc.Damage*criticalDamage);
+		dmg -= (long)(dmg*m_creatureProperty.DamageReduction);
+
+		if (dmg <= 0)
 		{
 			dmg = Random.Range(0, 2);
 		}
@@ -982,7 +984,7 @@ public class Creature : MonoBehaviour {
 
 		if (offender != null && damageDesc.LifeSteal == true)
 		{
-			int lifeSteal = (int)(offender.m_creatureProperty.LifeSteal);
+			long lifeSteal = (long)(offender.m_creatureProperty.LifeSteal);
 			if (lifeSteal > 0)
 			{
 				offender.DamageText(lifeSteal.ToString() + "L", Vector3.one, Color.green, DamageNumberSprite.MovementType.ParabolaAlpha);
@@ -1019,7 +1021,7 @@ public class Creature : MonoBehaviour {
 
 	}
 
-	public void Heal(int heal)
+	public void Heal(long heal)
 	{
 		m_creatureProperty.HP += heal;
 	}

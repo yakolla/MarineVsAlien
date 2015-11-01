@@ -549,7 +549,7 @@
 				"exp":100,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":10,
+				"hpPerLevel":5,
 				"moveSpeed":1.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -576,7 +576,7 @@
 				"exp":200,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":20,
+				"hpPerLevel":10,
 				"moveSpeed":1.7,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -602,7 +602,7 @@
 				"exp":400,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":40,
+				"hpPerLevel":20,
 				"moveSpeed":1.7,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -628,7 +628,7 @@
 				"exp":800,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":80,
+				"hpPerLevel":40,
 				"moveSpeed":1.7,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -661,7 +661,7 @@
 				"exp":1600,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":160,
+				"hpPerLevel":60,
 				"moveSpeed":2,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -693,7 +693,7 @@
 				"exp":3200,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":320,
+				"hpPerLevel":80,
 				"moveSpeed":3,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -732,7 +732,7 @@
 				"exp":6400,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":640,
+				"hpPerLevel":100,
 				"moveSpeed":3,
 				"navMeshBaseOffset":1
 			}
@@ -761,7 +761,7 @@
 				"exp":12800,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":1280,
+				"hpPerLevel":120,
 				"moveSpeed":3,
 				"navMeshBaseOffset":0
 			}
@@ -786,7 +786,7 @@
 				"exp":25600,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":2560,
+				"hpPerLevel":140,
 				"moveSpeed":3,
 				"navMeshBaseOffset":0
 			}
@@ -796,7 +796,6 @@
 	[			
 		{
 			"id":50001,
-			//"prefHead":"gidra",
 			"prefBody":"gidra_skin",
 			"refWeaponItems":
 			[				
@@ -810,13 +809,11 @@
 					"refItemId":"105",
 					"weaponStat":
 					{
-						"coolTime":1,
-						"firingCount":5
+						"coolTime":1
 					}	
 				}
 			],
-			"mobAI":"Normal",		
-			
+			"mobAI":"Normal",
 			"baseCreatureProperty":
 			{
 				"maxHP":500,
@@ -827,7 +824,7 @@
 				"exp":500,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":10,
+				"hpPerLevel":5,
 				"moveSpeed":1.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -851,9 +848,7 @@
 					"refItemId":"105",
 					"weaponStat":
 					{
-						"coolTime":1,
-						
-						"firingCount":5
+						"coolTime":1
 					}	
 				}
 			],
@@ -869,7 +864,7 @@
 				"exp":1000,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":20,
+				"hpPerLevel":10,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -877,7 +872,6 @@
 		},
 		{
 			"id":50003,
-			//"prefHead":"eye_brain",
 			"prefBody":"eye_brain_skin",
 			"refWeaponItems":
 			[
@@ -915,7 +909,7 @@
 				"exp":2000,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":40,
+				"hpPerLevel":20,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0,
 				"rotationSpeedRatio":20,
@@ -957,7 +951,7 @@
 				"exp":4000,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":80,
+				"hpPerLevel":30,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false
@@ -965,14 +959,10 @@
 		},
 		{
 			"id":50005,
-			//"prefHead":"mon_kingbug",
 			"prefBody":"mon_kingbug_skin",
 			"refWeaponItems":
 			[
 			
-				{
-					"refItemId":"117"
-				},
 				{
 					"refItemId":"107",
 					"weaponStat":
@@ -1001,7 +991,211 @@
 				"exp":8000,
 				"phyDamagePerLevel":0,
 				"phyDefencePerLevel":0.1,
-				"hpPerLevel":160,
+				"hpPerLevel":40,
+				"moveSpeed":1,
+				"navMeshBaseOffset":0,
+				"backwardOnDamage":false
+			}
+		},
+		{
+			"id":50006,
+			//"prefHead":"gidra",
+			"prefBody":"gidra_skin",
+			"refWeaponItems":
+			[				
+				{
+					"refItemId":"128"
+				},
+				{
+					"refItemId":"107"
+				},
+				{
+					"refItemId":"105",
+					"weaponStat":
+					{
+						"coolTime":1
+					}	
+				}
+			],
+			"mobAI":"Normal",		
+			
+			"baseCreatureProperty":
+			{
+				"maxHP":16000,
+				"maxSP":100,
+				"physicalDamage":3,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.5,
+				"exp":16000,
+				"phyDamagePerLevel":0,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":50,
+				"moveSpeed":1.5,
+				"navMeshBaseOffset":0,
+				"backwardOnDamage":false
+			}			
+		},
+		{
+			"id":50007,
+			"prefBody":"marine_skin",
+			"refWeaponItems":
+			[
+				{
+					"refItemId":"127",
+					"weaponStat":
+					{
+						"coolTime":2
+					}
+				},
+				{
+					"refItemId":"105",
+					"weaponStat":
+					{
+						"coolTime":1
+					}	
+				}
+			],
+			"mobAI":"Normal",		
+			
+			"baseCreatureProperty":
+			{
+				"maxHP":32000,
+				"maxSP":100,
+				"physicalDamage":3,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.5,
+				"exp":32000,
+				"phyDamagePerLevel":0,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":60,
+				"moveSpeed":1,
+				"navMeshBaseOffset":0,
+				"backwardOnDamage":false
+			}
+		},
+		{
+			"id":50008,
+			//"prefHead":"eye_brain",
+			"prefBody":"eye_brain_skin",
+			"refWeaponItems":
+			[
+				{
+					"refItemId":"104",					
+					"weaponStat":
+					{
+						"coolTime":1
+					}
+				},
+				{
+					"refItemId":"105",
+					"weaponStat":
+					{
+						"coolTime":3
+					}
+				},
+				{
+					"refItemId":"118",
+					"weaponStat":
+					{
+						"coolTime":3
+					}	
+				}
+			],
+			"mobAI":"Normal",		
+			
+			"baseCreatureProperty":
+			{
+				"maxHP":64000,
+				"maxSP":100,
+				"physicalDamage":3,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.5,
+				"exp":64000,
+				"phyDamagePerLevel":0,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":70,
+				"moveSpeed":1,
+				"navMeshBaseOffset":0,
+				"rotationSpeedRatio":20,
+				"backwardOnDamage":false
+			}
+		},
+		{
+			"id":50009,
+			//"prefHead":"mon_big_Worm",
+			"prefBody":"big_Worm_skin",
+			"refWeaponItems":
+			[	
+				{
+					"refItemId":"127",
+					"weaponStat":
+					{
+						"coolTime":6
+					}	
+				},
+				{
+					"refItemId":"126",
+					"weaponStat":
+					{
+						"coolTime":4,
+						"range":7,
+						"summonRefMobId":31004
+					}	
+				}
+			],
+			"mobAI":"Normal",		
+			
+			"baseCreatureProperty":
+			{
+				"maxHP":128000,
+				"maxSP":100,
+				"physicalDamage":3,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.5,
+				"exp":128000,
+				"phyDamagePerLevel":0,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":80,
+				"moveSpeed":1,
+				"navMeshBaseOffset":0,
+				"backwardOnDamage":false
+			}
+		},
+		{
+			"id":50010,
+			"prefBody":"mon_kingbug_skin",
+			"refWeaponItems":
+			[
+			
+				{
+					"refItemId":"107",
+					"weaponStat":
+					{
+						"range":3.5
+					}	
+				},
+				{
+					"refItemId":"113",
+					"weaponStat":
+					{
+						"coolTime":3
+					}	
+				}
+				
+			],
+			"mobAI":"Normal",		
+			
+			"baseCreatureProperty":
+			{
+				"maxHP":256000,
+				"maxSP":100,
+				"physicalDamage":3,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.5,
+				"exp":256000,
+				"phyDamagePerLevel":0,
+				"phyDefencePerLevel":0.1,
+				"hpPerLevel":90,
 				"moveSpeed":1,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false

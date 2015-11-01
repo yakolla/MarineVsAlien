@@ -14,9 +14,9 @@ public class ItemCheatData : ItemData{
 		Use (obj);
 	}
 
-	override public void Use(Creature obj)
+	override public bool Use(Creature obj)
 	{
-
+		return true;
 	}
 
 	override public void NoUse(Creature obj)

@@ -8,9 +8,9 @@ public class CreatureProperty {
 	Creature	m_owner;
 
 	RefCreatureBaseProperty	m_baseProperty;
-	SecuredType.XInt	m_hp = 0;
+	SecuredType.XInt64	m_hp = 0;
 
-	SecuredType.XInt		m_alphaMaxHP = 0;
+	SecuredType.XInt64		m_alphaMaxHP = 0;
 
 	SecuredType.XInt		m_alphaPhysicalDamage = 0;
 
@@ -71,23 +71,26 @@ public class CreatureProperty {
 		return (float)HP/MaxHP;
 	}
 
-	public int MaxHP
+	public long MaxHP
 	{
-		get { return (int)((m_baseProperty.maxHP+AlphaMaxHP)+(m_baseProperty.maxHP+AlphaMaxHP)*(Level-1)*m_baseProperty.hpPerLevel); }
+		get { return (long)((m_baseProperty.maxHP+AlphaMaxHP)+(m_baseProperty.maxHP+AlphaMaxHP)*(Level-1)*m_baseProperty.hpPerLevel); }
 	}
 
-	public int AlphaMaxHP
+	public long AlphaMaxHP
 	{
 		get { return m_alphaMaxHP.Value; }
 		set { m_alphaMaxHP.Value = value; }
 	}
 
-	public int HP
+	public long HP
 	{
 		get { return m_hp.Value; }
 		set {
 			m_hp.Value = value;
-			m_hp.Value = Mathf.Clamp(m_hp.Value, 0, MaxHP);
+			if (m_hp.Value < 0)
+				m_hp.Value = 0;
+			else if (m_hp.Value > MaxHP)
+				m_hp.Value = MaxHP;
 		}
 	}
 

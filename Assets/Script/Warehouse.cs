@@ -29,8 +29,8 @@ public class WarehouseData
 
 	public class PerSec
 	{
-		public int	maxAmount;
-		int		amount;
+		public long	maxAmount;
+		long		amount;
 		public float	perSec;
 
 		public void Update(float delta)
@@ -46,7 +46,7 @@ public class WarehouseData
 			perSec = 0;
 		}
 
-		public int Amount
+		public long Amount
 		{
 			set{
 				amount = value;
@@ -67,6 +67,7 @@ public class WarehouseData
 		PerSec	m_takenDamages = new PerSec();
 		PerSec	m_consumedSP = new PerSec();
 		PerSec	m_damageText = new PerSec();
+		PerSec  m_damageEffect = new PerSec();
 
 		float	m_startPerSec;
 		
@@ -102,7 +103,7 @@ public class WarehouseData
 			get{return m_waveIndex.Value;}
 		}
 
-		public int DealDamages
+		public long DealDamages
 		{
 			set{
 				m_dealDamages.Amount = value;
@@ -110,22 +111,28 @@ public class WarehouseData
 			get{return m_dealDamages.Amount;}
 		}
 
-		public int TakenDamages
+		public long TakenDamages
 		{
 			set{m_takenDamages.Amount = value;}
 			get{return m_takenDamages.Amount;}
 		}
 
-		public int ConsumedSP
+		public long ConsumedSP
 		{
 			set{m_consumedSP.Amount = value;}
 			get{return m_consumedSP.Amount;}
 		}
 
-		public int DamageText
+		public long DamageText
 		{
 			set{m_damageText.Amount = value;}
 			get{return m_damageText.Amount;}
+		}
+
+		public long DamageEffect
+		{
+			set{m_damageEffect.Amount = value;}
+			get{return m_damageEffect.Amount;}
 		}
 
 		public float DealDamagePerSec
@@ -146,6 +153,11 @@ public class WarehouseData
 		public float DamageTextPerSec
 		{
 			get{return m_damageText.perSec;}
+		}
+
+		public float DamageEffectPerSec
+		{
+			get{return m_damageEffect.perSec;}
 		}
 
 		public float MaxDealDamagePerSec
@@ -172,6 +184,7 @@ public class WarehouseData
 				m_takenDamages.Update(perDelta);
 				m_consumedSP.Update(perDelta);
 				m_damageText.Update(perDelta);
+				m_damageEffect.Update(perDelta);
 				m_startPerSec = Time.time;
 			}
 		}
@@ -186,7 +199,7 @@ public class WarehouseData
 
 	public class GameDataContext
 	{
-		public SecuredType.XInt	m_hp = 0;
+		public SecuredType.XInt64	m_hp = 0;
 		public SecuredType.XInt	m_xp = 0;
 		public SecuredType.XInt	m_sp = 0;
 		public SecuredType.XInt	m_level = 1;
