@@ -240,7 +240,7 @@ public class ShopIAB : MonoBehaviour
     {
 		_label = "CONSUMED: " + purchase.ToString();
 
-		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game)=>{
+		Const.SaveGame((SavedGameRequestStatus status)=>{
 
 			OnSaveGame(status,  purchase);
 

@@ -194,7 +194,8 @@ public class WarehouseData
 	{
 		public float	m_sfxVolume = 1f;
 		public float	m_bgmVolume = 1f;
-		public int		m_restartWaveIndex = 0;
+	//	public int		m_restartWaveIndex = 0;
+		public SecuredType.XInt m_reWaveIndex = 0;
 	}
 
 	public class GameDataContext
@@ -415,6 +416,12 @@ public class Warehouse {
 	{
 		get {return m_warehouseData.m_retryCount.Value;}
 		set{m_warehouseData.m_retryCount.Value = value;}
+	}
+
+	public int CurrentWaveIndex
+	{
+		get{return m_warehouseData.m_waveIndex.Value;}
+		set{m_warehouseData.m_waveIndex.Value = value;}
 	}
 
 	public int AutoEarnGold

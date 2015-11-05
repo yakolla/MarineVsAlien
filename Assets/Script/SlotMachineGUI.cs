@@ -132,7 +132,7 @@ public class SlotMachineGUI : MonoBehaviour {
 			if (m_savable == false)
 			{
 				m_savable = true;
-				Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game) => {
+				Const.SaveGame((SavedGameRequestStatus status) => {
 					if (status == SavedGameRequestStatus.Success) {
 						// handle reading or writing of saved game.
 					} else {

@@ -451,7 +451,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		}
 
 		m_generalInfoPanel.SetChamp(m_champ);
-		m_spawn.StartWave(Warehouse.Instance.GameOptions.m_restartWaveIndex, champ);
+		m_spawn.StartWave(Warehouse.Instance.CurrentWaveIndex, champ);
 
 		GPlusPlatform.Instance.AnalyticsTrackEvent("InGame", "Play", "Retry:"+Warehouse.Instance.RetryCount, 0);
 		

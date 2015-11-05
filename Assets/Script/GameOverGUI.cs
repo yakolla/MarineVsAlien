@@ -72,7 +72,7 @@ public class GameOverGUI : MonoBehaviour {
 		m_admob.ShowBanner(true);
 
 
-		Warehouse.Instance.NewGameStats.WaveIndex = 0;
+		Warehouse.Instance.CurrentWaveIndex = Warehouse.Instance.GameOptions.m_reWaveIndex.Value;
 		OnClickContinue();
 	}
 
@@ -98,7 +98,7 @@ public class GameOverGUI : MonoBehaviour {
 			// handle success or failure
 		});
 		
-		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game) => {
+		Const.SaveGame((SavedGameRequestStatus status) => {
 
 			TimeEffector.Instance.StartTime();
 

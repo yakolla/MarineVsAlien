@@ -1035,12 +1035,7 @@ public class Creature : MonoBehaviour {
 		}
 	}
 
-	public void ShakeCamera(float time)
-	{
-		CameraShake shake = Camera.main.gameObject.GetComponent<CameraShake>();
-		shake.shake = time;
-		shake.enabled = true;
-	}
+
 	
 	virtual public void Death()
 	{
@@ -1068,7 +1063,7 @@ public class Creature : MonoBehaviour {
 		GameObjectPool.Instance.Free(body);
 		DestroyObject(gameObject);
 		
-		ShakeCamera(0.1f);
+		Const.GetSpawn().ShakeCamera(0.1f);
 	}
 
 
