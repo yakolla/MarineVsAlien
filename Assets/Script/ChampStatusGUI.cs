@@ -174,11 +174,8 @@ public class ChampStatusGUI : MonoBehaviour {
 		if (m_champ.AccessoryItems[slot] == null)
 			return;
 
-
-
 		if (m_champ.AccessoryItems[slot].Item.Usable(m_champ) == false)
 			return;
-
 
 		for(int i = 0; i < m_champ.m_creatureProperty.CallableFollowers; ++i)
 			m_champ.AccessoryItems[slot].Item.Use(m_champ);

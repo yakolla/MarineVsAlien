@@ -1015,6 +1015,10 @@
 					{
 						"coolTime":1
 					}	
+				},
+				{
+					"refItemId":"129",
+					"passive":true
 				}
 			],
 			"mobAI":"Normal",		
@@ -1053,6 +1057,10 @@
 					{
 						"coolTime":1
 					}	
+				},
+				{
+					"refItemId":"129",
+					"passive":true
 				}
 			],
 			"mobAI":"Normal",		
@@ -1099,6 +1107,10 @@
 					{
 						"coolTime":3
 					}	
+				},
+				{
+					"refItemId":"129",
+					"passive":true
 				}
 			],
 			"mobAI":"Normal",		
@@ -1141,6 +1153,10 @@
 						"range":7,
 						"summonRefMobId":31004
 					}	
+				},
+				{
+					"refItemId":"129",
+					"passive":true
 				}
 			],
 			"mobAI":"Normal",		
@@ -1180,6 +1196,10 @@
 					{
 						"coolTime":3
 					}	
+				},
+				{
+					"refItemId":"129",
+					"passive":true
 				}
 				
 			],
@@ -1488,6 +1508,39 @@
 			[
 				{
 					"refItemId":"210"
+				}
+			],
+			"mobAI":"Follow",
+			"scale":1,
+			"baseCreatureProperty":
+			{
+				"maxHP":15,
+				"maxSP":100,
+				"physicalDamage":6,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.2,
+				"exp":0,
+				"phyDamagePerLevel":10,
+				"phyDefencePerLevel":2,
+				"hpPerLevel":0.33,
+				"moveSpeed":4.5,
+				"aniSpeedRatio":0.5,
+				"navMeshBaseOffset":0,
+				"backwardOnDamage":false
+			}
+		},
+		{
+			"id":30009,			
+			"prefHead":"Follower",
+			"prefBody":"season1 champ",
+			"name":"SwordMarine",
+			"refWeaponItems":
+			[
+				{
+					"refItemId":"108"
+				},
+				{
+					"refItemId":"106"
 				}
 			],
 			"mobAI":"Follow",

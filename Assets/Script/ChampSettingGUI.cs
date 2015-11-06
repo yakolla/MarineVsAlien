@@ -101,6 +101,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGrenadeMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerRedMarineRefItemId));
 
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
@@ -146,6 +147,8 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.FindItem(Const.FollowerMeleeRefItemId).Item.Level = 900;
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Level = 1;
+				Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Lock = false;
+				Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Level = 1;
 
 				Warehouse.Instance.FindItem(21).Item.Lock = false;
 				Warehouse.Instance.FindItem(21).Item.Level = 9;
@@ -217,6 +220,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGrenadeMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
+				//Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerRedMarineRefItemId));
 
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
@@ -408,7 +412,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		Warehouse.Instance.NewGameStats.Reset();
 
 		GameObject champObj = Creature.InstanceCreature(Resources.Load<GameObject>("Pref/Champ"), Resources.Load<GameObject>("Pref/mon_skin/" + RefData.Instance.RefChamp.prefBody), m_spawnChamp.position, m_spawnChamp.localRotation);	
-		champObj.name = "Champ";		
+		champObj.name = "Champ";
 
 		Champ champ = champObj.GetComponent<Champ>();
 		champ.Init(RefData.Instance.RefChamp, Warehouse.Instance.GameDataContext.m_level.Value);
