@@ -5,9 +5,9 @@ public class GuidedRocketLauncher : Weapon {
 
 	int	m_aliveBullets = 0;
 
-	public override void Init(Creature creature, ItemWeaponData weaponData, WeaponStat weaponStat)
+	public override void Init(Creature creature, ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{
-		base.Init(creature, weaponData, weaponStat);
+		base.Init(creature, weaponData, weaponDesc);
 
 		m_aliveBullets = 0;
 	}

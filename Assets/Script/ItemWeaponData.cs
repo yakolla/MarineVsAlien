@@ -25,13 +25,13 @@ public class ItemWeaponData : ItemData{
 
 	override public void Equip(Creature obj)
 	{
-		obj.EquipWeapon(this, null);
+		obj.EquipWeapon(this, new RefMob.WeaponDesc());
 		base.Equip(obj);
 
 		m_owner = obj;
 		for(int i = 0; i < m_owner.WeaponHolder.Weapons.Count; ++i)
 		{
-			if (m_owner.WeaponHolder.Weapons[i].RefItem.id == RefItem.id)
+			if (m_owner.WeaponHolder.Weapons[i].RefWeaponItem.id == RefItem.id)
 			{
 				m_weapon = m_owner.WeaponHolder.Weapons[i];
 				break;

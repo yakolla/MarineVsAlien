@@ -39,10 +39,10 @@ public class Weapon : MonoBehaviour {
 	public CallbackOnCreateBullet	m_callbackCreateBullet = delegate(){};
 
 
-
+	int					m_maxLevel;
 	protected int		m_level;
-
-	RefItem				m_refItem;
+	protected int		m_evolution;
+	RefItem				m_refWeaponItem;
 
 
 	protected void Start()
@@ -61,36 +61,50 @@ public class Weapon : MonoBehaviour {
 	}
 
 
-	public virtual void Init(Creature creature, ItemWeaponData weaponData, WeaponStat weaponStat)
+	public virtual void Init(Creature creature, ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{
 		m_creature = creature;
 		m_gunPoint = creature.WeaponHolder.gameObject;
-		m_refItem = weaponData.RefItem;
+		m_refWeaponItem = weaponData.RefItem;
 
 		m_lastCreated = Time.time;
 		m_firing = false;
 		m_level = 0;
+		m_maxLevel = m_refWeaponItem.maxLevel;
 		m_weaponStat = new WeaponStat();
-		if (weaponStat == null)
+		if (weaponDesc.weaponStat == null)
 		{
-			m_weaponStat.OverrideStat(m_refItem.weaponStat);
+			m_weaponStat.OverrideStat(m_refWeaponItem.weaponStat);
 		}
 		else
 		{
-			m_weaponStat.OverrideStat(weaponStat);
-			m_weaponStat.OverrideStat(m_refItem.weaponStat);
+			m_weaponStat.OverrideStat(weaponDesc.weaponStat);
+			m_weaponStat.OverrideStat(m_refWeaponItem.weaponStat);
+			m_maxLevel = weaponDesc.maxLevel;
 		}
 	
 		for(int i = 0; i <= m_weaponStat.firingCount; ++i)
 			MoreFire();
 
+		m_evolution = weaponData.Evolution;
+
+		if (m_evolution > 0)
+		{
+			for(int i = 1; i <= m_maxLevel; ++i)
+			{
+				if (canCreateMoreFire(i))
+					MoreFire();
+			}
+		}
+
 		for(int i = 0; i < weaponData.Level; ++i)
 			LevelUp();
+
 	}
 
 	virtual public bool MoreFire()
 	{
-		if (m_refItem.evolutionFiring == null)
+		if (m_refWeaponItem.evolutionFiring == null)
 		{
 			if (m_firingDescs.Count == 0)
 			{
@@ -106,13 +120,13 @@ public class Weapon : MonoBehaviour {
 		if (count > Const.MaxFiringCount)
 			return false;
 
-		float angle = m_refItem.evolutionFiring.angle*((count+1)/2);
+		float angle = m_refWeaponItem.evolutionFiring.angle*((count+1)/2);
 		if (count % 2 == 1)
 		{
 			angle *= -1;
 		}
 		
-		float delay = m_refItem.evolutionFiring.delay*count;
+		float delay = m_refWeaponItem.evolutionFiring.delay*count;
 		
 		
 		Weapon.FiringDesc desc = new Weapon.FiringDesc();
@@ -128,20 +142,32 @@ public class Weapon : MonoBehaviour {
 	virtual public void LevelUp()
 	{
 		++m_level;
-		if (m_level > 1 && m_level % WeaponStat.incBulletOnLevel == 0)
+
+		if (canCreateMoreFire(m_level))
 		{
 			MoreFire();
 		}
 	}
 
-	public RefItem RefItem
+	bool canCreateMoreFire(int lv)
 	{
-		get {return m_refItem;}
+		return lv > 1 && lv % WeaponStat.incBulletOnLevel == 0;
+	}
+
+	public void EvolutionUp()
+	{
+		++m_evolution;
+		m_level = 1;
+	}
+
+	public RefItem RefWeaponItem
+	{
+		get {return m_refWeaponItem;}
 	}
 
 	public int SP
 	{
-		get{return (int)(m_refItem.consumedSP*Level);}
+		get{return (int)(m_refWeaponItem.consumedSP*Level);}
 	}
 
 	public int Damage
@@ -151,7 +177,7 @@ public class Weapon : MonoBehaviour {
 
 	public int GetDamage(CreatureProperty pro)
 	{
-		int damage = (int)((pro.PhysicalAttackDamage+Level)*m_damageRatio);
+		int damage = (int)((pro.PhysicalAttackDamage+(Level+m_maxLevel*m_evolution))*m_damageRatio);
 		return (int)(damage + damage*pro.DamageMultiPlier);
 	}
 

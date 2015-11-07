@@ -44,7 +44,7 @@ public class ItemSkillData : ItemData{
 			}
 			else
 			{
-				obj.EquipPassiveSkillWeapon(new ItemWeaponData(130), null);
+				obj.EquipPassiveSkillWeapon(new ItemWeaponData(130), new RefMob.WeaponDesc());
 			}
 			break;
 		}

@@ -11,6 +11,7 @@ public class GUIInventorySlot : MonoBehaviour {
 	{
 		public YGUISystem.GUIPriceButton	m_priceButton;
 		public YGUISystem.GUIPriceButton	m_gemButton;
+		Const.ButtonRole m_role = Const.ButtonRole.Nothing;
 
 		public GUIPriceGemButton(Transform transform, string buttonPath, System.Func<bool>			enableChecker)
 		{
@@ -20,11 +21,22 @@ public class GUIInventorySlot : MonoBehaviour {
 
 		public void Update(ItemObject itemObj)
 		{
-			if (itemObj.Item.Lock == false && itemObj.Item.RefItem.levelup != null)
+			switch(m_role)
 			{
+			case Const.ButtonRole.Nothing:
+			case Const.ButtonRole.Unlock:
+				break;
+			case Const.ButtonRole.Levelup:
 				m_priceButton.NormalWorth = Const.GetItemLevelupWorth(itemObj.Item.Level, itemObj.Item.RefItem.levelup);
 				m_gemButton.NormalWorth = Const.GetItemLevelupWorth(itemObj.Item.Level, itemObj.Item.RefItem.levelup);
+				break;
+			case Const.ButtonRole.Evolution:
+				m_priceButton.NormalWorth = Const.GetItemLevelupWorth(itemObj.Item.Evolution+1, itemObj.Item.RefItem.evolution);
+				m_gemButton.NormalWorth = Const.GetItemLevelupWorth(itemObj.Item.Evolution+1, itemObj.Item.RefItem.evolution);
+				break;			
 			}
+				
+
 
 			m_priceButton.Update();
 			m_gemButton.Update();
@@ -47,8 +59,30 @@ public class GUIInventorySlot : MonoBehaviour {
 			m_gemButton.GUIImageButton.Button.onClick.AddListener(gemCallback);
 		}
 		
-		public void SetPrices(RefPrice[] normal, RefPrice[] gem)
+		public void SetPrices(Const.ButtonRole role, RefItem refItem)
 		{
+			m_role = role;
+			RefPrice[] normal = null;
+			RefPrice[] gem = null;
+
+			switch(role)
+			{
+			case Const.ButtonRole.Unlock:
+				normal = refItem.unlock.conds;
+				gem = refItem.unlock.else_conds;
+				break;
+			case Const.ButtonRole.Levelup:
+				normal = refItem.levelup.conds;
+				gem = refItem.levelup.else_conds;
+				break;
+			case Const.ButtonRole.Evolution:
+				normal = refItem.evolution.conds;
+				gem = refItem.evolution.else_conds;
+				break;
+			case Const.ButtonRole.Nothing:
+				break;
+			}
+
 			m_priceButton.Prices = normal;
 			m_gemButton.Prices = gem;
 		}
@@ -79,14 +113,12 @@ public class GUIInventorySlot : MonoBehaviour {
 	YGUISystem.GUIButton	m_item;
 	GameObject	m_checkImage;
 	GUIPriceGemButton	m_priceButton0;
-	GUIPriceGemButton	m_priceButton1;
 	ItemObject 	m_itemObjOfWarehouse;
 
 	public void Init(GameObject tab, ItemObject itemObj)
 	{
 		m_itemObjOfWarehouse = itemObj;
 		m_priceButton0 = new GUIPriceGemButton(transform, "GUIPriceButton0", ()=>{return true;});
-		m_priceButton1 = new GUIPriceGemButton(transform, "GUIPriceButton1", ()=>{return true;});
 
 		m_item = new YGUISystem.GUIButton(transform.Find("PictureButton").gameObject, m_priceButton0.EnableChecker);
 		m_item.Icon.Lable.Text.text = itemObj.Item.Description();
@@ -110,12 +142,6 @@ public class GUIInventorySlot : MonoBehaviour {
 		get{return m_itemObjOfWarehouse;}
 	}
 
-	public GUIPriceGemButton PriceButton1
-	{
-		get{return m_priceButton1;}
-	}
-
-
 	public void SetListener(UnityEngine.Events.UnityAction callback)
 	{
 		m_item.Button.onClick.RemoveAllListeners();
@@ -128,22 +154,13 @@ public class GUIInventorySlot : MonoBehaviour {
 		ItemDesc = m_itemObjOfWarehouse.Item.Description();
 		m_item.Update();
 		m_priceButton0.Update(m_itemObjOfWarehouse);
-		m_priceButton1.Update(m_itemObjOfWarehouse);
 	}
 
 	public void Check(bool check)
 	{
 		m_checkImage.SetActive(check);
 	}
-	
-	public void StopSpinButton(int slot)
-	{
-		m_priceButton0.m_priceButton.GUIImageButton.Button.enabled = true;
-		m_priceButton0.m_priceButton.GUIImageButton.Lable.Text.enabled = true;
 
-		m_priceButton1.m_priceButton.GUIImageButton.Button.enabled = true;
-		m_priceButton1.m_priceButton.GUIImageButton.Lable.Text.enabled = true;
-	}
 }
 
 

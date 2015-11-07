@@ -17,8 +17,18 @@ public class Const {
 		MainMenu,
 	}
 
+	public enum ButtonRole
+	{
+		Nothing,
+		Levelup,
+		Unlock,
+		Evolution,
+	}
+
+	public const string PackageName = "com.banegole.marinevsalien";
 	public const int MaxWave = 100;
 	public const int MaxItemLevel = 9;
+	public const int MaxEvolutionLevel = 9;
 	public const int MaxShowDamageNumber = 3;
 	public const int SpecialButtons = 5;
 	public const int Guages = 3;

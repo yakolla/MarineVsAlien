@@ -8,9 +8,9 @@ public class SuicideBombing : Weapon {
 	float m_destroyTime = 15f;
 	float m_elapsed = 0f;
 
-	override public void Init(Creature creature, ItemWeaponData weaponData, WeaponStat weaponStat)
+	override public void Init(Creature creature, ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{
-		base.Init(creature, weaponData, weaponStat);
+		base.Init(creature, weaponData, weaponDesc);
 
 		m_destroy = false;
 		m_elapsed = Time.time;

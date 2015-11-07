@@ -38,11 +38,11 @@ public class Mob : Creature {
 
 			if (weaponDesc.passive == true)
 			{
-				EquipPassiveSkillWeapon(new ItemWeaponData(weaponDesc.refItemId), weaponDesc.weaponStat);
+				EquipPassiveSkillWeapon(new ItemWeaponData(weaponDesc.refItemId), weaponDesc);
 			}
 			else
 			{
-				EquipWeapon(new ItemWeaponData(weaponDesc.refItemId), weaponDesc.weaponStat);
+				EquipWeapon(new ItemWeaponData(weaponDesc.refItemId), weaponDesc);
 			}
 
 		}

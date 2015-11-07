@@ -47,7 +47,9 @@ public class ItemFollowerData : ItemData{
 		{
 			ItemWeaponData itemWeaponData = new ItemWeaponData(weaponDesc.refItemId);
 			itemWeaponData.Level = Level;
-			follower.EquipWeapon(itemWeaponData, weaponDesc.weaponStat);
+			itemWeaponData.Evolution = Evolution;
+			weaponDesc.maxLevel = RefItem.maxLevel;
+			follower.EquipWeapon(itemWeaponData, weaponDesc);
 		}
 
 		return follower;

@@ -919,6 +919,23 @@
 					"count":1
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":1000
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":100
+				}
+			]
 		}
 		
 	},
@@ -2122,6 +2139,23 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":1000
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":100
+				}
+			]
 		}
 	},
 	{
@@ -2604,6 +2638,23 @@
 						"type":"GainExtraGold",
 						"values":[1]
 					}
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":1000
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":100
 				}
 			]
 		}

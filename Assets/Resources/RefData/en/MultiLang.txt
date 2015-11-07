@@ -81,4 +81,5 @@
 	"Thanks for your purchase: ",
 	"Buy",
 	"Restart Wave",
+	"Evolution",
 ]

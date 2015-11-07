@@ -132,9 +132,4 @@ public class GPlusPlatform {
 	{
 		m_ga.LogScreen(title);
 	}
-
-
-
-
-
 }

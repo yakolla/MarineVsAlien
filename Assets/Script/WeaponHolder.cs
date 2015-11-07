@@ -59,13 +59,13 @@ public class WeaponHolder : MonoBehaviour {
 
 	public void EquipActiveSkillWeapon(Weapon weapon)
 	{
-		m_activeWeapons.Add(weapon.RefItem.id, weapon);
+		m_activeWeapons.Add(weapon.RefWeaponItem.id, weapon);
 	}
 
 
 	public void EquipPassiveSkillWeapon(Weapon weapon)
 	{
-		m_passiveWeapons.Add(weapon.RefItem.id, weapon);
+		m_passiveWeapons.Add(weapon.RefWeaponItem.id, weapon);
 	}
 
 	public Weapon GetPassiveSkillWeapon(int refId)
@@ -133,8 +133,17 @@ public class WeaponHolder : MonoBehaviour {
 	{
 		foreach(Weapon weapon in m_weapons)
 		{
-			if (refWeaponID == 0 || refWeaponID == weapon.RefItem.id)
+			if (refWeaponID == 0 || refWeaponID == weapon.RefWeaponItem.id)
 				weapon.LevelUp();
+		}
+	}
+
+	public void EvolutionUp(int refWeaponID)
+	{
+		foreach(Weapon weapon in m_weapons)
+		{
+			if (refWeaponID == 0 || refWeaponID == weapon.RefWeaponItem.id)
+				weapon.EvolutionUp();
 		}
 	}
 

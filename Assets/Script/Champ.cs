@@ -137,13 +137,13 @@ public class Champ : Creature {
 	}
 */
 
-	override public Weapon EquipWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	override public Weapon EquipWeapon(ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{
-		Weapon weapon = base.EquipWeapon(weaponData, weaponStat);
+		Weapon weapon = base.EquipWeapon(weaponData, weaponDesc);
 		if (weaponData.RefItem.partName != null)
 			transform.Find("Body/"+weaponData.RefItem.partName).gameObject.SetActive(true);
 
-		if (weapon.RefItem.id == Const.ChampTapRefItemId)
+		if (weapon.RefWeaponItem.id == Const.ChampTapRefItemId)
 		{
 			m_tapWeapon = weapon;
 		}
