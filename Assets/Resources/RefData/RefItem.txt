@@ -786,6 +786,27 @@
 					"count":300
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":100000000
+				},
+				{
+					"refItemId":4, 
+					"count":100000
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":10000000
+				}
+			]
 		}
 	},
 	{
@@ -925,7 +946,11 @@
 			"conds":
 			[
 				{
-					"refItemId":11, 
+					"refItemId":1, 
+					"count":1000000
+				},
+				{
+					"refItemId":4, 
 					"count":1000
 				}
 			],
@@ -933,7 +958,7 @@
 			[
 				{
 					"refItemId":8,
-					"count":100
+					"count":100000
 				}
 			]
 		}
@@ -1856,6 +1881,27 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10000000
+				},
+				{
+					"refItemId":4, 
+					"count":10000
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1000000
+				}
+			]
 		}
 	},
 	{
@@ -2146,14 +2192,18 @@
 			[
 				{
 					"refItemId":11, 
-					"count":1000
+					"count":70000
+				},
+				{
+					"refItemId":4, 
+					"count":700
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":100
+					"count":7000
 				}
 			]
 		}
@@ -2243,6 +2293,27 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":140000
+				},
+				{
+					"refItemId":4, 
+					"count":1400
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":14000
+				}
+			]
 		}
 	},
 	{
@@ -2328,6 +2399,27 @@
 						"type":"DmgMultiplier",
 						"values":[9]
 					}
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":280000
+				},
+				{
+					"refItemId":4, 
+					"count":2800
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":28000
 				}
 			]
 		}
@@ -2417,6 +2509,27 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":560000
+				},
+				{
+					"refItemId":4, 
+					"count":5600
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":56000
+				}
+			]
 		}
 	},
 	{
@@ -2504,6 +2617,27 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":1120000
+				},
+				{
+					"refItemId":4, 
+					"count":11200
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":112000
+				}
+			]
 		}
 	},
 	{
@@ -2589,6 +2723,27 @@
 						"type":"DmgMultiplier",
 						"values":[9]
 					}
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":2240000
+				},
+				{
+					"refItemId":4, 
+					"count":22400
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":224000
 				}
 			]
 		}
@@ -2744,6 +2899,27 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":4480000
+				},
+				{
+					"refItemId":4, 
+					"count":44800
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":448000
+				}
+			]
 		}
 	},
 	{
@@ -2758,41 +2934,20 @@
 		{
 			"coolTime":90
 		},
-		"unlock":
-		{
-			"conds":
-			[
-				{
-					"refItemId":5,
-					"count":4480
-				},
-				{
-					"refItemId":11, 
-					"count":44800
-				}
-			],
-			"else_conds":
-			[
-				{
-					"refItemId":8,
-					"count":4480
-				}
-			]
-		},
 		"levelup":
 		{
 			"conds":
 			[
 				{
 					"refItemId":1, 
-					"count":4480
+					"count":8960
 				}
 			],
 			"else_conds":
 			[
 				{
 					"refItemId":8,
-					"count":448
+					"count":896
 				}
 			],
 			"optionPerLevel":
@@ -2828,6 +2983,27 @@
 						"type":"DmgMultiplier",
 						"values":[9]
 					}
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":8960000
+				},
+				{
+					"refItemId":4, 
+					"count":89600
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":896000
 				}
 			]
 		}

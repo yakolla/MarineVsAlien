@@ -160,17 +160,17 @@ public class WarehouseData
 			get{return m_damageEffect.perSec;}
 		}
 
-		public float MaxDealDamagePerSec
+		public long MaxDealDamagePerSec
 		{
 			get{return m_dealDamages.maxAmount;}
 		}
 
-		public float MaxTakenDamagePerSec
+		public long MaxTakenDamagePerSec
 		{
 			get{return m_takenDamages.maxAmount;}
 		}
 
-		public float MaxConsumedSPPerSec
+		public long MaxConsumedSPPerSec
 		{
 			get{return m_consumedSP.maxAmount;}
 		}
