@@ -1905,6 +1905,23 @@
 		}
 	},
 	{
+		"id":138,
+		"codeName":"BossExplosionPassiveLauncher",
+		"name":"ShockWave",
+		"type":"Weapon",
+		"icon":"Sprites/Explosion",		
+		"weaponStat":
+		{
+			"coolTime":8,
+			"range":3,
+			"buffOnHitDesc":
+			{
+				"chance":1,
+				"buffType":"Stun"
+			}
+		}
+	},
+	{
 		"id":201,
 		"codeName":"FollowerGun",
 		"type":"Weapon",
@@ -2793,23 +2810,6 @@
 						"type":"GainExtraGold",
 						"values":[1]
 					}
-				}
-			]
-		},		
-		"evolution":
-		{
-			"conds":
-			[
-				{
-					"refItemId":11, 
-					"count":1000
-				}
-			],
-			"else_conds":
-			[
-				{
-					"refItemId":8,
-					"count":100
 				}
 			]
 		}

@@ -461,6 +461,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 			if (button.TryToPay())
 			{
+				invSlot.IconAnimator.SetTrigger("Levelup");
 				StartSpinButton(priceGemButton.m_priceButton.GUIImageButton);
 				++selectedItem.Item.Level;
 
@@ -509,6 +510,8 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 			if (button.TryToPay() == true)
 			{
+				invSlot.IconAnimator.SetTrigger("Levelup");
+
 				selectedItem.Item.Lock = false;
 				selectedItem.Item.Level = 1;
 
@@ -543,6 +546,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 			if (button.TryToPay())
 			{
+				invSlot.IconAnimator.SetTrigger("Levelup");
 				StartSpinButton(priceGemButton.m_priceButton.GUIImageButton);
 				++selectedItem.Item.Evolution;
 				selectedItem.Item.Level = 1;

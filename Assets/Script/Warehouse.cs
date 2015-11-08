@@ -616,6 +616,25 @@ public class Warehouse {
 							}
 						}
 					}
+
+					RefPriceCondition condEvolution = obj.Item.RefItem.evolution;
+					if (condEvolution != null)
+					{
+						if (condEvolution.else_conds == null)
+							continue;
+						
+						foreach(RefPrice refPrice in condEvolution.else_conds)
+						{
+							if (refPrice.refItemId == Const.GemRefItemId)
+							{
+								for(int lv = obj.Item.Evolution; lv < obj.Item.RefItem.maxEvolution; ++lv)
+								{
+									totalGem += (int)(refPrice.count*Const.GetItemLevelupWorth(lv, condEvolution));
+								}
+								break;
+							}
+						}
+					}
 				}
 			}
 			return totalGem-Gem.Item.Count;

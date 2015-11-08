@@ -115,16 +115,18 @@ public class GUIInventorySlot : MonoBehaviour {
 	GUIPriceGemButton	m_priceButton0;
 	ItemObject 	m_itemObjOfWarehouse;
 	YGUISystem.GUILable		m_evolutionText;
+	Animator		m_iconAnimator;
 
 	public void Init(GameObject tab, ItemObject itemObj)
 	{
 		m_itemObjOfWarehouse = itemObj;
 		m_priceButton0 = new GUIPriceGemButton(transform, "GUIPriceButton0", ()=>{return true;});
 
-		m_evolutionText = new YGUISystem.GUILable(transform.Find("PictureButton/EvolutionText").gameObject);
+		m_evolutionText = new YGUISystem.GUILable(transform.Find("PictureButton/Icon/EvolutionText").gameObject);
 		m_item = new YGUISystem.GUIButton(transform.Find("PictureButton").gameObject, m_priceButton0.EnableChecker);
 		m_item.Icon.Lable.Text.text = itemObj.Item.Description();
 		m_item.Icon.Image = itemObj.ItemIcon;
+		m_iconAnimator = transform.Find("PictureButton/Icon").GetComponent<Animator>();
 		m_item.Lable.Text.text = RefData.Instance.RefTexts(itemObj.Item.RefItem.desc);
 		m_checkImage = tab.transform.Find("Checked").gameObject;
 	}
@@ -148,6 +150,11 @@ public class GUIInventorySlot : MonoBehaviour {
 	{
 		m_item.Button.onClick.RemoveAllListeners();
 		m_item.Button.onClick.AddListener(callback);
+	}
+
+	public Animator	IconAnimator
+	{
+		get {return m_iconAnimator;}
 	}
 
 	public void Update()
