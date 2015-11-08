@@ -1533,14 +1533,11 @@
 			"id":30009,			
 			"prefHead":"Follower",
 			"prefBody":"season1 champ",
-			"name":"SwordMarine",
+			"name":"BMarine",
 			"refWeaponItems":
 			[
 				{
 					"refItemId":"108"
-				},
-				{
-					"refItemId":"106"
 				}
 			],
 			"mobAI":"Follow",
@@ -1549,14 +1546,14 @@
 			{
 				"maxHP":15,
 				"maxSP":100,
-				"physicalDamage":6,
+				"physicalDamage":7,
 				"physicalDefence":0,
 				"evolutionPerLevel":0.2,
 				"exp":0,
 				"phyDamagePerLevel":10,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
-				"moveSpeed":4.5,
+				"moveSpeed":2,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false

@@ -31,7 +31,6 @@ public class Const {
 	public const int MaxEvolutionLevel = 9;
 	public const int MaxShowDamageNumber = 3;
 	public const int SpecialButtons = 5;
-	public const int Guages = 3;
 	public const int MaxCallableFollowers = 2;
 	public const int MaxFiringCount = MaxItemLevel;
 	public const float MaxAlphaMoveSpeed = 10f;

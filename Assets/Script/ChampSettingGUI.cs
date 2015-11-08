@@ -112,7 +112,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGrenadeMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
-				//Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerRedMarineRefItemId));
+				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerRedMarineRefItemId));
 
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
