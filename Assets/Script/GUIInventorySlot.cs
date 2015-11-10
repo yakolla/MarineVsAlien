@@ -111,6 +111,8 @@ public class GUIInventorySlot : MonoBehaviour {
 	}
 
 	YGUISystem.GUIButton	m_item;
+	YGUISystem.GUIButton	m_maxGoldPrice;
+	YGUISystem.GUIButton	m_maxGemPrice;
 	GameObject	m_checkImage;
 	GUIPriceGemButton	m_priceButton0;
 	ItemObject 	m_itemObjOfWarehouse;
@@ -126,6 +128,13 @@ public class GUIInventorySlot : MonoBehaviour {
 		m_item = new YGUISystem.GUIButton(transform.Find("PictureButton").gameObject, m_priceButton0.EnableChecker);
 		m_item.Icon.Lable.Text.text = itemObj.Item.Description();
 		m_item.Icon.Image = itemObj.ItemIcon;
+
+		m_maxGoldPrice = new YGUISystem.GUIButton(transform.Find("MaxPriceButton").gameObject, m_priceButton0.EnableChecker);
+		m_maxGoldPrice.Button.gameObject.SetActive(false);
+
+		m_maxGemPrice = new YGUISystem.GUIButton(transform.Find("MaxGemButton").gameObject, m_priceButton0.EnableChecker);
+		m_maxGemPrice.Button.gameObject.SetActive(false);
+
 		m_iconAnimator = transform.Find("PictureButton/Icon").GetComponent<Animator>();
 		m_item.Lable.Text.text = RefData.Instance.RefTexts(itemObj.Item.RefItem.desc);
 		m_checkImage = tab.transform.Find("Checked").gameObject;
@@ -134,6 +143,16 @@ public class GUIInventorySlot : MonoBehaviour {
 	public GUIPriceGemButton PriceButton0
 	{
 		get{return m_priceButton0;}
+	}
+
+	public YGUISystem.GUIButton MaxPriceButton
+	{
+		get{return m_maxGoldPrice;}
+	}
+
+	public YGUISystem.GUIButton MaxGemButton
+	{
+		get{return m_maxGemPrice;}
 	}
 
 	public string ItemDesc
@@ -146,10 +165,13 @@ public class GUIInventorySlot : MonoBehaviour {
 		get{return m_itemObjOfWarehouse;}
 	}
 
-	public void SetListener(UnityEngine.Events.UnityAction callback)
+	public void SetListener(UnityEngine.Events.UnityAction callback, UnityEngine.Events.UnityAction gemCallback)
 	{
-		m_item.Button.onClick.RemoveAllListeners();
-		m_item.Button.onClick.AddListener(callback);
+		m_maxGoldPrice.Button.onClick.RemoveAllListeners();
+		m_maxGoldPrice.Button.onClick.AddListener(callback);
+
+		m_maxGemPrice.Button.onClick.RemoveAllListeners();
+		m_maxGemPrice.Button.onClick.AddListener(gemCallback);
 	}
 
 	public Animator	IconAnimator

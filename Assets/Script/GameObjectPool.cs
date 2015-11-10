@@ -58,12 +58,12 @@ public class GameObjectPool {
 			}
 
 			m_freeGameObject[pref].Add(obj);
-
+			/*
 			MonoBehaviour[] mono = obj.GetComponentsInChildren<MonoBehaviour>();
 			for(int i = 0; i < mono.Length; ++i)
 			{
 				mono[i].CancelInvoke();
-			}
+			}*/
 			obj.SetActive(false);
 
 			m_allocGameObject.Remove(obj);

@@ -166,11 +166,13 @@ public class Creature : MonoBehaviour {
 		m_weaponHolder.EquipPassiveSkillWeapon(weapon);
 	}
 
-	public void EquipActiveSkillWeapon(ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
+	public virtual Weapon EquipActiveSkillWeapon(ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{
 		Weapon weapon = instanceWeapon(weaponData, weaponDesc);
 		
 		m_weaponHolder.EquipActiveSkillWeapon(weapon);
+
+		return weapon;
 	}
 
 	public void SetSubWeapon(Weapon weapon, ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)

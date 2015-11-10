@@ -142,6 +142,12 @@ public class Champ : Creature {
 		Weapon weapon = base.EquipWeapon(weaponData, weaponDesc);
 		if (weaponData.RefItem.partName != null)
 			transform.Find("Body/"+weaponData.RefItem.partName).gameObject.SetActive(true);
+		return weapon;
+	}
+
+	public override Weapon EquipActiveSkillWeapon(ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
+	{
+		Weapon weapon = base.EquipActiveSkillWeapon(weaponData, weaponDesc);
 
 		if (weapon.RefWeaponItem.id == Const.ChampTapRefItemId)
 		{
@@ -150,6 +156,8 @@ public class Champ : Creature {
 
 		return weapon;
 	}
+
+
 	// Update is called once per frame
 	new void Update () {
 		base.Update();
@@ -159,6 +167,12 @@ public class Champ : Creature {
 			if (AutoAttack() == false)
 			{
 				m_weaponHolder.StopFiring();
+				m_navAgent.Resume();
+			}
+			else
+			{
+				if (WeaponHolder.MainWeapon != null)
+					m_navAgent.Stop();
 			}
 		}
 

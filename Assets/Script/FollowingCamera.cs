@@ -11,8 +11,8 @@ public class FollowingCamera : MonoBehaviour
 
 
 	[SerializeField]
-	Vector3 m_cameraOffset;
-
+	Vector3 m_cameraOffset = Vector3.zero;
+	Vector3 m_cameraSide;
 	Vector3	m_from;
 
 	Rect m_cameraEdge = new Rect();
@@ -34,6 +34,12 @@ public class FollowingCamera : MonoBehaviour
 		m_mainTarget = mainTarget;
 		SetTarget(m_mainTarget, null);
 	}
+
+	public float SideSize
+	{
+		set {m_cameraSide.x = value;}
+	}
+
 
 	void Start()
 	{
@@ -57,7 +63,7 @@ public class FollowingCamera : MonoBehaviour
 
 		m_elapsedTime += Time.deltaTime*0.6f;
 
-		Vector3 myCharacterPosition = Vector3.Lerp(m_from, m_target.transform.position-m_cameraOffset, Mathf.Min(1f, m_elapsedTime));
+		Vector3 myCharacterPosition = Vector3.Lerp(m_from, m_target.transform.position-m_cameraOffset+m_cameraSide, Mathf.Min(1f, m_elapsedTime));
 		myCharacterPosition.x = Mathf.Clamp(myCharacterPosition.x, m_cameraEdge.x, m_cameraEdge.width);
 		myCharacterPosition.z = Mathf.Clamp(myCharacterPosition.z, m_cameraEdge.y, m_cameraEdge.height);
 		Camera.main.transform.position = myCharacterPosition;

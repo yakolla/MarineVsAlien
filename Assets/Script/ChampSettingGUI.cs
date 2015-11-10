@@ -288,11 +288,13 @@ public class ChampSettingGUI : MonoBehaviour {
 			{
 
 				priceGemButton.EnableChecker = ()=>{
-				return item.Item.RefItem.levelup.conds != null && item.Item.Lock == false && item.Item.Level < item.Item.RefItem.maxLevel;};
-				
+					return item.Item.RefItem.levelup.conds != null && item.Item.Lock == false && item.Item.Level < item.Item.RefItem.maxLevel;
+				};
+
+			invSlot.SetListener(() => OnClickLevelupToMax(invSlot, priceGemButton, false, item), () => OnClickLevelupToMax(invSlot, priceGemButton, true, item) );
 				priceGemButton.SetPrices(role, item.Item.RefItem);
 				
-				priceGemButton.AddListener(() => OnClickLevelup(invSlot, priceGemButton, priceGemButton.m_priceButton, item), () => OnClickLevelup(invSlot, priceGemButton, priceGemButton.m_gemButton, item) );
+				priceGemButton.AddListener(() => OnClickLevelup(invSlot, priceGemButton, false, item), () => OnClickLevelup(invSlot, priceGemButton, true, item) );
 			priceGemButton.SetLable(RefData.Instance.RefTexts(MultiLang.ID.LevelUp));
 			}
 			break;
@@ -301,7 +303,8 @@ public class ChampSettingGUI : MonoBehaviour {
 			{
 			priceGemButton.EnableChecker = ()=>{
 				
-				return item.Item.RefItem.unlock.conds != null && item.Item.Lock == true;};
+				return item.Item.RefItem.unlock.conds != null && item.Item.Lock == true;
+			};
 
 				priceGemButton.SetPrices(role, item.Item.RefItem);
 
@@ -314,7 +317,8 @@ public class ChampSettingGUI : MonoBehaviour {
 		case Const.ButtonRole.Evolution:
 			{
 			priceGemButton.EnableChecker = ()=>{
-				return item.Item.RefItem.evolution.conds != null && item.Item.Level == item.Item.RefItem.maxLevel && item.Item.Evolution < item.Item.RefItem.maxEvolution;};
+				return item.Item.RefItem.evolution.conds != null && item.Item.Level == item.Item.RefItem.maxLevel && item.Item.Evolution < item.Item.RefItem.maxEvolution;
+			};
 			
 			priceGemButton.SetPrices(role, item.Item.RefItem);
 			
@@ -405,7 +409,7 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		foreach(ItemObject itemWeaponObject in Warehouse.Instance.Items[ItemData.Type.Weapon])
 		{
-			if (itemWeaponObject.Item.Level > 0)
+			if (itemWeaponObject.Item.Level > 0 && itemWeaponObject.Item.RefItem.id != Const.ChampTapRefItemId)
 			{
 				itemWeaponObject.Item.Equip(champ);
 			}
@@ -427,6 +431,7 @@ public class ChampSettingGUI : MonoBehaviour {
 			}
 		}
 
+		m_champ.EquipActiveSkillWeapon(Warehouse.Instance.FindItem(Const.ChampTapRefItemId).Item as ItemWeaponData, new RefMob.WeaponDesc());
 		m_champ.WeaponHolder.EquipActiveSkillWeapon(m_champ.instanceWeapon(new ItemWeaponData(Const.NuclearRefItemId), new RefMob.WeaponDesc()));
 
 		m_champ.m_creatureProperty.Exp = Warehouse.Instance.GameDataContext.m_xp.Value;
@@ -454,52 +459,79 @@ public class ChampSettingGUI : MonoBehaviour {
 		GameObject.Find("HudGUI/SlotMachineGUI").transform.Find("Panel").gameObject.SetActive(true);
 	}
 
-	public void OnClickLevelup(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, YGUISystem.GUIPriceButton button, ItemObject selectedItem)
+	IEnumerator DelayClickLevelUp(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, bool gem, ItemObject selectedItem)
+	{		
+		while(OnClickLevelup(invSlot, priceGemButton, gem, selectedItem) == true)
+			yield return new WaitForSeconds (0.2f);
+	}
+
+
+	public void OnClickLevelupToMax(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, bool gem, ItemObject selectedItem)
 	{
+		StartCoroutine(DelayClickLevelUp(invSlot, priceGemButton, gem, selectedItem));
+	}
 
-		if (selectedItem.Item.Level < selectedItem.Item.RefItem.maxLevel)
+	public bool OnClickLevelup(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, bool gem, ItemObject selectedItem)
+	{
+		if (m_champ == null)
+			return false;
+
+		if (selectedItem.Item.Level == selectedItem.Item.RefItem.maxLevel)
+			return false;
+
+		YGUISystem.GUIPriceButton button = gem == true ? priceGemButton.m_gemButton : priceGemButton.m_priceButton;
+
+		if (button.TryToPay())
 		{
-			if (button.TryToPay())
+			invSlot.IconAnimator.SetTrigger("Levelup");
+			StartSpinButton(priceGemButton.m_priceButton.GUIImageButton);
+			++selectedItem.Item.Level;
+
+			if (selectedItem.Item.RefItem.type == ItemData.Type.Weapon)
 			{
-				invSlot.IconAnimator.SetTrigger("Levelup");
-				StartSpinButton(priceGemButton.m_priceButton.GUIImageButton);
-				++selectedItem.Item.Level;
-
-				if (selectedItem.Item.RefItem.type == ItemData.Type.Weapon)
-				{
-					m_champ.WeaponHolder.LevelUp(selectedItem.Item.RefItem.id);
-					selectedItem.Item.Use(m_champ);
-				}
-				else if (selectedItem.Item.RefItem.type == ItemData.Type.Follower)
-				{
-					ItemFollowerData itemFollowerData = selectedItem.Item as ItemFollowerData;
-					itemFollowerData.m_follower.LevelUp();
-					itemFollowerData.Use(itemFollowerData.m_follower);
-				}
-				else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat
-				         || selectedItem.Item.RefItem.type == ItemData.Type.WeaponParts)
-				{
-					selectedItem.Item.Use(m_champ);
-				}
-
-				if (selectedItem.Item.Level == selectedItem.Item.RefItem.maxLevel)
-				{
-					priceGemButton.SetPrices(Const.ButtonRole.Nothing, null);
-					SetButtonRole(Const.ButtonRole.Evolution, invSlot, priceGemButton, selectedItem);
-				}
-
-				invSlot.ItemDesc = selectedItem.Item.Description();
-
-
-				GPlusPlatform.Instance.AnalyticsTrackEvent("Weapon", "Levelup", selectedItem.Item.RefItem.name + "_Lv:" + selectedItem.Item.Level, 0);
+				m_champ.WeaponHolder.LevelUp(selectedItem.Item.RefItem.id);
+				selectedItem.Item.Use(m_champ);
 			}
+			else if (selectedItem.Item.RefItem.type == ItemData.Type.Follower)
+			{
+				ItemFollowerData itemFollowerData = selectedItem.Item as ItemFollowerData;
+				itemFollowerData.m_follower.LevelUp();
+				itemFollowerData.Use(itemFollowerData.m_follower);
+			}
+			else if (selectedItem.Item.RefItem.type == ItemData.Type.Stat
+			         || selectedItem.Item.RefItem.type == ItemData.Type.WeaponParts)
+			{
+				selectedItem.Item.Use(m_champ);
+			}
+
+			if (selectedItem.Item.Level == selectedItem.Item.RefItem.maxLevel)
+			{
+				priceGemButton.SetPrices(Const.ButtonRole.Nothing, null);
+				SetButtonRole(Const.ButtonRole.Evolution, invSlot, priceGemButton, selectedItem);
+			}
+
+			invSlot.ItemDesc = selectedItem.Item.Description();
+
+			if (gem == true)
+				invSlot.MaxGemButton.Button.gameObject.SetActive(Const.CheckAvailableItem(selectedItem.Item.RefItem.levelup.else_conds, Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup)));
 			else
-			{
-				if (priceGemButton.m_gemButton == button)
-					PopupShop();
-			}
+				invSlot.MaxPriceButton.Button.gameObject.SetActive(Const.CheckAvailableItem(selectedItem.Item.RefItem.levelup.conds, Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup)));
+
+			GPlusPlatform.Instance.AnalyticsTrackEvent("Weapon", "Levelup", selectedItem.Item.RefItem.name + "_Lv:" + selectedItem.Item.Level, 0);
+			return true;
+		}
+		else
+		{
+			if (priceGemButton.m_gemButton == button)
+				PopupShop();
 		}
 
+		if (gem == true)
+			invSlot.MaxGemButton.Button.gameObject.SetActive(false);
+		else
+			invSlot.MaxPriceButton.Button.gameObject.SetActive(false);
+
+		return false;
 	}
 
 	public void OnClickUnlock(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, YGUISystem.GUIPriceButton button, ItemObject selectedItem)
@@ -697,9 +729,7 @@ public class ChampSettingGUI : MonoBehaviour {
 					}
 
 				}
-				
-
-								
+												
 				++itemAddedCount;
 			}
 		}

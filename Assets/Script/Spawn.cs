@@ -221,6 +221,7 @@ public class Spawn : MonoBehaviour {
 					float[] angles = {0f, 3.14f};
 					float angle = 0f;
 					float length = 8f;
+					/*
 					switch(m_goalPointIndex)
 					{
 					case 0:
@@ -240,7 +241,22 @@ public class Spawn : MonoBehaviour {
 						if (m_champ != null)
 							m_champ.m_creatureProperty.AttackRange=0;
 						break;
-					}							
+					}				
+*/
+					if (isLeftToRight())
+					{
+						angle = 0f;
+						length = 12;
+						if (m_champ != null)
+							m_champ.m_creatureProperty.AttackRange=2;
+					}
+					else
+					{
+						angle = 3.14f;
+						length = 12;
+						if (m_champ != null)
+							m_champ.m_creatureProperty.AttackRange=2;
+					}
 
 					if (refMob.baseCreatureProperty.moveSpeed > 0f && refMob.nearByChampOnSpawn == false)
 					{
@@ -377,19 +393,31 @@ public class Spawn : MonoBehaviour {
 		shake.enabled = true;
 	}
 
+	bool isLeftToRight()
+	{
+		return (m_relWave/m_goalPoints.Length)%2==0;
+	}
+
 	IEnumerator MoveChamp()
 	{
 		if (m_champ != null)
 		{
 			NavMeshAgent nav = m_champ.GetComponent<NavMeshAgent>();
 			bool leftToRight = false;
-			if ((m_relWave/m_goalPoints.Length)%2==0)
+			float angle = 0f;
+			if (isLeftToRight())
 			{
 				m_goalPointIndex = m_relWave%m_goalPoints.Length;
 				leftToRight = true;
+				angle = 0f;
+				m_followingCamera.SideSize = 2.5f;
 			}
 			else
+			{
 				m_goalPointIndex = m_goalPoints.Length-m_relWave%m_goalPoints.Length-1;
+				m_followingCamera.SideSize = -2.5f;
+				angle = 180f;
+			}
 
 			nav.SetDestination(m_goalPoints[m_goalPointIndex].transform.position);
 			m_champ.RotateToTarget(m_goalPoints[m_goalPointIndex].transform.position);
@@ -402,15 +430,10 @@ public class Spawn : MonoBehaviour {
 				yield return null;
 			}
 
-			float angle = 0f;
-
-			if (leftToRight == false)
+			if (m_goalPointIndex == 0)
 				angle = 0f;
-
-			if (m_goalPointIndex == m_goalPoints.Length-1)
+			else if (m_goalPointIndex == m_goalPoints.Length-1)
 				angle = 180f;
-			else if (m_goalPointIndex == 0)
-				angle = 0f;
 
 			m_champ.RotateToTarget(angle);
 			m_champ.Followers.ForEach(follower=>{
