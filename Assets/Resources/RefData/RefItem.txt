@@ -786,6 +786,27 @@
 					"count":300
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":100000000
+				},
+				{
+					"refItemId":4, 
+					"count":100000
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":10000000
+				}
+			]
 		}
 	},
 	{
@@ -917,6 +938,27 @@
 				{
 					"refItemId":8,
 					"count":1
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":1000000
+				},
+				{
+					"refItemId":4, 
+					"count":1000
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":100000
 				}
 			]
 		}
@@ -1839,6 +1881,44 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":10000000
+				},
+				{
+					"refItemId":4, 
+					"count":10000
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":1000000
+				}
+			]
+		}
+	},
+	{
+		"id":138,
+		"codeName":"BossExplosionPassiveLauncher",
+		"name":"ShockWave",
+		"type":"Weapon",
+		"icon":"Sprites/Explosion",		
+		"weaponStat":
+		{
+			"coolTime":8,
+			"range":3,
+			"buffOnHitDesc":
+			{
+				"chance":1,
+				"buffType":"Stun"
+			}
 		}
 	},
 	{
@@ -2122,6 +2202,27 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":70000
+				},
+				{
+					"refItemId":4, 
+					"count":700
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":7000
+				}
+			]
 		}
 	},
 	{
@@ -2207,6 +2308,27 @@
 						"type":"DmgMultiplier",
 						"values":[9]
 					}
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":140000
+				},
+				{
+					"refItemId":4, 
+					"count":1400
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":14000
 				}
 			]
 		}
@@ -2296,6 +2418,27 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":280000
+				},
+				{
+					"refItemId":4, 
+					"count":2800
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":28000
+				}
+			]
 		}
 	},
 	{
@@ -2381,6 +2524,27 @@
 						"type":"DmgMultiplier",
 						"values":[9]
 					}
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":560000
+				},
+				{
+					"refItemId":4, 
+					"count":5600
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":56000
 				}
 			]
 		}
@@ -2470,6 +2634,27 @@
 					}
 				}
 			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":1120000
+				},
+				{
+					"refItemId":4, 
+					"count":11200
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":112000
+				}
+			]
 		}
 	},
 	{
@@ -2555,6 +2740,27 @@
 						"type":"DmgMultiplier",
 						"values":[9]
 					}
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":2240000
+				},
+				{
+					"refItemId":4, 
+					"count":22400
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":224000
 				}
 			]
 		}
@@ -2691,6 +2897,113 @@
 						"type":"DmgMultiplier",
 						"values":[9]
 					}
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":4480000
+				},
+				{
+					"refItemId":4, 
+					"count":44800
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":448000
+				}
+			]
+		}
+	},
+	{
+		"id":1009,
+		"codeName":"Follower",
+		"type":"Follower",
+		"icon":"Sprites/RedMarine",
+		"maxLevel":900,
+		"defaultLock":false,
+		"followerId":30009,
+		"weaponStat":
+		{
+			"coolTime":90
+		},
+		"levelup":
+		{
+			"conds":
+			[
+				{
+					"refItemId":1, 
+					"count":8960
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":896
+				}
+			],
+			"optionPerLevel":
+			[
+				{
+					"level":100,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[1]
+					}
+				},
+				{
+					"level":300,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[3]
+					}
+				},
+				{
+					"level":600,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[6]
+					}
+				},
+				{
+					"level":900,
+					"option":
+					{
+						"type":"DmgMultiplier",
+						"values":[9]
+					}
+				}
+			]
+		},		
+		"evolution":
+		{
+			"conds":
+			[
+				{
+					"refItemId":11, 
+					"count":8960000
+				},
+				{
+					"refItemId":4, 
+					"count":89600
+				}
+			],
+			"else_conds":
+			[
+				{
+					"refItemId":8,
+					"count":896000
 				}
 			]
 		}

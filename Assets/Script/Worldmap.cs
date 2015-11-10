@@ -50,6 +50,7 @@ public class Worldmap : MonoBehaviour {
 			{
 				++m_try;
 				log = "OnOpenSavedGameForLoading:" + status + m_try;
+				Const.ShowLoadingGUI(log);
 
 				StartCoroutine(DelayMessage("OpenGame", 1f));
 				return;
@@ -120,6 +121,7 @@ public class Worldmap : MonoBehaviour {
 				//if (success == true)
 				{
 					log = "Login success";
+					Const.ShowLoadingGUI(log);
 
 					switch(loginWith)
 					{

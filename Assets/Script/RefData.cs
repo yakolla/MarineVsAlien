@@ -147,6 +147,7 @@ public class RefItem : RefBaseData
 	public 	int					followerId;
 	public 	bool				defaultLock = false;
 	public  int					maxLevel = Const.MaxItemLevel;
+	public  int					maxEvolution = Const.MaxEvolutionLevel;
 	public 	float				consumedSP;
 }
 
@@ -214,6 +215,7 @@ public class RefMob : RefBaseData
 		public int reqLevel = 0;
 		public int refItemId;
 		public int level = 1;
+		public int maxLevel;
 		public int evolution = 0;
 		public bool passive = false;
 		public WeaponStat weaponStat;

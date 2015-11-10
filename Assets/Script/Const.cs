@@ -17,11 +17,20 @@ public class Const {
 		MainMenu,
 	}
 
+	public enum ButtonRole
+	{
+		Nothing,
+		Levelup,
+		Unlock,
+		Evolution,
+	}
+
+	public const string PackageName = "com.banegole.marinevsalien";
 	public const int MaxWave = 100;
 	public const int MaxItemLevel = 9;
+	public const int MaxEvolutionLevel = 9;
 	public const int MaxShowDamageNumber = 3;
 	public const int SpecialButtons = 5;
-	public const int Guages = 3;
 	public const int MaxCallableFollowers = 2;
 	public const int MaxFiringCount = MaxItemLevel;
 	public const float MaxAlphaMoveSpeed = 10f;
@@ -55,6 +64,7 @@ public class Const {
 	public const int FollowerGrenadeMarineRefItemId = 1006;
 	public const int FollowerPetRefItemId = 1007;
 	public const int FollowerMeleeRefItemId = 1008;
+	public const int FollowerRedMarineRefItemId = 1009;
 
 
 	public const string LEADERBOARD_KILLED_MOBS = "CgkI4IXrjtcPEAIQBw";
@@ -119,10 +129,28 @@ public class Const {
 			GameObject.DestroyObject(children[i].gameObject);
 		}
 	}
-	public static void SaveGame(System.Action<SavedGameRequestStatus, ISavedGameMetadata> callback)
+
+	public static void LoadGame(ISavedGameMetadata game, System.Action<SavedGameRequestStatus, byte[]> callback)
 	{
+		string data = PlayerPrefs.GetString("tapmarine", null);
+		if (data == null)
+		{
+			GPlusPlatform.Instance.LoadGame(game, callback);
+			return;
+		}
+
+		callback(SavedGameRequestStatus.Success, System.Text.Encoding.UTF8.GetBytes(data));
+	}
+
+	public static void SaveGame(System.Action<SavedGameRequestStatus> callback)
+	{
+
+		PlayerPrefs.SetString("tapmarine", System.Text.Encoding.UTF8.GetString(Warehouse.Instance.Serialize()));
+
+
 		if (Application.platform == RuntimePlatform.Android)
 		{
+
 			GPlusPlatform.Instance.OpenGame(Warehouse.Instance.FileName, (SavedGameRequestStatus status, ISavedGameMetadata game)=>{
 
 				if (status == SavedGameRequestStatus.Success) 
@@ -130,31 +158,34 @@ public class Const {
 					System.TimeSpan totalPlayingTime = game.TotalTimePlayed;
 					totalPlayingTime += new System.TimeSpan(System.TimeSpan.TicksPerSecond*(long)(Warehouse.Instance.SaveTime));
 
-					GPlusPlatform.Instance.SaveGame(game, Warehouse.Instance.Serialize(), totalPlayingTime, Const.getScreenshot(), (SavedGameRequestStatus status1, ISavedGameMetadata game1)=>{
+					GPlusPlatform.Instance.SaveGame(game, Warehouse.Instance.Serialize(), totalPlayingTime, null, (SavedGameRequestStatus status1, ISavedGameMetadata game1)=>{
 						Warehouse.Instance.SaveTime = Time.time;
 						Warehouse.Instance.LastModifiedFileTime = game.LastModifiedTimestamp;
-						callback(status1, game1);
+						callback(status1);
 					});
 				} 
 				else {
-					callback(status, game);
+					callback(status);
 				}
 			});
 		}
 		else
 		{
 			Warehouse.Instance.LastModifiedFileTime = System.DateTime.UtcNow;
-			callback(SavedGameRequestStatus.Success, null);
+			callback(SavedGameRequestStatus.Success);
 		}
 	}
 
-	static GameObject loadingGUI = null;
+	static LoadingGUI loadingGUI = null;
 	public static void ShowLoadingGUI(string name)
 	{
 		if (loadingGUI == null)
-			loadingGUI = GameObject.Instantiate(Resources.Load("Pref/LoadingGUI")) as GameObject;
+		{
+			GameObject obj = GameObject.Instantiate(Resources.Load("Pref/LoadingGUI")) as GameObject;
+			loadingGUI = obj.GetComponent<LoadingGUI>();
+		}
 
-		loadingGUI.transform.Find("Panel/Image/Text").GetComponent<Text>().text = name;
+		loadingGUI.SetText(name);
 		ShowLoadingGUI();
 	}
 

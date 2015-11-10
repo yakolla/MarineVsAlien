@@ -123,7 +123,7 @@ public class Creature : MonoBehaviour {
 		return null;
 	}
 
-	public Weapon instanceWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	public Weapon instanceWeapon(ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{
 		GameObject obj = Instantiate (weaponData.PrefWeapon, Vector3.zero, Quaternion.Euler(0, 0, 0)) as GameObject;
 		Weapon weapon = obj.GetComponent<Weapon>();
@@ -133,14 +133,14 @@ public class Creature : MonoBehaviour {
 		obj.transform.localRotation = weaponData.PrefWeapon.transform.localRotation;
 		obj.transform.localScale = weaponData.PrefWeapon.transform.localScale;
 		
-		weapon.Init(this, weaponData, weaponStat);
+		weapon.Init(this, weaponData, weaponDesc);
 
 		return weapon;
 	}
 
-	public virtual Weapon EquipWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	public virtual Weapon EquipWeapon(ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{		
-		Weapon weapon = instanceWeapon(weaponData, weaponStat);
+		Weapon weapon = instanceWeapon(weaponData, weaponDesc);
 
 		weapon.m_callbackCreateBullet = delegate() {
 			if (m_animator != null)
@@ -153,29 +153,29 @@ public class Creature : MonoBehaviour {
 
 		if (weapon.WeaponStat.skillId > 0)
 		{
-			EquipActiveSkillWeapon(new ItemWeaponData(weapon.WeaponStat.skillId), null);
+			EquipActiveSkillWeapon(new ItemWeaponData(weapon.WeaponStat.skillId), new RefMob.WeaponDesc());
 		}
 
 		return weapon;
 	}
 
-	public void EquipPassiveSkillWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	public void EquipPassiveSkillWeapon(ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{
-		Weapon weapon = instanceWeapon(weaponData, weaponStat);
+		Weapon weapon = instanceWeapon(weaponData, weaponDesc);
 		
 		m_weaponHolder.EquipPassiveSkillWeapon(weapon);
 	}
 
-	public void EquipActiveSkillWeapon(ItemWeaponData weaponData, WeaponStat weaponStat)
+	public void EquipActiveSkillWeapon(ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{
-		Weapon weapon = instanceWeapon(weaponData, weaponStat);
+		Weapon weapon = instanceWeapon(weaponData, weaponDesc);
 		
 		m_weaponHolder.EquipActiveSkillWeapon(weapon);
 	}
 
-	public void SetSubWeapon(Weapon weapon, ItemWeaponData weaponData, WeaponStat weaponStat)
+	public void SetSubWeapon(Weapon weapon, ItemWeaponData weaponData, RefMob.WeaponDesc weaponDesc)
 	{
-		Weapon subWeapon = instanceWeapon(weaponData, weaponStat);
+		Weapon subWeapon = instanceWeapon(weaponData, weaponDesc);
 		
 		weapon.SetSubWeapon(subWeapon);
 	}
@@ -1035,12 +1035,7 @@ public class Creature : MonoBehaviour {
 		}
 	}
 
-	public void ShakeCamera(float time)
-	{
-		CameraShake shake = Camera.main.gameObject.GetComponent<CameraShake>();
-		shake.shake = time;
-		shake.enabled = true;
-	}
+
 	
 	virtual public void Death()
 	{
@@ -1068,7 +1063,7 @@ public class Creature : MonoBehaviour {
 		GameObjectPool.Instance.Free(body);
 		DestroyObject(gameObject);
 		
-		ShakeCamera(0.1f);
+		Const.GetSpawn().ShakeCamera(0.1f);
 	}
 
 

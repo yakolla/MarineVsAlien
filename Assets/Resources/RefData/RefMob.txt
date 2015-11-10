@@ -1015,6 +1015,10 @@
 					{
 						"coolTime":1
 					}	
+				},
+				{
+					"refItemId":"138",
+					"passive":true
 				}
 			],
 			"mobAI":"Normal",		
@@ -1053,6 +1057,10 @@
 					{
 						"coolTime":1
 					}	
+				},
+				{
+					"refItemId":"138",
+					"passive":true
 				}
 			],
 			"mobAI":"Normal",		
@@ -1099,6 +1107,10 @@
 					{
 						"coolTime":3
 					}	
+				},
+				{
+					"refItemId":"138",
+					"passive":true
 				}
 			],
 			"mobAI":"Normal",		
@@ -1141,6 +1153,10 @@
 						"range":7,
 						"summonRefMobId":31004
 					}	
+				},
+				{
+					"refItemId":"138",
+					"passive":true
 				}
 			],
 			"mobAI":"Normal",		
@@ -1180,6 +1196,10 @@
 					{
 						"coolTime":3
 					}	
+				},
+				{
+					"refItemId":"138",
+					"passive":true
 				}
 				
 			],
@@ -1504,6 +1524,36 @@
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
 				"moveSpeed":4.5,
+				"aniSpeedRatio":0.5,
+				"navMeshBaseOffset":0,
+				"backwardOnDamage":false
+			}
+		},
+		{
+			"id":30009,			
+			"prefHead":"Follower",
+			"prefBody":"season1 champ",
+			"name":"BMarine",
+			"refWeaponItems":
+			[
+				{
+					"refItemId":"108"
+				}
+			],
+			"mobAI":"Follow",
+			"scale":1,
+			"baseCreatureProperty":
+			{
+				"maxHP":15,
+				"maxSP":100,
+				"physicalDamage":7,
+				"physicalDefence":0,
+				"evolutionPerLevel":0.2,
+				"exp":0,
+				"phyDamagePerLevel":10,
+				"phyDefencePerLevel":2,
+				"hpPerLevel":0.33,
+				"moveSpeed":2,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false

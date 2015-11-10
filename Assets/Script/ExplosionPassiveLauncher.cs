@@ -6,6 +6,9 @@ public class ExplosionPassiveLauncher : Weapon {
 	[SerializeField]
 	GameObject m_prefChargingEffect;
 
+	[SerializeField]
+	float	m_scaleSize = 1f;
+
 	ParticleSystem[] m_chargingEffect;
 	float[]			m_maxSize;
 
@@ -24,11 +27,14 @@ public class ExplosionPassiveLauncher : Weapon {
 			obj.transform.localPosition = m_prefChargingEffect.transform.localPosition;
 			obj.transform.localScale = m_prefChargingEffect.transform.localScale;
 			obj.transform.localRotation = m_prefChargingEffect.transform.localRotation;
+			Bullet.ParticleScale(obj, m_scaleSize);
 			m_chargingEffect = obj.GetComponentsInChildren<ParticleSystem>();
 			m_maxSize = new float[m_chargingEffect.Length];
 
 			for(int i = 0; i < m_chargingEffect.Length; ++i)
 				m_maxSize[i] = m_chargingEffect[i].startSize;
+
+
 		}
 	}
 

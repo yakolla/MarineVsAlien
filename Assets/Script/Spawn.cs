@@ -289,7 +289,7 @@ public class Spawn : MonoBehaviour {
 				RefMobSpawn mobSpawn = GetCurrentWave().mobSpawns[m_wave%GetCurrentWave().mobSpawns.Length];
 
 
-
+				Warehouse.Instance.CurrentWaveIndex = m_wave;
 				Warehouse.Instance.NewGameStats.WaveIndex = m_wave;
 				m_waveText.Text.text = "Wave " + (m_wave+1);
 
@@ -304,7 +304,7 @@ public class Spawn : MonoBehaviour {
 				if (mobSpawn.boss == true)
 				{
 					StartCoroutine(EffectWaveText("Boss", 3));
-					m_champ.ShakeCamera(3f);
+					Const.GetSpawn().ShakeCamera(3f);
 					audio.clip = m_bossBg;
 					audio.Play();
 				}
@@ -364,10 +364,17 @@ public class Spawn : MonoBehaviour {
 
 				if (mobSpawn.boss == true)
 				{
-					Const.SaveGame((SavedGameRequestStatus, ISavedGameMetadata)=>{});					
+					Const.SaveGame((SavedGameRequestStatus)=>{});					
 				}
 			}
 		}
+	}
+
+	public void ShakeCamera(float time)
+	{
+		CameraShake shake = Camera.main.gameObject.GetComponent<CameraShake>();
+		shake.shake = time;
+		shake.enabled = true;
 	}
 
 	IEnumerator MoveChamp()

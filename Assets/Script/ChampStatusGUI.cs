@@ -15,7 +15,7 @@ public class ChampStatusGUI : MonoBehaviour {
 
 
 	YGUISystem.GUIChargeButton[]	m_specialButtons = new YGUISystem.GUIChargeButton[Const.SpecialButtons];
-	YGUISystem.GUIGuage[] m_guages = new YGUISystem.GUIGuage[Const.Guages];
+	YGUISystem.GUIGuage[] m_guages = new YGUISystem.GUIGuage[4];
 	YGUISystem.GUILable m_level;
 	YGUISystem.GUIButton			m_autoEarnButton;
 	ComboGUIShake	m_gold;
@@ -93,6 +93,12 @@ public class ChampStatusGUI : MonoBehaviour {
 		    ()=>{return m_champ.m_creatureProperty.getSPRemainRatio();}, 
 			()=>{return Mathf.FloorToInt(m_champ.m_creatureProperty.SP).ToString() + " / " + Mathf.FloorToInt(m_champ.m_creatureProperty.MaxSP).ToString();
 			}
+		);
+
+		m_guages[3] = new YGUISystem.GUIGuage(transform.Find("Guage/Shield").gameObject, 
+		                                      ()=>{return 1f;}, 
+		()=>{return m_champ.m_creatureProperty.Shield.ToString();
+		}
 		);
 	}
 
@@ -174,11 +180,8 @@ public class ChampStatusGUI : MonoBehaviour {
 		if (m_champ.AccessoryItems[slot] == null)
 			return;
 
-
-
 		if (m_champ.AccessoryItems[slot].Item.Usable(m_champ) == false)
 			return;
-
 
 		for(int i = 0; i < m_champ.m_creatureProperty.CallableFollowers; ++i)
 			m_champ.AccessoryItems[slot].Item.Use(m_champ);
@@ -264,9 +267,13 @@ public class ChampStatusGUI : MonoBehaviour {
 
 
 
-		foreach(YGUISystem.GUIGuage guage in m_guages)
+		for(int i = 0; i < m_guages.Length; ++i)
 		{
-			guage.Update();
+			if (i == 3)
+			{
+				m_guages[i].RectTransform.gameObject.SetActive(m_champ != null && m_champ.m_creatureProperty.Shield > 0);
+			}
+			m_guages[i].Update();
 		}
 
 		m_autoEarnButton.Update();

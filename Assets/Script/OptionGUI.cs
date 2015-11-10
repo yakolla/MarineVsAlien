@@ -45,12 +45,12 @@ public class OptionGUI : MonoBehaviour {
 		m_waveSlider = transform.Find("RestartWaveGUI/Slider").gameObject.GetComponent<Slider>();
 		m_waveSlider.minValue = 0;
 		m_waveSlider.maxValue = Warehouse.Instance.GameBestStats.WaveIndex+1;
-		m_waveSlider.value = Warehouse.Instance.GameOptions.m_restartWaveIndex;
+		m_waveSlider.value = Warehouse.Instance.GameOptions.m_reWaveIndex.Value;
 	}
 
 	void Update()
 	{
-		m_waveSliderText.text = (Warehouse.Instance.GameOptions.m_restartWaveIndex+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString();
+		m_waveSliderText.text = (Warehouse.Instance.GameOptions.m_reWaveIndex.Value+1).ToString() + " / " + (Warehouse.Instance.GameBestStats.WaveIndex+1).ToString();
 		m_waveSlider.maxValue = Warehouse.Instance.GameBestStats.WaveIndex+1;
 	}
 
@@ -59,7 +59,7 @@ public class OptionGUI : MonoBehaviour {
 			m_admob.ShowBanner(true);
 
 		if (m_waveSlider != null)
-			m_waveSlider.value = Warehouse.Instance.GameOptions.m_restartWaveIndex;
+			m_waveSlider.value = Warehouse.Instance.GameOptions.m_reWaveIndex.Value;
 
 		TimeEffector.Instance.StopTime();
 	}
@@ -98,7 +98,7 @@ public class OptionGUI : MonoBehaviour {
 	{
 		Const.ShowLoadingGUI("Loading...");
 
-		Const.SaveGame((SavedGameRequestStatus status, ISavedGameMetadata game) => {
+		Const.SaveGame((SavedGameRequestStatus status) => {
 			if (status == SavedGameRequestStatus.Success) {
 				// handle reading or writing of saved game.
 			} else {
@@ -125,7 +125,7 @@ public class OptionGUI : MonoBehaviour {
 		intentObject.Call<AndroidJavaObject> ("setAction", intentClass.GetStatic<string> ("ACTION_SEND"));
 		intentObject.Call<AndroidJavaObject> ("setType", "text/plain");
 		intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_SUBJECT"), "Tap Marine");
-		intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), "https://play.google.com/store/apps/details?id=com.banegole.marinevsalien");
+		intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), "https://play.google.com/store/apps/details?id="+Const.PackageName);
 		AndroidJavaClass unity = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
 		AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject> ("currentActivity");
 		currentActivity.Call ("startActivity", intentObject);
@@ -140,7 +140,7 @@ public class OptionGUI : MonoBehaviour {
 	public void OnWaveSliderChanged(float value)
 	{
 		Debug.Log("OnWaveSliderChanged:" + m_waveSlider.value);
-		Warehouse.Instance.GameOptions.m_restartWaveIndex = Mathf.Min(Warehouse.Instance.GameBestStats.WaveIndex, ((int)m_waveSlider.value/Const.GetSpawn().GetCurrentWave().mobSpawns.Length)*Const.GetSpawn().GetCurrentWave().mobSpawns.Length);
+		Warehouse.Instance.GameOptions.m_reWaveIndex.Value = Mathf.Min(Warehouse.Instance.GameBestStats.WaveIndex, ((int)m_waveSlider.value/Const.GetSpawn().GetCurrentWave().mobSpawns.Length)*Const.GetSpawn().GetCurrentWave().mobSpawns.Length);
 
 	}
 }

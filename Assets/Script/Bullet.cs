@@ -144,14 +144,12 @@ public class Bullet : MonoBehaviour {
 
 	static public float ParticleScale(GameObject obj, float size)
 	{
-		if (obj.particleSystem == null)
-			return 0f;
-
 		ParticleSystem[] particleSystems = obj.GetComponentsInChildren<ParticleSystem>();
-		obj.particleSystem.maxParticles = (int)size;
+
 		float duration = 0;
 		foreach(ParticleSystem ps in particleSystems)
 		{
+			ps.maxParticles = (int)size;
 			ps.startSize *= size;
 			if (duration < ps.duration)
 				duration = ps.duration;

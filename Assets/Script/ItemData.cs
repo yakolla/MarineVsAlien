@@ -55,7 +55,7 @@ public class ItemData {
 	SecuredType.XInt	m_count = 0;
 	SecuredType.XInt	m_level = 1;
 	bool			m_lock = false;
-
+	SecuredType.XInt	m_evolution = 0;
 	RefItem				m_refItem;
 
 	[JsonConstructor]
@@ -249,14 +249,14 @@ public class ItemData {
 
 				if (weaponRefItemId == Const.EmbersRefItemId)
 				{
-					obj.SetSubWeapon(obj.WeaponHolder.MainWeapon, new ItemWeaponData(Const.EmbersRefItemId), null);
+					obj.SetSubWeapon(obj.WeaponHolder.MainWeapon, new ItemWeaponData(Const.EmbersRefItemId), new RefMob.WeaponDesc());
 				}
 				else
 				{
 					ItemWeaponData weaponData = new ItemWeaponData((int)optionValue);
 
 					weaponData.Level = (int)op.option.values[1];
-					obj.EquipPassiveSkillWeapon(weaponData, null);
+					obj.EquipPassiveSkillWeapon(weaponData, new RefMob.WeaponDesc());
 				}
 				break;
 			case Option.Strength:
@@ -299,6 +299,77 @@ public class ItemData {
 		}
 	}
 
+	public void NoApplyOptions(Creature obj)
+	{
+		if (m_refItem.levelup == null || m_refItem.levelup.optionPerLevel == null)
+			return;
+		
+		foreach(RefPriceCondition.RefOptionPerLevel op in m_refItem.levelup.optionPerLevel)
+		{
+			float optionValue = 0f;
+			if (op.levelPer == false)
+			{
+				optionValue = -op.option.values[0];
+			}
+			else
+			{
+				optionValue = -op.option.values[0]*(RefItem.maxLevel/op.level);
+
+			}
+			
+			switch(op.option.type)
+			{
+			case Option.DmgMultiplier:
+				obj.m_creatureProperty.DamageMultiPlier += optionValue;
+				
+				break;
+			case Option.MoveSpeed:
+				obj.m_creatureProperty.AlphaMoveSpeed += optionValue;
+				break;
+			case Option.DmgReduction:
+				obj.m_creatureProperty.DamageReduction += optionValue;
+				break;			
+			case Option.Weapon:
+				break;
+			case Option.Strength:
+				obj.m_creatureProperty.AlphaPhysicalAttackDamage += (int)optionValue;
+				break;
+			case Option.MaxHp:
+				obj.m_creatureProperty.AlphaMaxHP += (int)optionValue;
+				break;
+			case Option.MaxSp:
+				obj.m_creatureProperty.AlphaMaxSP += (int)optionValue;
+				break;
+			case Option.RegenSp:
+				obj.m_creatureProperty.AlphaSPRegen += optionValue;
+				break;
+			case Option.TapDamage:
+				obj.m_creatureProperty.TapDamage += (int)optionValue;
+				break;
+			case Option.Critical:
+				obj.m_creatureProperty.AlphaCriticalChance += optionValue;
+				break;
+			case Option.CriticalDmg:
+				obj.m_creatureProperty.AlphaCriticalDamage += optionValue;
+				break;
+			case Option.LifeSteal:
+				obj.m_creatureProperty.AlphaLifeSteal += optionValue;
+				break;
+			case Option.Dodge:
+				obj.m_creatureProperty.Dodge += optionValue;
+				break;
+			case Option.GainExtraGold:
+				obj.m_creatureProperty.GainExtraGold += optionValue;
+				Creature owner = obj.GetOwner();
+				if (owner != null)
+				{
+					owner.m_creatureProperty.GainExtraGold += optionValue;
+				}
+				break;
+			}
+			
+		}
+	}
 
 	public int RefItemID
 	{
@@ -321,6 +392,16 @@ public class ItemData {
 		}
 		set {
 			m_level.Value = value;
+		}
+	}
+
+	public int Evolution
+	{
+		get {			
+			return m_evolution.Value;	
+		}
+		set {
+			m_evolution.Value = value;
 		}
 	}
 

@@ -145,7 +145,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 			--m_champ.RemainStatPoint;
 		},
 		()=>{
-			switch(m_champ.WeaponHolder.MainWeapon.RefItem.id)
+			switch(m_champ.WeaponHolder.MainWeapon.RefWeaponItem.id)
 			{
 			case Const.ChampLightningLauncherRefItemId:
 			case Const.ChampFiregunRefItemId:			
@@ -204,13 +204,13 @@ public class ChampAbilityGUI : MonoBehaviour {
 			}
 			else
 			{
-				m_champ.SetSubWeapon(m_champ.WeaponHolder.MainWeapon, new ItemWeaponData(Const.EmbersRefItemId), null);
+				m_champ.SetSubWeapon(m_champ.WeaponHolder.MainWeapon, new ItemWeaponData(Const.EmbersRefItemId), new RefMob.WeaponDesc());
 			}
 
 			--m_champ.RemainStatPoint;
 		},
 		()=>{
-			switch(m_champ.WeaponHolder.MainWeapon.RefItem.id)
+			switch(m_champ.WeaponHolder.MainWeapon.RefWeaponItem.id)
 			{
 			case Const.ChampGunRefItemId:
 			case Const.ChampLightningLauncherRefItemId:
@@ -222,7 +222,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 			Weapon weapon = m_champ.WeaponHolder.MainWeapon.GetSubWeapon();
 			if (weapon != null)
 			{
-				if (weapon.Level >= weapon.RefItem.maxLevel)
+				if (weapon.Level >= weapon.RefWeaponItem.maxLevel)
 					return false;
 			}
 			return true;
@@ -320,13 +320,13 @@ public class ChampAbilityGUI : MonoBehaviour {
 			--m_champ.RemainStatPoint;
 		},
 		()=>{
-			switch(m_champ.WeaponHolder.MainWeapon.RefItem.id)
+			switch(m_champ.WeaponHolder.MainWeapon.RefWeaponItem.id)
 			{
 			case Const.ChampGunRefItemId:			
 				Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(131);
 				if (weapon != null)
 				{
-					if (weapon.Level >= weapon.RefItem.maxLevel)
+					if (weapon.Level >= weapon.RefWeaponItem.maxLevel)
 						return false;
 				}
 				return true;
@@ -369,13 +369,13 @@ public class ChampAbilityGUI : MonoBehaviour {
 			--m_champ.RemainStatPoint;
 		},
 		()=>{
-			switch(m_champ.WeaponHolder.MainWeapon.RefItem.id)
+			switch(m_champ.WeaponHolder.MainWeapon.RefWeaponItem.id)
 			{
 			case Const.ChampBoomerangLauncherRefItemId:			
 				Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(134);
 				if (weapon != null)
 				{
-					if (weapon.Level >= weapon.RefItem.maxLevel)
+					if (weapon.Level >= weapon.RefWeaponItem.maxLevel)
 						return false;
 				}
 				return true;
@@ -419,13 +419,13 @@ public class ChampAbilityGUI : MonoBehaviour {
 			--m_champ.RemainStatPoint;
 		},
 		()=>{
-			switch(m_champ.WeaponHolder.MainWeapon.RefItem.id)
+			switch(m_champ.WeaponHolder.MainWeapon.RefWeaponItem.id)
 			{
 			case Const.ChampLightningLauncherRefItemId:			
 				Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(129);
 				if (weapon != null)
 				{
-					if (weapon.Level >= weapon.RefItem.maxLevel)
+					if (weapon.Level >= weapon.RefWeaponItem.maxLevel)
 						return false;
 				}
 				return true;
@@ -468,14 +468,14 @@ public class ChampAbilityGUI : MonoBehaviour {
 			--m_champ.RemainStatPoint;
 		},
 		()=>{
-			switch(m_champ.WeaponHolder.MainWeapon.RefItem.id)
+			switch(m_champ.WeaponHolder.MainWeapon.RefWeaponItem.id)
 			{
 			case Const.ChampFiregunRefItemId:
 			
 				Weapon weapon = m_champ.WeaponHolder.GetPassiveSkillWeapon(135);
 				if (weapon != null)
 				{
-					if (weapon.Level >= weapon.RefItem.maxLevel)
+					if (weapon.Level >= weapon.RefWeaponItem.maxLevel)
 						return false;
 				}
 				return true;
@@ -546,7 +546,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 			--m_champ.RemainStatPoint;
 		},
 		()=>{
-			switch(m_champ.WeaponHolder.MainWeapon.RefItem.id)
+			switch(m_champ.WeaponHolder.MainWeapon.RefWeaponItem.id)
 			{
 			case Const.ChampLightningLauncherRefItemId:
 			case Const.ChampFiregunRefItemId:
@@ -578,7 +578,7 @@ public class ChampAbilityGUI : MonoBehaviour {
 			if (m_champ.m_creatureProperty.BulletLength >= 1f)
 				return false;
 
-			switch(m_champ.WeaponHolder.MainWeapon.RefItem.id)
+			switch(m_champ.WeaponHolder.MainWeapon.RefWeaponItem.id)
 			{
 			case Const.ChampFiregunRefItemId:
 				return true;

@@ -157,6 +157,10 @@ public class Follower : Creature {
 		WeaponHolder.LevelUp(0);
 	}
 
+	public void EvolutionUp()
+	{
+		WeaponHolder.EvolutionUp(0);
+	}
 
 	void OnTriggerEnter(Collider other) {
 		if (other.tag.CompareTo("ItemBox") == 0)

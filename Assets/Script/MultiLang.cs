@@ -85,5 +85,7 @@ public class MultiLang{
 		ThanksForYourPurchase,
 		Buy,
 		RestartWave,
+		Evolution,
+		BMarine,
 	}
 }

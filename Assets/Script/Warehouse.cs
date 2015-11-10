@@ -160,17 +160,17 @@ public class WarehouseData
 			get{return m_damageEffect.perSec;}
 		}
 
-		public float MaxDealDamagePerSec
+		public long MaxDealDamagePerSec
 		{
 			get{return m_dealDamages.maxAmount;}
 		}
 
-		public float MaxTakenDamagePerSec
+		public long MaxTakenDamagePerSec
 		{
 			get{return m_takenDamages.maxAmount;}
 		}
 
-		public float MaxConsumedSPPerSec
+		public long MaxConsumedSPPerSec
 		{
 			get{return m_consumedSP.maxAmount;}
 		}
@@ -194,7 +194,8 @@ public class WarehouseData
 	{
 		public float	m_sfxVolume = 1f;
 		public float	m_bgmVolume = 1f;
-		public int		m_restartWaveIndex = 0;
+	//	public int		m_restartWaveIndex = 0;
+		public SecuredType.XInt m_reWaveIndex = 0;
 	}
 
 	public class GameDataContext
@@ -417,6 +418,12 @@ public class Warehouse {
 		set{m_warehouseData.m_retryCount.Value = value;}
 	}
 
+	public int CurrentWaveIndex
+	{
+		get{return m_warehouseData.m_waveIndex.Value;}
+		set{m_warehouseData.m_waveIndex.Value = value;}
+	}
+
 	public int AutoEarnGold
 	{
 		get{return m_warehouseData.m_autoEarnGold.Value;}
@@ -604,6 +611,25 @@ public class Warehouse {
 								for(int lv = obj.Item.Level; lv < obj.Item.RefItem.maxLevel; ++lv)
 								{
 									totalGem += (int)(refPrice.count*Const.GetItemLevelupWorth(lv, condLevel));
+								}
+								break;
+							}
+						}
+					}
+
+					RefPriceCondition condEvolution = obj.Item.RefItem.evolution;
+					if (condEvolution != null)
+					{
+						if (condEvolution.else_conds == null)
+							continue;
+						
+						foreach(RefPrice refPrice in condEvolution.else_conds)
+						{
+							if (refPrice.refItemId == Const.GemRefItemId)
+							{
+								for(int lv = obj.Item.Evolution; lv < obj.Item.RefItem.maxEvolution; ++lv)
+								{
+									totalGem += (int)(refPrice.count*Const.GetItemLevelupWorth(lv, condEvolution));
 								}
 								break;
 							}

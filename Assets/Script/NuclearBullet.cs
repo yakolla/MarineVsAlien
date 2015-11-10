@@ -30,5 +30,6 @@ public class NuclearBullet : Bullet {
 			return;
 
 		bomb(m_bombRange, m_prefBombEffect);
+		Const.GetSpawn().ShakeCamera(3f);
 	}
 }

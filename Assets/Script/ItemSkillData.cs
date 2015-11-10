@@ -32,13 +32,10 @@ public class ItemSkillData : ItemData{
 			break;
 		case 22:
 			return obj.ApplyMachoSkill();
-			break;
 		case 23:
 			return obj.ApplyHealingSkill();
-			break;
 		case 24:
 			return obj.ApplyDamageMultiplySkill();
-			break;
 		case 25:
 			Weapon weapon = obj.WeaponHolder.GetPassiveSkillWeapon(130);
 			if (weapon != null)
@@ -47,7 +44,7 @@ public class ItemSkillData : ItemData{
 			}
 			else
 			{
-				obj.EquipPassiveSkillWeapon(new ItemWeaponData(130), null);
+				obj.EquipPassiveSkillWeapon(new ItemWeaponData(130), new RefMob.WeaponDesc());
 			}
 			break;
 		}
