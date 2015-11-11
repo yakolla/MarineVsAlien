@@ -104,6 +104,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampRocketLauncherRefItemId));
 				//Warehouse.Instance.PushItem(new ItemWeaponData(Const.ChampBoomerangLauncherRefItemId));
 
+
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGunMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerFireMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerLightningMarineRefItemId));
@@ -140,8 +141,11 @@ public class ChampSettingGUI : MonoBehaviour {
 
 
 				Warehouse.Instance.FindItem(Const.ChampTapRefItemId).Item.Level = 900;
+
+
 				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Level = 900;
+
 				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Level = 900;
 				Warehouse.Instance.FindItem(Const.FollowerFireMarineRefItemId).Item.Lock = false;
@@ -294,7 +298,7 @@ public class ChampSettingGUI : MonoBehaviour {
 			invSlot.SetListener(() => OnClickLevelupToMax(invSlot, priceGemButton, false, item), () => OnClickLevelupToMax(invSlot, priceGemButton, true, item) );
 				priceGemButton.SetPrices(role, item.Item.RefItem);
 				
-				priceGemButton.AddListener(() => OnClickLevelup(invSlot, priceGemButton, false, item), () => OnClickLevelup(invSlot, priceGemButton, true, item) );
+			priceGemButton.AddListener(() => OnClickLevelup(invSlot, priceGemButton, false, item, true), () => OnClickLevelup(invSlot, priceGemButton, true, item, true) );
 			priceGemButton.SetLable(RefData.Instance.RefTexts(MultiLang.ID.LevelUp));
 			}
 			break;
@@ -461,17 +465,19 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	IEnumerator DelayClickLevelUp(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, bool gem, ItemObject selectedItem)
 	{		
-		while(OnClickLevelup(invSlot, priceGemButton, gem, selectedItem) == true)
+		while(OnClickLevelup(invSlot, priceGemButton, gem, selectedItem, false) == true)
 			yield return new WaitForSeconds (0.2f);
 	}
 
 
 	public void OnClickLevelupToMax(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, bool gem, ItemObject selectedItem)
 	{
+		invSlot.MaxGemButton.Button.gameObject.SetActive(false);
+		invSlot.MaxPriceButton.Button.gameObject.SetActive(false);
 		StartCoroutine(DelayClickLevelUp(invSlot, priceGemButton, gem, selectedItem));
 	}
 
-	public bool OnClickLevelup(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, bool gem, ItemObject selectedItem)
+	public bool OnClickLevelup(GUIInventorySlot invSlot, GUIInventorySlot.GUIPriceGemButton priceGemButton, bool gem, ItemObject selectedItem, bool visableMaxButton)
 	{
 		if (m_champ == null)
 			return false;
@@ -512,10 +518,15 @@ public class ChampSettingGUI : MonoBehaviour {
 
 			invSlot.ItemDesc = selectedItem.Item.Description();
 
-			if (gem == true)
-				invSlot.MaxGemButton.Button.gameObject.SetActive(Const.CheckAvailableItem(selectedItem.Item.RefItem.levelup.else_conds, Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup)));
-			else
-				invSlot.MaxPriceButton.Button.gameObject.SetActive(Const.CheckAvailableItem(selectedItem.Item.RefItem.levelup.conds, Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup)));
+			if (visableMaxButton == true)
+			{
+				invSlot.MaxGemButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.KeepLevelup);
+				invSlot.MaxPriceButton.Lable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.KeepLevelup);
+				if (gem == true)
+					invSlot.MaxGemButton.Button.gameObject.SetActive(Const.CheckAvailableItem(selectedItem.Item.RefItem.levelup.else_conds, Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup)));
+				else
+					invSlot.MaxPriceButton.Button.gameObject.SetActive(Const.CheckAvailableItem(selectedItem.Item.RefItem.levelup.conds, Const.GetItemLevelupWorth(selectedItem.Item.Level, selectedItem.Item.RefItem.levelup)));
+			}
 
 			GPlusPlatform.Instance.AnalyticsTrackEvent("Weapon", "Levelup", selectedItem.Item.RefItem.name + "_Lv:" + selectedItem.Item.Level, 0);
 			return true;

@@ -82,5 +82,6 @@
 	"Buy",
 	"Restart Wave",
 	"Evolution",
-	"Marine Boy B"
+	"Marine Boy B",
+	"Keep Leveling Up "
 ]

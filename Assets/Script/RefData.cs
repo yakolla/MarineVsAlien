@@ -234,6 +234,7 @@ public class RefMob : RefBaseData
 	public float				scale = 1f;
 	public float				mass = 1f;
 	public int					consumedSP;
+	public float				sightRange = 50f;
 }
 
 public class RefMobClass

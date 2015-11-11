@@ -87,5 +87,6 @@ public class MultiLang{
 		RestartWave,
 		Evolution,
 		BMarine,
+		KeepLevelup,
 	}
 }

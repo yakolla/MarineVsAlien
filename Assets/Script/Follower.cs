@@ -31,7 +31,7 @@ public class Follower : Creature {
 		{
 			if (Targetting == null)
 			{
-				SetTarget(m_owner.SearchTarget(GetMyEnemyType(), null, 5f));
+				SetTarget(m_owner.SearchTarget(GetMyEnemyType(), null, RefMob.sightRange));
 			}
 			
 			if (Targetting != null)
