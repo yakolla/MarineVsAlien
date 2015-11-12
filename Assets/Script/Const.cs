@@ -276,4 +276,11 @@ public class Const {
 		return tutorialMgr;
 
 	}
+
+	public static System.Collections.IEnumerator DelayFunction(float time, System.Action functor)
+	{				
+		yield return new WaitForSeconds (time);
+		functor();
+		
+	}
 }

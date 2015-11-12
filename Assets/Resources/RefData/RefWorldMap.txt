@@ -320,7 +320,7 @@
 								{
 									"refItemId":23,
 									"minValue":21,
-									"maxValue":25,
+									"maxValue":26,
 									"ratio":1,
 									"count":1
 								}

@@ -20,8 +20,21 @@ public class ItemSkillData : ItemData{
 		if (champ == null)
 			return;
 
+		if (RefItemID == 26)
+		{
+			GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>().ShowInterstitial();
+			Const.GetSpawn().StartCoroutine(Const.DelayFunction(2f, ()=>{
+				Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).GetComponent<FoundItemGUI>().SetItemObj(Warehouse.Instance.FindItem(Const.GemRefItemId));
+				Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).SetActive(true);
+			}));
+
+			return;
+		}
+
 		champ.SkillStacks[RefItem.id-21]=1;
 	}
+
+
 
 	override public bool Use(Creature obj)
 	{
@@ -47,6 +60,7 @@ public class ItemSkillData : ItemData{
 				obj.EquipPassiveSkillWeapon(new ItemWeaponData(130), new RefMob.WeaponDesc());
 			}
 			break;
+		
 		}
 		return true;
 	}

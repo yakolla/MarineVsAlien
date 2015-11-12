@@ -83,5 +83,6 @@
 	"Restart Wave",
 	"Evolution",
 	"Marine Boy B",
-	"Keep Leveling Up "
+	"Keep Leveling Up",
+	"Advertising",
 ]
