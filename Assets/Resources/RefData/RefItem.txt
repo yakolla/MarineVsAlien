@@ -324,6 +324,13 @@
 				}
 			]
 		}	
+	},
+	{
+		"id":26,
+		"codeName":"Advertising",
+		"name":"Advertising",
+		"type":"Skill",
+		"icon":"Sprites/ShieldSkill"
 	},	
 	{
 		"id":51,
