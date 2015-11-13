@@ -20,23 +20,25 @@ public class FoundItemGUI : MonoBehaviour {
 
 		m_name = new YGUISystem.GUILable(transform.Find("Desc").gameObject);
 
+		SetItemDesc();
+	}
 
+
+	void OnEnable() {
+		TimeEffector.Instance.StopTime();
+	}
+
+	void SetItemDesc()
+	{
 		m_button.Lable.Text.text = RefData.Instance.RefTexts(m_itemObj.Item.RefItem.name);
 		m_button.Icon.Image = m_itemObj.ItemIcon;
 		m_name.Text.text = RefData.Instance.RefTexts(m_itemObj.Item.RefItem.desc);
 
 		if (m_itemObj.Item.RefItem.id == Const.GemRefItemId)
 		{
-			gemReward = Random.Range(50, 150);
+			gemReward = Random.Range(500, 1500);
 			m_button.Lable.Text.text = "" + gemReward.Value;
 		}
-	}
-
-
-	void OnEnable() {
-		TimeEffector.Instance.StopTime();
-
-
 	}
 
 	void OnDisable() {
@@ -53,15 +55,7 @@ public class FoundItemGUI : MonoBehaviour {
 
 		if (m_button != null)
 		{
-			m_button.Icon.Image = m_itemObj.ItemIcon;
-			m_button.Lable.Text.text = RefData.Instance.RefTexts(m_itemObj.Item.RefItem.name);
-			m_name.Text.text = RefData.Instance.RefTexts(m_itemObj.Item.RefItem.desc);
-
-			if (m_itemObj.Item.RefItem.id == Const.GemRefItemId)
-			{
-				gemReward = Random.Range(50, 150);
-				m_button.Lable.Text.text = "" + gemReward.Value;
-			}
+			SetItemDesc();
 		}
 	}
 

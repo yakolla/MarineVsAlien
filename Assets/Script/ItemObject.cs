@@ -11,6 +11,7 @@ public class ItemObject {
 	{
 		m_item = item;
 		m_icon = Resources.Load<Texture2D>(item.RefItem.icon);
+
 	}
 
 	public ItemData Item
