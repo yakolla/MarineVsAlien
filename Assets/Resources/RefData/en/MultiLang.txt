@@ -43,7 +43,7 @@
 	"Fire Robot",
 	"Laser Beam Vessel",
 	"Radioactive Beam Vessel",
-	"Boomerang Robot",
+	"Hammer Robot",
 	"Grenade Robot",
 	"Pickup Item Pet",
 	"Sword Robot",

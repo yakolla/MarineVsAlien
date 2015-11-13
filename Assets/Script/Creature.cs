@@ -611,7 +611,7 @@ public class Creature : MonoBehaviour {
 
 	IEnumerator EffectMacho(float time)
 	{
-		GameObject pref = Resources.Load<GameObject>("Pref/ef combo skill");
+		GameObject pref = Resources.Load<GameObject>("Pref/ef_moojuk skill");
 		GameObject effect = (GameObject)Instantiate(pref);
 		effect.transform.parent = transform;
 		effect.transform.localPosition = pref.transform.position;
@@ -622,8 +622,8 @@ public class Creature : MonoBehaviour {
 		m_creatureProperty.AlphaAttackCoolTime -= 0.5f;
 
 		bool scalable = false;
-		if (transform.localScale.y < 2f)
-			scalable = true;
+		//if (transform.localScale.y < 2f)
+		//	scalable = true;
 
 		Vector3 scale = transform.localScale*0.3f;
 		if (scalable == true)

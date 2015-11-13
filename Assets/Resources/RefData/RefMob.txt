@@ -1413,16 +1413,16 @@
 		{
 			"id":30005,
 			"prefHead":"Follower",
-			"prefBody":"roboboomerang_skin",
+			"prefBody":"hammer_skin",
 			"name":"BoomerangMarine",
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"205"
+					"refItemId":"212"
 				}
 			],
 			"mobAI":"Follow",
-			"sightRange":5,
+			"sightRange":9,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,

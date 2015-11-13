@@ -2125,6 +2125,28 @@
 		}
 	},
 	{
+		"id":212,
+		"codeName":"FollowerHammer",
+		"type":"Weapon",
+		"icon":"Sprites/Grenade",		
+		"evolutionFiring":
+		{
+			"angle":0,
+			"delay":0
+		},
+		"weaponStat":
+		{
+			"coolTime":3,
+			"range":3.5,
+			"incBulletOnLevel":901,
+			"buffOnHitDesc":
+			{
+				"chance":0.3,
+				"buffType":"Stun"
+			}
+		}
+	},
+	{
 		"id":1001,
 		"codeName":"Follower",
 		"type":"Follower",
