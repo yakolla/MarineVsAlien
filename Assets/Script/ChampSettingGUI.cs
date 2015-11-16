@@ -142,7 +142,7 @@ public class ChampSettingGUI : MonoBehaviour {
 
 				Warehouse.Instance.FindItem(Const.ChampTapRefItemId).Item.Level = 900;
 
-				/*
+
 				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Level = 900;
 
@@ -164,9 +164,6 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Level = 9;
 				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Lock = false;
 				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Level = 1;
-*/
-				Warehouse.Instance.FindItem(Const.FollowerBoomerangMarineRefItemId).Item.Lock = false;
-				Warehouse.Instance.FindItem(Const.FollowerBoomerangMarineRefItemId).Item.Level = 900;
 
 				Warehouse.Instance.FindItem(21).Item.Lock = false;
 				Warehouse.Instance.FindItem(21).Item.Level = 9;
