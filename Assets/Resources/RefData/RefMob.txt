@@ -1434,7 +1434,7 @@
 				"phyDamagePerLevel":10,
 				"phyDefencePerLevel":2,
 				"hpPerLevel":0.33,
-				"moveSpeed":1.5,
+				"moveSpeed":3,
 				"aniSpeedRatio":0.5,
 				"navMeshBaseOffset":0,
 				"backwardOnDamage":false

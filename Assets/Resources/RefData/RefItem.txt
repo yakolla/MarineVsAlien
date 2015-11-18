@@ -2136,7 +2136,7 @@
 		},
 		"weaponStat":
 		{
-			"coolTime":3,
+			"coolTime":1,
 			"range":3.5,
 			"incBulletOnLevel":901,
 			"buffOnHitDesc":
