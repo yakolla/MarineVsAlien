@@ -1,0 +1,80 @@
+fileFormatVersion: 2
+guid: 0d009a2314d82c7449c076bee87aed44
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Bone013
+    100002: Bone014
+    100004: Bone015
+    100006: hammer_a
+    100008: hammer_b
+    100010: hammer_c
+    100012: //RootNode
+    400000: Bone013
+    400002: Bone014
+    400004: Bone015
+    400006: hammer_a
+    400008: hammer_b
+    400010: hammer_c
+    400012: //RootNode
+    4300000: hammer_a
+    4300002: hammer_b
+    4300004: hammer_c
+    9500000: //RootNode
+    13700000: hammer_a
+    13700002: hammer_b
+    13700004: hammer_c
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
