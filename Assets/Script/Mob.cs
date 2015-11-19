@@ -11,7 +11,7 @@ public class Mob : Creature {
 
 	public void Init(RefMob refMob, int mobLevel, RefItemSpawn[] refDropItems, bool boss)
 	{
-		base.Init(refMob, mobLevel);
+		base.Init(refMob, mobLevel, 0);
 
 		RefMob = refMob;
 		RefDropItems = refDropItems;

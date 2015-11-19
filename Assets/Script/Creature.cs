@@ -80,7 +80,7 @@ public class Creature : MonoBehaviour {
 
 	}
 
-	virtual public void Init(RefMob refMob, int level)
+	virtual public void Init(RefMob refMob, int level, int evolution)
 	{
 
 		m_navAgent = GetComponent<NavMeshAgent>();
@@ -102,7 +102,7 @@ public class Creature : MonoBehaviour {
 		ChangeNormalColor();
 
 		m_refMob = refMob;
-		m_creatureProperty.init(this, m_refMob.baseCreatureProperty, level);		
+		m_creatureProperty.init(this, m_refMob.baseCreatureProperty, level, evolution);		
 		rigidbody.mass = refMob.mass;
 		m_navAgent.baseOffset = m_refMob.baseCreatureProperty.navMeshBaseOffset;
 
@@ -622,8 +622,8 @@ public class Creature : MonoBehaviour {
 		m_creatureProperty.AlphaAttackCoolTime -= 0.5f;
 
 		bool scalable = false;
-		//if (transform.localScale.y < 2f)
-		//	scalable = true;
+		if (transform.localScale.y < 1.5f)
+			scalable = true;
 
 		Vector3 scale = transform.localScale*0.3f;
 		if (scalable == true)

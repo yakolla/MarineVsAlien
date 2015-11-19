@@ -37,6 +37,7 @@ public class CreatureProperty {
 	SecuredType.XInt		m_shield = 0;
 
 	SecuredType.XInt		m_level = 1;
+	SecuredType.XInt		m_evolution = 0;
 
 	SecuredType.XInt		m_exp = 0;
 
@@ -58,11 +59,12 @@ public class CreatureProperty {
 
 	SecuredType.XFloat	m_damageMultiPlier = 0;
 
-	public void 	init(Creature owner, RefCreatureBaseProperty baseProperty, int level)
+	public void 	init(Creature owner, RefCreatureBaseProperty baseProperty, int level, int evolution)
 	{
 		m_owner = owner;
 		m_baseProperty = baseProperty;
 		Level = level;
+		m_evolution = evolution;
 		m_exp = m_baseProperty.exp;
 	}
 
@@ -129,6 +131,12 @@ public class CreatureProperty {
 	public float SPRegen
 	{
 		get{ return (m_baseProperty.spRegen + m_alphaSPRegen.Value);}
+	}
+
+	public int Evolution
+	{
+		get {return m_evolution.Value;}
+		set {m_evolution = value;}
 	}
 
 	public int Level

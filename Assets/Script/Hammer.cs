@@ -13,7 +13,7 @@ public class Hammer : Weapon {
 	
 	override public void LevelUp()
 	{
-		
+		++m_level;
 	}
 
 }

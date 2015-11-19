@@ -44,9 +44,9 @@ public class Champ : Creature {
 	
 	}
 
-	override public void Init(RefMob refMob, int level)
+	override public void Init(RefMob refMob, int level, int evolution)
 	{
-		base.Init(refMob, level);
+		base.Init(refMob, level, evolution);
 
 		m_lastLevelupTime = Time.time;
 

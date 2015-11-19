@@ -77,6 +77,8 @@ public class ChampSettingGUI : MonoBehaviour {
 
 	void Start()
 	{
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 30;
 		GameObjectPool.Instance.Clear();
 		System.GC.Collect();
 		Const.HideLoadingGUI();
@@ -162,6 +164,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.FindItem(Const.FollowerMeleeRefItemId).Item.Level = 900;
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Level = 9;
+
 				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Lock = false;
 				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Level = 1;
 
@@ -407,7 +410,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		champObj.name = "Champ";
 
 		Champ champ = champObj.GetComponent<Champ>();
-		champ.Init(RefData.Instance.RefChamp, Warehouse.Instance.GameDataContext.m_level.Value);
+		champ.Init(RefData.Instance.RefChamp, Warehouse.Instance.GameDataContext.m_level.Value, 0);
 
 		m_champ = champ;
 

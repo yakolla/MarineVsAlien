@@ -41,7 +41,7 @@ public class ItemFollowerData : ItemData{
 		followerObj.transform.localScale = new Vector3(refMob.scale, refMob.scale, refMob.scale);
 
 		Follower follower = (Follower)followerObj.GetComponent<Follower>();
-		follower.Init(obj, refMob, RefItem, Level);
+		follower.Init(obj, refMob, RefItem, Level, Evolution);
 		
 		foreach(RefMob.WeaponDesc weaponDesc in refMob.refWeaponItems)
 		{

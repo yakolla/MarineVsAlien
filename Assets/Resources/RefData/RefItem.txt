@@ -863,6 +863,7 @@
 		"partName":"gun_a",
 		"defaultLock":true,
 		"maxLevel":900,
+		"maxEvolution":9,
 		"evolutionFiring":
 		{
 			"angle":1,
@@ -2584,6 +2585,7 @@
 		"type":"Follower",
 		"icon":"Sprites/FollowerBoomerangMarines",
 		"maxLevel":900,
+		"maxEvolution":3,
 		"defaultLock":true,
 		"consumedSP":0.35,
 		"followerId":30005,

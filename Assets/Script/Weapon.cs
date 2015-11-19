@@ -70,7 +70,8 @@ public class Weapon : MonoBehaviour {
 		m_lastCreated = Time.time;
 		m_firing = false;
 		m_level = 0;
-		m_maxLevel = m_refWeaponItem.maxLevel;
+		m_maxLevel = weaponDesc.maxLevel;
+
 		m_weaponStat = new WeaponStat();
 		if (weaponDesc.weaponStat == null)
 		{
@@ -80,7 +81,7 @@ public class Weapon : MonoBehaviour {
 		{
 			m_weaponStat.OverrideStat(weaponDesc.weaponStat);
 			m_weaponStat.OverrideStat(m_refWeaponItem.weaponStat);
-			m_maxLevel = weaponDesc.maxLevel;
+
 		}
 	
 		for(int i = 0; i <= m_weaponStat.firingCount; ++i)

@@ -103,9 +103,22 @@ public class Follower : Creature {
 
 	}
 
-	public void Init(Creature owner, RefMob refMob, RefItem refItem, int level)
+	void Transformation(int evolution)
 	{
-		base.Init(refMob, level);
+		Transform tra_prev = transform.Find("Body/evolution_" + (evolution-1));
+		Transform tra = transform.Find("Body/evolution_" + evolution);
+		if (tra == null)
+			return;
+
+		if (tra_prev != null)
+			tra_prev.gameObject.SetActive(false);
+
+		tra.gameObject.SetActive(true);
+	}
+
+	public void Init(Creature owner, RefMob refMob, RefItem refItem, int level, int evolution)
+	{
+		base.Init(refMob, level, evolution);
 
 		m_owner = owner;
 		m_owner.AddFollower(this);
@@ -117,6 +130,8 @@ public class Follower : Creature {
 		{
 			EnableNavMeshObstacleAvoidance(false);
 		}
+
+		Transformation(evolution);
 
 		switch(refMob.mobAI)
 		{
@@ -148,7 +163,6 @@ public class Follower : Creature {
 		}
 		
 		m_ai.Init(this);
-	
 	}
 	
 	public void LevelUp()
@@ -159,6 +173,10 @@ public class Follower : Creature {
 
 	public void EvolutionUp()
 	{
+		++m_creatureProperty.Evolution;
+		m_creatureProperty.Level = 1;
+		Transformation(m_creatureProperty.Evolution);
+
 		WeaponHolder.EvolutionUp(0);
 	}
 
