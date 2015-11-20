@@ -583,7 +583,6 @@ public class Spawn : MonoBehaviour {
 			refDropItems = GetCurrentWave().itemSpawn.defaultItem;
 		}
 
-		GameObject prefEnemy = Resources.Load<GameObject>("Pref/mon/"+refMob.prefHead);
 		GameObject prefEnemyBody = Resources.Load<GameObject>("Pref/mon_skin/" + refMob.prefBody);
 		if (prefEnemyBody == null)
 		{
@@ -595,7 +594,7 @@ public class Spawn : MonoBehaviour {
 		enemyPos.x = Mathf.Clamp(enemyPos.x, m_edgeRect.transform.position.x-m_edgeRect.size.x/2, m_edgeRect.transform.position.x+m_edgeRect.size.x/2);
 		enemyPos.z = Mathf.Clamp(enemyPos.z, m_edgeRect.transform.position.z-m_edgeRect.size.z/2, m_edgeRect.transform.position.z+m_edgeRect.size.z/2);
 
-		GameObject enemyObj = Creature.InstanceCreature(prefEnemy, prefEnemyBody, enemyPos, Quaternion.Euler (0, 0, 0)) as GameObject;
+		GameObject enemyObj = Creature.InstanceCreature("Pref/mon/"+refMob.prefHead, prefEnemyBody, enemyPos, Quaternion.Euler (0, 0, 0)) as GameObject;
 
 		enemyObj.transform.localScale = new Vector3(refMob.scale, refMob.scale, refMob.scale);
 
@@ -630,6 +629,7 @@ public class Spawn : MonoBehaviour {
 
 		float goldAlpha = m_wave*0.1f;
 		int spawnedItemCount = 0;
+		float ratioAlpha = 0;
 		foreach(RefItemSpawn desc in refDropItems)
 		{
 			for(int i = 0; i < desc.count; ++i)
@@ -637,7 +637,7 @@ public class Spawn : MonoBehaviour {
 				float ratio = Random.Range(0f, 1f);
 				if (desc.refItem.type == ItemData.Type.WeaponParts)
 				{
-					ratio += Mathf.Min(m_wave, Const.MaxWave)*0.001f;
+					ratioAlpha = Mathf.Min(Mathf.Max(0, m_wave-Const.MaxWave)/(float)Const.MaxWave, 0.1f);
 				}
 				else if (desc.refItem.type == ItemData.Type.WeaponDNA)
 				{
@@ -645,7 +645,7 @@ public class Spawn : MonoBehaviour {
 						ratio = 0f;
 				}
 
-				if (ratio > 0 && ratio <= desc.ratio)
+				if (ratio > 0 && ratio <= (desc.ratio+ratioAlpha))
 				{
 					float scale = 1f;
 					ItemData item = null;

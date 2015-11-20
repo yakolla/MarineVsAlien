@@ -178,7 +178,12 @@ public class Weapon : MonoBehaviour {
 
 	public int GetDamage(CreatureProperty pro)
 	{
-		int damage = (int)((pro.PhysicalAttackDamage+(Level+m_maxLevel*m_evolution))*m_damageRatio);
+		return GetDamage(pro, m_evolution);
+	}
+
+	public int GetDamage(CreatureProperty pro, int evolution)
+	{
+		int damage = (int)((pro.PhysicalAttackDamage+(Level+m_maxLevel*evolution))*m_damageRatio);
 		return (int)(damage + damage*pro.DamageMultiPlier);
 	}
 
@@ -326,6 +331,11 @@ public class Weapon : MonoBehaviour {
 	public int Level
 	{
 		get {return m_level;}
+	}
+
+	public int Evolution
+	{
+		get {return m_evolution;}
 	}
 }
 

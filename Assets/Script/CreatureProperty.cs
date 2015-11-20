@@ -407,5 +407,6 @@ public class CreatureProperty {
 		other.m_alphaSPRegen = m_alphaSPRegen;
 		other.m_callableFollowers = m_callableFollowers;
 		other.m_damageMultiPlier = m_damageMultiPlier;
+		other.m_evolution = m_evolution;
 	}
 }

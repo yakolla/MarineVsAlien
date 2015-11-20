@@ -1069,9 +1069,9 @@ public class Creature : MonoBehaviour {
 	}
 
 
-	static public GameObject InstanceCreature(GameObject prefHead, GameObject prefBody, Vector3 pos, Quaternion rotation)
+	static public GameObject InstanceCreature(string prefHead, GameObject prefBody, Vector3 pos, Quaternion rotation)
 	{
-		GameObject obj = (GameObject)GameObject.Instantiate(prefHead, pos, rotation);
+		GameObject obj = (GameObject)GameObject.Instantiate(Resources.Load<GameObject>(prefHead), pos, rotation);
 
 		GameObject enemyBody = GameObjectPool.Instance.Alloc (prefBody, Vector3.zero, Quaternion.Euler (0, 0, 0)) as GameObject;
 		enemyBody.name = "Body";
@@ -1081,5 +1081,17 @@ public class Creature : MonoBehaviour {
 		enemyBody.transform.localScale = prefBody.transform.localScale;
 
 		return obj;
+	}
+
+	static public GameObject InstanceCreature(GameObject head, GameObject prefBody, Vector3 pos, Quaternion rotation)
+	{
+		GameObject enemyBody = GameObject.Instantiate (prefBody, Vector3.zero, Quaternion.Euler (0, 0, 0)) as GameObject;
+		enemyBody.name = "Body";
+		enemyBody.transform.parent = head.transform;
+		enemyBody.transform.localPosition = Vector3.zero;
+		enemyBody.transform.localRotation = prefBody.transform.rotation;
+		enemyBody.transform.localScale = prefBody.transform.localScale;
+
+		return head;
 	}
 }

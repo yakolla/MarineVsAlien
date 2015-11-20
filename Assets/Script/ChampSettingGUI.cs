@@ -406,7 +406,7 @@ public class ChampSettingGUI : MonoBehaviour {
 	{
 		Warehouse.Instance.NewGameStats.Reset();
 
-		GameObject champObj = Creature.InstanceCreature(Resources.Load<GameObject>("Pref/Champ"), Resources.Load<GameObject>("Pref/mon_skin/" + RefData.Instance.RefChamp.prefBody), m_spawnChamp.position, m_spawnChamp.localRotation);	
+		GameObject champObj = Creature.InstanceCreature("Pref/Champ", Resources.Load<GameObject>("Pref/mon_skin/" + RefData.Instance.RefChamp.prefBody), m_spawnChamp.position, m_spawnChamp.localRotation);	
 		champObj.name = "Champ";
 
 		Champ champ = champObj.GetComponent<Champ>();
@@ -604,6 +604,9 @@ public class ChampSettingGUI : MonoBehaviour {
 					itemFollowerData.m_follower.EvolutionUp();
 					itemFollowerData.NoApplyOptions(itemFollowerData.m_follower);
 					itemFollowerData.Use(itemFollowerData.m_follower);
+
+					Const.GetWindowGui(Const.WindowGUIType.EvolutionItemGUI).GetComponent<EvolutionItemGUI>().SetItem(itemFollowerData.m_follower);
+					Const.GetWindowGui(Const.WindowGUIType.EvolutionItemGUI).SetActive(true);
 					break;
 				case ItemData.Type.Stat:
 					break;

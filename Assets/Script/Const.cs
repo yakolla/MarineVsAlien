@@ -26,7 +26,7 @@ public class Const {
 	}
 
 	public const string PackageName = "com.banegole.marinevsalien";
-	public const int MaxWave = 100;
+	public const int MaxWave = 300;
 	public const int MaxItemLevel = 9;
 	public const int MaxEvolutionLevel = 0;
 	public const int MaxShowDamageNumber = 3;
@@ -241,6 +241,7 @@ public class Const {
 		CreditsGUI,
 		GameOverGUI,
 		FoundItemGUI,
+		EvolutionItemGUI,
 	}
 	public static GameObject GetWindowGui(WindowGUIType type)
 	{
@@ -263,6 +264,8 @@ public class Const {
 			return obj.transform.Find("GameOverGUI/Panel").gameObject;
 		case WindowGUIType.FoundItemGUI:
 			return obj.transform.Find("FoundItemGUI/Panel").gameObject;
+		case WindowGUIType.EvolutionItemGUI:
+			return obj.transform.Find("EvolutionItemGUI/Panel").gameObject;
 		}
 		return null;
 	}

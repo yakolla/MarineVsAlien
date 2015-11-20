@@ -103,7 +103,7 @@ public class Follower : Creature {
 
 	}
 
-	void Transformation(int evolution)
+	public static void Transformation(Transform transform, int evolution)
 	{
 		Transform tra_prev = transform.Find("Body/evolution_" + (evolution-1));
 		Transform tra = transform.Find("Body/evolution_" + evolution);
@@ -131,7 +131,7 @@ public class Follower : Creature {
 			EnableNavMeshObstacleAvoidance(false);
 		}
 
-		Transformation(evolution);
+		Transformation(transform, evolution);
 
 		switch(refMob.mobAI)
 		{
@@ -175,7 +175,7 @@ public class Follower : Creature {
 	{
 		++m_creatureProperty.Evolution;
 		m_creatureProperty.Level = 1;
-		Transformation(m_creatureProperty.Evolution);
+		Transformation(transform, m_creatureProperty.Evolution);
 
 		WeaponHolder.EvolutionUp(0);
 	}
