@@ -11,6 +11,8 @@ public class EvolutionItemGUI : MonoBehaviour {
 	YGUISystem.GUIButton m_button;
 	YGUISystem.GUILable	m_oldEvolution;
 	YGUISystem.GUILable	m_newEvolution;
+	YGUISystem.GUILable	m_oldDamage;
+	YGUISystem.GUILable	m_newDamage;
 	Follower	m_follower;
 
 	GameObject	m_oldFollower;
@@ -23,8 +25,11 @@ public class EvolutionItemGUI : MonoBehaviour {
 			return true;
 		});
 
-		m_oldEvolution = new YGUISystem.GUILable(transform.Find("Button/Old/Text").gameObject);
-		m_newEvolution = new YGUISystem.GUILable(transform.Find("Button/New/Text").gameObject);
+		m_oldEvolution = new YGUISystem.GUILable(transform.Find("Button/Old/EvolutionText").gameObject);
+		m_newEvolution = new YGUISystem.GUILable(transform.Find("Button/New/EvolutionText").gameObject);
+
+		m_oldDamage = new YGUISystem.GUILable(transform.Find("Button/Old/DamageText").gameObject);
+		m_newDamage = new YGUISystem.GUILable(transform.Find("Button/New/DamageText").gameObject);
 	}
 
 
@@ -37,8 +42,8 @@ public class EvolutionItemGUI : MonoBehaviour {
 
 		TimeEffector.Instance.StartTime();
 		m_follower = null;
-		GameObject.DestroyImmediate(m_oldFollower.transform.Find("Body").gameObject);
-		GameObject.DestroyImmediate(m_newFollower.transform.Find("Body").gameObject);
+		GameObject.Destroy(m_oldFollower.transform.Find("Body").gameObject);
+		GameObject.Destroy(m_newFollower.transform.Find("Body").gameObject);
 
 		m_oldFollower = null;
 		m_newFollower = null;
@@ -55,9 +60,10 @@ public class EvolutionItemGUI : MonoBehaviour {
 			int oldDmg = m_follower.WeaponHolder.MainWeapon.GetDamage(m_follower.m_creatureProperty, m_follower.WeaponHolder.MainWeapon.Evolution-1);
 			int newDmg = m_follower.WeaponHolder.MainWeapon.Damage;
 
-			m_oldEvolution.Text.text = oldDmg.ToString();
-			m_newEvolution.Text.text = newDmg.ToString();
-
+			m_oldEvolution.Text.text = (m_follower.WeaponHolder.MainWeapon.Evolution-1).ToString();
+			m_newEvolution.Text.text = m_follower.WeaponHolder.MainWeapon.Evolution.ToString();
+			m_oldDamage.Text.text = oldDmg.ToString();
+			m_newDamage.Text.text = newDmg.ToString();
 
 			return;
 		}
