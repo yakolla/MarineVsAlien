@@ -22,12 +22,13 @@ public class ItemSkillData : ItemData{
 
 		if (RefItemID == 26)
 		{
+			GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>().m_interstitialOpenFunctor = ()=>{
+				Const.GetSpawn().StartCoroutine(Const.DelayFunction(2f, ()=>{
+					Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).GetComponent<FoundItemGUI>().SetItemObj(Warehouse.Instance.FindItem(Const.GemRefItemId));
+					Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).SetActive(true);
+				}));
+			};
 			GameObject.Find("HudGUI/ADMob").GetComponent<ADMob>().ShowInterstitial();
-			Const.GetSpawn().StartCoroutine(Const.DelayFunction(2f, ()=>{
-				Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).GetComponent<FoundItemGUI>().SetItemObj(Warehouse.Instance.FindItem(Const.GemRefItemId));
-				Const.GetWindowGui(Const.WindowGUIType.FoundItemGUI).SetActive(true);
-			}));
-
 			return;
 		}
 

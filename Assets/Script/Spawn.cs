@@ -635,9 +635,10 @@ public class Spawn : MonoBehaviour {
 			for(int i = 0; i < desc.count; ++i)
 			{
 				float ratio = Random.Range(0f, 1f);
+				ratioAlpha = 0f;
 				if (desc.refItem.type == ItemData.Type.WeaponParts)
 				{
-					ratioAlpha = Mathf.Min(Mathf.Max(0, m_wave-Const.MaxWave)/(float)Const.MaxWave, 0.1f);
+					ratioAlpha = Mathf.Min(Mathf.Max(0, m_wave-Const.MaxWave)/10000f, 0.1f);
 				}
 				else if (desc.refItem.type == ItemData.Type.WeaponDNA)
 				{

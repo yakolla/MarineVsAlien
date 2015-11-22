@@ -22,7 +22,7 @@ public class ADMob : MonoBehaviour
 	string adBannerId = "unexpected_platform";
 	#endif
 	// Use this for initialization
-	public event EventHandler<EventArgs> OnClosedAds = delegate {};
+	public System.Action m_interstitialOpenFunctor;
 
 	void Awake()
 	{
@@ -52,6 +52,11 @@ public class ADMob : MonoBehaviour
 	public void ShowInterstitial()
 	{		
 		interstitial.Show();
+
+		if (Application.platform == RuntimePlatform.WindowsEditor)
+		{
+			HandleInterstitialOpened(null, null);
+		}
 	}
 
 	public void ShowBanner(bool show)
@@ -76,12 +81,13 @@ public class ADMob : MonoBehaviour
 	public void HandleInterstitialFailedToLoad(object sender, AdFailedToLoadEventArgs args)
 	{
 		Debug.Log("HandleInterstitialFailedToLoad event received with message: " + args.Message);
-		OnClosedAds(this, EventArgs.Empty);
 	}
 	
 	public void HandleInterstitialOpened(object sender, EventArgs args)
 	{
 		Debug.Log("HandleInterstitialOpened event received");
+		if (m_interstitialOpenFunctor != null)
+			m_interstitialOpenFunctor();
 	}
 	
 	void HandleInterstitialClosing(object sender, EventArgs args)
@@ -92,7 +98,8 @@ public class ADMob : MonoBehaviour
 	public void HandleInterstitialClosed(object sender, EventArgs args)
 	{
 		Debug.Log("HandleInterstitialClosed event received");
-		OnClosedAds(this, EventArgs.Empty);
+
+
 	}
 	
 	public void HandleInterstitialLeftApplication(object sender, EventArgs args)
