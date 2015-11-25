@@ -1,26 +1,27 @@
 fileFormatVersion: 2
-guid: e49bb36d0ef9d9e4babb1615a2169276
+guid: 41b1657d31cb310428474ad553e046db
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Box009
-    100004: Box128
-    100006: Box129
-    400000: //RootNode
-    400002: Box009
-    400004: Box128
-    400006: Box129
-    2300000: Box009
-    2300002: Box128
-    2300004: Box129
-    3300000: Box009
-    3300002: Box128
-    3300004: Box129
-    4300000: Box009
-    4300002: Box128
-    4300004: Box129
+    100000: Bone001
+    100002: Bone002
+    100004: redlaser_1
+    100006: //RootNode
+    100008: redlaser_2
+    100010: redlaser_3
+    400000: Bone001
+    400002: Bone002
+    400004: redlaser_1
+    400006: //RootNode
+    400008: redlaser_2
+    400010: redlaser_3
+    4300000: redlaser_1
+    4300002: redlaser_2
+    4300004: redlaser_3
     9500000: //RootNode
+    13700000: redlaser_1
+    13700002: redlaser_2
+    13700004: redlaser_3
   materials:
     importMaterials: 1
     materialName: 0
