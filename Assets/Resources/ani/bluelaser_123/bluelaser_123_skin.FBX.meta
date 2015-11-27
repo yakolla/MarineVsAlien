@@ -9,19 +9,23 @@ ModelImporter:
     100006: bluelaser_3
     100008: Bone001
     100010: Bone002
+    100012: bluelaser_0
     400000: bluelaser_1
     400002: //RootNode
     400004: bluelaser_2
     400006: bluelaser_3
     400008: Bone001
     400010: Bone002
+    400012: bluelaser_0
     4300000: bluelaser_1
     4300002: bluelaser_2
     4300004: bluelaser_3
+    4300006: bluelaser_0
     9500000: //RootNode
     13700000: bluelaser_1
     13700002: bluelaser_2
     13700004: bluelaser_3
+    13700006: bluelaser_0
   materials:
     importMaterials: 1
     materialName: 0
