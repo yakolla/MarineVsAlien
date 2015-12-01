@@ -89,5 +89,7 @@ public class MultiLang{
 		BMarine,
 		KeepLevelup,
 		Advertising,
+		BaseDamage,
+		EvolutionLevel,
 	}
 }

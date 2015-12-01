@@ -18,6 +18,9 @@ public class EvolutionItemGUI : MonoBehaviour {
 	GameObject	m_oldFollower;
 	GameObject	m_newFollower;
 
+	YGUISystem.GUILable	m_evolutionLable;	
+	YGUISystem.GUILable	m_damageLable;
+
 	SecuredType.XInt	gemReward = 0;
 
 	void Start () {
@@ -30,6 +33,12 @@ public class EvolutionItemGUI : MonoBehaviour {
 
 		m_oldDamage = new YGUISystem.GUILable(transform.Find("Button/Old/DamageText").gameObject);
 		m_newDamage = new YGUISystem.GUILable(transform.Find("Button/New/DamageText").gameObject);
+
+		m_evolutionLable = new YGUISystem.GUILable(transform.Find("Button/EvolutionLable").gameObject);
+		m_damageLable = new YGUISystem.GUILable(transform.Find("Button/DamageLable").gameObject);
+
+		m_evolutionLable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.EvolutionLevel);
+		m_damageLable.Text.text = RefData.Instance.RefTexts(MultiLang.ID.BaseDamage);
 	}
 
 
@@ -73,9 +82,10 @@ public class EvolutionItemGUI : MonoBehaviour {
 
 	public void SetItem(Follower follower)
 	{
+
 		m_follower = follower;
-		m_oldFollower = Creature.InstanceCreature(transform.Find("Button/Old/mob").gameObject, Resources.Load<GameObject>("Pref/mon_skin/" + m_follower.RefMob.prefBody), Vector3.zero, Quaternion.Euler(Vector3.zero));
-		m_newFollower = Creature.InstanceCreature(transform.Find("Button/New/mob").gameObject, Resources.Load<GameObject>("Pref/mon_skin/" + m_follower.RefMob.prefBody), Vector3.zero, Quaternion.Euler(Vector3.zero));
+		m_oldFollower = Creature.InstanceCreature(Const.GetSpawn().transform.Find("OldEvolution").gameObject, Resources.Load<GameObject>("Pref/mon_skin/" + m_follower.RefMob.prefBody), Vector3.zero, Quaternion.Euler(Vector3.zero));
+		m_newFollower = Creature.InstanceCreature(Const.GetSpawn().transform.Find("NewEvolution").gameObject, Resources.Load<GameObject>("Pref/mon_skin/" + m_follower.RefMob.prefBody), Vector3.zero, Quaternion.Euler(Vector3.zero));
 
 		Follower.Transformation(m_oldFollower.transform, m_follower.WeaponHolder.MainWeapon.Evolution-1);
 		Follower.Transformation(m_newFollower.transform, m_follower.WeaponHolder.MainWeapon.Evolution);

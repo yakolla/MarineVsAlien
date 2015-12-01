@@ -85,4 +85,6 @@
 	"Marine Boy B",
 	"Keep Leveling Up",
 	"Advertising",
+	"Base Damage",
+	"Evolution Level",
 ]

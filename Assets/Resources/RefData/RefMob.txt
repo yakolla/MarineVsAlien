@@ -1348,7 +1348,7 @@
 		{
 			"id":30003,			
 			"prefHead":"Follower",
-			"prefBody":"thunder_skin",
+			"prefBody":"bluelaser_123_skin",
 			"name":"BatMarine",
 			"refWeaponItems":
 			[
@@ -1382,7 +1382,7 @@
 		{
 			"id":30004,
 			"prefHead":"Follower",
-			"prefBody":"robocrash_skin",
+			"prefBody":"redlaser_123_skin",
 			"name":"RocketMarine",
 			"refWeaponItems":
 			[
