@@ -167,7 +167,7 @@ public class ChampSettingGUI : MonoBehaviour {
 
 				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Lock = false;
 				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Level = 1;
-
+/*
 				Warehouse.Instance.FindItem(21).Item.Lock = false;
 				Warehouse.Instance.FindItem(21).Item.Level = 9;
 				Warehouse.Instance.FindItem(22).Item.Lock = false;
@@ -177,7 +177,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.FindItem(24).Item.Lock = false;
 				Warehouse.Instance.FindItem(24).Item.Level = 9;
 				Warehouse.Instance.FindItem(25).Item.Lock = false;
-				Warehouse.Instance.FindItem(25).Item.Level = 1;
+				Warehouse.Instance.FindItem(25).Item.Level = 1;*/
 
 				Warehouse.Instance.FindItem(2001).Item.Lock = false;
 				Warehouse.Instance.FindItem(2001).Item.Level = 900;
@@ -295,7 +295,7 @@ public class ChampSettingGUI : MonoBehaviour {
 			{
 
 				priceGemButton.EnableChecker = ()=>{
-					return item.Item.RefItem.levelup.conds != null && item.Item.Lock == false && item.Item.Level < item.Item.RefItem.maxLevel;
+					return item.Item.RefItem.levelup != null && item.Item.Lock == false && item.Item.Level < item.Item.RefItem.maxLevel;
 				};
 
 			invSlot.SetListener(() => OnClickLevelupToMax(invSlot, priceGemButton, false, item), () => OnClickLevelupToMax(invSlot, priceGemButton, true, item) );
@@ -310,7 +310,7 @@ public class ChampSettingGUI : MonoBehaviour {
 			{
 			priceGemButton.EnableChecker = ()=>{
 				
-				return item.Item.RefItem.unlock.conds != null && item.Item.Lock == true;
+				return item.Item.RefItem.unlock != null && item.Item.Lock == true;
 			};
 
 				priceGemButton.SetPrices(role, item.Item.RefItem);
@@ -324,7 +324,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		case Const.ButtonRole.Evolution:
 			{
 			priceGemButton.EnableChecker = ()=>{
-				return item.Item.RefItem.evolution.conds != null && item.Item.Level == item.Item.RefItem.maxLevel && item.Item.Evolution < item.Item.RefItem.maxEvolution;
+				return item.Item.RefItem.evolution != null && item.Item.Level == item.Item.RefItem.maxLevel && item.Item.Evolution < item.Item.RefItem.maxEvolution;
 			};
 			
 			priceGemButton.SetPrices(role, item.Item.RefItem);

@@ -76,6 +76,8 @@ public class Const {
 
 	public static float GetItemLevelupWorth(int level, RefPriceCondition cond)
 	{
+		if (cond == null)
+			return 0f;
 		return cond.pricePerLevel * level;
 	}
 

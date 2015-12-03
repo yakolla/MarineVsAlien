@@ -68,16 +68,26 @@ public class GUIInventorySlot : MonoBehaviour {
 			switch(role)
 			{
 			case Const.ButtonRole.Unlock:
-				normal = refItem.unlock.conds;
-				gem = refItem.unlock.else_conds;
+				if (refItem.unlock != null)
+				{
+					normal = refItem.unlock.conds;
+					gem = refItem.unlock.else_conds;
+
+				}
 				break;
 			case Const.ButtonRole.Levelup:
-				normal = refItem.levelup.conds;
-				gem = refItem.levelup.else_conds;
+				if (refItem.levelup != null)
+				{
+					normal = refItem.levelup.conds;
+					gem = refItem.levelup.else_conds;
+				}
 				break;
 			case Const.ButtonRole.Evolution:
-				normal = refItem.evolution.conds;
-				gem = refItem.evolution.else_conds;
+				if (refItem.evolution != null)
+				{
+					normal = refItem.evolution.conds;
+					gem = refItem.evolution.else_conds;
+				}
 				break;
 			case Const.ButtonRole.Nothing:
 				break;
