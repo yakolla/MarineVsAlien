@@ -1304,7 +1304,7 @@
 		{
 			"coolTime":0.5,
 			"range":5,
-			"incBulletOnLevel":900,
+			"incBulletOnLevel":901,
 		},
 		"levelup":
 		{
@@ -2153,6 +2153,7 @@
 		"type":"Follower",
 		"icon":"Sprites/FollowerGunMarines",
 		"maxLevel":900,
+		"maxEvolution":3,
 		"defaultLock":true,
 		"consumedSP":0.07,
 		"followerId":30001,

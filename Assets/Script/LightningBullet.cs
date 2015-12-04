@@ -45,7 +45,7 @@ public class LightningBullet : Bullet
 		Vector3 scale = transform.localScale;
 
 		base.Init(ownerCreature, weapon, targetAngle);
-
+		m_length = weapon.WeaponStat.range;
 		m_weapon = weapon;
 		transform.parent = ownerCreature.WeaponHolder.transform;
 		transform.localPosition = Vector3.zero;
@@ -104,10 +104,6 @@ public class LightningBullet : Bullet
 				if (hitted != null)
 				{
 					creature = hitted[0];
-					if (m_ownerCreature.inAttackRange(creature, 0))
-					{
-						m_ownerCreature.SetTarget(creature);
-					}
 				}
 
 			}
@@ -120,63 +116,92 @@ public class LightningBullet : Bullet
 			{
 				if (creature && Creature.IsEnemy(creature, m_ownerCreature))
 				{				
-					m_ownerCreature.SetTarget(creature);
-					m_ownerCreature.RotateToTarget(creature.transform.position);
-
-					targets[0] = creature;
-					mobHitted = true;
-					hittedTargetCount = 1;
-					
-					for(int i = 1; i < m_maxChaining; ++i)
+					if (m_ownerCreature.inAttackRange(creature, 0))
 					{
-						Creature[] chaningTargets = Bullet.SearchTarget(targets[i-1].transform.position, m_ownerCreature.GetMyEnemyType(), 3f, targets);
-						if (chaningTargets == null)
-							break;
+						m_ownerCreature.SetTarget(creature);
+						m_ownerCreature.RotateToTarget(creature.transform.position);
 
-						targets[i] = chaningTargets[0];
-						hittedTargetCount++;
-					}
-					
-					int perParticles = particles.Length/hittedTargetCount;
-					Transform old = targets[0].transform.Find("Body/Aimpoint");
-					if (old != null)
-					{
-						Vector3 oldAimpoint = old.position;
-						createChanningParticle(transform.position, oldAimpoint, 0, perParticles);
-						for(int i = 1; i < hittedTargetCount; ++i)
+						targets[0] = creature;
+						mobHitted = true;
+						hittedTargetCount = 1;
+						
+						for(int i = 1; i < m_maxChaining; ++i)
 						{
-							Transform t  = targets[i].transform.Find("Body/Aimpoint");
-							if (t != null)
+							Creature[] chaningTargets = Bullet.SearchTarget(targets[i-1].transform.position, m_ownerCreature.GetMyEnemyType(), 3f, targets);
+							if (chaningTargets == null)
+								break;
+
+							targets[i] = chaningTargets[0];
+							hittedTargetCount++;
+						}
+						
+						int perParticles = particles.Length/hittedTargetCount;
+						Transform old = targets[0].transform.Find("Body/Aimpoint");
+						if (old != null)
+						{
+							Vector3 oldAimpoint = old.position;
+							createChanningParticle(transform.position, oldAimpoint, 0, perParticles);
+							for(int i = 1; i < hittedTargetCount; ++i)
 							{
-								Vector3 aimpoint = t.position;
-								createChanningParticle(oldAimpoint, aimpoint, perParticles*(i), perParticles*(i)+perParticles);
-								oldAimpoint = aimpoint;
+								Transform t  = targets[i].transform.Find("Body/Aimpoint");
+								if (t != null)
+								{
+									Vector3 aimpoint = t.position;
+									createChanningParticle(oldAimpoint, aimpoint, perParticles*(i), perParticles*(i)+perParticles);
+									oldAimpoint = aimpoint;
+								}
 							}
 						}
+						
+						particleEmitter.particles = particles;
 					}
-					
-					particleEmitter.particles = particles;
+					else
+						m_ownerCreature.SetTarget(null);
 				}
 			}
 		}
 		else
 		{
-			RaycastHit[] hit;
-			Vector3 fwd = transform.TransformDirection(Vector3.right);
-			hit = Physics.RaycastAll(transform.position, fwd, BulletLength(), 1<<9);
-			if (hit.Length > 0)
-			{
-				targets = new Creature[hit.Length];
-				for(int i = 0; i < hit.Length; ++i)
-				{
-					Creature creature = hit[i].transform.gameObject.GetComponent<Creature>();
-					if (creature && Creature.IsEnemy(creature, m_ownerCreature))
-					{				
-						targets[hittedTargetCount] = creature;
-						hittedTargetCount += 1;
-					}
-				}
 
+			targets = new Creature[1];
+			Creature creature = null;
+			if (m_ownerCreature.Targetting == null)
+			{
+				Creature[] hitted = Bullet.SearchTarget(transform.position, m_ownerCreature.GetMyEnemyType(), BulletLength());
+				if (hitted != null)
+				{
+					creature = hitted[0];
+				}
+			}
+			else
+			{
+				creature = m_ownerCreature.Targetting;
+			}
+
+			if (creature != null)
+			{
+				if (creature && Creature.IsEnemy(creature, m_ownerCreature))
+				{	
+					if (m_ownerCreature.inAttackRange(creature, 0))
+					{
+						m_ownerCreature.SetTarget(creature);
+						m_ownerCreature.RotateToTarget(creature.transform.position);
+						targets[0] = creature;
+						hittedTargetCount += 1;
+						
+						int perParticles = particles.Length/hittedTargetCount;
+						Transform old = targets[0].transform.Find("Body/Aimpoint");
+						if (old != null)
+						{
+							Vector3 oldAimpoint = old.position;
+							createChanningParticle(transform.position, oldAimpoint, 0, perParticles);
+						}
+						
+						particleEmitter.particles = particles;
+					}
+					else
+						m_ownerCreature.SetTarget(null);
+				}
 			}
 		}
 

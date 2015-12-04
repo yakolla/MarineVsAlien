@@ -115,7 +115,6 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerGrenadeMarineRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerMeleeRefItemId));
 				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerPetRefItemId));
-				Warehouse.Instance.PushItem(new ItemFollowerData(Const.FollowerRedMarineRefItemId));
 
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.EngineeringBayRefItemId));
 				Warehouse.Instance.PushItem(new ItemCheatData(Const.AcademyRefItemId));
@@ -144,12 +143,13 @@ public class ChampSettingGUI : MonoBehaviour {
 
 				Warehouse.Instance.FindItem(Const.ChampTapRefItemId).Item.Level = 900;
 
-
+				/*
 				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Lock = false;
-				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Level = 900;
+				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Level = 9;*/
 
 				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Level = 900;
+
 				Warehouse.Instance.FindItem(Const.FollowerFireMarineRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerFireMarineRefItemId).Item.Level = 900;
 				Warehouse.Instance.FindItem(Const.FollowerLightningMarineRefItemId).Item.Lock = false;
@@ -164,10 +164,9 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.FindItem(Const.FollowerMeleeRefItemId).Item.Level = 900;
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Level = 9;
-
 				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Lock = false;
 				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Level = 1;
-/*
+
 				Warehouse.Instance.FindItem(21).Item.Lock = false;
 				Warehouse.Instance.FindItem(21).Item.Level = 9;
 				Warehouse.Instance.FindItem(22).Item.Lock = false;
@@ -177,7 +176,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.FindItem(24).Item.Lock = false;
 				Warehouse.Instance.FindItem(24).Item.Level = 9;
 				Warehouse.Instance.FindItem(25).Item.Lock = false;
-				Warehouse.Instance.FindItem(25).Item.Level = 1;*/
+				Warehouse.Instance.FindItem(25).Item.Level = 1;
 
 				Warehouse.Instance.FindItem(2001).Item.Lock = false;
 				Warehouse.Instance.FindItem(2001).Item.Level = 900;

@@ -1283,20 +1283,20 @@
 		{
 			"id":30001,
 			"prefHead":"Follower",
-			"prefBody":"robogun_skin",
+			"prefBody":"laser_123_skin",
 			"name":"GunMarine",
 			"refWeaponItems":
 			[
 				{
-					"refItemId":"201",
+					"refItemId":"118",
 					"weaponStat":
 					{
-						"incBulletOnLevel":10
+						"range":10
 					}
 				}
 			],
 			"mobAI":"Follow",			
-			"sightRange":5,
+			"sightRange":6,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
