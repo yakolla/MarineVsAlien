@@ -39,7 +39,7 @@
 	"Macho Skill",
 	"Heal Skill",
 	"Damage Multiply Skill",
-	"Gamma Photon Robot",
+	"Photon Beam Robot",
 	"Fire Robot",
 	"Laser Beam Vessel",
 	"Radioactive Beam Vessel",

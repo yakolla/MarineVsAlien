@@ -141,11 +141,11 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.PushItem(new ItemWeaponPartsData(3005));
 
 
-				Warehouse.Instance.FindItem(Const.ChampTapRefItemId).Item.Level = 900;
+				Warehouse.Instance.FindItem(Const.ChampTapRefItemId).Item.Level = 9;
 
-				/*
+
 				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Lock = false;
-				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Level = 9;*/
+				Warehouse.Instance.FindItem(Const.ChampGunRefItemId).Item.Level = 9;
 
 				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerGunMarineRefItemId).Item.Level = 900;
@@ -164,8 +164,7 @@ public class ChampSettingGUI : MonoBehaviour {
 				Warehouse.Instance.FindItem(Const.FollowerMeleeRefItemId).Item.Level = 900;
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Lock = false;
 				Warehouse.Instance.FindItem(Const.FollowerPetRefItemId).Item.Level = 9;
-				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Lock = false;
-				//Warehouse.Instance.FindItem(Const.FollowerRedMarineRefItemId).Item.Level = 1;
+
 
 				Warehouse.Instance.FindItem(21).Item.Lock = false;
 				Warehouse.Instance.FindItem(21).Item.Level = 9;
@@ -415,10 +414,13 @@ public class ChampSettingGUI : MonoBehaviour {
 
 		foreach(ItemObject itemWeaponObject in Warehouse.Instance.Items[ItemData.Type.Weapon])
 		{
-			if (itemWeaponObject.Item.Level > 0 && itemWeaponObject.Item.RefItem.id != Const.ChampTapRefItemId)
+			if (itemWeaponObject.Item.Level > 0)
 			{
-				itemWeaponObject.Item.Equip(champ);
+				//if (itemWeaponObject.Item.RefItem.id != Const.ChampTapRefItemId)
+					itemWeaponObject.Item.Equip(champ);
+
 			}
+
 		}
 
 		foreach(ItemObject itemStatObject in Warehouse.Instance.Items[ItemData.Type.Stat])
