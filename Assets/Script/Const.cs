@@ -26,6 +26,7 @@ public class Const {
 	}
 
 	public const string PackageName = "com.banegole.marinevsalien";
+	public const long MaxItemCount = 10000000000;
 	public const int MaxWave = 300;
 	public const int MaxItemLevel = 9;
 	public const int MaxEvolutionLevel = 0;

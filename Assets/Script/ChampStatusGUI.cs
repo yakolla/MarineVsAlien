@@ -6,11 +6,11 @@ public class ChampStatusGUI : MonoBehaviour {
 
 	Champ	m_champ;
 
-	int			m_oldMobKills;
-	int			m_oldGold;
-	int			m_oldGoldMedal;
-	int			m_oldGem;
-	int			m_oldDNA;
+	long			m_oldMobKills;
+	long			m_oldGold;
+	long			m_oldGoldMedal;
+	long			m_oldGem;
+	long			m_oldDNA;
 
 
 
@@ -187,8 +187,6 @@ public class ChampStatusGUI : MonoBehaviour {
 			m_champ.AccessoryItems[slot].Item.Use(m_champ);
 
 	}
-
-
 
 	void SetActiveGUI(bool active)
 	{

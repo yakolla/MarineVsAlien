@@ -15,11 +15,11 @@ public class WarehouseData
 	
 	public SecuredType.XInt	m_waveIndex = 0;
 	public SecuredType.XInt	m_retryCount = 0;
-	public SecuredType.XInt	m_alienEssence = 0;
-	public SecuredType.XInt	m_gold = 0;
-	public SecuredType.XInt	m_goldMedal = 0;
-	public SecuredType.XInt	m_gem = 0;
-	public SecuredType.XInt	m_autoEarnGold = 0;
+	public SecuredType.XInt64	m_alienEssence = 0;
+	public SecuredType.XInt64	m_gold = 0;
+	public SecuredType.XInt64	m_goldMedal = 0;
+	public SecuredType.XInt64	m_gem = 0;
+	public SecuredType.XInt64	m_autoEarnGold = 0;
 	public System.DateTime			m_lastModifiedTime = System.DateTime.UtcNow;
 	
 	public GameStatistics			m_gameBestStats = new GameStatistics();
@@ -424,7 +424,7 @@ public class Warehouse {
 		set{m_warehouseData.m_waveIndex.Value = value;}
 	}
 
-	public int AutoEarnGold
+	public long AutoEarnGold
 	{
 		get{return m_warehouseData.m_autoEarnGold.Value;}
 		set{m_warehouseData.m_autoEarnGold.Value = value;}
@@ -577,7 +577,7 @@ public class Warehouse {
 		reader.Close();
 	}
 
-	public int NeedTotalGem
+	public long NeedTotalGem
 	{
 		get{
 			int totalGem = 0;

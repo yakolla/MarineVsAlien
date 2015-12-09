@@ -49,7 +49,7 @@ public class ShopIAB : MonoBehaviour
     string _label = "";
     bool _isInitialized = false;
 	bool m_progressing = false;
-	int	m_needTotalGems = 0;
+	long	m_needTotalGems = 0;
 	int	m_tryToSaveCount = 0;
 
 	private void Awake()
