@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ItemGoldData : ItemData{
 
-	public ItemGoldData(int gold) : base(1, gold)
+	public ItemGoldData(long gold) : base(1, gold)
 	{
 
 	}

@@ -742,7 +742,7 @@ public class Spawn : MonoBehaviour {
 	}
 
 
-	public void SharePotinsChamps(Creature cre, ItemData.Type type, int xp, bool enableEffect)
+	public void SharePotinsChamps(Creature cre, ItemData.Type type, long xp, bool enableEffect)
 	{
 
 		if (cre == null || (int)(cre.CreatureType & Creature.Type.Champ) == 0)
@@ -751,7 +751,7 @@ public class Spawn : MonoBehaviour {
 		switch(type)
 		{
 		case ItemData.Type.XPPotion:
-			m_champ.GiveExp(xp);
+			m_champ.GiveExp((int)xp);
 			if (enableEffect == true)
 				m_champ.ApplyPickUpItemEffect(type, Const.GetPrefItemEatEffect(RefData.Instance.RefItems[6]), xp);
 			/*

@@ -60,6 +60,8 @@ public class ChampSettingGUI : MonoBehaviour {
 	bool		m_eqipedAllItem = false;
 	[SerializeField]
 	int			m_cheatGem = 1000;
+	[SerializeField]
+	int			m_cheatGold = 1000;
 
 	Champ		m_champ;
 
@@ -94,7 +96,7 @@ public class ChampSettingGUI : MonoBehaviour {
 #if UNITY_EDITOR
 			if (Warehouse.Instance.InvenSize == 0)
 			{
-				Warehouse.Instance.PushItem(new ItemGoldData(100000));
+				Warehouse.Instance.PushItem(new ItemGoldData(m_cheatGold));
 				Warehouse.Instance.PushItem(new ItemGoldMedalData(1000));
 				Warehouse.Instance.PushItem(new ItemGemData(m_cheatGem));
 				Warehouse.Instance.PushItem(new ItemWeaponDNAData(0));
@@ -372,7 +374,7 @@ public class ChampSettingGUI : MonoBehaviour {
 		{
 			System.DateTime now = new System.DateTime (1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc).AddMilliseconds(double.Parse(www.text));
 
-			Warehouse.Instance.AutoEarnGold = (int)now.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5*Warehouse.Instance.GameBestStats.WaveIndex;
+			Warehouse.Instance.AutoEarnGold = (long)now.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5*Warehouse.Instance.GameBestStats.WaveIndex;
 			Warehouse.Instance.LastModifiedFileTime = now;
 		}
 		/*

@@ -304,7 +304,7 @@ public class YGUISystem {
 				int cost = (int)(price.count*itemWorth);
 				
 				ItemObject inventoryItemObj = Warehouse.Instance.FindItem(price.refItemId);
-				int hasCount = 0;
+				long hasCount = 0;
 				if (inventoryItemObj == null)
 				{
 					str = "<color=red>";

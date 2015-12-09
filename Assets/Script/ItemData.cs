@@ -52,7 +52,7 @@ public class ItemData {
 
 
 	int				m_refItemId;
-	SecuredType.XInt	m_count = 0;
+	SecuredType.XInt64	m_count = 0;
 	SecuredType.XInt	m_level = 1;
 	bool			m_lock = false;
 	SecuredType.XInt	m_evolution = 0;
@@ -63,7 +63,7 @@ public class ItemData {
 	{
 	}
 
-	public ItemData(int refItemId, int count)
+	public ItemData(int refItemId, long count)
 	{
 		RefItemID = refItemId;
 		m_count = count;
@@ -405,10 +405,25 @@ public class ItemData {
 		}
 	}
 
-	public int Count
+	public long Count
 	{
 		get {return m_count.Value;}
-		set {m_count.Value = value;}
+		set {
+
+			if (value > Const.MaxItemCount)
+			{
+				m_count.Value = Const.MaxItemCount;
+			}
+			else if (value < 0)
+			{
+				m_count.Value = 0;
+			}
+			else
+			{
+				m_count.Value = value;
+			}
+
+		}
 	}
 
 	[JsonIgnore]

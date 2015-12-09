@@ -767,7 +767,7 @@ public class Creature : MonoBehaviour {
 		return true;
 	}
 
-	public void ApplyPickUpItemEffect(ItemData.Type type, GameObject prefEffect, int value)
+	public void ApplyPickUpItemEffect(ItemData.Type type, GameObject prefEffect, long value)
 	{
 		GameObject dmgEffect = (GameObject)Instantiate(prefEffect, Vector3.zero, Quaternion.Euler(0f, 0f, 0f));
 		dmgEffect.transform.parent = m_aimpoint.transform;
