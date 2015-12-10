@@ -2052,7 +2052,7 @@
 		"weaponStat":
 		{
 			"coolTime":5,
-			"range":6,
+			"range":8,
 			"incBulletOnLevel":900
 		}
 	},
@@ -2069,7 +2069,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":5,
+			"range":6,
 			"incBulletOnLevel":10
 		}
 	},
@@ -2121,7 +2121,7 @@
 		"weaponStat":
 		{
 			"coolTime":4,
-			"range":5,
+			"range":6,
 			"incBulletOnLevel":10
 		}
 	},

@@ -1361,7 +1361,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"sightRange":5,
+			"sightRange":6,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1375,7 +1375,7 @@
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
 				"aniSpeedRatio":0.5,
-				"navMeshBaseOffset":3,
+				"navMeshBaseOffset":4,
 				"backwardOnDamage":false
 			}
 		},
@@ -1392,7 +1392,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"sightRange":5,
+			"sightRange":6,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1406,7 +1406,7 @@
 				"hpPerLevel":0.33,
 				"moveSpeed":3,
 				"aniSpeedRatio":0.5,
-				"navMeshBaseOffset":3,
+				"navMeshBaseOffset":4,
 				"backwardOnDamage":false
 			}
 		},
@@ -1422,7 +1422,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"sightRange":9,
+			"sightRange":8,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1452,7 +1452,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"sightRange":5,
+			"sightRange":7,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
@@ -1512,7 +1512,7 @@
 				}
 			],
 			"mobAI":"Follow",
-			"sightRange":9,
+			"sightRange":8,
 			"baseCreatureProperty":
 			{
 				"maxHP":15,
