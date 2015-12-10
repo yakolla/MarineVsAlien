@@ -10,9 +10,6 @@ using GooglePlayGames.BasicApi.SavedGame;
 
 public class ChampSettingGUI : MonoBehaviour {
 
-
-
-
 	GameObject	m_weaponPanel;
 	GameObject	m_statPanel;
 	GameObject	m_followerPanel;

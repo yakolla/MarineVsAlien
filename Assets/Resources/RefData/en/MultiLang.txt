@@ -87,4 +87,5 @@
 	"Advertising",
 	"Base Damage",
 	"Evolution Level",
+	"Fan Page",
 ]

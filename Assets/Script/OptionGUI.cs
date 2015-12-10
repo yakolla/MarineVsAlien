@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine.UI;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
@@ -13,6 +16,7 @@ public class OptionGUI : MonoBehaviour {
 	YGUISystem.GUILable		m_close;
 	YGUISystem.GUILable		m_share;
 	YGUISystem.GUILable		m_credits;
+	YGUISystem.GUILable		m_fanPage;
 
 	YGUISystem.GUIGuage 	m_guages;
 	Slider	m_waveSlider;
@@ -38,6 +42,9 @@ public class OptionGUI : MonoBehaviour {
 
 		m_credits = new YGUISystem.GUILable(transform.Find("CreditsButton/Text").gameObject);
 		m_credits.Text.text = RefData.Instance.RefTexts(MultiLang.ID.Credits);
+
+		m_fanPage = new YGUISystem.GUILable(transform.Find("FanPageButton/Text").gameObject);
+		m_fanPage.Text.text = RefData.Instance.RefTexts(MultiLang.ID.FanPage);
 
 		m_wave = new YGUISystem.GUILable(transform.Find("RestartWaveGUI/Slider/Lable").gameObject);
 		m_wave.Text.text = RefData.Instance.RefTexts(MultiLang.ID.RestartWave);
@@ -134,7 +141,12 @@ public class OptionGUI : MonoBehaviour {
 	public void OnClickCredits()
 	{
 		transform.parent.Find("CreditsPanel").gameObject.SetActive(true);
-		
+	}
+
+	public void OnClickFanPage()
+	{
+
+		Application.OpenURL ("https://www.facebook.com/%EC%9D%B8%EB%94%94-%EA%B2%8C%EC%9E%84%ED%8C%80-BaneGoleYC-842471115871641");
 	}
 
 	public void OnWaveSliderChanged(float value)
