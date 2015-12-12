@@ -39,7 +39,7 @@ public class Champ : Creature {
 
 		FollowingCamera followingCamera = Camera.main.GetComponentInChildren<FollowingCamera>();
 		followingCamera.SetMainTarget(gameObject);
-
+		followingCamera.Smooth = 0.3f;
 
 	
 	}

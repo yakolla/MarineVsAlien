@@ -20,6 +20,8 @@ public class FollowingCamera : MonoBehaviour
 	float m_elapsedTime = 0f;
 	bool m_done = false;
 
+	float m_smooth = 1f;
+
 	public void SetTarget(GameObject target, GameObject nextTarget)
 	{
 		m_target = target;
@@ -33,6 +35,11 @@ public class FollowingCamera : MonoBehaviour
 	{
 		m_mainTarget = mainTarget;
 		SetTarget(m_mainTarget, null);
+	}
+
+	public float Smooth
+	{
+		set { m_smooth = value;}
 	}
 
 	public float SideSize
@@ -71,7 +78,7 @@ public class FollowingCamera : MonoBehaviour
 		Camera.main.transform.position = myCharacterPosition;
 */
 
-		Vector3 myCharacterPosition = Vector3.Lerp(Camera.main.transform.position, m_target.transform.position-m_cameraOffset+m_cameraSide, Time.deltaTime*2);
+		Vector3 myCharacterPosition = Vector3.Lerp(Camera.main.transform.position, m_target.transform.position-m_cameraOffset+m_cameraSide, m_smooth);
 		myCharacterPosition.x = Mathf.Clamp(myCharacterPosition.x, m_cameraEdge.x, m_cameraEdge.width);
 		myCharacterPosition.z = Mathf.Clamp(myCharacterPosition.z, m_cameraEdge.y, m_cameraEdge.height);
 		Camera.main.transform.position = myCharacterPosition;
