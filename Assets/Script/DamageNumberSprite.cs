@@ -129,6 +129,8 @@ public class DamageNumberSprite : MonoBehaviour {
 			
 			break;
 		}
+
+		transform.forward = Camera.main.transform.forward;
 	}
 
 	public string Text

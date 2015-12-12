@@ -37,7 +37,9 @@ public class FollowingCamera : MonoBehaviour
 
 	public float SideSize
 	{
-		set {m_cameraSide.x = value;}
+		set {
+			m_cameraSide.x = value;
+		}
 	}
 
 
@@ -62,8 +64,14 @@ public class FollowingCamera : MonoBehaviour
 		}
 
 		m_elapsedTime += Time.deltaTime*0.6f;
-
+		/*
 		Vector3 myCharacterPosition = Vector3.Lerp(m_from, m_target.transform.position-m_cameraOffset+m_cameraSide, Mathf.Min(1f, m_elapsedTime));
+		myCharacterPosition.x = Mathf.Clamp(myCharacterPosition.x, m_cameraEdge.x, m_cameraEdge.width);
+		myCharacterPosition.z = Mathf.Clamp(myCharacterPosition.z, m_cameraEdge.y, m_cameraEdge.height);
+		Camera.main.transform.position = myCharacterPosition;
+*/
+
+		Vector3 myCharacterPosition = Vector3.Lerp(Camera.main.transform.position, m_target.transform.position-m_cameraOffset+m_cameraSide, Time.deltaTime*2);
 		myCharacterPosition.x = Mathf.Clamp(myCharacterPosition.x, m_cameraEdge.x, m_cameraEdge.width);
 		myCharacterPosition.z = Mathf.Clamp(myCharacterPosition.z, m_cameraEdge.y, m_cameraEdge.height);
 		Camera.main.transform.position = myCharacterPosition;

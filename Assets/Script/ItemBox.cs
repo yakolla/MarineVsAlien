@@ -81,7 +81,7 @@ public class ItemBox : MonoBehaviour {
 			Death();
 		}
 
-
+		transform.forward = Camera.main.transform.forward;
 	}
 
 	void Death()

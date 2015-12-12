@@ -32,13 +32,14 @@ public class FloatingGuageBarGUI : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		transform.rotation = Quaternion.Euler(Vector3.zero);
 		m_guage.Update();
 
 		if (m_level != null)
 		{
 			m_level.Text.text = m_creature.m_creatureProperty.Level.ToString();
 		}
+
+		transform.forward = Camera.main.transform.forward;
 	}
 
 	virtual protected float guageRemainRatio()

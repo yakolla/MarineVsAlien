@@ -410,12 +410,11 @@ public class Spawn : MonoBehaviour {
 				m_goalPointIndex = m_relWave%m_goalPoints.Length;
 				leftToRight = true;
 				angle = 0f;
-				m_followingCamera.SideSize = 2.5f;
+
 			}
 			else
 			{
 				m_goalPointIndex = m_goalPoints.Length-m_relWave%m_goalPoints.Length-1;
-				m_followingCamera.SideSize = -2.5f;
 				angle = 180f;
 			}
 
@@ -431,9 +430,16 @@ public class Spawn : MonoBehaviour {
 			}
 
 			if (m_goalPointIndex == 0)
+			{
 				angle = 0f;
+				m_followingCamera.SideSize = 2.5f;
+			}
 			else if (m_goalPointIndex == m_goalPoints.Length-1)
+			{
 				angle = 180f;
+				m_followingCamera.SideSize = -3.5f;
+
+			}
 
 			m_champ.RotateToTarget(angle);
 			m_champ.Followers.ForEach(follower=>{
