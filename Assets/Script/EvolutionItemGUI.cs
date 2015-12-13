@@ -20,6 +20,7 @@ public class EvolutionItemGUI : MonoBehaviour {
 
 	YGUISystem.GUILable	m_evolutionLable;	
 	YGUISystem.GUILable	m_damageLable;
+	Vector3 m_backupCameraRotation;
 
 	SecuredType.XInt	gemReward = 0;
 
@@ -44,12 +45,15 @@ public class EvolutionItemGUI : MonoBehaviour {
 
 	void OnEnable() {
 		TimeEffector.Instance.StopTime();
+		m_backupCameraRotation = Camera.main.gameObject.transform.eulerAngles;
+		Camera.main.gameObject.transform.eulerAngles = new Vector3(m_backupCameraRotation.x, 0, m_backupCameraRotation.z);
 	}
 
 
 	void OnDisable() {
 
 		TimeEffector.Instance.StartTime();
+		Camera.main.gameObject.transform.eulerAngles = m_backupCameraRotation;
 		m_follower = null;
 		GameObject.Destroy(m_oldFollower.transform.Find("Body").gameObject);
 		GameObject.Destroy(m_newFollower.transform.Find("Body").gameObject);
