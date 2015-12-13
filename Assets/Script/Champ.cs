@@ -208,7 +208,7 @@ public class Champ : Creature {
 		for (int i = 0; i < touchedCount; ++i) 
 		{
 
-			StartCoroutine(EffectTouch(Camera.main.ScreenToWorldPoint(touchPos[i])));
+			StartCoroutine(EffectTouch(touchPos[i]));
 
 			Ray ray = Camera.main.ScreenPointToRay( touchPos[i] );
 			RaycastHit[] hits;
@@ -304,8 +304,13 @@ public class Champ : Creature {
 	IEnumerator EffectTouch(Vector3 pos)
 	{
 		GameObject ef = Resources.Load("Pref/ef_touch") as GameObject;
+		/*
 		pos.z = transform.position.z-2;
 		pos.y -= 1.5f;
+*/
+		pos.z = 10;
+		pos = Camera.main.ScreenToWorldPoint(pos);
+
 		GameObject obj = GameObjectPool.Instance.Alloc(ef, pos, ef.transform.rotation);
 		while(obj.particleSystem.isPlaying)
 		{
