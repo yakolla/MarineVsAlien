@@ -15,6 +15,7 @@ public class DropShip : MonoBehaviour {
 	void OnDropChamp()
 	{
 		m_champ.gameObject.SetActive(true);
+		m_champ.transform.position = new Vector3(transform.position.x, m_champ.transform.position.y, transform.position.z);
 
 		Warehouse.Instance.Items[ItemData.Type.Follower].ForEach(item=>{
 			if (item.Item.Level > 0)
