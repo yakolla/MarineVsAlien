@@ -364,13 +364,12 @@ public class ChampSettingGUI : MonoBehaviour {
 	{
 		Warehouse.Instance.AutoEarnGold = 0;
 
-		WWW www = new WWW("http://www.timeapi.org/utc/now");
+		WWW www = new WWW("http://www.timeapi.org/utc/now?\\s");
 		yield return www;
 
 		if (www.error == null)
 		{
-			System.DateTime now = System.DateTime.Parse(www.text);
-			//System.DateTime now = new System.DateTime (1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc).AddMilliseconds(double.Parse(www.text));
+			System.DateTime now = new System.DateTime (1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc).AddSeconds(double.Parse(www.text));
 
 			Warehouse.Instance.AutoEarnGold = (long)now.Subtract(Warehouse.Instance.LastModifiedFileTime).TotalMinutes*5*Warehouse.Instance.GameBestStats.WaveIndex;
 			Warehouse.Instance.LastModifiedFileTime = now;
